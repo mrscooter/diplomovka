@@ -1,0 +1,142 @@
+\chapter[Techniky určovania dolnej hranice počtu stavov NKA]{Techniky určovania dolnej hranice počtu stavov NKA}
+\label{kap:lower_bounds}
+
+V tejto kapitole uvedieme techniky, pomocou ktorých budeme schopný určovať dolné hranice pre počet stavov nedeterministického konečného automatu pre daný jazyk. Pre deterministické konečné automaty máme k dispozícii \verb'Mihill-Nerodovú vetu', ktorá vždy dokáže určiť tesnú spodnú hranicu pre počet stavov potrebných pre deterministický konečný automat rozpoznávajúci daný jazyk. Pri nedeterministických konečných automatoch je situácia horšia. Takúto silnú techniku nemáme k dispozícii. Avšak máme k dispozícii techniky, ktoré nám poskytujú aspoň nejaké, nie nutne tesné, dolné hranice pre počet stavov potrebných pre nedeterministický konečný automat rozpoznávajúci daný jazyk. V kapitole uvedieme tri techniky -  Techniku oblbovacích množín (z anglického Fooling set technique), techniku rozšírených oblbovacích množín (z anglického Extended fooling set technique) a techniku dvojklikového hranového pokrytia (z anglického Biclique edge cover technique). Kapitola čerpá z \cite{Palioudakis2012}, \cite{GruberHolzer2006} a \cite{GlaisterShalit1996}.
+
+\section{Techniky oblbovacích množín}
+Tieto dve pomerne jednoduché techniky využívajú fakt, že ak nedeterministickému konečnému automatu, ktorý má rozpoznávať daný jazyk povolíme príliš málo stavov, tak nutne musí popliesť nejaké dva výpočty, ktoré mal od seba rozlíšiť (a teda sa nám podarilo automat oblbnúť, od toho názov techniky). Čo to znamená málo stavov a popliesť výpočty hovoria uvedené vety.
+
+\begin{theorem}[Technika oblbovacích množín]
+\label{thm:fooling_set_technique}
+Nech $ L \subseteq \Sigma^{*} $ je regulárny jazyk. Nech $ n \in \mathbb{N} $. Nech existuje množina párov $ P = \lbrace (x_{i},y_{i}) | 1 \leq i \leq n \rbrace $ taká, že: 
+
+\begin{enumerate}[label=(\alph*)]
+\item $x_{i}y_{i} \in L$ pre $1 \leq i \leq n$
+\item $x_{i}y_{j} \notin L$ pre $1 \leq i,j \leq n$ a $i \neq j$
+\end{enumerate}
+
+Potom každý NKA rozpoznávajúci L má aspoň n stavov. Množinu P s danými vlastnosťami nazývame oblbovacia množina pre jazyk $ L $.
+
+\end{theorem}
+
+\begin{proof}
+Sporom. Nech platia predpoklady tvrdenia a nech existuje NKA A ktorý má menej stavov ako n. Pozrime sa na výpočty automatu A na slovách $x_{i}y_{i}$ pre $1 \leq i \leq n$. Podľa definície množiny $ P $ musí patiť $ (q_{0_{A}},x_{i}y_{i}) \vdash^{*} (p_{i}, y_{i}) \vdash^{*} (q_{i_{F}}, \varepsilon) $ kde $p_{i} \in K_{A}$ a $q_{i_{F}} \in F_{A}$. Pozrime sa teraz pozornejšie na stavy $ p_{i} $. Nakolko platí, že automat A má menej stavov ako je n, musí platiť, že existujú také $k \neq l $, že $ p_{k}=p_{l}  $. Potom však platí, že $ (q_{0_{A}},x_{k}y_{l}) \vdash^{*} (p_{l}, y_{l}) \vdash^{*} (q_{i_{F}}, \varepsilon)$. Potom však $x_{k}y_{l} \in L$ čo je spor s definíciou množiny P. Teda A má aspoň n stavov.
+\end{proof}
+
+Drobnou úpravou tejto vety dostaneme silnejšie tvrdenie.
+
+\begin{theorem}[Technika rozšírených oblbovacích množín]
+\label{thm:extended_fooling_set_technique}
+Nech $ L \subseteq \Sigma^{*} $ je regulárny jazyk. Nech $ n \in \mathbb{N} $. Nech existuje množina párov $ P = \lbrace (x_{i},y_{i}) | 1 \leq i \leq n \rbrace $ taká, že: 
+
+\begin{enumerate}[label=(\alph*)]
+\item $x_{i}y_{i} \in L$ pre $1 \leq i \leq n$
+\item $x_{i}y_{j} \notin L$ alebo $x_{j}y_{i} \notin L$ pre $1 \leq i,j \leq n$ a $i \neq j$
+\end{enumerate}
+
+Potom každý NKA rozpoznávajúci L má aspoň n stavov. Množinu P s danými vlastnosťami nazývame rozšírená oblbovacia množina pre jazyk $ L $.
+
+\end{theorem}
+
+Dôkaz je takmer identický ako dôkaz pre \ref{thm:fooling_set_technique} a je triviálne ho rozšíriť tak, aby dokazoval toto tvrdenie, preto ho neuvádzame. Takisto je lahko vidno, že ak je množina oblbovacou množinou pre jazyk $ L $, je aj rozšírenou oblbovacou množinou pre $ L $. Teraz uvedieme niekolko príkladov, aby sme ilustrovali použitie týchto techník.
+
+\begin{example}[Prevzatý z \cite{GlaisterShalit1996}]
+Vezmime jazyk všetkých palindromov nad binárnou abecedou dĺžky práve k, formálne $ L_{pal_k} = \lbrace w \in \lbrace 0,1 \rbrace^{k} | w = w^{R} \rbrace $. Vezmime množinu:
+\begin{align*}
+P = \lbrace (x,0^{k-2|x|}x^{R}) | |x| \leq k/2 \rbrace \cup \lbrace (x0^{k-2|x|},x^{R}) | |x| \leq (k-1)/2 \rbrace
+\end{align*}
+Použijúc techniku oblbovacích množín teraz vieme, že najmenší NKA rozpoznávajúci $L_{pal_k}$ má aspoň $ 2^{\lfloor k/2 \rfloor + 1} + 2^{\lfloor (k+1)/2 \rfloor} -2 $. Táto hranica je tesná o čom sa môžme presvedčiť konštrukciou požadovaného automatu.
+
+\end{example}
+
+Prirodzená otázka, ktorá sa ponúka, je: \glqq Ako nájsť čo najväčšiu (rozšírenú) oblbovaciu množinu pre daný jazyk $ L $? \grqq. Algoritmus, pomocou ktorého by sa táto množina dala skonštruovať známy nie je, avšak v 
+\cite{GlaisterShalit1996} autori ponúkajú nasledujúcu heuristiku, ktorá, ako sa zdá, často zafunguje velmi dobre. Najprv skonštruujme NKA rozpoznávajúci jazyk $ L $. Nech pre každý stav $ q $ tohto automatu je $ x_q $ najkratšie slovo také, že platí $ (q_0,x_q) \vdash^{*} (q,\varepsilon) $ a nech $ w_q $ je najkratšie slovo také, že platí $ (q, w_q) \vdash^{*} (q_F,\varepsilon) $, kde $ q_F $ je akceptačný stav. Potom zvol P ako nejakú vhodnú podmnožinu $ \lbrace (x_q,w_q) | q \in K \rbrace $. Ilustrujme túto heuristiku na nasledujúcom príklade.
+
+\begin{example}
+\label{ex:foolingSetHeuristic}
+Uvažujme jazyk $ L = \lbrace w \in \lbrace a,b \rbrace^{*} | \; |w| \; mod \; 2 = 0 \; \wedge \; w \; obsahuje \; 'a' \rbrace $. Intuícia našepkáva, že minimálny NKA rozpoznávajúci $ L $ by mal vyzerať ako ukazuje Obrázok \ref{fig:FoolingSetHeuristicNFA}. Použijme teda zmienenú heuristiku a vezmime páry slov. Pre stav $ q_0 $ vezmime $ (\varepsilon,ab) $, pre stav $ q_1 $ vezmime $ (b,a) $, pre stav $ q_2 $ vezmime $ (ba,\varepsilon) $ a pre stav $ q_3 $ vezmime $ (a,b) $. Tieto 4 páry tvoria rozšírenú oblbovaciu množinu pre jazyk $ L $ a teda NKA rozpoznávajúci $ L $ má aspoň 4 stavy. Konštrukcia z Obrázku \ref{fig:FoolingSetHeuristicNFA} dokazuje, že táto hranica je tesná a teda heuristika v tomto prípade perfektne zafungovala.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance=4cm]
+  \node[initial,state] 		(q0)     				{$q_0$};
+  \node[state]         		(q1) [below of=q0]  	{$q_1$};
+  \node[state]   			(q3) [right of=q0] 		{$q_3$};
+  \node[state,accepting]   	(q2) [below of=q3] 		{$q_2$};
+
+
+  \path[->]	(q0)	edge					node {a,b}	(q1)
+             	  	edge    				node {a}	(q3)
+        	(q1) 	edge 	[bend left]  	node {a,b} 	(q0)
+             		edge					node {a} 	(q2)
+        	(q2) 	edge	[bend left]		node {a,b} 	(q3)
+			(q3)	edge					node {a,b}	(q2);
+\end{tikzpicture}
+\caption{Automat pre príklad \ref{ex:foolingSetHeuristic}}
+\label{fig:FoolingSetHeuristicNFA}
+\end{figure}
+\end{example}
+
+Ďalšia prirodzená otázka je, či existuje jazyk, kde maximálna oblbovacia množina je menšia ako nejaká rozšírená oblbovacia množina pre tento jazyk a teda Technika rozšírených oblbovacích množín nám povie viac ako jej slabšia verzia. Že to tak je ilustruje nasledujúci príklad.
+
+\begin{example}[Prevzatý z \cite{Palioudakis2012}]
+Nech $ \Sigma = \lbrace a_i | 1 \leq i \leq n \rbrace $. Uvažujme konečný jazyk $ L_n = \lbrace a_i a_j \; | \; 1 \leq i \leq j \leq n \rbrace $. Lahko vidno, že $ S_n = \lbrace (a_i ,a_i) | 1 \leq i \leq n \rbrace \cup \lbrace (\varepsilon,a_1 a_1),(a_1 a_1, \varepsilon) \rbrace$ je rozšírená oblbovacia množina pre $ L_n $ a má velkosť $ n+2 $. Potom analýza toho, že akákolvek oblbovacia množina pre $ L_n $ má najviac 3 prvky vyzerá nasledovne:
+\begin{enumerate}[label=(\alph*)]
+\item Najprv si všimnime, že akákolvek oblbovacia množina môže obsahovať nanajvýš jeden pár typu $ (\varepsilon,w) $ a nanajvýš jeden pár typu $ (w,\varepsilon) $.
+\item Ďalej si všimnime, že žiadne dva páry typu $ (a_i, a_j) $ a $ (a_k, a_l) $ pre $ 1 \leq i \leq j \leq n $ a $ 1 \leq k \leq l \leq n $ nemôžu byť súčasne prvkami oblbovacej množiny. BUNV predpokladajme, že $ i \leq k $. Potom $ a_i a_l \in L_n$, čo je v spore s definíciou oblbovacej množiny.
+\end{enumerate}
+
+Takže akákolvek oblbovacia množina pre $ L_n $ má nanajvýš 3 prvky. Navyše hranica $ n+2 $ pre počet stavov NKA je tesná.Čiže v tomto prípade nám dáva silnejšia technika naozaj aj lepší výsledok. 
+\end{example}
+
+Taktiež je nutné dodať, že sú prípady, v ktorých nám ani Technika rozšírených oblbovacích množín nefunguje ideálne. V \cite{GlaisterShalit1996} je uvedený jazyk $ H_m = (\lbrace 0^{m} \rbrace^+)^C $ kde neexistuje rozšírená oblbovacia množina velkosti viac ako 3. Navyše tiež ukazujú, že akýkolvek NKA pre $ H_m $ má aspoň $ lg(m+1) $ stavov.
+ 
+\section{Technika dvojklikového hranového pokrytia}
+Poslednou technikou na dokazovanie dolných hraníc pre počet stavov potrebných pre NKA na rozpoznávanie daného jazyka ktorú uvedieme je technika dvojklikového hranového pokrytia. Najprv však potrebujeme zaviesť zopár pojmov z teórie grafov.
+
+\begin{definition}
+Bipartitný graf je trojica $ G = (X,Y,E) $, kde $ X $ a $ Y $ sú (nie nutne konečné alebo diskujnktné) množiny vrcholov a $ E \subseteq X \times Y $ je množina hrán.
+\end{definition}
+
+\begin{definition}
+Bipartitný graf $ H = (X',Y',E') $ nazývame podgraf grafu $ G $ ak $ X' \subseteq X, Y' \subseteq Y $, a $ E' \subseteq E $. Podgraf H nazveme indukovaný ak $ E' = (X' \times Y') \cap E $. Ak máme danú množinu hrán E', podgraf indukovaný množinou hrán $ E' $ vzhladom na $ E $ je najmenší indukovaný podgraf obsahujúci všetky hrany z $ E' $.
+\end{definition}
+
+\begin{definition}
+Nech $ G = (X,Y,E) $ je bipartitný graf. Množinu $ C = \lbrace H_1,H_2,... \rbrace $ neprázdnych bipartitných podgrafov grafu $ G $ nazveme hranové pokrytie grafu $ G $ ak každá hrana z $ G $ sa nachádza v aspoň jednom podgrafe z $ C $. 
+\end{definition}
+
+\begin{definition}
+Bipartitný graf $ G = (X,Y,E) $ nazveme dvojklika, ak platí $ E = X \times Y $
+\end{definition}
+
+\begin{definition}
+Hranové pokrytie $ C $ bipartitného grafu $ G $ nazveme dvojklikové hranové pokrytie, ak každý z podgrafov v $ C $ je dvojklika.
+\end{definition}
+
+\begin{definition}
+Velkosť najmenšieho dvojklikového hranového pokrytia grafu $ G $ nazývame bipartitná dimenzia grafu $ G $ a označujeme ju $ d(G) $. Ak pre graf neexistuje dvojklikové hranové pokrytie, jeho bipartitná dimenzia je nekonečno.
+\end{definition}
+
+Na záver tohto sledu definícii ešte priraďme k akémukolvek jazyku $ L \subseteq \Sigma^* $ a množinám $ X,Y \subseteq  \Sigma^* $ bipartitný graf $ G = (X,Y,E_L) $, kde $ (x,y) \in E_L $ práve vtedy, keď $ xy \in L $.
+\par
+Teraz môžeme pristúpiť k formulácii Techniky dvojklikového hranového pokrytia.
+\begin{theorem}[Technika dvojklikového hranového pokrytia]
+\label{thm:biclique_edge_cover_technique}
+Nech $ L \subseteq \Sigma^{*} $ je regulárny jazyk. Nech existuje bipartitný graf $ G = (X,Y,E_L) $ kde sú $ X,Y \subseteq  \Sigma^* $ (nie nutne konečné množiny). Potom akýkolvek nedeterministický konečný automat rozpoznávajúci $ L $ má aspoň tolko stavov, ako je bipartitná dimenzia grafu $ G $.
+\end{theorem}
+
+\begin{proof}
+Nech $ A=(K,\Sigma,\delta,q_0,F) $ je nejaký NKA rozpoznávajúci $ L $. Ukážeme, že každý nedeterministický konečný automat rozpoznávajúci $ L $ indukuje dvojklikové hranové pokrytie grafu $ G $. Pripomíname, že $ G $ je graf priradený k množinám $ X,Y $ a jazyku $ L $. Pre každý stav $ q \in K $ nech $ H_q=(X_q,Y_q,E_q) $, kde $ X_q = X \cap \lbrace w \in \Sigma^* | (q_0,w) \vdash^* (q,\varepsilon) \rbrace $, $ Y_q = Y \cap \lbrace w | \exists q_F \in F: \; (q,w) \vdash^* (q_F,\varepsilon)  \rbrace $ a $ E_q = X \times Y $. Teraz ukážeme, že $ C = \lbrace H_q | q \in K \rbrace $ je dvojklikové hranové pokrytie grafu $ G $.
+
+\begin{enumerate}[label=(\alph*)]
+\item Priamo z definície $ H_q $ je dvojklika pre každé $ q \in K $
+\item Každý bipartitný graf $ H_q $ je tiež podgrafom $ G $. Priamo z konštrukcie $ H_q $ vyplýva $ X_q \subseteq X $ a $ Y_q \subseteq Y$. Ostáva ukázať, že $ E_q \subseteq E_L $. Nech $ x \in X_q $ a nech $ y in Y_q $. Z toho vyplýva, že $ (q_0,x) \vdash^* (q,\varepsilon) $ a $ \exists q_F \in F: \; (q,y) \vdash^* (q,\varepsilon) $. Z toho vyplýva, že $ xy \in L $ a teda $ (x,y) \in E_L $
+\item Ešte ostáva ukázať, že $ C $ je hranové pokrytie grafu $ G $. Nech $ (x,y) \in E_L $ je lubovolná hrana grafu G. Nájdime túto hranu v nejakom grafe z $ C $. Z toho, ako bol graf $ G $ skonštruovaný vyplýva, že $ xy \in L $. Nakolko NKA $ A $ rozpoznáva jazyk $ L $, existuje nejaký stav $ q \in K $ taký, že $ (q_0,xy) \vdash^* (q,y) \vdash^* (q_F,\varepsilon) $ kde $ q_F \in F $. Potom platí $ x \in X_q $ a $ y \in Y_q $. Nakolko $ H_q $ je dvojklika, lahko vidno, že $ (x,y) $ je hranou v $ E_q $ čo dokazuje, že $ C $ je hranové pokrytie $ G $
+\end{enumerate}
+
+Teda sme ukázali, že $ C $ je dvojklikové hranové pokrytie grafu $ G $.
+\par
+Teraz predpokladajme, že existuje nedeterministický konečný automat rozpoznávajúci $ L $ taký, že počet jeho stavov je ostro menší ako bipartitná dimenzia $G$. Podla predchádzajúceho však tento automat indukuje dvojklikové hranové pokrytie grafu $G$ takej velkosti, ako je počet jeho stavov. Potom však existuje dvojklikové hranové pokrytie grafu $G$, ktorého velkosť je ostro menšia ako bipartitná dimenzia grafu $G$, čo je v spore s definíciou bipartitnej dimenzie grafu. A teda akýkolvek nedeterministický konečný automat rozpoznávajúci $ L $ má aspoň tolko stavov ako $ d(G) $. Koniec dôkazu, môžete omdlieť.
+
+\end{proof}

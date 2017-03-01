@@ -1,0 +1,601 @@
+\documentclass[notheorems]{beamer}
+\usepackage{etex}
+\usetheme{Madrid}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovak]{babel}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{enumitem}
+\setlist[itemize,1]{label={\fontfamily{cmr}\fontencoding{T1}\selectfont\textbullet}}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{verbatim}
+\usepackage{hhline}
+\usepackage{ctable}
+\usepackage{array}
+\usetikzlibrary{automata,arrows,topaths}
+
+\title{Prídavná informácia a zložitosť nedeterministických konečných automatov}
+\subtitle{diplomová práca}
+\author{Šimon Sádovský \and Branislav Rovan}
+\institute{FMFI UK}
+\date{\today}
+
+\newtheorem{theorem}{Veta}
+\newtheorem{definition}[theorem]{Definícia}
+
+\newcommand{\xmark}{\ding{55}}
+
+\newcolumntype{?}{!{\vrule width 3pt}}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Úvod do problematiky, motivácia}
+\begin{itemize}
+\item Chceme nedeterministickým konečným automatom akceptovať jazyk $ \lbrace w \in \lbrace a \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 6) \rbrace $. Koľko stavov potrebujeme?
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.7cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0)					{$q_{0}$}; 
+   \node[state] 			(1)		[right of=0] 		{$q_{1}$}; 
+   \node[state] 			(2) 	[right of=1] 		{$q_{2}$};
+   \node[state] 			(3) 	[right of=2] 		{$q_{3}$};
+   \node[state] 			(4) 	[right of=3] 		{$q_{4}$};
+   \node[state] 			(5) 	[right of=4] 		{$q_{5}$};
+   
+   \path[->] 
+    (0) edge node {a} (1)
+    (1) edge node {a} (2)
+    (2) edge node {a} (3)
+    (3) edge node {a} (4)
+    (4) edge node {a} (5)
+    (5) edge [bend right] node [swap] {a} (0)
+    ;
+\end{tikzpicture}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Úvod do problematiky, motivácia}
+
+\begin{itemize}
+\item Čo ak by sme automatu niečo o vstupe \glqq{} našepkali \grqq{}?
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\resizebox {\columnwidth} {!} {
+	\includegraphics[width=2cm]{whisper-001}
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.7cm,
+    	                semithick]
+	   \node[state,initial,accepting] 	(0)					{$q_{0}$}; 
+	   \node[state] 			(1)		[right of=0] 		{$q_{1}$}; 
+	   \node[state] 			(2) 	[right of=1] 		{$q_{2}$};
+	   \node[state] 			(3) 	[right of=2] 		{$q_{3}$};
+	   \node[state] 			(4) 	[right of=3] 		{$q_{4}$};
+	   \node[state] 			(5) 	[right of=4] 		{$q_{5}$};
+   
+	   \path[->] 
+    	(0) edge node {a} (1)
+	    (1) edge node {a} (2)
+    	(2) edge node {a} (3)
+	    (3) edge node {a} (4)
+    	(4) edge node {a} (5)
+	    (5) edge [bend right] node [swap] {a} (0)
+    ;
+	\end{tikzpicture}
+}
+\end{figure}
+
+\begin{itemize}
+\item Ak budeme šepkať, či je dĺžka slova na vstupe delitelná tromi, tak stačí NKA s dvomi stavmi.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=2cm]{whisper-001}
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.2cm,
+    	                semithick]
+	   \node[state,initial,accepting] 	(0)					{$q_{0}$}; 
+	   \node[state] 			(1)		[right of=0] 		{$q_{1}$}; 
+   
+	   \path[->] 
+    	(0) edge [bend right]node [swap] {a} (1)
+	    (1) edge [bend right] node [swap] {a} (0)
+    ;
+	\end{tikzpicture}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Úvod do problematiky, motivácia}
+
+\begin{itemize}
+\item Ak budeme šepkať, či je slovo dĺžky aspoň 78, tak sme automatu vo všeobecnosti velmi nepomohli.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\resizebox {\columnwidth} {!} {
+	\includegraphics[width=2cm]{whisper-001}
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.7cm,
+    	                semithick]
+	   \node[state,initial,accepting] 	(0)					{$q_{0}$}; 
+	   \node[state] 			(1)		[right of=0] 		{$q_{1}$}; 
+	   \node[state] 			(2) 	[right of=1] 		{$q_{2}$};
+	   \node[state] 			(3) 	[right of=2] 		{$q_{3}$};
+	   \node[state] 			(4) 	[right of=3] 		{$q_{4}$};
+	   \node[state] 			(5) 	[right of=4] 		{$q_{5}$};
+   
+	   \path[->] 
+    	(0) edge node {a} (1)
+	    (1) edge node {a} (2)
+    	(2) edge node {a} (3)
+	    (3) edge node {a} (4)
+    	(4) edge node {a} (5)
+	    (5) edge [bend right] node [swap] {a} (0)
+    ;
+	\end{tikzpicture}
+}
+\end{figure}
+
+\begin{itemize}
+\item Skúmame otázku, aké našepkávanie je zmysluplné a pomôže a aké nie.
+\item Ako formalizovať tento problém?
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Definícia problému}
+
+\begin{definition}
+\textbf{Stavovou zložitosťou} nedeterministického konečného automatu $ A $ (označujeme \em{}$ \#_S(A) $\em{}) rozumieme počet jeho stavov.
+\end{definition}
+
+\begin{definition}
+\textbf{Nedeterministickú stavovú zložitosť} jazyka $ L \in \mathscr{R} $ (označujeme \em{}$ nsc(L) $\em{} - z anglického nondeterministic state complexity) definujeme \em{}$ nsc(L)=min \lbrace \#_S(A) | L(A)=L \rbrace $\em{}.
+\end{definition}
+
+\begin{definition}
+Nech $ L \in \mathscr{R} $. \textbf{Minimálnym nedeterministickým konečným automatom pre jazyk L} rozumieme ľubovolný nedeterministický konečný automat $ A $ taký, že $ \#_S(A)=nsc(L) $.
+\end{definition}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Definícia problému}
+
+\begin{definition}
+Nech $ A $ je nedeterministický konečný automat. Potom dva nedeterministické konečné automaty $ A_1, A_2 $ také, že $ L(A)=L(A_1) \cap L(A_2) $ nazveme \textbf{rozklad automatu} $ A $. Ak navyše platí $ \#_S(A_1) < \#_S(A)$ a $ \#_S(A_2) < \#_S(A) $, nazývame tento rozklad \textbf{netriviálny}. Ak existuje netriviálny rozklad automatu $ A $, tak automat $ A $ nazývame \textbf{rozložitelný}.
+\end{definition}
+
+\begin{definition}
+\label{def:nedeterministic_decomposability_of_language}
+Nech $ L \in \mathscr{R} $ a $ A $ je nejaký minimálny NKA pre jazyk L. \textbf{Jazyk} $ L $ nazývame \textbf{nedeterministicky rozložitelný} práve vtedy, keď je automat $ A $ rozložitelný.
+\end{definition}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Príklad rozložiteľného}
+\begin{theorem}
+Jazyk $ \lbrace w \in \lbrace a \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 6) \rbrace $ je rozložiteľný.
+\end{theorem}
+
+\begin{proof}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.7cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0)					{$q_{0}$}; 
+   \node[state] 			(1)		[right of=0] 		{$q_{1}$}; 
+   \node[state] 			(2) 	[right of=1] 		{$q_{2}$};
+   \node[state] 			(3) 	[right of=2] 		{$q_{3}$};
+   \node[state] 			(4) 	[right of=3] 		{$q_{4}$};
+   \node[state] 			(5) 	[right of=4] 		{$q_{5}$};
+   
+   \path[->] 
+    (0) edge node {a} (1)
+    (1) edge node {a} (2)
+    (2) edge node {a} (3)
+    (3) edge node {a} (4)
+    (4) edge node {a} (5)
+    (5) edge [bend right] node [swap] {a} (0)
+    ;
+\end{tikzpicture}
+\end{figure}
+\begin{figure}[H]
+\centering
+\resizebox {\columnwidth} {!} {
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.2cm,
+    	                semithick]
+	   \node[state,initial,accepting] 	(0)					{$q_{0}$}; 
+	   \node[state] 			(1)		[right of=0] 		{$q_{1}$}; 
+   
+	   \path[->] 
+    	(0) edge [bend right]node [swap] {a} (1)
+	    (1) edge [bend right] node [swap] {a} (0)
+    ;
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.2cm,
+    	                semithick]
+	   \node[state,initial,accepting] 	(0)					{$q_{0}$}; 
+	   \node[state] 			(1)		[right of=0] 		{$q_{1}$};
+	   \node[state] 			(2)		[right of=1] 		{$q_{2}$};
+   
+	   \path[->] 
+    	(0) edge node [swap] {a} (1)
+    	(1) edge node [swap] {a} (2)
+	    (2) edge [bend right] node [swap] {a} (0)
+    ;
+	\end{tikzpicture}
+}
+\end{figure}
+
+\end{proof}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Príklad nerozložiteľného}
+
+\begin{theorem}
+Jazyk $\lbrace a^5 \rbrace$ je nerozložieľný.
+\end{theorem}
+
+\begin{proof}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.7cm,
+                    semithick]
+   \node[state,initial] 	(0)					{$q_{0}$}; 
+   \node[state] 			(1)		[right of=0] 		{$q_{1}$}; 
+   \node[state] 			(2) 	[right of=1] 		{$q_{2}$};
+   \node[state] 			(3) 	[right of=2] 		{$q_{3}$};
+   \node[state] 			(4) 	[right of=3] 		{$q_{4}$};
+   \node[state,accepting] 			(5) 	[right of=4] 		{$q_{5}$};
+   
+   \path[->] 
+    (0) edge [bend left] node {a} (1)
+    (1) edge [bend left] node {a} (2)
+    (2) edge [bend left] node {a} (3)
+    (3) edge [bend left] node {a} (4)
+    (4) edge [bend left] node {a} (5)
+    ;
+\end{tikzpicture}
+\end{figure}
+
+\begin{itemize}
+\item Nech existuje rozklad, tj. NKA $ A_1, A_2 $ také, že $ L(A_1) \cap L(A_2) = \lbrace a^5 \rbrace, \#_S(A_1) < \#_S(A), \#_S(A_1) < \#_S(A)$.
+\item $ a^5 \in L(A_1), \; a^5 \in L(A_2) $
+\item lebo málo stavov, tak viem pumpovať nejakú časť $ a^5 $ v $ A_1 $ aj $ A_2 $, t.j. $ \exists k,l \leq 5 \; \forall n: a^{5+kn} \in L(A_1),a^{5+ln} \in L(A_2) $
+\item $ a^{5+kl} \in L(A_1) \cap L(A_2) $, spor
+\end{itemize}
+
+\end{proof}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Jazyky založené na dĺžke slov}
+	
+	\begin{theorem}
+		Nech pre $ Z \in \mathbb{N}, Z > 0 $ je $ L_Z = \lbrace a^{kZ} \; | \; k \in \mathbb{N} 				\rbrace $. Potom ak $ Z $ nie je mocninou prvočísla, tak jazyk $ L_Z $ je rozložitelný.
+	\end{theorem}
+
+\begin{proof}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 						{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 		{$q_1$}; 
+   \node							(dots1)	[right of=1]		{\ldots};
+   \node[state]	(z-1) 						[right of=dots1] 	{$q_{Z-1}$};
+   
+   \path[->]
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots1)
+    (dots1) edge node {a} (z-1)
+    (z-1) edge [bend right] node [swap] {a} (0)
+    ;
+\end{tikzpicture}
+\end{figure}
+
+\begin{itemize}
+\item $ p_{1}^{m_1}p_{2}^{m_2}...p_{r}^{m_r} $ je prvočíselný rozklad čísla $ Z $
+\item automaty $ A_1^Z,A_2^Z $ tvoriace rozklad akceptujú jazyky $ L(A_1^Z) = \lbrace a^{kp_{1}^{m_1}} | k \in \mathbb{N} \rbrace $ a $ L(A_2^Z) = \lbrace a^{kp_{2}^{m_2}...p_{r}^{m_r}} | k \in \mathbb{N} \rbrace $
+\end{itemize}
+
+\end{proof}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Jazyky založené na dĺžke slov}
+
+\begin{theorem}
+Pre $ n \geq 1 $ a $ p $ je prvočíslo definujeme $ L_{p^n} = \lbrace a^{kp^{n}} | k \in \mathbb{N} \rbrace $. Potom je jazyk $ L_{p^n} $ nerozložitelný.
+\end{theorem}
+
+\begin{proof}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 						{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 		{$q_1$}; 
+   \node							(dots1)	[right of=1]		{\ldots};
+   \node[state]	(z-1) 						[right of=dots1] 	{$q_{p^n-1}$};
+   
+   \path[->]
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots1)
+    (dots1) edge node {a} (z-1)
+    (z-1) edge [bend right] node [swap] {a} (0)
+    ;
+\end{tikzpicture}
+\end{figure}
+
+\begin{itemize}
+\item sporom, založený na pumpovaní časti slova $ a^{p^n} $ v automatoch v netriviálnom rozklade a algebraických vlastnostiach následne vyplývajúcich
+\end{itemize}
+
+\end{proof}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Uzáverové vlastnosti tried nedeterministicky rozložiteľných a nedeterministicky nerozložteľných jazykov}
+
+\begin{itemize}
+\item Nepekné uzáverové vlastnosti
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{ l ? c | c | c | c | c }
+     & $ \cap $ & $ \cup $ & . & $ h $ & $ h^{-1} $ \\
+  \specialrule{.2em}{.1em}{.1em}
+  R  & \xmark & \xmark & \xmark & \xmark & ? \\
+  \hline
+  NR & \xmark & \xmark & ? & \xmark & \xmark \\
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+\item zatial sme nepojali ani podozrenie, že by niektorá z tried mohla byť na niečo rozumné uzavretá
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Príliš malé NKA}
+
+\begin{theorem}
+\label{thm:too_small_nsc}
+Nech $ L $ je jazyk, pričom $ nsc(L) \leq 2 $. Potom $ L $ je nerozložiteľný.
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+\item jednostavové NKA dokážu iba $ \emptyset, \lbrace \varepsilon \rbrace, \Sigma^* $
+\item $ \emptyset \subset \lbrace \varepsilon \rbrace \subset \Sigma^* $
+\end{itemize}
+\end{proof}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Vypchávkové jazyky}
+
+\begin{theorem}
+\label{thm:new_symbol_in_language}
+Nech $ L \in \mathscr{R} $ a $ b \notin \Sigma_L $. Definujeme homomorfizmus $ h_b: \Sigma_L \cup \lbrace b \rbrace \rightarrow \Sigma_L $ nasledovne - $ h_b(b) = \varepsilon, \; \forall a \in \Sigma_L: h_b(a) = a $. Potom $ L $ je rozložiteľný práve vtedy, keď $ h_{b}^{-1}(L) $ je rozložiteľný
+\end{theorem}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Deterministická vs. nedeterministická rozložiteľnosť}
+
+\begin{theorem}
+Existuje nedeterministicky nerozložiteľný deterministicky rozložiteľný regulárny jazyk.
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+\item rozdielový jazyk je $ (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace a \rbrace \lbrace a,b \rbrace)^* $
+\item nedeterministicky nerozložiteľný opäť pomocou pumpovania
+\end{itemize}
+\end{proof}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Deterministická vs. nedeterministická rozložiteľnosť}
+
+\begin{proof}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.65,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 					{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 	{$q_1$}; 
+   \node[state]						(2)		[right of=1]	{$q_2$};
+   \node[state]						(3) 	[right of=2] 	{$q_3$};
+   \node[state]						(T) 	[below of=1] 	{$q_T$};
+   
+   \path[->]
+    (0) edge [bend right] node {a} 	(1)  
+    (1) edge [bend right] node {a,b} (2)
+    (2) edge [bend right] node {a} (3)
+    (3) edge [bend right] node [swap] {a,b} (0)
+    (0) edge node {b} (T)
+    (2) edge node {b} (T)
+    (T) edge [loop right] node {a,b} ()
+    ;
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.65,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 					{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 	{$q_1$}; 
+   \node[state]						(2)		[right of=1]	{$q_2$};
+   \node[state]						(3) 	[right of=2] 	{$q_3$};
+   
+   \path[->]
+    (0) edge [bend right] node {a,b} (1)  
+    (1) edge [bend right] node {a,b} (2)
+    (2) edge [bend right] node {a,b} (3)
+    (3) edge [bend right] node [swap] {a,b} (0)
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.65,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 					{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 	{$q_1$}; 
+   \node[state]						(T) 	[below right of=0] 	{$q_T$};
+   
+   \path[->]
+    (0) edge [bend right] node {a} 	(1)  
+    (1) edge [bend right] node [swap] {a,b} (0)
+    (0) edge node [swap] {b} (T)
+    (T) edge [loop right] node {a,b} ()
+    ;
+\end{tikzpicture}
+
+\begin{itemize}
+\item Rozložiteľnosť je spôsobená nutnosťou trash-stavu v DKA
+\end{itemize}
+\end{figure}
+
+\end{proof}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Charakterizácia singleton jazykov}
+
+\begin{theorem}
+Nech $ w \in \Sigma^* $ je slovo a $ L = \lbrace w \rbrace $. Potom $ L $ je rozložiteľný práve vtedy, keď $ w = w_1abw_2 $ pre nejaké $ a,b \in \Sigma$ a $ w_1,w_2 \in \Sigma^* $
+\end{theorem}
+
+\begin{proof}
+\begin{itemize}
+\item $ L= \lbrace a^n \rbrace $ je nerozložiteľný
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.65,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial] 			(0) 					{$q_0$}; 
+   \node[state] 					(w1)	[right of=0] 	{$q_{w_1}$}; 
+   \node[state]						(a)		[right of=w1]	{$q_{a}$};
+   \node[state]						(b) 	[right of=a] 	{$q_{b}$};
+   \node[state,accepting]			(w2) 	[right of=b] 	{$q_{w_2}$};
+   
+   \path[->]
+    (0) edge [bend left] node {$ w_1 $} (w1)  
+    (w1) edge [bend left] node {a} (a)
+    (a) edge [bend left] node {b} (b)
+    (b) edge [bend left] node {$ w_2 $} (w2)
+    ;
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.65,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial] 			(0) 					{$q_0$}; 
+   \node[state] 					(w1a)	[right of=0] 	{$q_{w_1a}$}; 
+   \node[state]						(b) 	[right of=w1a] 	{$q_{b}$};
+   \node[state,accepting]			(w2) 	[right of=b] 	{$q_{w_2}$};
+   
+   \path[->]
+    (0) edge [bend left] node {$ w_1 $} (w1a)  
+    (w1a) edge [bend left] node {b} (b)
+    (b) edge [bend left] node {$ w_2 $} (w2)
+    (w1a) edge [loop above] node {a} ()
+    ;
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.65,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial] 			(0) 					{$q_0$}; 
+   \node[state] 					(w1)	[right of=0] 	{$q_{w_1}$}; 
+   \node[state]						(ab) 	[right of=w1] 	{$q_{ab}$};
+   \node[state,accepting]			(w2) 	[right of=ab] 	{$q_{w_2}$};
+   
+   \path[->]
+    (0) edge [bend left] node {$ w_1 $} (w1)  
+    (w1) edge [bend left] node {a} (ab)
+    (ab) edge [bend left] node {$ w_2 $} (w2)
+    (ab) edge [loop above] node {b} ()
+    ;
+\end{tikzpicture}
+\end{figure}
+
+\end{proof}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Predošlý výskum}
+
+\begin{itemize}
+\item Idea skúmať užitočnosť informácie vznikla na našej katedre u profesora Rovana
+\item Skúmané v súvislosti s deterministickými konečnými automatmi - Gaži (2006)
+\item Skúmané v súvislosti s deterministickými zásobníkovými automatmi - Labath (2010)
+\item Náš prínos je hlavne v otvorení témy v súvislosti s nedeterminizmom
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Srdečné poďakovanie}
+
+\begin{center}
+\Huge
+\textbf{Ďakujem za vašu pozornosť!}
+\end{center}
+
+\end{frame}
+
+
+\end{document}

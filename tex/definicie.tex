@@ -1,0 +1,208 @@
+\chapter{Definície, potrebné výsledky, motivácia výskumu, }
+\label{kap:old} % id kapitoly pre prikaz ref
+
+V tejto kapitole sa pozrieme na motiváciu, ktorá nás viedla k nášmu výskumu a na základe nej zavedieme základné pojmy potrebné v našej práci. 
+
+\section{Nedeterministický konečný automat}
+Nedeterministický konečný automat je dobre známy model, avšak existuje viac jeho ekvivalentných definícii, preto uvádzame tú, ktorú budeme používať v našom texte.
+\\
+\begin{definition}
+\textbf{Nedeterministický konečný automat} je pätica $ (K, \Sigma, \delta, q_0, F) $, kde:
+\begin{enumerate}  
+\item $ K $ je konečná množina stavov
+\item $ \Sigma $ je konečná vstupná abeceda
+\item $ q_0 \in K $ je počiatočný stav
+\item $ F \subseteq K $ je množina akceptačných stavov
+\item $ \delta : K \times (\Sigma \cup \lbrace \varepsilon \rbrace) \rightarrow 2^{K} $ je prechodová funkcia
+\end{enumerate}
+
+\end{definition}
+
+\begin{note}
+Nedeterministický konečný automat sa skrátene označuje NKA.
+\end{note}
+
+\begin{note}
+Ak v texte hovoríme o nejakom automate $ A $, štandardne berieme, že $ A=(K_A, \Sigma_A, \delta_A, q_{0A}, F_A) $ a teda ak hovoríme o množine $ K_A $, myslíme tým množinu stavov automatu $ A $. Analogicky to platí aj pre $  \Sigma_A, \delta_A, q_{0A}, F_A $. Pokial je z kontextu jasné, o ktorý automat sa jedná, dolný index $ A $ vynechávame a píšeme skrátene  $ K, \Sigma, \delta, q_0, F $.
+\end{note}
+
+\begin{definition}
+\textbf{Konfigurácia} nedeterministického konečného automatu A je dvojica $ (q,w) \in K \times \Sigma^{*} $, kde $ q $ je stav, v ktorom sa automat nachádza a $ w $ je ešte nedočítaná časť slova.
+\end{definition}
+
+\begin{definition}
+\textbf{Krok výpočtu} nedeterministického konečného automatu A je relácia $ \vdash_A $ na konfiguráciách definovaná $ (q, aw) \vdash_{A} (p,w) \Leftrightarrow p \in \delta(q,a) $, $q,p \in K, w \in \Sigma^*, a \in \Sigma \cup \lbrace \varepsilon \rbrace $. Reflexívno-tranzitívny uzáver relácie $ \vdash_A $ označujeme $ \vdash_{A}^{*} $. Ak je z kontextu jasné, o ktorý konečný automat sa jedná, index $ A $ vynechávame a píšeme iba $ \vdash $.
+\end{definition}
+
+\begin{definition}
+\textbf{Jazyk} akceptovaný (definovaný) nedeterministickým konečným automatom A je jazyk $ L(A) = \lbrace w \in \Sigma^{*} | \exists q_F \in F: (q_0,w) \vdash^{*} (q_F, \varepsilon) \rbrace $.
+\end{definition}
+
+\begin{definition}
+\textbf{Stavovou zložitosťou} nedeterministického konečného automatu $ A $ (označujeme \em{}$ \#_S(A) $\em{}) rozumieme počet jeho stavov, t.j. \em{}$ \#_S(A) = |K| $\em{}.
+\end{definition}
+
+\begin{definition}
+\textbf{Nedeterministickú stavovú zložitosť} jazyka $ L \in \mathscr{R} $ (označujeme \em{}$ nsc(L) $\em{} - z anglického nondeterministic state complexity) definujeme \em{}$ nsc(L)=min \lbrace \#_S(A) | L(A)=L \rbrace $\em{}.
+\end{definition}
+
+\begin{definition}
+Nech $ L \in \mathscr{R} $. \textbf{Minimálnym nedeterministickým konečným automatom pre jazyk L} rozumieme ľubovolný nedeterministický konečný automat $ A $ taký, že $ \#_S(A)=nsc(L) $.
+\end{definition}
+
+\begin{notation}
+Dĺžku slova $ w $ označujeme $ |w| $.
+\end{notation}
+
+\section{Motivácie a definícia problému}
+Pred tým ako zadefinujeme skúmaný problém formálne, pozrime sa na motiváciu, ktorá nás k definícii viedla. Našou motiváciou je otázka užitočnosti prídavnej informácie pri akceptovaní jazyka. Volne povedané, ak automatu našepkám, že vstup, ktorý ide rozpoznávať patrí do nejakého poradného jazyka, viem tým zabezpečiť, že na rozpoznávanie pôvodného jazyka stačí automat menšej zložitosti? Uveďme jeden príklad. Uvažujme, že chceme rozpoznávať jazyk $ \lbrace w \in \lbrace a \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 6) \rbrace $ a chceme ho rozpoznávať deterministickým konečným automatom. Lahko vidno, že minimálny DKA pre tento jazyk má 6 stavov. Čo ak však automatu našepkám, že dĺžka vstupu je delitelná tromi? Vtedy nám stačí vziať DKA s dvomi stavmi. 
+\par
+Druhou úvahou, ktorá vedie k velmi podobnému problému je, či viem rozložiť automat rozpoznávajúci jazyk na dva, ktoré sú nejakým spôsobom jednoduchšie ako pôvodný automat, pričom prienik jazykov ktoré rozpoznávajú jednotlivé jednoduchšie automaty je pôvodný jazyk. Lahko vidno, že jazyk rozpoznávaný jedným z týchto dvoch automatov plní funkciu poradného jazyka.
+\par
+Spomeňme ešte, že pod slovom automat teraz myslíme akýkolvek výpočtový model, nie nutne iba deterministický konečný automat, prípadne nedeterministický konečný automat. V našej práci však budeme tento problém skúmať výlučne pre nedeterministické konečné automaty. V minulosti bol tento problém už skúmaný na našej fakulte pre deterministické konečné automaty v práci \cite{Gazi} a pre deterministické zásobníkové automaty v práci \cite{Labath}.
+\par Uvedené úvahy nás teda vedú k nasledovnej definícii.
+
+\begin{definition}
+Nech $ A $ je nedeterministický konečný automat. Potom dva nedeterministické konečné automaty $ A_1, A_2 $ také, že $ L(A)=L(A_1) \cap L(A_2) $ nazveme \textbf{rozklad automatu} $ A $. Ak navyše platí $ \#_S(A_1) < \#_S(A)$ a $ \#_S(A_2) < \#_S(A) $, nazývame tento rozklad \textbf{netriviálny}. Ak existuje netriviálny rozklad automatu $ A $, tak automat $ A $ nazývame \textbf{rozložitelný}.
+\end{definition}
+
+\begin{definition}
+\label{def:nedeterministic_decomposability_of_language}
+Nech $ L \in \mathscr{R} $ a $ A $ je nejaký minimálny NKA pre jazyk L. \textbf{Jazyk} $ L $ nazývame \textbf{nedeterministicky rozložitelný} práve vtedy, keď je automat $ A $ rozložitelný.
+\end{definition}
+
+\begin{proof}
+Podľa správnosti treba ukázať, že vlastnosť jazyka \textbf{byť nedeterministicky rozložitelný} je podľa definície \ref{def:nedeterministic_decomposability_of_language} dobre zadefinovaná, teda nezávisí od výberu minimálneho automatu pre jazyk. Uvažujme teda ľubovolný jazyk $ L \in \mathscr{R} $. Ak existuje pre daný jazyk unikátny minimálny NKA, tak niet čo dokazovať. Uvažujme teda, že pre jazyk $ L $ existuje viacero minimálnych NKA. Nech $ A_1^{min} $ a $ A_2^{min} $ sú rôzne minimálne NKA pre jazyk $ L $. Dokážeme, že automat $ A_1^{min} $ je rozložiteľný práve vtedy, keď je rozložiteľný automat $ A_2^{min} $. Nech teda existuje netriviálny rozklad automatu $ A_1^{min} $. Teda existujú NKA $ B_1 $ a $ B_2 $ také, že $ L(B_1) \cap L(B_2) = L(A_1^{min}) = L $ a $ \#_S(B_1) < \#_S(A_1^{min}) $, $ \#_S(B_2) < \#_S(A_1^{min}) $. Nakoľko $ A_1^{min} $ a $ A_2^{min} $ sú oba minimálne automaty pre jazyk $ L $, tak platí $ \#_S(A_1^{min}) = \#_S(A_2^{min}) $ a $ L(A_1^{min}) = L(A_2^{min}) = L $. Teda platí $ \#_S(B_1) < \#_S(A_2^{min}) $, $ \#_S(B_2) < \#_S(A_2^{min}) $ a taktiež $ L(B_1) \cap L(B_2) = L(A_2^{min}) = L $, teda $ B_1 $ a $ B_2 $ tvoria zároveň netriviálny rozklad automatu $ A_2^{min} $. Daná úvaha sa dá úplne analogicky spraviť aj opačným smerom a dokázať, že ak je rozložiteľný automat $ A_2^{min} $, tak potom je rozložiteľný aj automat $ A_1^{min} $. Týmto sme ukázali, že daná vlastnosť jazyka je dobre definovaná.
+\end{proof}
+
+\begin{note}
+V našej práci budeme takmer vždy hovoriť o nedeterministickej rozložitelnosti jazyka, preto budeme písať skrátene o rozložitelnosti jazyka. Plný výraz nedeterministická rozložitelnosť jazyka budeme používať iba v prípadoch, ked bude treba zvýrazniť, že ide práve o nedeterministickú rozložitelnosť a nie deterministickú.
+\end{note}
+
+Lahko vidno, že rozklad NKA $ A $ existuje vždy a tvorí ho samotný automat $ A $ a NKA pre jazyk $ \Sigma_A^{*} $. Samozrejme tento rozklad nie je netriviálny a rovnako nie je ani ničím zaujímavý. Preto nás bude v prípade automatov zaujímať, za akých podmienok existuje ich netriviálny rozklad. Pri jazykoch nás prirodzene bude zaujímať, či sú rozložitelné.
+\par
+
+\begin{lemma}[o bezepsilonových NKA]
+\label{lm:nonepsilon_NFA}
+Nech $ A $ je NKA. Potom platia nasledovné tvrdenia.
+
+\begin{enumerate}
+\item \label{lm:nonepsilon_NFA_1} existuje NKA $ A' $ taký, že $ L(A')=L(A) $, $ \#_S(A)=\#_S(A') $ a automat $ A' $ neobsahuje prechody na $ \varepsilon $
+\item \label{lm:nonepsilon_NFA_2} ak je $ A $ rozložitelný, potom existuje netriviálny rozklad automatu $ A $ na NKA $ A_1^{\varepsilon}, A_2^{\varepsilon} $ taký, že $ A_1^{\varepsilon} $ a $ A_2^{\varepsilon} $ neobsahujú prechody na $ \varepsilon $
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Tvrdenie \ref{lm:nonepsilon_NFA_1} vyplýva priamo zo štandardnej konštrukcie odepsilonovaného NKA k ľubovoľnému NKA. Túto konštrukciu možno nájsť v ...MINIMÁLNE SKRIPTÁ Z FOJE, KEĎ NIČ INĚ... 
+\par
+Dokážeme tvrdenie \ref{lm:nonepsilon_NFA_2}. Automat $ A $ rozložitelný, to znamená, že existuje netriviálny rozklad automatu $ A $ na automaty $ A_1 $ a $ A_2 $, čo znamená, že $ L(A) = L(A_1) \cap L(A_2), \#_S(A_1) < \#_S(A), \#_S(A_2) < \#_S(A) $. Podľa \ref{lm:nonepsilon_NFA_1} však existujú automaty $ A_1' $ a $ A_2' $ také, že $ L(A_1')=L(A_1) $, $ \#_S(A_1)=\#_S(A_1') $ a $ L(A_2')=L(A_2) $, $ \#_S(A_2)=\#_S(A_2') $ pričom navyše automaty $ A_1' $ a $ A_2' $ neobsahujú prechody na $ \varepsilon $. To však znamená, že $ L(A) = L(A_1') \cap L(A_2'), \#_S(A_1') < \#_S(A), \#_S(A_2') < \#_S(A) $, teda $ A_1' $ a $ A_2' $ tvoria taktiež netriviálny rozklad automatu $ A $. Teda stačí položiť $ A_1^{\varepsilon} = A_1', A_2^{\varepsilon} = A_2'$.
+\end{proof}
+
+\begin{note}
+Zmysel Lemy \ref{lm:nonepsilon_NFA} je v zjednodušení dôkazov niektorých tvrdení v našej práci, kde potrebujeme predpokladať existenciu rozkladu netriviálneho rozkladu nejakého automatu a následne dokázať niečo o výpočtoch NKA ktoré tvoria tento rozklad. Vďaka tejto Leme môžeme predpokladať, že dané výpočty v každom kroku spracujú nejaký znak zo vstupu, čo robí dôkazy prehľadnejšími.
+\end{note}
+
+\section{Techniky určovania dolnej hranice počtu stavov NKA}
+
+Na skúmanie otázky rozložitelnosti jazyka musíme mať nástroje, pomocou ktorých vieme k jazykom hladať ich minimálne automaty. V nasledujúcej časti uvedieme techniky, pomocou ktorých budeme schopný určovať dolné hranice pre počet stavov nedeterministického konečného automatu pre daný jazyk. Pre deterministické konečné automaty máme k dispozícii \verb'Myhill-Nerodovú vetu', ktorá vždy dokáže určiť tesnú spodnú hranicu pre počet stavov potrebných pre deterministický konečný automat rozpoznávajúci daný jazyk. Pri nedeterministických konečných automatoch je situácia horšia. Takúto silnú techniku nemáme k dispozícii. Avšak máme k dispozícii techniky, ktoré nám poskytujú aspoň nejaké, nie nutne tesné, dolné hranice pre počet stavov potrebných pre nedeterministický konečný automat rozpoznávajúci daný jazyk. Uvádzame dve techniky - Techniku oblbovacích množín (z anglického Fooling set technique) a techniku rozšírených oblbovacích množín (z anglického Extended fooling set technique) z \cite{Palioudakis2012} a \cite{GlaisterShalit1996}.
+
+\begin{definition}[Oblbovacia množina]
+\label{def:fooling_set}
+Nech $ L $ je jazyk, $ n \in \mathbb{N} $. Nech $ P = \lbrace (x_{i},y_{i}) | 1 \leq i \leq n \rbrace $ taká, že: 
+
+\begin{enumerate}[label=(\alph*)]
+\item $x_{i}y_{i} \in L$ pre $1 \leq i \leq n$
+\item $x_{i}y_{j} \notin L$ pre $1 \leq i,j \leq n$ a $i \neq j$
+\end{enumerate}
+
+Potom množinu $ P $ nazývame \textbf{oblbovacia množina pre jazyk $ L $}.
+\end{definition}
+
+\begin{theorem}[Technika oblbovacích množín]
+\label{thm:fooling_set_technique}
+Nech $ L $ je regulárny jazyk a existuje oblbovacia množina $ P $ pre jazyk $ L $. Potom každý NKA akceptujúci $ P $ má aspoň $ |P| $ stavov (t.j. $ nsc(L) \geq |P| $).
+\end{theorem}
+
+\begin{proof}
+Aby sme nahliadli, čo je za touto technikou, uvedieme aj dôkaz. Označme $ |P|=n $ a postupujme sporom. Nech platia predpoklady tvrdenia a nech existuje NKA A ktorý má menej stavov ako $ n $. Pozrime sa na výpočty automatu $ A $ na slovách $x_{i}y_{i}$ pre $1 \leq i \leq n$. Podľa definície množiny $ P $ musí platiť $ (q_{0_{A}},x_{i}y_{i}) \vdash^{*} (p_{i}, y_{i}) \vdash^{*} (q_{i_{F}}, \varepsilon) $ kde $p_{i} \in K_{A}$ a $q_{i_{F}} \in F_{A}$. Pozrime sa teraz pozornejšie na stavy $ p_{i} $. Nakolko platí, že automat A má menej stavov ako je $ n $, musí platiť, že existujú také $k \neq l $, že $ p_{k}=p_{l}  $. Potom však platí, že $ (q_{0_{A}},x_{k}y_{l}) \vdash^{*} (p_{l}, y_{l}) \vdash^{*} (q_{i_{F}}, \varepsilon)$. Potom však $x_{k}y_{l} \in L$ čo je spor s definíciou množiny P. Teda A má aspoň n stavov.
+\end{proof}
+
+Drobnou úpravou tejto vety dostaneme silnejšie tvrdenie.
+
+\begin{definition}[Rozšírená oblbovacia množina]
+\label{def:extended_fooling_set}
+Nech $ L $ je jazyk. Nech $ n \in \mathbb{N} $. Nech $ P = \lbrace (x_{i},y_{i}) | 1 \leq i \leq n \rbrace $ taká, že: 
+
+\begin{enumerate}[label=(\alph*)]
+\item $x_{i}y_{i} \in L$ pre $1 \leq i \leq n$
+\item $x_{i}y_{j} \notin L$ alebo $x_{j}y_{i} \notin L$ pre $1 \leq i,j \leq n$ a $i \neq j$
+\end{enumerate}
+
+Potom množinu $ P $ nazývame \textbf{rozšírená oblbovacia množina pre jazyk $ L $}.
+\end{definition}
+
+\begin{theorem}[Technika rozšírených oblbovacích množín]
+\label{thm:extended_fooling_set_technique}
+Nech $ L $ je regulárny jazyk a existuje rozšírená oblbovacia množina $ P $ pre jazyk $ L $. Potom každý NKA akceptujúci $ P $ má aspoň $ |P| $ stavov (t.j. $ nsc(L) \geq |P| $).
+\end{theorem}
+
+Dôkaz je takmer identický ako dôkaz pre \ref{thm:fooling_set_technique} a je triviálne ho rozšíriť tak, aby dokazoval toto tvrdenie, preto ho neuvádzame. Takisto je lahko vidno, že ak je množina oblbovacou množinou pre jazyk $ L $, je aj rozšírenou oblbovacou množinou pre $ L $.
+\par
+Prirodzená otázka, ktorá sa ponúka, je: \glqq Ako nájsť čo najväčšiu (rozšírenú) oblbovaciu množinu pre daný jazyk $ L $? \grqq. Algoritmus, pomocou ktorého by sa táto množina dala skonštruovať známy nie je, avšak v 
+\cite{GlaisterShalit1996} autori ponúkajú nasledujúcu heuristiku, ktorá, ako sa zdá, často zafunguje velmi dobre. Najprv skonštruujme NKA rozpoznávajúci jazyk $ L $. Nech pre každý stav $ q $ tohto automatu je $ x_q $ najkratšie slovo také, že platí $ (q_0,x_q) \vdash^{*} (q,\varepsilon) $ a nech $ w_q $ je najkratšie slovo také, že platí $ (q, w_q) \vdash^{*} (q_F,\varepsilon) $, kde $ q_F $ je akceptačný stav. Potom zvol P ako nejakú vhodnú podmnožinu $ \lbrace (x_q,w_q) | q \in K \rbrace $.
+
+\begin{example}
+\normalfont Uvažujme jazyk $ L = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) \equiv 0 \; (mod \; 2) \wedge \#_b(w) \equiv 0 \; (mod \; 2) \rbrace $. NKA akceptujúci jazyk $ L $ uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3cm,
+                    semithick]
+   \node[state,initial,accepting] 	(00) 						{$q_{00}$}; 
+   \node[state] 					(10)	[right of=00] 		{$q_{10}$}; 
+   \node[state] 					(01) 	[below of=00] 		{$q_{01}$}; 
+   \node[state]						(11)	[right of=01] 		{$q_{11}$}; 
+   
+   \path[->] 
+    (00) edge [bend left = 20] node {a} (10)  
+    (00) edge [bend left = 20] node {b} (01)
+    (10) edge [bend left = 20] node {a} (00)  
+    (10) edge [bend left = 20] node {b} (11)
+    (01) edge [bend left = 20] node {a} (11)  
+    (01) edge [bend left = 20] node {b} (00)
+    (11) edge [bend left = 20] node {a} (01)  
+    (11) edge [bend left = 20] node {b} (10)
+    ;
+\end{tikzpicture}
+
+\caption{NKA akceptujúci jazyk $ L $}
+\end{figure}
+Teraz použijúc techniky uvedené v predošlom dokážeme, že tento NKA je mnimálnym NKA pre jazyk $ L $. Uvažujme množinu dvojíc slov $ F = \lbrace (\varepsilon, \varepsilon), (a,a), (ab,ab),(b,b) \rbrace $. Množina $ F $ je podla definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L $. Nakolko $ |F| = 4 $, tak podla vety \ref{thm:fooling_set_technique} platí $ nsc(L) \geq 4 $. Kedže sa nám podarilo zostrojiť NKA akceptujúci $ L $, ktorý má práve 4 stavy, tak tento NKA je minimálnym automatom pre jazyk $ L $, t.j. $ nsc(L) = 4 $.
+\end{example}
+
+\begin{example}
+\normalfont Uvažujme jazyk $ L = \lbrace w_1abaw_2 \; | \; w_1,w_2 \in \lbrace a,b \rbrace^* \rbrace $. NKA akceptujúci jazyk $ L $ uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial] 	(0) 						{$q_{0}$}; 
+   \node[state] 			(a)		[right of=0] 		{$q_{a}$}; 
+   \node[state] 			(ab) 	[right of=a] 		{$q_{ab}$}; 
+   \node[state,accepting]	(aba)	[right of=ab] 		{$q_{aba}$}; 
+   
+   \path[->] 
+    (0) edge [loop above] node {a,b} ()  
+    (0) edge node {a} (a)
+    (a) edge node {b} (ab)
+    (ab) edge node {a} 	(aba)
+    (aba) edge [loop above] node {a,b} ()
+    ;
+\end{tikzpicture}
+
+\caption{NKA akceptujúci jazyk $ L $}
+\end{figure}
+Použijúc techniky uvedené v predošlom dokážeme, že tento NKA je mnimálnym NKA pre jazyk $ L $. Uvažujme množinu dvojíc slov $ F = \lbrace (\varepsilon, aba), (a,ba), (ab,a),(aba,\varepsilon) \rbrace $. Množina $ F $ je podla definície \ref{def:extended_fooling_set} rozšírenou oblbovacou množinou pre jazyk $ L $.  Nakolko $ |F| = 4 $, tak podla vety \ref{thm:extended_fooling_set_technique} platí $ nsc(L) \geq 4 $. Kedže sa nám podarilo zostrojiť NKA akceptujúci $ L $, ktorý má práve 4 stavy, tak tento NKA je minimálnym automatom pre jazyk $ L $, t.j. $ nsc(L) = 4 $. Ešte spomeňme, že pri dokazovaní minimality pomocou techniky oblbovacích množín (nie rozšírených) by sme neuspeli, nakolko najväčšia možná oblbovacia množina pre jazyk $ L $ obsahuje 2 prvky.
+\end{example}
+

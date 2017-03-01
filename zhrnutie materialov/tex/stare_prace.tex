@@ -1,0 +1,167 @@
+\chapter{Predošlý výskum problematiky}
+\label{kap:old} % id kapitoly pre prikaz ref
+
+V tejto kapitole sa budeme zaoberať predošlým výskumom, ktorý na našej fakulte prebiehal v minulých rokoch a na ktorý chcem mojou prácou nadviazať. Konkrétne ide o práce, ktoré študovali identický problém pre deterministické konečné automaty \cite{Gazi} a pre deterministické zásobníkové automaty \cite{Labath}.
+
+\section{Motivácie a definícia problému}
+Pred tým ako zadefinujeme skúmaný problém formálne, venujme sa chvíli motiváciám vedúcim k nášmu problému. K skúmanému problému viedli dve úvahy a to nasledovné. Prvou je otázka užitočnosti prídavnej informácie pri rozpoznávaní jazyka. Volne povedané, ak automatu našepkám, že vstup, ktorý ide rozpoznávať patrí do nejakého poradného jazyka, viem tým zabezpečiť, že na rozpoznávanie pôvodného jazyka stačí automat menšej zložitosti? Táto úvaha sa dá prerozprávať nasledovne. Viem jazyk rozpoznávať nejakým automatom menšej zložitosti, ak pred automat umiestnim akýsi filter, ktorý spôsobí, že ak slovo patrí do poradného jazyka, tak ho pustí na vstup automatu a nechá automat rozhodnúť o jeho akceptácii a ak do poradného jazyka nepatrí, tak rovno rozhodne, že toto slovo akceptované nebude. Aby sme neboli príliš abstraktný, uvažujme, že chceme rozpoznávať jazyk $ \lbrace w \in {a}^* | a \; mod \; 6 = 0 \rbrace $ a chceme ho rozpoznávať deterministickým konečným automatom. Lahko vidno, že minimálny DKA pre tento jazyk má 6 stavov. Čo ak však automatu našepkám, že dĺžka vstupu je delitelná tromi? Resp. pred automat umiestnim filter, ktorý pustí iba slová dĺžky, ktorá je delitelná tromi? Vtedy mi stačí vziať DKA s dvomi stavmi. To nás vedie k nasledovnej definícii. Spomeňme ešte, že pod slovom automat teraz myslíme akýkolvek výpočtový model, nie nutne iba deterministický konečný automat, prípadne nedeterministický konečný automat.
+
+\begin{definition}
+Nech $ L_1 $ je jayzk. Nech $ A $ je automat. Jazyk akceptovaný automatom A s poradným jazykom $ L_1 $ je jazyk
+\begin{align*}
+L(A, L_1) = L(A) \cap L_1
+\end{align*}
+\end{definition}
+
+Ako sme videli, sú prípady, keď poradný jazyk existuje. Pochopitelne, poradný jazyk pre jazyk $ L $ existuje vždy a je ním práve jazyk $ L $. Avšak tento prípad z pochopitelných príčin nie je príliš zaujímavý. Takisto ak $ L \subseteq  \Sigma^*$, tak ak ako poradný jazyk zvolím $ \Sigma^* $, tak som automatu príliš nepomohol.
+\par
+Druhou úvahou, ktorá vedie k velmi podobnému problému je, či viem rozložiť automat rozpoznávajúci jazyk na dva, ktoré sú nejakým spôsobom jednoduchšie ako pôvodný automat, pričom prienik jazykov ktoré rozpoznávajú jednotlivé jednoduchšie automaty je pôvodný jazyk. Pre prepojenie s prvou úvahou si stačí uvedomiť, že ak sa to dá tak potom sa rozpoznávanie jazyka dá realizovať tak, že najprv dáme slovo rozpoznať prvému jednoduchšiemu automatu. Ak neakceptuje, neakceptujeme a ak akceptuje, dáme ho rozpoznať aj druhému automatu a podla jeho odpovede sa rozhodneme. Teda prvý jednoduchší automat plní funkciu filtra z prvej úvahy a navyše, definuje poradný jazyk. To nás vedie k nasledovnej definícii
+
+\begin{definition}
+Nech $ A $ je automat. Potom dva automaty $ A_1, A_2 $ také, že $ L(A)=L(A_1) \cap L(A_2) $ nazveme rozklad automatu $ A $. Ak sú automaty $ A_1, A_2 $ navyše oba jednoduchšie ako $ A $, rozklad je netriviálny a hovoríme, že $ A $ je rozložitelný.
+\end{definition}
+
+A práve táto otázka, otázka existencie netriviálneho rozkladu nedeterministického konečného automatu nás bude zaujímať. Avšak, táto otázka sa dá posunúť ešte o úroveň vyššie, konkrétne na otázku rozložitelnosti jazyka.
+
+\begin{definition}
+Nech $ L $ je jazyk a $ A $ je minimálny automat rozpoznávajúci $ L $. Potom jazyk $ L $ je rozložitelný, ak $ A $ je rozložitelný.
+\end{definition}
+
+V predchádzajúcom sme spomínali pojmy jednoduchší a minimálny automat. Aby boli tieto pojmy jasné, musíme samozrejme uviesť, o akú mieru zložitosti automatu ide, vzhladom na ktorú môže byť nejaký automat pre jazyk minimálny respektíve jeden automat jednoduchší/zložitejší ako iný. V našej práci sa ako prirodzená miera zložitosti núka počet stavov, ale takisto aj počet prechodov nedeterministického konečného automatu. Na skúmanie druhej otázky a to otázky rozložitelnosti jazyka musíme mať nástroje, pomocou ktorých vieme k jazykom hladať ich minimálne automaty. Tejto otázke sa pre NKA venuje Kapitola \ref{kap:lower_bounds}.
+
+\section{Deterministické konečné automaty}
+Ako sme už zmienili, náš problém bol skúmaný pre deterministické konečné automaty v \cite{Gazi}. Tu uvedieme niektoré výsledky tejto práce. Najprv však uveďme definície, vďaka ktorým môžme nahliadnuť, ako presne bol problém pre deterministické konečné automaty definovaný.
+
+\begin{definition}
+Hovoríme, že DKA $ A'=(K',\Sigma,\delta',q_0',F') $ realizuje stavové správanie DKA $ A=(K,\Sigma,\delta,q_0,F) $ ak existuje injektívne zobrazenie $ \alpha: K \rightarrow K' $ také, že:
+
+\begin{enumerate}[label=(\alph*)]
+\item $(\forall a \in \Sigma)(\forall q \in K): \delta'(\alpha(q),a)=\alpha(\delta(q,a))$
+\item $ \alpha(q_0) = q_0' $
+\end{enumerate}
+
+Navyše, hovoríme, že $ A' $ realizuje stavové a akceptačné správanie DKA $ A $, ak navyše platí
+
+\begin{enumerate}[label=(\alph*)]
+  \setcounter{enumi}{2}
+  \item $(\forall q \in K): \alpha(q) \ F' \Leftrightarrow q \in F$.
+\end{enumerate}
+
+\end{definition}
+
+\begin{definition}
+Paralelné spojenie dvoch DKA $ A_1 = (K_1, \Sigma, \delta_1, q_1, F_1) $ a $ A_2 = (K_2, \Sigma, \delta_2, q_2, F_2) $ je DKA $ A_1 \parallel A_2 = (K_1 \times K_2, \Sigma, \delta, (q_1,q_2), F_1 \times F_2  $ taký, že platí $ \delta((p_1,p_2),a) = (\delta_1(p_1,a), \delta_2(p_2, a)) $.
+\end{definition}
+
+\begin{definition}
+Pár deterministických konečných automatov $ (A_1, A_2) $ je stavové správanie rozpoznávajúci rozklad (SB-rozklad, z anglického state behavior decomposition) deterministického konečného automatu $ A $ ak $ A_1 \parallel A_2 $ realizuje stavové správanie DKA $ A $. Pár $ (A_1, A_2) $ je stavové a akceptačné správanie rozpoznávajúci rozklad (ASB-rozklad, z anglického acceptance and state behavior decomposition) DKA $ A $ ak $ A_1 \parallel A_2 $ realizuje stavové a akceptačné správanie  DKA $ A $. Ak oba automaty, $ A_1 $ a $ A_2 $ majú menej stavov ako $ A $, rozklad nazývame netriviálny.
+\end{definition}
+
+Nasledujúca veta hovorí, že existencia netriviálneho ASB-rozkladu pre nejaký automat implikuje existenciu netriviálneho poradného jazyka pre tento jazyk.
+
+\begin{theorem}
+Nech $ A $ je DKA. Ak existuje netriviálny ASB-rozklad $ A $, potom existuje $ L_1 \in \mathscr{R}$ a DKA $ A_2 $ také, že $ L(A) = L(A_2, L_1) $ kde navyše existuje DKA pre $ L_1 $, ktorý má menej stavov ako $ A $. Takisto $ A_2 $ má menej stavov ako $ A $
+\end{theorem}
+
+Opačná implikácia, ako autor ukazuje, neplatí.
+\par
+Teraz uvedieme nutnú a postačujúcu podmienku pre existenciu netriviálneho SB- respektíve ASB-rozkladu pre daný DKA. Najprv však potrebujeme zopár definícií:
+
+\begin{definition}
+Nech M je konečná množina a $ \pi = \lbrace M_1,M_2, \ldots , M_k \rbrace $ je množina po dvoch disjunktných neprázdnych podmnožín množiny M takých, že $ M = \bigcup^k_{i=1} M_i $. Potom $ \pi $ nazývame rozklad množiny M
+\end{definition}
+
+Pripomeňme tým, čo flákali úvodné prednášky z diskretných štruktúr, že každý rozklad množiny $ M $ definuje reláciu ekvivalencie na $ M $ a vice versa. Množiny $ M_i $ nazývame bloky alebo triedy ekvivalencie.
+
+\begin{definition}
+Rozklad $ \pi $  množiny stavov deterministického konečného automatu $ A $ má vlastnosť substitúcie (substitution property, S.P.), ak
+\begin{align*}
+\forall p,q \in K: p \equiv_{\pi} q \Rightarrow (\forall a \Sigma: \delta(p,a) \equiv_{\pi} \delta(q,a))
+\end{align*}
+\end{definition}
+
+\begin{definition}
+Nech $ \pi_1,\pi_2 $ sú rozklady množiny $ M $, potom:
+
+\begin{enumerate}[label=(\alph*)]
+  \item $ \pi_1.\pi_2 $ je rozklad množiny $ M $ taký, že $ a \equiv_{\pi_1.\pi_2} b \Leftrightarrow  a \equiv_{\pi_1} b \wedge a \equiv_{\pi_2} b $
+  \item $ \pi_1 + \pi_2 $ je rozklad množiny $ M $ taký, že $ a \equiv_{\pi_1+\pi_2} b $ práve vtedy, keď existuje postupnosť $ a=a_0,a_1, \ldots ,a_n = b $ taká, že $ a_i \equiv_{\pi_1} a_{i+1} \vee a_i \equiv_{\pi_2} a_{i+1}$ pre $ 0 \leq i \leq n-1 $
+  \item $ \pi_1 \preceq \pi_2 $ platí, ak $ (\forall x,y \in M):  x \equiv_{\pi_1} y \Rightarrow x \equiv_{\pi_2} y$.
+\end{enumerate}
+\end{definition}
+
+Lahko vidno, že relácia definová v predchádzajúcej definícii je čistočné usporiadanie.
+
+\begin{notation}
+Triviálne rozklady množiny $ M = \lbrace m_0,m_1,...,m_n \rbrace $ $ \lbrace\lbrace m_0 \rbrace, \lbrace m_1 \rbrace, \ldots, \lbrace m_n \rbrace \rbrace $ a $\lbrace \lbrace m_0,m_1,...,m_n \rbrace \rbrace$ budeme označovať 0 a 1.
+\end{notation}
+
+\begin{definition}
+Hovoríme, že rozklady $ \pi_1 = \lbrace R_1, \ldots , R_k \rbrace $ a $ \pi_2 = \lbrace S_1, \ldots , S_l \rbrace $ množiny stavov DKA $ A $ separujú akceptačné stavy $ A $ ak existujú indexy $ i_1, \ldots, i_r $ a $ j_1, \ldots, j_s $ také, že platí $ (R_{i_1} \cup \ldots R_{i_r}) \cap (S_{j_1}, \ldots, S_{j_s}) = F $.
+\end{definition}
+
+Teraz môžme uviesť jeden z najpodstatnejších výsledkov uvedených v \cite{Gazi} a tým je nutná a postačujúca podmienka existencia oboch typov rozkladu.
+
+\begin{theorem}
+Deterministický konečný automat $ A = (K, \Sigma, \delta, q_0, F) $ má netriviálny SB-rozklad práve vtedy keď existujú dva netriviálne S.P. rozklady $ \pi_1,\pi_2 $ množiny stavov automatu A také, že $ \pi_1.\pi_2 = 0  $. Tento rozklad je navyše ASB-rozklad práve vtedy keď  $ \pi_1$ a $\pi_2 $ separujú akceptačné stavy automatu $ A $.
+\end{theorem}
+
+Ďalší prístup k rozkladom, ktorý autor ponúka sa zakladá na nasledujúcej myšlienke. Ak má byť rozklad na niečo užitočný, tak výsledok výpočtu menších automatov by mal nejak vypovedať o tom, aký bol výsledok výpočtu pôvodného automatu. Môže nás zaujímať, v akom stave skončil výpočet pôvodného automatu alebo iba to, či pôvodný automat akceptoval alebo nie. Taktiež je otázkou, či potrebujeme prístup k informácii o tom, v akom stave menšie automaty skončili svoje výpočty alebo nám stačí iba vedieť či akceptovali alebo neakceptovali.
+\par
+Prvá možnosť je, že chceme rozložiť DKA na dva menšie automaty tak, že z informácie o stavoch v ktorých výpočty menších automatov na danom vstupnom slove skončili budeme vedieť identifikovať stav, v ktorom skončil výpočet pôvodného automatu na tom istom vstupe. Tento rozklad je sformalizovaný nasledovne:
+
+\begin{definition}
+Pár deterministických konečných automatov $ (A_1,A_2) $ nazývame stav-identifikujúci rozklad (SI-rozklad) DKA $ A $ ak existuje zobrazenie $ \beta : K_1 \times K_2 \rightarrow K $ taký, že platí:
+\begin{align*}
+(\forall w \in \Sigma^*): \beta(\overline{\delta_1}(q_1,w),\overline{\delta_2}(q_2,w)) = \overline{\delta}(q_0,w)
+\end{align*}
+Ak navyše $ |K_1| \leq |K| $ a $ |K_2| \leq |K| $, tento rozklad je netriviálny.
+\end{definition}
+
+Ďalšia možná požiadavka, ktorú na rozklad môžme mať je, že chceme aby oba menšie automaty akceptovali slovo práve vtedy keď ho akceptuje pôvodný automat. Tým pádom môžme nahradiť výpočet pôvodného automatu výpočtom týchto dvoch menších automatov. Tento prístup zachytáva nasledujúca definícia.
+
+\begin{definition}
+Pár deterministických konečných automatov $ (A_1,A_2) $ nazývame akceptáciu-identifikujúca dekompozícia (AI-dekompozícia) DKA $ A $ ak platí $ L(A)=L(A_1) \cap L(A_2) $. Ak navyše $ |K_1| \leq |K| $ a $ |K_2| \leq |K| $, tento rozklad je netriviálny.
+\end{definition}
+
+Pomerne priamočiaro vidno, že koncept AI-dekompozície je ekvivalentný existencii netriviálneho poradného jazyka.
+\par
+Tretia, najslabšia, požiadavka, ktorú môžme mať na rozklad DKA je vyžadovať, že mosí existuvať spósob, ako rozhodnúť, či pôvodný automat akceptuje daný vstup založený na informácii o tom, v akých stavoch skončil výpočet v oboch menších automatoch.
+
+\begin{definition}
+Pár deterministických konečných automatov $ (A_1,A_2) $ nazývame slabá akceptáciu-identifikujúca dekompozícia (wAI-dekompozícia) DKA $ A $ ak existuje relácia $ R \subseteq K_1 \times K_2 $ taká, že platí: 
+\begin{align*}
+(\forall w \in \Sigma^*): R(\overline{\delta_1}(q_1,w),\overline{\delta_2}(q_2,w)) \Leftrightarrow w \in L(A)
+\end{align*}
+
+Ak navyše $ |K_1| \leq |K| $ a $ |K_2| \leq |K| $, tento rozklad je netriviálny.
+\end{definition}
+
+Nasledujúce tvrdenia ohladom týchto typov rozkladov boli v práci dokázané.
+
+\begin{theorem}
+Ak $ (A_1,A_2) $ je SI-rozklad DKA A, potom je to taktiež wAI-rozklad DKA A. Ak $ (A_1,A_2) $ je AI-rozklad DKA A, potom je to taktiež wAI-rozklad DKA A.
+\end{theorem}
+
+\begin{theorem}
+Nech $ A $ je minimálny DKA, nech $ (A_1,A_2) $ je jeho AI-rozklad. Potom $ (A_1,A_2) $ je taktiež SI-rozklad DKA A.
+\end{theorem}
+
+\begin{theorem}
+Nech $ A $ je DKA, nech $ \pi_1,\pi_2 $ sú netriviálne S.P. rozklady množiny stavov $ A $ také, že separujú akceptačné stavy $ A $. Potom existuje netriviálny AI-rozklad automatu $ A $.
+\end{theorem}
+
+\begin{theorem}
+Nech $ A $ je DKA, nech $ \pi_1,\pi_2 $ sú netriviálne S.P. rozklady množiny stavov $ A $ také, že $ \pi_1.\pi_2 \preceq \lbrace F, K-F \rbrace $ . Potom existuje netriviálny wAI-rozklad automatu $ A $.
+\end{theorem}
+
+V práci sú dokázané pochopitelne viaceré tvrdenia, ktoré tu ale neuvedieme. Na záver časti o deterministických konečných automatoch spomeňme ešte, že boli takisto skúmané nerozložitelné automaty a jazyky a taktiež bol ponúknutý koncept stupňa rozložitelnosti, ktorý sa dá nahliadnuť nasledovne. Ak viem automat rozložiť na dva menšie polovičnej velkosti, pomohol som si viac ako keď som ho rozložil na dva, ktorých velkosť je len o jedna menšia ako velkosť pôvodného.
+
+\section{Deterministické zásobníkové automaty}
+V práci \cite{Labath} bola skúmaná otázka užitočnosti regulárnej prídavnej informácie pri výpočte deterministických zásobníkových automatov. Pre nás je zaujímavý spôsob akým sa autor pozeral na rozložitelnosť jazyka, ktorý je možné rozpoznávať deterministickým zásobníkovým automatom.
+
+\begin{definition}
+Nech $ L,L_1 \in  \mathscr{L}_{eDPDA}$. Nech $ L_2 \in \mathscr{R}$ a nech platí $ L = L_1 \cap L_2 $. Nech $ A $ resp. $ A_1 $ sú DPDA rozpoznávajúce jazyky $ L $ resp. $ L_1 $ a nech $ A_2 $ je minimálny DKA rozpoznávajúci $ L_2 $. Hovoríme, že deterministický bezkontextový jazyk $ L $ je netriviálne rozložitelný na jazyky $ L_1 $ a $ L_2 $ ak automat $ A_1 $ má ostro menej stavov ako $ A $.
+\end{definition}
+
+Táto definícia umožnuje, aby zložitosť použitého DKA bola výrazne väčšia ako zložitosť pôvodného DPDA. Avšak tu je dôležité si uvedomiť, že DKA je istým spôsobom vždy jednoduchší ako DPDA. V práci autor ukazuje triedy dobre rozložitelných a aj nerozložitelných jazykov. My sa touto prácou viac zaoberať nebudeme, nakolko náš záujem sa týka hlavne triedy regulárnych jazykov.

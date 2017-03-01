@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: plain.bst
+Database file #1: literatura.bib
+Warning--I didn't find a database entry for "smernica"
+Warning--empty publisher in Gazi
+Warning--there's a number but no volume in GlaisterShalit1996
+Warning--empty publisher in Labath
+You've used 5 entries,
+            2118 wiz_defined-function locations,
+            529 strings with 4947 characters,
+and the built_in function-call counts, 1143 in all, are:
+= -- 109
+> -- 35
+< -- 1
++ -- 16
+- -- 10
+* -- 58
+:= -- 213
+add.period$ -- 17
+call.type$ -- 5
+change.case$ -- 19
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 52
+empty$ -- 100
+format.name$ -- 10
+if$ -- 231
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 5
+newline$ -- 31
+num.names$ -- 10
+pop$ -- 25
+preamble$ -- 2
+purify$ -- 15
+quote$ -- 0
+skip$ -- 26
+stack$ -- 0
+substring$ -- 41
+swap$ -- 4
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 3
+while$ -- 11
+width$ -- 6
+write$ -- 58
+(There were 4 warnings)

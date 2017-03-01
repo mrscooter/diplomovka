@@ -1,0 +1,120 @@
+\chapter[Vlastnosti tried rozložitelných a nerozložitelných jazykov]{Vlastnosti tried rozložitelných a nerozložitelných jazykov}
+\label{kap:properties_of_classes}
+
+V tejto kapitole sa venujeme skúmaniu uzáverových a iných vlastností tried rozložiteľných a nerozložiteľných jazykov.
+
+\section{Uzáverové vlastnosti}
+
+\begin{theorem}
+Trieda rozložiteľných jazykov nie je uzavretá na prienik.
+\end{theorem}
+
+\begin{proof}
+Uvažujme jazyky $ L_1 = \lbrace a^{92} \rbrace \cup \lbrace b \rbrace^*, L_2 = \lbrace a^{92} \rbrace \cup \lbrace c \rbrace^* $. $ L_1 $ a $ L_2 $ sú podla Vety \ref{thm:a^nub^*} rozložiteľné. Avšak jazyk $ L_1 \cap L_2 = \lbrace a^{92} \rbrace $ je podľa Vety \ref{thm:Sigma^n} nerozložiteľný.
+\end{proof}
+
+\begin{theorem}
+Trieda nerozložiteľných jazykov nie je uzavretá na prienik.
+\end{theorem}
+
+\begin{proof}
+Uvažujme jazyky $ L_1 = \lbrace a^{2017k} | k \in \mathbb{N} \rbrace, L_2 = \lbrace a^{29k} | k \in \mathbb{N} \rbrace $. $ L_1 $ a $ L_2 $ sú podla Vety \ref{thm:prime^n} nerozložiteľné. Avšak jazyk $ L_1 \cap L_2 = \lbrace a^{58493k} | k \in \mathbb{N} \rbrace $ je podľa Vety \ref{thm:compound} rozložiteľný.
+\end{proof}
+
+\begin{theorem}
+Trieda rozložiteľných jazykov nie je uzavretá na zjednotenie.
+\end{theorem}
+
+\begin{proof}
+Uvažujme jazyky $ L_1 = \lbrace w \in \lbrace a,b \rbrace^* | \#_a(w) \equiv 0 (mod \; 2), \; \#_b(w) \equiv 0 (mod \; 3) \rbrace, L_2 = \lbrace w \in \lbrace a,b \rbrace^* | \#_a(w) \equiv 1 (mod \; 2), \; \#_b(w) \equiv 0 (mod \; 3) \rbrace $. $ L_1 $ a $ L_2 $ sú podľa Vety \ref{thm:nmz_nz_m} rozložiteľné. Avšak jazyk $ L_1 \cup L_2 = \lbrace a^{3k} | k \in \mathbb{N} \rbrace $ je podľa Vety \ref{thm:prime^n} nerozložiteľný.
+\end{proof}
+
+\begin{theorem}
+Trieda nerozložiteľných jazykov nie je uzavretá na zjednotenie.
+\end{theorem}
+
+\begin{proof}
+Uvažujme jazyky $ L_1 = \lbrace a^{2829} \rbrace, L_2 = \lbrace b \rbrace^* $. $ L_1 $ je podľa Vety \ref{thm:Sigma^n} nerozložiteľný a $ L_2 $ je podla Vety \ref{thm:too_small_nsc} nerozložiteľný. Avšak jazyk $ L_1 \cup L_2 $ je podľa Vety \ref{thm:a^nub^*} rozložiteľný.
+\end{proof}
+
+\begin{theorem}
+Trieda rozložiteľných jazykov nie je uzavretá na homomorfizmus.
+\end{theorem}
+
+\begin{proof}
+Uvažujme jazyk $ L = \lbrace a^{89} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace a,b \rbrace \rightarrow \lbrace \heartsuit \rbrace $ definovaný nasledovne - $ h(a) = \heartsuit, h(b) = \heartsuit $. Jazyk $ L $ je podľa Vety \ref{thm:a^nub^*} rozloziteľný. Avšak jazyk $ h(L) = \lbrace \heartsuit \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
+\end{proof}
+
+\begin{theorem}
+Trieda nerozložiteľných jazykov nie je uzavretá na homomorfizmus.
+\end{theorem}
+
+\begin{proof}
+Uvažujme jazyk $ L = \lbrace a^{2k} | k \in \mathbb{N} \rbrace $ a homomorfizmus $ h : \lbrace a \rbrace \rightarrow \lbrace \gimel \rbrace $ definovaný nasledovne - $ h(a) = \gimel\gimel\gimel $. Jazyk $ L $ je podľa Vety \ref{thm:prime^n} nerozloziteľný. Avšak jazyk $ h(L) = \lbrace \gimel^{6k} | k \in \mathbb{N} \rbrace$ je podľa Vety \ref{thm:compound} rozložiteľný.
+\end{proof}
+
+\begin{theorem}
+Trieda rozložiteľných jazykov nie je uzavretá na inverzný homomorfizmus.
+\end{theorem}
+
+\begin{proof}
+Uvažujme jazyk $ L = \lbrace a^{39} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace b \rbrace \rightarrow \lbrace \heartsuit \rbrace $ definovaný nasledovne - $ h(b) = b $. Jazyk $ L $ je podľa Vety \ref{thm:a^nub^*} rozloziteľný. Avšak jazyk $ h^{-1}(L) = \lbrace b \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
+\end{proof}
+
+\begin{theorem}
+Trieda nerozložiteľných jazykov nie je uzavretá zreťazenie.
+\end{theorem}
+
+\begin{proof}
+Uvažujme jazyky $ L_1 = \lbrace b \rbrace, L_2 = \lbrace w \in \lbrace a,b \rbrace^* | \#_a(w) = 81 \rbrace $. $ L_1 $ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný a $ L_2 $ je v dôsledku Vety \ref{thm:Sigma^n} a Vety \ref{thm:new_symbol_in_language} ...tuto vetu treba dokopat a domyslet alebo prerobit dokaz... zatim nehavam tak...
+\end{proof}
+
+\section{Iné vlastnosti}
+
+\begin{theorem}
+\label{thm:too_small_nsc}
+Nech $ L $ je jazyk, pričom $ nsc(L) \leq 2 $. Potom $ L $ je nerozložiteľný.
+\end{theorem}
+
+\begin{proof}
+Pre $ nsc(L) = 1 $ je tvrdenie zrejmé. Uvažujme $ nsc(L)=2 $ a postupujme sporom. Nech je $ L $ rozložiteľný, t.j. existujú NKA $ A_1 $ a $ A_2 $ také, že $ L(A_1) \cap L(A_2) = L, \#_S(A_1)=1, \#_S(A_2)=1 $. Pozrime sa však lepšie na to, čo dokážu jednostavové NKA. Dá sa ľahko nahliadnuť, že jednostavový NKA môže akceptovať iba jeden z nasledovných troch typov jazykov: $ \emptyset, \lbrace \varepsilon \rbrace, \Sigma^* $, kde $ \Sigma $ je ľubovoľná abeceda. Taktiež platí $ \emptyset \subset \lbrace \varepsilon \rbrace \subset \Sigma^* $. Z toho vyplýva, že $ L(A_1) \cap L(A_2) \in \lbrace \emptyset, \lbrace \varepsilon \rbrace, \Sigma^* \rbrace $. Platí $ nsc(\emptyset)=nsc(\lbrace \varepsilon \rbrace)=nsc(\Sigma^*)=1 $, teda $ nsc(L(A_1) \cap L(A_2))=1 $. Avšak $ L(A_1) \cap L(A_2) = L $ a podľa predpokladu $ nsc(L)=2 $, čo je hľadaný spor.
+\end{proof}
+
+Nasledujúca veta formalizuje fakt, že ak máme regulárny jazyk a z neho vytvoríme nový jazyk takým štýlom, že vezmeme nový symbol, ktorý slová z pôvodného jazyka neobsahujú a tento symbol \glqq{} vopcháme \grqq{} do slov pôvodného jazyka, tak na rozložiteľnosti pôvodného jazyka to nič nezmení.
+
+\begin{theorem}
+\label{thm:new_symbol_in_language}
+Nech $ L \in \mathscr{R} $ a $ b \notin \Sigma_L $. Definujeme homomorfizmus $ h_b: \Sigma_L \cup \lbrace b \rbrace \rightarrow \Sigma_L $ nasledovne - $ h_b(b) = \varepsilon, \; \forall a \in \Sigma_L: h_b(a) = a $. Potom platia nasledovné tvrdenia:
+\begin{enumerate}[label=(\alph*)]
+\item \label{thm:new_symbol_in_language_item_1} $ nsc(L) = nsc(h_{b}^{-1}(L)) $
+\item \label{thm:new_symbol_in_language_item_2} $ L $ je rozložiteľný $ \Leftrightarrow $ $ h_{b}^{-1}(L) $ je rozložiteľný
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Najprv dokážeme \ref{thm:new_symbol_in_language_item_1}. Nech $ A_{min}^{L} = (K_L, \Sigma_L, \delta_L, q_L, F_L) $ je minimálny NKA pre $ L $. Definujeme NKA $ A_{min}^{b} = (K_L, \Sigma_L \cup \lbrace b \rbrace, \delta_{b}, q_L, F_L) $ kde $ \delta_b $ je definovaná nasledovne - $ \forall a \in \Sigma_L \; \forall q \in K_L:  \delta_b(q,a) = \delta_L(q,a)$, $ \forall q \in K_L: \delta_b(q,b)= \lbrace q \rbrace $. Ako možno ľahko vidieť, do NKA pre $ L $ sme iba pridali slučku na $ b $ v každom stave a preto platí $ L(A_{min}^{b}) = h_{b}^{-1}(L) $. 
+\par
+Tvrdíme, že  $ A_{min}^{b} $ je minimálny NKA pre $ h_{b}^{-1}(L) $. Toto tvrdenie dokážeme sporom. Nech existuje NKA $ A_{\downarrow}^{b}=(K_{\downarrow}^{b}, \Sigma_{\downarrow}^{b}, \delta_{\downarrow}^{b}, q_{\downarrow}^{b}, F_{\downarrow}^{b}) $ taký, že $ L(A_{\downarrow}^{b}) = h_{b}^{-1}(L), \#_S(A_{\downarrow}^{b}) < \#_S(A_{min}^{b}) $. Na základe $ A_{\downarrow}^{b} $ definujeme NKA $ A_{\downarrow}^{L}=(K_{\downarrow}^{b}, \Sigma_{\downarrow}^{b} - \lbrace b \rbrace, \delta_{\downarrow}^{L}, q_{\downarrow}^{b}, F_{\downarrow}^{b}) $ kde prechodová funkcia $ \delta_{\downarrow}^{L} $ je definovaná nasledovne - $ \forall q \in K_{\downarrow}^{b} \; \forall a \in \Sigma_{\downarrow}^{b} - \lbrace b \rbrace : \delta_{\downarrow}^{L}(q,a) = \delta_{\downarrow}^{b}(q,a) $. Dokážeme, že $ L(A_{\downarrow}^{L})=L $. \\
+$ \subseteq: $ Nech $ w \in L(A_{\downarrow}^{L}) $. Potom existuje akceptačný výpočet na $ w $ v automate $ A_{\downarrow}^{L} $. Vďaka tomu, ako je $ A_{\downarrow}^{L} $ definovaný je tento výpočet taktiež akceptačným výpočtom v automate $ A_{\downarrow}^{b} $ a teda $ w \in h_{b}^{-1}(L) $, z čoho plynie $ h_b(w) \in L $. Avšak z toho ako je $ A_{\downarrow}^{L} $ definovaný vyplýva, že $ w $ neobsahuje symbol $ b $ a teda $ h_b(w)=w $ z čoho plynie $ w \in L $ \\
+$ \supseteq: $ Nech $ w \in L $. Z toho ľahko vidno, že $ w \in h_{b}^{-1}(L) $. Teda existuje akceptačný výpočet na slove $ w $ v automate $ A_{\downarrow}^{b} $. Nakoľko $ w $ neobsahuje symbol $ b $ a automat $ A_{\downarrow}^{L} $ obsahuje všetky prechody automatu $ A_{\downarrow}^{b} $ okrem prechodov na $ b $, tak zmienený výpočet je taktiež akceptačným výpočtom na slove $ w $ v automate $ A_{\downarrow}^{L} $, čo kompletizuje dôkaz tvrdenia $ L(A_{\downarrow}^{L})=L $. \\
+Z predošlého vyplýva $ \#_S(A_{\downarrow}^{L})=\#_S(A_{\downarrow}^{b}) < \#_S(A_{min}^{b}) = \#_S(A_{min}^{L}) $, čo je v spore s predpokladom, že automat $ A_{min}^{L} $ je minimálny NKA pre jazyk $ L $. Teda automat $ A_{\downarrow}^{b} $ s uvedenými vlastnosťami nemôže existovať a teda $ A_{min}^{b} $ je minimálny NKA pre $ h_{b}^{-1}(L) $. Z konštrukcie automatu $ A_{min}^{b} $ plynie, že $ \#_S(A_{min}^{b}) = \#_S(A_{min}^{L}) $, čo kompletizuje dôkaz \ref{thm:new_symbol_in_language_item_1}.
+\par
+Dokážeme tvrdenie \ref{thm:new_symbol_in_language_item_2}. \\
+$ \Rightarrow $: Nech je $ L $ rozložiteľný. Teda ak $ A_{min}^L $ je minimálny NKA pre $ L $, tak existuje jeho netriviálny rozklad na NKA $ A_1^{L}=(K_1, \Sigma_1, \delta_1, q_1, F_1) $ a $ A_2^{L}=(K_2, \Sigma_2, \delta_2, q_2, F_2) $. BUNV môžeme predpokladať, že $ b \notin \Sigma_1,b \notin \Sigma_2 $.  Definujeme NKA $ A_1^{b} = (K_1, \Sigma_1 \cup \lbrace b \rbrace, \delta_1^b, q_1, F_1) $ kde prechodová funkcia $ \delta_1^b $ je definovaná nasledovne - $ \forall q \in K_1 \; \forall a \in \Sigma_1: \delta_1^b(q,a)=\delta_1(q,a) $, $ \forall q \in K_1 : \delta_1^b(q,b) = {q}$. Ako si možno všimnúť, automat $ A_1^{b} $ sme zostrojili z automatu $ A_1^L $ tak, že sme v každom stave pridali slučku na $ b $ a teda ľahko vidno, že $ L(A_1^{b}) = h_{b}^{-1}(L(A_1^L)) $. Analogicky vieme definovať na základe $ A_2^L $ NKA $ A_2^{b} $ o ktorom analogicky platí $ L(A_2^{b}) = h_{b}^{-1}(L(A_2^L)) $. Označme minimálny NKA pre jazyk $ h_b^{-1}(L) $ $ A_{min}^b $. Podľa \ref{thm:new_symbol_in_language_item_1} platí $ \#_S(A_{min}^b) = \#_S(A_{min}^L) $. Nakoľko $ \#_S(A_1^L) = \#_S(A_1^b) $ a $ \#_S(A_2^L) = \#_S(A_2^b) $, tak na to, aby sme dokázali, že $ A_1^b $ a $ A_2^b $ tvoria netriviálny rozklad automatu $ A_{min}^b $ stačí dokázať $ L(A_1^b) \cap L(A_2^b) = h_b^{-1}(L) $. To dokážeme nasledujúcou argumentáciou, ktorá vyplýva z vlastností inverzných homomorfizmov a konštrukcie automatov, ktoré v dôkaze používame - $ w \in L(A_1^b) \cap L(A_2^b) \Leftrightarrow w \in h_b^{-1}(L(A_1^L)) \cap h_b^{-1}(L(A_2^L)) \Leftrightarrow w \in h_b^{-1}(L(A_1^L) \cap L(A_2^L)) \Leftrightarrow w \in h_b^{-1}(L) $. Teda $ h_b^{-1}(L) $ je rozložiteľný. \\
+$ \Leftarrow: $ Toto neni tak priamočiare jak by jeden chcel. treba domysleť, čo sa mi zatál nepodarilo. Takže ak bude čas maybe. alebo čo keby obmenou? TO by možno šlo. skúsime. Takže nepojde... Bohužial sa móžeme aj bachnúť o zem momentálne... Nevadí, časom vymyslíme hádam dačo...
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

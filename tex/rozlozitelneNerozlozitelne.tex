@@ -1,0 +1,534 @@
+\chapter[Rozložitelné a nerozložitelné jazyky]{Rozložitelné a nerozložitelné jazyky}
+\label{kap:languages}
+
+V tejto kapitole sa venujeme skúmaniu konkrétnych typov jazykov vzhladom na ich rozložitelnosť. Cieľom kapitoly je poskytnúť základný vhľad do problematiky a takisto vybudovať repertoár jazykov, ktoré budeme používať v ďalšom texte pri dôkazoch tvrdení.
+
+\section{Rozložitelné jazyky}
+
+\begin{theorem}
+Nech pre každé $ n \geq 2 $ je $ L_{n} = \lbrace a^{k}ba^{l} | (l+k) \equiv 0 (mod \; n) \rbrace $. Potom je jazyk $ L_n $ rozložitelný.
+\end{theorem}
+
+\begin{proof}
+Uvažujme $ n \in \mathbb{N}, n \geq 2 $. Aby sme dokázali, že jazyk je regulárny a teda má význam uvažovať o jeho rozklade, zostrojme NKA $ A_n $ taký, že $L(A_n) = L_n $. Hladaný NKA uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial] 	(0) 						{$q_0$}; 
+   \node[state] 			(1)		[below of=0] 		{$q_1$}; 
+   \node					(dots1)	[below of=1]		{\vdots};
+   \node[state] 			(n1) 	[below of=dots1] 	{$q_{n-1}$}; 
+   \node[state] 			(a0)	[right of=0] 		{$p_0$}; 
+   \node[state] 			(a1)	[right of=1] 		{$p_1$}; 
+   \node					(dots2)	[right of=dots1]	{\vdots};
+   \node[state,accepting]	(an1) 	[right of=n1] 	{$p_{n-1}$};
+   
+   \path[->] 
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots1)
+    (dots1) edge node {a} (n1) 
+    (a0) edge node {a} (a1)  
+    (a1) edge node {a} (dots2)
+    (dots2) edge node {a} (an1)
+    (0) edge node {b} (a0)
+    (1) edge node {b} (a1)
+    (n1) edge node {b} (an1)
+    (n1) edge [bend left] node {a} (0)
+    (an1) edge [bend right] node [swap] {a} (a0)
+    ;
+\end{tikzpicture}
+\caption{automat $ A_n $ pre jazyk $ \lbrace a^{k}ba^{l} | (l+k) \equiv 0 (mod \; n) \rbrace $} \label{fig:An}
+\end{figure}
+
+Uvažujme množinu dvojíc slov $ F_n = \lbrace (a^{l},ba^{n-l}), (a^{l}b,a^{n-l}) \; | \; 0 \leq l \leq n-1 \rbrace $. Podla definície \ref{def:extended_fooling_set} je množina $ F_n $ rozšírenou oblbovacou množinou. $ |F_n|=2n $, teda podla Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq 2n$. Kedže $ L(A_n) = L_n $ a $ \#_S(A_n) = n+2 $, tak $nsc(L_n) = 2n $ a automat $ A_n $ je minimálny NKA pre jazyk $ L_n $.
+\par
+Teraz zostrojme netriviálny rozklad automatu $ A_n $. Hladané NKA $ A_n^1 $ a $ A_n^2 $ uvádzame pomocou ich diagramov.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial] 	(0) 						{$q_0$}; 
+   \node[state] 			(1)		[below of=0] 		{$q_1$}; 
+   \node					(dots1)	[below of=1]		{\vdots};
+   \node[state, accepting]	(n1) 	[below of=dots1] 	{$q_{n-1}$}; 
+   
+   \path[->] 
+    (0) edge node {a} (1)
+    	edge [loop right] node {b} () 
+    (1) edge node {a} (dots1)
+    	edge [loop right] node {b} ()
+    (dots1) edge node {a} (n1) 
+    (n1) edge [bend left] node {a} (0)
+    	 edge [loop right] node {b} ()
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial] 	(0) 						{$q_0$}; 
+   \node[state, accepting]	(a0)	[right of=0] 		{$p_0$}; 
+   
+   \path[->] 
+    (0) edge node {b} (a0)
+    	edge [loop above] node {a} ()
+    (a0) edge [loop above] node {a} ()
+    ;
+\end{tikzpicture}
+\caption{rozklad automatu $ A_n $} \label{fig:dec_An}
+\end{figure}
+
+Lahko vidno, že uvedené NKA pre $ n \geq 2 $ tvoria netriviálny rozklad automatu $ A_n $, teda že platí $ \#_S(A_n^1) < 2n $, $ \#_S(A_n^2) < 2n $, $ L(A_n^1) \cap L(A_n^2) = L(A_n) $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:compound}
+Nech pre $ Z \in \mathbb{N}, Z > 0 $ je $ L_Z = \lbrace a^{kZ} \; | \; k \in \mathbb{N} \rbrace $. Potom ak $ Z $ nie je mocninou prvočísla, tak jazyk $ L_Z $ je rozložitelný.
+\end{theorem}
+
+\begin{proof}
+Podla prepokladu vety uvažujme $ Z \in \mathbb{N}, Z > 0 $, $ Z $ nie je mocninou prvočísla. Najprv ukážeme, že $ nsc(L_Z) = Z $. Zostrojme NKA $ A_Z $ taký, že $ L(A_Z)=L_Z $. Automat uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 						{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 		{$q_1$}; 
+   \node							(dots1)	[right of=1]		{\ldots};
+   \node[state]	(z-1) 						[right of=dots1] 	{$q_{Z-1}$};
+   
+   \path[->]
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots1)
+    (dots1) edge node {a} (z-1)
+    (z-1) edge [bend right] node [swap] {a} (0)
+    ;
+\end{tikzpicture}
+\caption{automat $ A_Z $} \label{fig:Az}
+\end{figure}
+
+Uvažujme množinu dvojíc slov $ F_Z = \lbrace (a^{i},a^{Z-i}) \; | \; 0 \leq i \leq Z-1 \rbrace $. Podla definície \ref{def:fooling_set} je množina $ F_Z $ oblbovacou množinou pre jazyk $ L_Z $. Nakolko $ |F_Z|=Z $, tak podľa Vety \ref{thm:fooling_set_technique} $ nsc(L_Z) \geq Z $. Nakoľko $ L(A_Z) = L_Z $ a $ \#_S(A_Z) = Z $, tak platí $ nsc(L_Z) = Z$. Intuitívne je jasné, že automat \glqq{}počíta zvyšok po delení $ Z $\grqq{}.
+\par
+Teraz nájdeme netriviálny rozklad automatu $ A_Z $. Nech $ p_{1}^{m_1}p_{2}^{m_2}...p_{r}^{m_r} $ je prvočíselný rozklad čísla $ Z $. Podla predpokladov vety platí, že $ r \geq 2 $. Najprv načrtneme intuitívny pohlad vyplývajúci z vlastností zložených čísel a potom túto intuíciu sformalizujeme. Automaty v rozklade budú počítať zvyšok po delení $ p_{1}^{m_1} $ a zvyšok po delení $p_{2}^{m_2}...p_{r}^{m_r} $ a budú akceptovať, ak nimi počítaný zvyšok vyjde 0. Ak oba zvyšky vyjdú 0, tak dostaneme slovo, v ktorom počet písmen $ a $ je delitelný $ p_{1}^{m_1} $ a zároveň je delitelný $p_{2}^{m_2}...p_{r}^{m_r} $. Nakoľko $ p_1, p_2,...,p_r $ sú navzájom rôzne prvočísla, tak potom počet písmen $ a $ v zmienenom slove je delitelný $ Z=p_{1}^{m_1}p_{2}^{m_2}...p_{r}^{m_r} $. Teraz uveďme hladané automaty, ktoré tvoria rozklad automatu $ A_Z $. Automaty uvádzame pomocou diagramov. Pre prehladnosť diagramov zaveďme označenie $ l_1 = p_{1}^{m_1} $ a $ l_2 = p_{2}^{m_2}...p_{r}^{m_r} $
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 						{$0$}; 
+   \node[state] 					(1)		[right of=0] 		{$1$}; 
+   \node							(dots1)	[right of=1]		{\ldots};
+   \node[state]	(f) 						[right of=dots1] 	{$l_1$};
+   
+   \path[->]
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots1)
+    (dots1) edge node {a} (f)
+    (f) edge [bend right] node [swap] {a} (0)
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 						{$0$}; 
+   \node[state] 					(1)		[right of=0] 		{$1$}; 
+   \node							(dots1)	[right of=1]		{\ldots};
+   \node[state]	(f) 						[right of=dots1] 	{$l_2$};
+   
+   \path[->]
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots1)
+    (dots1) edge node {a} (f)
+    (f) edge [bend right] node [swap] {a} (0)
+    ;
+\end{tikzpicture}
+\caption{rozklad automatu $ A_Z $ na automaty $ A_1^Z $(hore) a $ A_2^Z $(dole)} \label{fig:dec_An}
+\end{figure}
+
+Automaty v rozklade označme $ A_1^Z $ a $ A_2^Z $ a formálne dokážme, že $ L(A_1^Z) \cap L(A_2^Z) = L(A_Z) $. \\
+$ \subseteq $ : Nech $ w \in L(A_1^Z) \cap L(A_2^Z)$. Z konštrukcie automatov $ A_1 $ a $ A_2 $ vyplýva, že slovo $ w $ obsahuje iba znaky $ a $ a jeho dĺžka je delitelná $ p_{1}^{m_1} $ a zároveň je delitelná $p_{2}^{m_2}...p_{r}^{m_r} $. Z toho vyplýva, že $ \exists t \in \mathbb{N}: w = a^{tp_{1}^{m_1}p_{2}^{m_2}...p_{r}^{m_r}} $. A teda $ w \in L(A_Z) $. \\
+$ \supseteq $ : Nech $ w \in L(A_Z)$. Teda $ \exists t \in \mathbb{N}: w = a^{tp_{1}^{m_1}p_{2}^{m_2}...p_{r}^{m_r}} $. Nakolko $ L(A_1^Z) = \lbrace a^{kp_{1}^{m_1}} | k \in \mathbb{N} \rbrace $, tak $ w \in L(A_1^Z) $. Nakolko $ L(A_2^Z) = \lbrace a^{kp_{2}^{m_2}...p_{r}^{m_r}} | k \in \mathbb{N} \rbrace $, tak $ w \in L(A_2^Z) $. Z toho $ w \in L(A_1^Z) \cap L(A_2^Z)$.
+\par
+Nakolko $ \#_{S}(A_1^Z) < \#_{S}(A_Z) $ a $ \#_{S}(A_2^Z) < \#_{S}(A_Z) $, tento rozklad je netriviálny, čím je tvrdenie dokázané.
+
+\end{proof}
+
+\begin{theorem}
+\label{thm:a^nub^*}
+Nech pre $ n \geq 2 $ je $ L_n = \lbrace a^{n} \rbrace \cup \lbrace b \rbrace^{*} $. Potom je jazyk $ L_n $ rozložitelný.
+\end{theorem}
+
+\begin{proof}
+Podla prepokladu uvažujme $ n \geq 2 $. Najprv dokážeme, že $ nsc(L_n) = n+2$. Najprv zostrojme NKA $ A_n $ akceptujúci jazyk $ L_n $. Automat $ A_n $ uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial] 	(0) 						{$q_0$}; 
+   \node[state] 			(1)		[right of=0] 		{$q_1$}; 
+   \node					(dots)	[right of=1]		{\ldots};
+   \node[state,accepting] 	(n) 	[right of=dots] 	{$q_n$}; 
+   \node[state,accepting]	(b)		[above right of=0] 	{$q_b$}; 
+   
+   \path[->] 
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots)
+    (dots) edge node {a} (n) 
+    (0) edge node {$\varepsilon$} (b)  
+    (b) edge [loop above] node {b} ()
+    ;
+\end{tikzpicture}
+\caption{automat $ A_n $ pre jazyk $ \lbrace a^{n} \rbrace \cup \lbrace b \rbrace^{*} $}
+\label{fig:a^nub^*}
+\end{figure}
+
+Uvažujme množinu dvojíc slov $ F_n = \lbrace (b,b) \rbrace \cup \lbrace (a^i, a^{n-1}) | 0 \leq i \leq n \rbrace $. Táto množina je podľa definície \ref{def:extended_fooling_set} rozšírenou oblbovacou množinou pre jazyk $ L_n $. Kedže $ |F_n| = n+2 $, tak podľa Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq n+2$. Nakoľko automat $ L(A_n) $ a $ \#_{S}(A_n) = n+2 $, tak $ nsc(L_n) = n+2$ a automat $ A_n $ je minimálny NKA pre jazyk $ L_n $.
+\par
+Teraz zostrojíme netriviálny rozklad automatu $ A_n $, čím skompletizujeme dôkaz. Rozklad uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 						{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 		{$q_1$}; 
+   \node							(dots)	[right of=1]		{\ldots};
+   \node[state,accepting] 			(n) 	[right of=dots] 	{$q_n$}; 
+   
+   \path[->] 
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots)
+    (dots) edge node {a} (n)
+    (0) edge [loop above] node {b} ()
+    ;
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial]		(0) 						{$q_0$}; 
+   \node[state,accepting]	(a)		[above right of=0]	{$q_a$}; 
+   \node[state,accepting]	(b) 	[below right of=0] 	{$q_b$}; 
+   
+   \path[->] 
+    (0) edge node {$ \varepsilon $} (a)
+    (0) edge node {$ \varepsilon $} (b)
+    (b) edge [loop right] node {b} ()
+	(a) edge [loop right] node {a} ()
+    ;
+\end{tikzpicture}
+
+\caption{netriviálny rozklad automatu $ A_n $ z Obr. \ref{fig:a^nub^*} na automaty $ A_1^n $(hore) a $ A_2^n $(dole)}
+\label{fig:dec_a^nub^*}
+\end{figure}
+
+$ L(A_1^n) = \lbrace b^{k},b^{k}a^{n} | k \in \mathbb{N} \rbrace $, $ L(A_2^n) = \lbrace a \rbrace^{*} \cup \lbrace b \rbrace^{*} $. Teda $ L(A_1^n) \cap L(A_2^n) = L(A_n) $. Nakolko $ \#_{S}(A_1^n) < \#_{S}(A_n) $ a $ \#_{S}(A_2^n) < \#_{S}(A_n) $, automaty $ A_1^n $ a $ A_2^n $ tvoria netriviálny rozklad automatu $ A_n $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:prefix}
+Nech pre $ n \geq 1 $ je $ L_n = \lbrace b \rbrace.\lbrace w \in \lbrace a,b \rbrace^{*} | \#_a(w)=n \rbrace $. Potom je jazyk $ L_n $ rozložitelný.
+\end{theorem}
+
+\begin{proof}
+Uvažujme $ n \in \mathbb{N}, n \geq 1 $. Ukážeme, že $ nsc(L_n) = n+2 $. Najprv zostrojíme NKA $ A_n $ pre jazyk $ L_n $. Automat uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial] 	(b) 						{$q_b$}; 
+   \node[state] 			(0)		[right of=b] 		{$q_0$}; 
+   \node[state] 			(1)		[right of=0] 		{$q_1$}; 
+   \node					(dots)	[right of=1]		{\ldots};
+   \node[state,accepting] 	(n) 	[right of=dots] 	{$q_n$}; 
+   
+   \path[->] 
+    (b) edge node {b} (0)  
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots)
+    (dots) edge node {a} (n) 
+    (0) edge [loop above] node {b} ()
+    (1) edge [loop above] node {b} ()
+   	(n) edge [loop above] node {b} ()
+    ;
+\end{tikzpicture}
+\caption{automat $ A_n $ pre jazyk $ \lbrace b \rbrace.\lbrace w \in \lbrace a,b \rbrace^{*} | \#_a(w)=n \rbrace $}
+\label{fig:ba^n}
+\end{figure}
+
+Uvažujme množinu dvojíc slov $ F_n = \lbrace (\varepsilon , ba^n) \rbrace \cup \lbrace (ba^k, a^{n-k} | 0 \leq k \leq n) \rbrace $. Množina $ F_n $ je podla definície \ref{def:extended_fooling_set} rozšírenou oblbovacou množinou pre jazyk $ L_n $. Nakolko $ |F_n| = n+2 $, tak podľa Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq n+2 $. Nakolko $ L(A_n)=L_n $ a $ \#_S(A)=n+2 $, tak $ nsc(L_n)=n+2 $ a automat $ A_n $ je minimálnym NKA pre jazyk $ L_n $.
+Teraz zostrojíme netriviálny rozklad automatu $ A_n $. Rozklad uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial]		(0)					 		{$q_0$}; 
+   \node[state] 			(1)		[right of=0] 		{$q_1$}; 
+   \node					(dots)	[right of=1]		{\ldots};
+   \node[state,accepting] 	(n) 	[right of=dots] 	{$q_n$}; 
+   
+   \path[->] 
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots)
+    (dots) edge node {a} (n) 
+    (0) edge [loop above] node {b} ()
+    (1) edge [loop above] node {b} ()
+   	(n) edge [loop above] node {b} ()
+    ;
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial]		(0)					 		{$q_0$}; 
+   \node[state,accepting]	(b)		[right of=0] 		{$q_b$};  
+   
+   \path[->]
+    (0) edge node {b} (b)  
+    (b) edge [loop above] node {a,b} ()
+    ;
+\end{tikzpicture}
+\caption{netriviálny rozklad automatu $ A_n $ pre jazyk $ \lbrace b \rbrace.\lbrace w \in \lbrace a,b \rbrace^{*} | \#_a(w)=n \rbrace $ na automaty $ A_1^n $(hore) a $ A_2^n $(dole)}
+\label{fig:dec_ba^n}
+\end{figure}
+
+$ L(A_1^n) = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_{a}(w) = n \rbrace $, $ L(A_2^n) = \lbrace b \rbrace.\lbrace a,b \rbrace^{*} $. Teda $ L(A_1^n) \cap L(A_2^n) = L(A_n) $.  Nakolko $ \#_{S}(A_1^n) < \#_{S}(A_n) $ a $ \#_{S}(A_2^n) < \#_{S}(A_n) $, tak automaty $ A_1^n $ a $ A_2^n $ tvoria netriviálny rozklad automatu $ A_n $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:nmz_nz_m}
+Nech pre $ n,m \geq 2, 0 \leq z_n < n, 0 \leq z_m < m $ je $ L[n,m,z_n,z_m] = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_a(w) \equiv z_n (mod \; n), \; \#_b(w) \equiv z_m (mod \; m) \rbrace $. Potom je jazyk $ L[n,m,z_n,z_m] $ rozložiteľný.
+\end{theorem}
+
+\begin{proof}
+Uvažujme $ n,m \geq 2 $. Najprv ukážeme, že $ nsc(L[n,m,z_n,z_m])=nm $. Definujme NKA $ A[n,m,z_n,z_m]=(K,\lbrace a,b \rbrace,\delta,q[0,0],\lbrace q[z_n,z_m] \rbrace) $, kde $ K = \lbrace q[i,j] \; | \; 0 \leq i < n, \; 0 \leq j < m \rbrace $ a prechodová funkcia $ \delta $ je pre $ 0 \leq i < n, \; 0 \leq j < m $ definovaná nasledovne: $ \delta(q[i,j],a) = \lbrace q[(i+1) \; mod \; n,j] \rbrace $, $ \delta(q[i,j],b) = \lbrace q[i, (j+1) \; mod \; m] \rbrace $. Dá sa lahko nahliadnuť, že $ L(A[n,m,z_n,z_m])=L[n,m,z_n,z_m] $. Teraz uvažujme množinu dvojíc slov $ S = \lbrace (a^lb^k, a^{z_n+n-l}b^{z_m+m-k}) \; | \; 0 \leq l < n, \; 0 \leq k < m \rbrace $. Množina $ S $ je podla definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L[n,m,z_n,z_m] $. Kedže $ |S|=nm $, tak podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L[n,m,z_n,z_m]) \geq nm $. Nakoľko $ L(A[n,m,z_n,z_m])=L[n,m,z_n,z_m] $ a $ \#_S(A[n,m,z_n,z_m])=nm $, tak $ nsc(L[n,m,z_n,z_m])=nm $ a automat $ A[n,m,z_n,z_m] $ je minimálnym NKA pre jazyk $ L[n,m,z_n,z_m] $.
+\par
+Teraz zostrojíme netriviálny rozklad automatu $ A[n,m,z_n,z_m] $, čím skompletizujeme dôkaz. Uvažujme NKA definované nasledovne:
+\begin{enumerate}  
+\item $ A[n,z_n] = (K[n,z_n],\lbrace a,b \rbrace,\delta[n,z_n],q[0],\lbrace q[z_n] \rbrace)$ kde $ K[n,z_n] = \lbrace q[i] | 0 \leq i < n\rbrace $ a prechodová funkcia $ \delta[n,z_n] $ je pre $ 0 \leq i < n $ definovaná nasledovne: $ \delta[n,z_n](q[i],a) = \lbrace q[(i+1) \; mod \; n] \rbrace $, $ \delta[n,z_n](q[i],b) = \lbrace q[i] \rbrace $.
+\item $ A[m,z_m] = (K[m,z_m],\lbrace a,b \rbrace,\delta[m,z_m],q[0],\lbrace q[z_m] \rbrace)$ kde $ K[m,z_m] = \lbrace q[i] | 0 \leq i < m \rbrace $ a prechodová funkcia $ \delta[m,z_m] $ je pre $ 0 \leq i < m $ definovaná nasledovne: $ \delta[m,z_m](q_i,b) = \lbrace q[(i+1) \; mod \; m] \rbrace $, $ \delta[m,z_m](q_i,a) = \lbrace q[i] \rbrace $.
+\end{enumerate}
+Ľahko vidno, že $ L(A[n,z_n]) = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_a(w) \equiv z_n (mod \; n) \rbrace$, $ L(A[m,z_m]) = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_b(w) \equiv z_m (mod \; m) \rbrace $, teda $ L(A[n,z_n]) \cap L(A[m,z_m]) = L(A[n,m,z_n,z_m]) $. Nakoľko navyše $ \#_S(A[n,z_n]) < \#_S(A[n,m,z_n,z_m]) $ a $ \#_S(A[m,z_m]) < \#_S(A[n,m,z_n,z_m]) $, tak automaty $ A[n,z_n] $ a $ A[m,z_m] $ tvoria netriviálny rozklad automatu $ A[n,m,z_n,z_m] $.
+\end{proof}
+
+\begin{theorem}
+Nech pre $ l,k \geq 1 $ je $ L_{l,k} = \lbrace a^lb^k \rbrace $. Potom je jazyk $ L_{l,k} $ rozložitelný.
+\end{theorem}
+
+\begin{proof}
+Uvažujme $ l,k \geq 1 $. Ukážeme, že $ nsc(L_{l,k}) = l+k+1 $. Najprv zostrojíme NKA $ A_{l,k} $ pre jazyk $ L_{l,k} $. Automat uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.5cm,
+                    semithick]
+   \node[state,initial] 	(e) 							{$q_{\varepsilon}$}; 
+   \node[state] 			(a1)		[right of=e] 		{$q_{a}$}; 
+   \node[state] 			(a2)		[right of=a1] 		{$q_{a^2}$};
+   \node					(dotsa)		[right of=a2]		{\ldots};
+   \node[state] 			(al)		[right of=dotsa]	{$q_{a^l}$};
+   \node[state] 			(alb1)		[right of=al]		{$q_{a^lb}$};
+   \node[state] 			(alb2)		[right of=alb1]		{$q_{a^lb^2}$};
+   \node					(dotsb)		[right of=alb2]		{\ldots};
+   \node[state,accepting] 	(albk)		[right of=dotsb]	{$q_{a^lb^k}$};
+   
+   \path[->] 
+    (e) edge node {a} (a1)  
+    (a1) edge node {a} (a2)
+    (a2) edge node {a} (dotsa)
+    (dotsa) edge node {a} (al)
+    (al) edge node {b} (alb1)
+    (alb1) edge node {b} (alb2)
+    (alb2) edge node {b} (dotsb)
+    (dotsb) edge node {b} (albk)
+    ;
+\end{tikzpicture}
+\caption{automat $ A_{l,k} $ pre jazyk $ \lbrace a^lb^k \rbrace $}
+\label{fig:a^lb^k}
+\end{figure}
+
+Teraz uvažujmne množinu dvojíc slov $ F = \lbrace (a^i,a^{l-i}b^k),(a^lb^j,b^{k-j}) | 0 \leq i \leq l, \; 1 \leq j \leq k \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L_{l,k} $. Kedže $ |F| = l+k+1 $, tak podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L_{l,k}) \geq l+k+1 $. Nakoľko $ L(A_{l,k})=L_{l,k} $ a $ \#_S(A_{l,k})=l+k+1 $, tak $ nsc(L_{l,k}) = l+k+1 $ a automat $ A_{l,k} $ je minimálnym NKA pre jazyk $ L_{l,k} $.
+\par
+Teraz zostrojíme netriviálny rozklad automatu $ A_{l,k} $. Hladané automaty $ A_l $ a $ A_k $ uvádzame pomocou diagramov.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial] 	(e) 							{$q_{\varepsilon}$}; 
+   \node[state] 			(a1)		[right of=e] 		{$q_{a}$}; 
+   \node[state] 			(a2)		[right of=a1] 		{$q_{a^2}$};
+   \node					(dotsa)		[right of=a2]		{\ldots};
+   \node[state,accepting]	(al)		[right of=dotsa]	{$q_{a^l}$};
+   
+   \path[->] 
+    (e) edge node {a} (a1)  
+    (a1) edge node {a} (a2)
+    (a2) edge node {a} (dotsa)
+    (dotsa) edge node {a} (al)
+    (al) edge [loop above] node {b} ()
+    ;
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial] 	(e) 							{$q_{\varepsilon}$}; 
+   \node[state] 			(b1)		[right of=e] 		{$q_{b}$}; 
+   \node[state] 			(b2)		[right of=b1] 		{$q_{b^2}$};
+   \node					(dots)		[right of=b2]		{\ldots};
+   \node[state,accepting]	(bk)		[right of=dots]		{$q_{b^k}$};
+   
+   \path[->]
+    (e) edge [loop above] node {a} ()
+    (e) edge node {b} (b1)  
+    (b1) edge node {b} (b2)
+    (b2) edge node {b} (dots)
+    (dots) edge node {b} (bk)
+    ;
+\end{tikzpicture}
+\caption{rozklad automat $ A_{l,k} $ na automaty $ A_l $(hore) a $ A_k $(dole)}
+\label{fig:dec_a^lb^k}
+\end{figure}
+
+Ľahko vidno, že $ L(A_l) = \lbrace a^lb^i | i \in \mathbb{N} \rbrace $ a $ L(A_k) = \lbrace a^ib^k | i \in \mathbb{N} \rbrace $. Teda $ L(A_l) \cap L(A_k) = L(A_{l,k}) $. Navyše $ \#_S(A_l) < \#_S(A_{l,k}) $ a $ \#_S(A_k) < \#_S(A_{l,k}) $, teda automaty $ A_l $ a $ A_k $ tvoria netriviálny rozklad automatu $ A_{l,k} $.
+
+\end{proof}
+
+\begin{corollary}
+Existuje konečný jazyk, ktorý je rozložitelný.
+\end{corollary}
+
+\section{Nerozložiteľné jazyky}
+
+\begin{theorem}
+\label{thm:Sigma^n}
+Pre lubovolnú abecedu $ \Sigma $ a každé $ n \in \mathbb{N}$ je jazyk $ \Sigma^n $ nerozložitelný.
+\end{theorem}
+
+\begin{proof}
+Uvažujeme $ n \in \mathbb{N} $. Najprv ukážeme, že $ nsc(\Sigma^n) = n+1 $. Najprv zostrojme NKA $ A_{\Sigma^n} $ taký, že $ L(A_{\Sigma^n})=\Sigma^n $. Automat uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial] 	(0) 								{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 		{$q_1$}; 
+   \node							(dots1)	[right of=1]		{\ldots};
+   \node[state,accepting]			(n) 	[right of=dots1] 	{$q_{n}$};
+   
+   \path[->]
+    (0) edge node {$ a \in \Sigma $} (1)  
+    (1) edge node {$ a \in \Sigma $} (dots1)
+    (dots1) edge node {$ a \in \Sigma $} (n)
+    ;
+\end{tikzpicture}
+\caption{automat $ A_{\Sigma^n} $} \label{fig:ASigma^n}
+\end{figure}
+
+Vezmime ľubovolné $ a \in \Sigma $ a uvažujme množinu $ F = \lbrace (a^i,a^{n-i}) \; | \; 0 \leq i \leq n \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ \Sigma^n $, teda podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(\Sigma^n) \geq n+1 $. Nakoľko sme zostrojili NKA akceptujúci jazyk $ \Sigma^n $, ktorý má práve $ n+1 $ stavov, tak $ nsc(\Sigma^n) = n+1 $ a NKA $ A_{\Sigma^n} $ je minimálnym automatom pre jazyk $ \Sigma^n $.
+\par
+Pre $ n=0 $ a $ n=1 $ vyplýva platnosť tvrdenia z Vety \ref{thm:too_small_nsc}. Pre $ n \geq 2 $ postupujme sporom. Nech je jazyk $ \Sigma^n$ rozložitelný, teda existuje netriviálny rozklad automatu $ A_{\Sigma^n} $. To znamená, že existujú NKA $ A_1^{\Sigma^n} $ a $ A_2^{\Sigma^n} $ také, že $ L(A_1^{\Sigma^n}) \cap L(A_2^{\Sigma^n}) = \Sigma^n $ a $ \#_S(A_1^{\Sigma^n}) < n+1 $, $ \#_S(A_2^{\Sigma^n}) < n+1 $. Navyše vďaka Leme \ref{lm:nonepsilon_NFA} môžeme predpokladať, že automaty $ A_1^{\Sigma^n} $ a $ A_2^{\Sigma^n} $ neobsahujú prechody na $ \varepsilon $. 
+\par
+Vezmime ľubovoľné $ a \in \Sigma $ a uvažujme výpočet automatu $ A_1^{\Sigma^n} $ na slove $ a^n $. Podľa predcházajúceho automat $ A_1^{\Sigma^n} $ slovo $ a^n $ akceptuje. Výpočet vyzerá nasledovne: $ (p_0,a^n) \vdash (p_1, a^{n-1}) \vdash \ldots \vdash (p_{n-1}, a) \vdash (p_n, \varepsilon) $ kde $ p_0 = q_0$, $ A_1^{\Sigma^n} $, $ p_n \in F_{A_1^{\Sigma^n}} $ a pre $ 1 \leq i < n \; p_i \in K_{A_1^{\Sigma^n}}$. Nakoľko $ \#_S(A_1^{\Sigma^n}) < n+1 $, tak $ \exists i,j \in \mathbb{N}: 0 \leq i \leq, n i \neq j, p_i=p_j $ (vo výpočte sa nejaký stav zopadkuje). Z toho vyplýva, že v akceptovanom slove môžem nejakú jeho časť pumpovať, t.j. $ \exists r_1 \in \mathbb{N}, 1 \leq r_1 \leq n \; \forall k \in \mathbb{N}: a^{n + kr_1} \in L(A_1^{\Sigma^n}) $.
+\par
+Analogicky, uvažujúc výpočet automatu $ A_2^{\Sigma^n} $ na slove $ a^n $, platí $ \exists r_2 \in \mathbb{N}, 1 \leq r_2 \leq n \; \forall k \in \mathbb{N}: a^{n + kr_2} \in L(A_2^{\Sigma^n}) $.
+\par
+Teraz uvažujme slovo $ a^{n+r_1r_2} $. Podľa predchádzajúceho platí $ a^{n+r_1r_2} \in L(A_1^{\Sigma^n}) \cap L(A_2^{\Sigma^n}) $. Avšak $ a^{n+r_1r_2} \notin \Sigma^n $ čo je v spore s tým, že automaty $ A_1^{\Sigma^n} $ a $ A_2^{\Sigma^n} $ tvoria netriviálny rozklad automatu $ A_{\Sigma^n} $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:prime^n}
+Pre $ n \geq 1 $ a $ p $ je prvočíslo definujeme $ L_{p^n} = \lbrace a^{kp^{n}} | k \in \mathbb{N} \rbrace $. Potom je jazyk $ L_{p^n} $ nerozložitelný.
+\end{theorem}
+
+\begin{proof}
+Najprv ukážeme, že $ nsc(L_{p^n}) = p^n $. Zostrojme NKA $ A_{p^n} $ taký, že $ L(A_{p^n})=L_{p^n} $. Automat uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 						{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 		{$q_1$}; 
+   \node							(dots1)	[right of=1]		{\ldots};
+   \node[state]	(z-1) 						[right of=dots1] 	{$q_{p^n-1}$};
+   
+   \path[->]
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots1)
+    (dots1) edge node {a} (z-1)
+    (z-1) edge [bend right] node [swap] {a} (0)
+    ;
+\end{tikzpicture}
+\caption{automat $ A_{p^n} $} \label{fig:Ap^n}
+\end{figure}
+
+Uvažujme množinu dvojíc slov $ F = \lbrace (a^{l},a^{p^n-l}) \; | \; 0 \leq l \leq p^n-1 \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L_{p^n} $. Nakoľko $ |F|=p^n $, tak podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L_{p^n}) \geq p^n $. Kedže sa nám podarilo zostrojiť automat akceptujúci $ L_{p^n} $, ktorý má práve $ p^n $ stavov, tak platí $ nsc(L_{p^n}) = p^n$. Intuitívne je jasné, že automat \glqq{}počíta zvyšok po delení $ p^n $\grqq{}.
+\par
+Ďalej postupujme sporom. Uvažujme, že jazyk $ L_{p^n} $ je rozložitelný, teda že existuje netriviálny rozklad automatu $ A_{p^n} $. To znamená, že existujú NKA $ A_1^{p^n}, A_2^{p^n} $, také, že platí $ \#_S(A_1^{p^n}) < p^n $, $ \#_S(A_2^{p^n}) < p^n $, $ L(A_1^{p^n}) \cap L(A_2^{p^n}) = L_{p^n} $. Navyše podľa Lemy \ref{lm:nonepsilon_NFA} môžeme predpokladať, že automaty $ A_1^{p^n}$ a $ A_2^{p^n} $ neobsahujú prechody na $ \varepsilon $. 
+\par
+Z predchádzajúceho vyplýva, že $ a^{p^n} \in L(A_1^{p^n}), a^{p^n} \in L(A_2^{p^n})$. Teraz sa pozrime na výpočet automatu $ A_1^{p^n} $ na slove $ a^{p^n} $. Nech tento výpočet vyzerá nasledovne $ (q_0,a^{p^n}) \vdash (q_1,a^{p^n-1}) \vdash \dots \vdash (q_{p^n-1},a) \vdash (q_{p^n},\varepsilon) $, kde $ q_0 $ je počiatočný stav automatu $ A_1^{p^n} $, $ q_{p^n} $ je nejaký akceptačný stav automatu $ A_1^{p^n} $ a pre $ 1 \leq i < p^n \; q_i \in K_{A_1^{p^n}}$. Nakolko $ \#_S(A_1^{p^n}) < p^n $, tak nutne $ \exists i,j \in \mathbb{N}, 0 \leq i,j < p^n, i \neq j: q_i = q_j $ (počas výpočtu sa v časti \glqq{}od začatiatku po predposledný stav\grqq{} nejaký stav zopakuje). Z toho vyplýva, že v akceptovanom slove môžem pumpovať časť, ktorá je kratšia ako $ p^n $, t.j. $ \exists r_1 \in \mathbb{N}, 1 \leq r_1 < p^n \; \forall k \in \mathbb{N}: a^{p^n+kr_1} \in L(A_1^{p^n})$. 
+\par
+Analogicky, uvažujúc výpočet automatu $ A_2^{p^n} $ na slove $ a^{p^n} $, platí $ \exists r_2 \in \mathbb{N}, 1 \leq r_2 < p^n \; \forall k \in \mathbb{N}: a^{p^n+kr_2} \in L(A_2^{p^n})$.
+\par
+Čísla $ r_1 $ a $ r_2 $ zapíšme nasledovne. $ r_1 = p^{l_1}f_1, 0 \leq l_1 < n, p \nmid f_1 $. $ r_2 = p^{l_2}f_2, 0 \leq l_2 < n, p \nmid f_2 $. Z uvedeného v predošlom vyplýva, že $ a^{p^n + p^{max(l_1,l_2)}f_1f_2} \in L(A_1^{p^n}) \cap L(A_2^{p^n}) $. Nakolko však $ p^n \nmid p^{max(l_1,l_2)}f_1f_2$, tak $ a^{p^n + p^{max(l_1,l_2)}f_1f_2} \notin L_{p^n} $, čo je však v spore s predpokladom, že automaty $ A_1^{p^n} $ a $ A_2^{p^n} $ tvoria netriviálny rozklad automatu $ A_{p^n} $.
+\end{proof}
+
+\begin{theorem}
+\label{thm:a(a|b)a(a|b)^4}
+Jazyk $ L = (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace a \rbrace \lbrace a,b \rbrace)^* $ je nerozložiteľný.
+\end{theorem}
+
+\begin{proof}
+Najprv ukážeme, že $ nsc(L) = 4 $. Zostrojme NKA $ A_{L} $ taký, že $ L(A_{L})= L $. Automat uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 					{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 	{$q_1$}; 
+   \node[state]						(2)		[right of=1]	{$q_2$};
+   \node[state]						(3) 	[right of=2] 	{$q_3$};
+   
+   \path[->]
+    (0) edge node {a} 	(1)  
+    (1) edge node {a,b} (2)
+    (2) edge node {a} (3)
+    (3) edge [bend right] node [swap] {a,b} (0)
+    ;
+\end{tikzpicture}
+\caption{automat $ A_{L} $ pre jazyk $ L = (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace a \rbrace \lbrace a,b \rbrace)^* $} \label{fig:Aa(a|b)a(a|b)^4}
+\end{figure}
+
+Uvažujme množinu $ F = \lbrace (\varepsilon,aaaa),(a,aaa),(aa,aa),(aaa,a)\rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L $, teda podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L) \geq 4 $. Nakoľko sme zostrojili NKA akceptujúci jazyk $ L $, ktorý má práve $ 4 $ stavy, tak $ nsc(L) = 4 $ a NKA $ A_{L} $ je minimálnym automatom pre jazyk $ L $.
+\par
+Nech je jazyk $ L$ rozložitelný, teda existuje netriviálny rozklad automatu $ A_{L} $. To znamená, že existujú NKA $ A_1^{L} $ a $ A_2^{L} $ také, že $ L(A_1^{L}) \cap L(A_2^{L}) = L $ a $ \#_S(A_1^{L}) < 4 $, $ \#_S(A_2^{L}) < 4 $. Navyše vďaka Leme \ref{lm:nonepsilon_NFA} môžeme predpokladať, že automaty $ A_1^{L} $ a $ A_2^{L} $ neobsahujú prechody na $ \varepsilon $. 
+\par
+Uvažujme výpočet automatu $ A_1^{L} $ na slove $ aaaa $. Podľa predcházajúceho automat $ A_1^{L} $ slovo $ aaaa $ akceptuje. Výpočet vyzerá nasledovne: $ (p_0,aaaa) \vdash (p_1, aaa) \vdash (p_{2}, aa) \vdash (p_3, a) \vdash (p_4, \varepsilon) $ kde $ p_0 $ je počiatočný stav $ A_1^{L} $, $ p_4 \in F_{A_1^{L}} $ a pre $ 1 \leq i < 4 \; p_i \in K_{A_1^{L}}$. Nakoľko $ \#_S(A_1^{L}) < 4 $, tak $ \exists i,j \in \lbrace 0,1,2,3 \rbrace, i \neq j, p_i=p_j $ (vo výpočte sa nejaký stav zopakuje ešte pred tým ako bude slovo akceptované) . Z toho vyplýva, že v akceptovanom slove môžem nejakú jeho časť pumpovať, t.j. $ \exists r_1 \in \lbrace 1,2,3 \rbrace \; \forall k \in \mathbb{N}: a^{4 + kr_1} \in L(A_1^{L}) $.
+\par
+Analogicky, uvažujúc výpočet automatu $ A_2^{L} $ na slove $ aaaa $, platí $ \exists r_2 \in \lbrace 1,2,3 \rbrace \; \forall k \in \mathbb{N}: a^{n + kr_2} \in L(A_2^{L}) $.
+\par
+Môžu nastať nasledovné prípady:
+\begin{enumerate}
+\item $ r_1 = 1, r_2 = 3 $ respektíve $ r_1 = 3, r_2 = 1 $. V tom prípade podľa predchádzajúceho platí $ a^{4+3} \in L(A_1^{L}) \cap L(A_2^{L}) $. Avšak $ a^{4+3} \notin L $ čo je v spore s tým, že automaty $ A_1^{L} $ a $ A_2^{L} $ tvoria netriviálny rozklad automatu $ A_{L} $.
+\item $ r_1 = 2, r_2 = 2 $. V tom prípade podľa predchádzajúceho platí $ a^{4+2} \in L(A_1^{L}) \cap L(A_2^{L}) $. Avšak $ a^{4+2} \notin L $ čo je v spore s tým, že automaty $ A_1^{L} $ a $ A_2^{L} $ tvoria netriviálny rozklad automatu $ A_{L} $.
+\end{enumerate}
+Nakoľko iné prípady nastať nemôžu, našli sme hľadaný spor čo kompletizuje dôkaz.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+

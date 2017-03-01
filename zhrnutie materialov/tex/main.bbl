@@ -1,0 +1,36 @@
+\newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
+  \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
+\begin{thebibliography}{1}
+
+\bibitem{Gazi}
+Peter Gaži.
+\newblock {\em Parallel decomposition of finite automata}.
+\newblock 2006.
+\newblock Diplomová práca pod vedením prof. Branislava Rovana.
+
+\bibitem{GruberHolzer2006}
+Markus~Holzer Hermann~Gruber.
+\newblock Finding lower bounds for nondeterministic state complexity is hard.
+\newblock Technical report, Institut fur Informatik, Technische Universitat
+  Munchen, Boltzmannstraße 3, D-85748 Garching bei Munchen, Germany, 2006.
+
+\bibitem{GlaisterShalit1996}
+Jefrrey~Shallit Ian~Glaister.
+\newblock A lower bound technique for the size of nondeterministic finite
+  automata.
+\newblock {\em Information Processing Letters}, (59):75--77, 1996.
+
+\bibitem{Labath}
+Pavel Labath.
+\newblock {\em Zjednodušenie výpočtov prídavnou informáciou}.
+\newblock 2010.
+\newblock Diplomová práca pod vedením prof. Branislava Rovana.
+
+\bibitem{Palioudakis2012}
+Alexandros Palioudakis.
+\newblock Nondeterministic state complexity and quantifying non-determinism in
+  finite automata.
+\newblock Technical Report Technical Report 2012-596, School of Computing,
+  Queen’s University, Kingston, ON, Canada, October 2012.
+
+\end{thebibliography}
