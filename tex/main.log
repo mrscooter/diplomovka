@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.5)  25 FEB 2017 18:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.5)  28 MAR 2017 17:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1040,7 +1040,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  14071 strings out of 493304
  257165 string characters out of 6139872
- 338348 words of memory out of 5000000
+ 338526 words of memory out of 5000000
  17179 multiletter control sequences out of 15000+600000
  17955 words of font info for 48 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1063,7 +1063,7 @@ public/cm-super/sfcc2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1200.pfb></usr/share
 /texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/p
 ublic/cm-super/sftt1200.pfb>
-Output written on main.pdf (38 pages, 511960 bytes).
+Output written on main.pdf (38 pages, 514412 bytes).
 PDF statistics:
  326 PDF objects out of 1000 (max. 8388607)
  226 compressed objects within 3 object streams

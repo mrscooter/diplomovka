@@ -1,0 +1,117 @@
+% !Mode:: "TeX::UTF-8"
+
+\documentclass{svk_short_sk}
+%% ak pisete po anglicky, pouzijete namiesto horneho riadku
+%% \documentclass{svk_short_en}
+
+\begin{document}
+\title{Ako formátovať ŠVK príspevok}
+
+\author{Jozef Mrkvička\inst{1}
+\email{mrkvicka@st.fmph.uniba.sk}
+\and 
+Tomáš Vinař\inst{1}
+\email{vinar@fmph.uniba.sk}}
+%% vsimnite si, ze u autorov sa nepisu tituly
+%% prikaz \inst sluzi ako odkaz do zoznamu institucii
+%% (vid. nizsie)
+
+%% skolitela nepiste medzi autorov, ale v tejto casti
+%% ak praca nema skolitela, jednoducho vynechajte
+\supervisor{Tom\'a\v{s} Plachetka\inst{2}
+\email{plachetk@dcs.fmph.uniba.sk}}
+
+%% nasleduje kratka verzia nazvu clanku a 
+%% zoznam autorov (bez krstnych mien)
+%% tieto informacie sa zobrazuju v hlavicke
+\titlerunning{Ako formátovať ŠVK príspevok}
+\authorrunning{Plachetka and Vinař}
+
+\institute{
+Katedra aplikovanej informatiky,
+FMFI UK,
+Mlynská Dolina
+842~48~Bratislava
+\and
+Katedra informatiky,
+FMFI UK,
+Mlynská Dolina
+842~48~Bratislava}
+
+\maketitle
+
+Tento článok je predlohou pre formátovanie príspevku pre ŠVK.
+Používa \LaTeX\ štýl {\tt svk\_short\_sk.cls}.
+\emph{Nemeňte tento štýl, veci súvisiace s fontami,
+veľkosťou stránky, číslovaním strán a podobne.} Krátky príspevok (rozšírený 
+abstrakt) obvykle nie je štruktúrovaný do sekcií a 
+neobsahuje časť \emph{Abstrakt}.
+
+Nech $S=[s_{ij}]$ ($1\leq i,j\leq n$) je $(0,1,-1)$-matica
+veľkosti $n$. Potom $S$ je {\em znamienkovo-nesingulárna matica}
+(SNS-matrix), ak každá reálna matica so znamienkovým vzorom
+matice $S$ je nesingulárna. V súčasnosti bol silný záujem
+o konštrukciu a charakterizáciu
+SNS-matíc \cite{bs}, \cite{klm}. Záujem bol tiež o štúdium silných foriem
+znamienkovej nesingularity \cite{djd}. V tomto článku ponúkame
+nové zovšeobecnenie SNS-matíc a skúmame niektoré ich základné vlastnosti.
+
+V tomto článku sa zaoberáme výpočtom integrálov nasledujúcich druhov:
+\begin{equation}
+\int_a^b \left( \sum_i E_i B_{i,k,x}(t) \right)
+         \left( \sum_j F_j B_{j,l,y}(t) \right) dt,\label{problem}
+\end{equation}
+\begin{equation}
+\int_a^b f(t) \left( \sum_i E_i B_{i,k,x}(t) \right) dt,\label{problem2}
+\end{equation}
+kde $B_{i,k,x}$ je $i$-ty B-splajn stupňa $k$ definovaný v uzloch
+$x_i, x_{i+1}, \ldots, x_{i+k}$.
+Budeme predpokladať, že B-splajny sú normalizované tak, že ich integrál je 
+jednotkový.
+Splajny môžu byť rôznych stupňov a môžu byť definované v navzájom rôznych 
+postupnostiach uzlov
+$x$ and $y$.
+Limity integrácie budú často
+od $-\infty$ po
+$+\infty$. Všimnite si, že (\ref{problem}) je špeciálnym prípadom
+(\ref{problem2}),
+kde $f(t)$ je splajn.
+
+S použitím súčinovej topológie na  $R^{m \times m} \times
+R^{n \times n}$ s indukovaným súčinom 
+\begin{equation}
+\langle (A_{1},B_{1}), (A_{2},B_{2})\rangle := \langle A_{1},A_{2}\rangle
++ \langle B_{1},B_{2}\rangle,\label{eq2.10}
+\end{equation}
+vypočítame Fr\'{e}chetovu deriváciu $F$ nasledujúcim spôsobom:
+\begin{eqnarray}
+ F'(U,V)(H,K) &=& \langle R(U,V),H\Sigma V^{T} + U\Sigma K^{T}\nonumber\\
+             && - P(H\Sigma V^{T} + U\Sigma K^{T})\rangle \nonumber \\
+         &=& \langle R(U,V),H\Sigma V^{T} + U\Sigma K^{T}\rangle\nonumber \\
+&=& \langle R(U,V)V\Sigma^{T},H\rangle + \nonumber\\
+  &&    \langle \Sigma^{T}U^{T}R(U,V),K^{T}\rangle.    \label{eq2.11}
+\end{eqnarray}
+
+
+\begin{theorem} 
+\label{th:prop} 
+Dvojica matíc $(S,C)$ je {\rm SNS}-maticový pár, ak všetky nenulové
+koeficienty jeho charakteristického polynómu majú rovnaké znamienko a
+ak aspoň jeden z koeficientov je nenulový.
+\end{theorem} 
+
+Pre SNS-maticové páry $(S,C)$ s $C=O$ je charakteristický polynóm homogénny,
+stupňa $n$. V tom prípade je Veta~\ref{th:prop} triviálnym dôsledkom 
+vlastností SNS-matíc.
+ 
+\bibliographystyle{apalike}
+\bibliography{references}
+
+%% citacie ulozte do suboru references.bib
+%% na populaciu zoznamu literatury pouzite program
+%%
+%% bibtex references
+%%
+%% po ktorom je potrebne dokument znova zlatexovat
+
+\end{document}

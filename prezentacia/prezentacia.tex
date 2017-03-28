@@ -22,12 +22,6 @@
 \usepackage{array}
 \usetikzlibrary{automata,arrows,topaths}
 
-\title{Prídavná informácia a zložitosť nedeterministických konečných automatov}
-\subtitle{diplomová práca}
-\author{Šimon Sádovský \and Branislav Rovan}
-\institute{FMFI UK}
-\date{\today}
-
 \newtheorem{theorem}{Veta}
 \newtheorem{definition}[theorem]{Definícia}
 
@@ -35,10 +29,59 @@
 
 \newcolumntype{?}{!{\vrule width 3pt}}
 
+\makeatletter
+\let\insertsupervisor\relax
+\newcommand\supervisortitle{Školiteľ}
+\mode<all>
+{
+  \newcommand\supervisor[1]{\def\insertsupervisor{#1}}
+  \titlegraphic{}
+}
+\defbeamertemplate*{title page}{supdefault}[1][]
+{
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center,#1]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty\relax%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \ifx\insertsupervisor\relax\relax\else
+    \begin{beamercolorbox}[sep=8pt,center,#1]{author}
+      \usebeamerfont{author}\supervisortitle:~\insertsupervisor
+    \end{beamercolorbox}\fi
+    \begin{beamercolorbox}[sep=8pt,center,#1]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center,#1]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \endgroup
+  \vfill
+}
+\setbeamertemplate{title page}[supdefault][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]\makeatother
+
+\title[Prídavná informácia a NKA]{Prídavná informácia a zložitosť nedeterministických konečných automatov}
+\subtitle{diplomová práca}
+\author{Šimon Sádovský}
+\supervisor{Branislav Rovan}
+\institute{FMFI UK}
+\date{\today}
+
 \begin{document}
 
 \begin{frame}
-\titlepage
+\maketitle
 \end{frame}
 
 \begin{frame}

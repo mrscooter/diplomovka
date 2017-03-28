@@ -1,0 +1,109 @@
+% !Mode:: "TeX::UTF-8"
+
+\documentclass{svk_short_sk}
+\usepackage{mathrsfs} 
+\usepackage{amsfonts}
+\usepackage{enumitem}
+%% ak pisete po anglicky, pouzijete namiesto horneho riadku
+%% \documentclass{svk_short_en}
+
+\newtheorem{notation}{Označenie}
+
+\begin{document}
+\title{Prídavná informácia a zložitosť nedeterministických konečných automatov}
+
+\author{Šimon Sádovský
+\email{sadovsky5@uniba.sk}}
+%% vsimnite si, ze u autorov sa nepisu tituly
+%% prikaz \inst sluzi ako odkaz do zoznamu institucii
+%% (vid. nizsie)
+
+%% skolitela nepiste medzi autorov, ale v tejto casti
+%% ak praca nema skolitela, jednoducho vynechajte
+\supervisor{Branislav Rovan
+\email{rovan@dcs.fmph.uniba.sk}}
+
+%% nasleduje kratka verzia nazvu clanku a 
+%% zoznam autorov (bez krstnych mien)
+%% tieto informacie sa zobrazuju v hlavicke
+\titlerunning{Prídavná informácia a zložitosť nedeterministických konečných automatov}
+\authorrunning{Sádovský and Rovan}
+
+\institute{
+Katedra informatiky,
+FMFI UK,
+Mlynská Dolina
+842~48~Bratislava}
+
+\maketitle
+
+V práci skúmame vplyv prídavnej informácie na zložitosť riešenia problému. Ako
+výpočtový model sme zvolili nedeterministické konečné automaty a mierou zložitosti je
+počet stavov. Voľne povedané, ak automatu našepkám, že vstup, ktorý ide rozpoznávať patrí do nejakého poradného jazyka, viem tým zabezpečiť, že na rozpoznávanie pôvodného jazyka stačí automat menšej zložitosti? Uveďme jeden príklad. Uvažujme, že chceme rozpoznávať jazyk $ \lbrace w \in \lbrace a \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 6) \rbrace $ a chceme ho rozpoznávať deterministickým konečným automatom. Ľahko vidno, že minimálny NKA pre tento jazyk má 6 stavov. Čo ak však automatu našepkám, že dĺžka vstupu je deliteľná tromi? Vtedy nám stačí vziať NKA s dvomi stavmi. Formalizáciou tohto problému je hľadanie rozkladov nedeterministických automatov.
+
+\begin{notation}
+Počet stavov ľubovolného konečného automatu $ A $ označujeme $ \#_S(A) $.
+\end{notation}
+
+\begin{definition}
+Nech $ A $ je nedeterministický konečný automat. Potom dva nedeterministické konečné automaty $ A_1, A_2 $ také, že $ L(A)=L(A_1) \cap L(A_2) $ nazveme \textbf{rozklad automatu} $ A $. Ak navyše platí $ \#_S(A_1) < \#_S(A)$ a $ \#_S(A_2) < \#_S(A) $, nazývame tento rozklad \textbf{netriviálny}. Ak existuje netriviálny rozklad automatu $ A $, tak automat $ A $ nazývame \textbf{rozložitelný}.
+\end{definition}
+
+Vlastnosť rozložiteľnosti sa dá prirodzene rozšíriť aj na vlastnosť regulárnych jazykov.
+
+\begin{definition}
+\label{def:nedeterministic_decomposability_of_language}
+Nech $ L \in \mathscr{R} $ a $ A $ je nejaký minimálny NKA pre jazyk L. \textbf{Jazyk} $ L $ nazývame \textbf{nedeterministicky rozložitelný} práve vtedy, keď je automat $ A $ rozložitelný.
+\end{definition}
+
+Analogicky sformulovaný problém bol skúmaný pre deterministické konečné automaty v \cite{Gazi} a pre deterministické zásobníkové automaty v \cite{Labath}.
+
+\paragraph*{Výsledky:}
+
+Dokazujeme rozložiteľnosť resp. nerozložiteľnosť konkrétnych typov regulárnych jazykov. Charakterizujeme vzhľadom na rozložiteľnosť triedu jazykov, ktoré sú tvorené práve jedným slovom. Dokazujeme, že príliš malé NKA sú nerozložiteľné. Dokazujeme rozdiel medzi deterministickou a nedeterministickou rozložiteľnosťou.
+\begin{theorem}
+\label{thm:compound}
+Nech pre $ Z \in \mathbb{N}, Z > 0 $ je $ L_Z = \lbrace a^{kZ} \; | \; k \in \mathbb{N} \rbrace $. Potom ak $ Z $ nie je mocninou prvočísla, tak jazyk $ L_Z $ je rozložiteľný.
+\end{theorem}
+
+\begin{theorem}
+\label{thm:prime^n}
+Pre $ n \geq 1 $ a $ p $ je prvočíslo definujeme $ L_{p^n} = \lbrace a^{kp^{n}} | k \in \mathbb{N} \rbrace $. Potom je jazyk $ L_{p^n} $ nerozložiteľný.
+\end{theorem}
+
+%formulovať to takto divoko chrobáčikovo alebo radšej "w obsahuje aspoň dva rôzne znaky"?
+\begin{theorem}
+\label{thm:singleton_characterization}
+Nech $ L = \lbrace w \rbrace $. Potom je $ L $ rozložiteľný práve vtedy, keď $ \exists a,b \in \Sigma_L \; \exists w_1,w_2 \in \Sigma_L^*: a \neq b \wedge w=w_1abw_2 $.
+\end{theorem}
+
+\begin{notation}
+Počet stavov minimálneho NKA akceptujúceho jazyk $ L $ označujeme \em{}$ nsc(L) $\em{}.
+\end{notation}
+
+\begin{theorem}
+\label{thm:too_small_nsc}
+Nech $ L $ je jazyk, pričom $ nsc(L) \leq 2 $. Potom $ L $ je nerozložiteľný.
+\end{theorem}
+
+\begin{theorem}
+\label{thm:ndet_vs_det_diff_big}
+Existuje postupnosť jazykov $  (L_i)_{i=1}^{\infty} $, taká, že platí:
+\begin{enumerate}[label=(\alph*)]
+\item $ \forall i \in \mathbb{N} $ je jazyk $ L_i $ nedeterministicky nerozložiteľný a súčasne deterministicky rozložiteľný
+\item $ \forall i \in \mathbb{N} $ nech je $ A_i $ je minimálny DKA akceptujúci $ L_i $. Potom existuje taký rozklad $ A_i $ na $ A_1^i $ a $ A_2^i $, že platí $ \#_S(A_1^i)=\#_S(A_2^i)=\frac{\#_S(A_i)+3}{2} $.
+\end{enumerate}
+\end{theorem}
+
+ 
+\bibliographystyle{apalike}
+\bibliography{literatura}
+
+%% citacie ulozte do suboru references.bib
+%% na populaciu zoznamu literatury pouzite program
+%%
+%% bibtex references
+%%
+%% po ktorom je potrebne dokument znova zlatexovat
+
+\end{document}
