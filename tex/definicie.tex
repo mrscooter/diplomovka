@@ -55,7 +55,7 @@ Dĺžku slova $ w $ označujeme $ |w| $.
 \end{notation}
 
 \section{Motivácie a definícia problému}
-Pred tým ako zadefinujeme skúmaný problém formálne, pozrime sa na motiváciu, ktorá nás k definícii viedla. Našou motiváciou je otázka užitočnosti prídavnej informácie pri akceptovaní jazyka. Volne povedané, ak automatu našepkám, že vstup, ktorý ide rozpoznávať patrí do nejakého poradného jazyka, viem tým zabezpečiť, že na rozpoznávanie pôvodného jazyka stačí automat menšej zložitosti? Uveďme jeden príklad. Uvažujme, že chceme rozpoznávať jazyk $ \lbrace w \in \lbrace a \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 6) \rbrace $ a chceme ho rozpoznávať deterministickým konečným automatom. Lahko vidno, že minimálny NKA pre tento jazyk má 6 stavov. Čo ak však automatu našepkám, že dĺžka vstupu je delitelná tromi? Vtedy nám stačí vziať NKA s dvomi stavmi. 
+Pred tým ako zadefinujeme skúmaný problém formálne, pozrime sa na motiváciu, ktorá nás k definícii viedla. Našou motiváciou je otázka užitočnosti prídavnej informácie pri akceptovaní jazyka. Volne povedané, ak automatu našepkám, že vstup, ktorý ide rozpoznávať patrí do nejakého poradného jazyka, viem tým zabezpečiť, že na rozpoznávanie pôvodného jazyka stačí automat menšej zložitosti? Uveďme jeden príklad. Uvažujme, že chceme rozpoznávať jazyk $ \lbrace w \in \lbrace a \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 6) \rbrace $ a chceme ho rozpoznávať deterministickým konečným automatom. Lahko vidno, že minimálny NKA pre tento jazyk má 6 stavov. Čo ak však automatu našepkám, že dĺžka vstupu je delitelná tromi? Vtedy nám stačí vziať NKA s dvomi stavmi.
 \par
 Druhou úvahou, ktorá vedie k velmi podobnému problému je, či viem rozložiť automat rozpoznávajúci jazyk na dva, ktoré sú nejakým spôsobom jednoduchšie ako pôvodný automat, pričom prienik jazykov ktoré rozpoznávajú jednotlivé jednoduchšie automaty je pôvodný jazyk. Lahko vidno, že jazyk rozpoznávaný jedným z týchto dvoch automatov plní funkciu poradného jazyka.
 \par
@@ -93,7 +93,7 @@ Nech $ A $ je NKA. Potom platia nasledovné tvrdenia.
 \end{lemma}
 
 \begin{proof}
-Tvrdenie \ref{lm:nonepsilon_NFA_1} vyplýva priamo zo štandardnej konštrukcie odepsilonovaného NKA k ľubovoľnému NKA. Túto konštrukciu možno nájsť v ...MINIMÁLNE SKRIPTÁ Z FOJE, KEĎ NIČ INĚ... 
+Tvrdenie \ref{lm:nonepsilon_NFA_1} vyplýva priamo zo štandardnej konštrukcie odepsilonovaného NKA k ľubovoľnému NKA.
 \par
 Dokážeme tvrdenie \ref{lm:nonepsilon_NFA_2}. Automat $ A $ rozložitelný, to znamená, že existuje netriviálny rozklad automatu $ A $ na automaty $ A_1 $ a $ A_2 $, čo znamená, že $ L(A) = L(A_1) \cap L(A_2), \#_S(A_1) < \#_S(A), \#_S(A_2) < \#_S(A) $. Podľa \ref{lm:nonepsilon_NFA_1} však existujú automaty $ A_1' $ a $ A_2' $ také, že $ L(A_1')=L(A_1) $, $ \#_S(A_1)=\#_S(A_1') $ a $ L(A_2')=L(A_2) $, $ \#_S(A_2)=\#_S(A_2') $ pričom navyše automaty $ A_1' $ a $ A_2' $ neobsahujú prechody na $ \varepsilon $. To však znamená, že $ L(A) = L(A_1') \cap L(A_2'), \#_S(A_1') < \#_S(A), \#_S(A_2') < \#_S(A) $, teda $ A_1' $ a $ A_2' $ tvoria taktiež netriviálny rozklad automatu $ A $. Teda stačí položiť $ A_1^{\varepsilon} = A_1', A_2^{\varepsilon} = A_2'$.
 \end{proof}

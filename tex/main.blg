@@ -3,38 +3,37 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: apalike.bst
 Database file #1: literatura.bib
-Warning--I didn't find a database entry for "smernica"
 Warning--empty publisher in Gazi
 Warning--there's a number but no volume in GlaisterShalit1996
 Warning--empty publisher in Labath
 You've used 5 entries,
             1935 wiz_defined-function locations,
-            503 strings with 4672 characters,
-and the built_in function-call counts, 1614 in all, are:
-= -- 153
-> -- 59
+            502 strings with 4624 characters,
+and the built_in function-call counts, 1532 in all, are:
+= -- 145
+> -- 47
 < -- 6
-+ -- 20
-- -- 18
-* -- 127
-:= -- 298
++ -- 16
+- -- 14
+* -- 115
+:= -- 286
 add.period$ -- 15
 call.type$ -- 5
-change.case$ -- 33
+change.case$ -- 31
 chr.to.int$ -- 5
 cite$ -- 8
 duplicate$ -- 65
 empty$ -- 111
-format.name$ -- 31
-if$ -- 307
+format.name$ -- 23
+if$ -- 291
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 5
 newline$ -- 29
 num.names$ -- 15
-pop$ -- 32
+pop$ -- 30
 preamble$ -- 2
-purify$ -- 34
+purify$ -- 32
 quote$ -- 0
 skip$ -- 47
 stack$ -- 0
@@ -48,4 +47,4 @@ warning$ -- 3
 while$ -- 11
 width$ -- 0
 write$ -- 66
-(There were 4 warnings)
+(There were 3 warnings)

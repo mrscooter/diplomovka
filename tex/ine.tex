@@ -91,6 +91,21 @@ Hľadaným jazykom je jazyk $ L = (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace
 Možno nahliadnuť, že jeden z automatov v rozklade počíta zvyšok po delení 4 a druhý kontroluje, či symboly na nepárnych pozíciách v slove sú $ a $. Teda vidno, že $ L(A_1^L) = \lbrace w \in \lbrace a,b \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 4) \rbrace $ a $ L(A_2^L) = (\lbrace a \rbrace \lbrace a,b \rbrace)^* $. Teda $ L(A_1^L) \cap L(A_2^L) = L $. Navyše $ \#_S(A_1^L) < \#_S(A_L) $ a $ \#_S(A_2^L) < \#_S(A_L) $, teda automaty $ A_1^L $ a $ A_2^L $ tvoria netriviálny rozklad automatu $ A_L $. Z predchádzajúceho vyplýva, že jazyk $ L = (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace a \rbrace \lbrace a,b \rbrace)^* $ je deterministicky rozložiteľný. Avšak tento jazyk je podľa Vety \ref{thm:a(a|b)a(a|b)^4} nedeterministicky nerozložiteľný.
 \end{proof}
 
+Uvedená Veta síce ukazuje rozdiel medzi deterministickou a nedeterministickou rozložiteľnosťou, avšak jej dôkaz veľmi závisí od faktu, že DKA v definícii nútime k úplnej prechodovej funkcii a vďaka čomu DKA použitý v dôkaze musí mať odpadový stav. Bez tohto odpadového stavu by náš dôkaz neprešiel. Nasledujúca Veta ukazuje, že existujú prípady, kde rozdiel medzi deterministickou a nedeterministickou rozložiteľnosťou nie sú spôsobené iba nutnosťou úplnej prechodovej funkcie DKA.
+
+\begin{theorem}
+\label{thm:ndet_vs_det_diff_big}
+Existuje postupnosť jazykov $  (L_i)_{i=2}^{\infty} $, taká, že platí:
+\begin{enumerate}[label=(\alph*)]
+\item Jazyk $ L_i $ je nedeterministicky nerozložiteľný a súčasne deterministicky rozložiteľný pre ľubovolné $ i \in \mathbb{N}, i \geq 2 $.
+\item Nech pre ľubovolné $ i \in \mathbb{N}, i \geq 2 $ je $ A_i $ minimálny DKA akceptujúci $ L_i $. Potom existuje taký rozklad $ A_i $ na $ A_1^i $ a $ A_2^i $, že platí $ \#_S(A_1^i)=\#_S(A_2^i)=\frac{\#_S(A_i)+3}{2} $.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+to be done...
+\end{proof}
+
 \section{Automaty tvorené jediným cyklom}
 
 Typickou schopnosťou konečných automatov je počítať v cykle zvyšok po delení dĺžky slova. Tieto automaty sa vyznačujú tým, že sú tvorené jediným cyklom, pričom nijak nezohľadňujú štruktúru slova. Podstatu otázok spojených s takýmito automatmi riešia Vety \ref{thm:prime^n} a \ref{thm:compound}. Nakoľko v konečných automatoch sú práve cykly veľmi dôležitou štruktúrou, v našej práci sme túto otázku rozšírili a študovali sme otázku rozložiteľnosti jazykov, ktorých minimálne nedeterministické konečné automaty sú tvorené jediným cyklom, pričom v ňom zohľadňujú aj štruktrúru akceptovaného slova. Podstatou týchto automatov je, neformálne povedané, pumpovanie nejakého slova.
@@ -307,6 +322,78 @@ Možno nahliadnuť, že $ L(A_1) = \lbrace \overline{b}_1v_1b^l\overline{b}_2v_2
 Záverom ešte spomeňme, že hlavnou myšlienkou rozkladu bola akási synchronizácia výpočtov automatov v rozklade na symboloch rôznych od $ b $, ktoré nasledovali hneď za $ b $.
 \end{proof}
 
+\section{Charakterizácia jazykov tvorených jedným slovom}
+Uvádzame úplnú charakterizáciu triedy jazykov tvorených práve jedným slovom vzhľadom na rozložiteľnosť.
+
+\begin{theorem}
+\label{thm:singleton_characterization}
+Nech $ L = \lbrace w \rbrace $. Potom je $ L $ nedeterministicky rozložiteľný práve vtedy, keď $ w $ obsahuje aspoň dva rôzne symboly.
+\end{theorem}
+
+\begin{proof}
+$ \Rightarrow $: Dokážeme obmenu tvrdenia. Ak $ w $ obsahuje nanajvýš jeden znak, tak existuje nejaké $ n \in \mathbb{N} $ také, že $ L = \lbrace a^n \rbrace $. Potom podľa Vety \ref{thm:Sigma^n} je jazyk $ L $ nerozložiteľný.
+$ \Leftarrow $: Nech $ w = w_1abw_2 $ pre nejaké slová $ w_1,w_2 $. Zostrojíme NKA $ A_w $ pre jazyk $ L = \lbrace w \rbrace $. Automat uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial] 			(0) 					{$q_0$}; 
+   \node[state] 					(w1)	[right of=0] 	{$q_{w_1}$}; 
+   \node[state]						(a)		[right of=w1]	{$q_{a}$};
+   \node[state]						(b) 	[right of=a] 	{$q_{b}$};
+   \node[state,accepting]			(w2) 	[right of=b] 	{$q_{w_2}$};
+   
+   \path[->]
+    (0) edge [bend left] node {$ w_1 $} (w1)  
+    (w1) edge [bend left] node {a} (a)
+    (a) edge [bend left] node {b} (b)
+    (b) edge [bend left] node {$ w_2 $} (w2)
+    ;
+\end{tikzpicture}
+\caption{automat $ A_w $}
+\end{figure}
+
+Uvažujme množinu dvojíc slov $ F = \lbrace (pref(w,i),suff(w,|w|-i)) \; | \; 0 \leq i \leq |u| \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L $. Nakoľko $ |F| = |w|+1 $, tak podľa Vety \ref{thm:fooling_set_technique} $ nsc(L) \geq |w|+1 $. Kedže $ L(A_w) = L $ a $ \#_S(A_w) = |w|+1 $, tak $ nsc(L) = |w|+1 $ a automat $ A_w $ je minimálny NKA pre jazyk $ L $.
+\par
+Zostrojíme netriviálny rozklad automatu $ A_w $. Hľadané automaty $ A^a_w $ a $ A^b_w $ uvádzame pomocou diagramov.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial] 			(0) 					{$q_0$}; 
+   \node[state] 					(w1a)	[right of=0] 	{$q_{w_1a}$}; 
+   \node[state]						(b) 	[right of=w1a] 	{$q_{b}$};
+   \node[state,accepting]			(w2) 	[right of=b] 	{$q_{w_2}$};
+   
+   \path[->]
+    (0) edge [bend left] node {$ w_1 $} (w1a)  
+    (w1a) edge [bend left] node {b} (b)
+    (b) edge [bend left] node {$ w_2 $} (w2)
+    (w1a) edge [loop above] node {a} ()
+    ;
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial] 			(0) 					{$q_0$}; 
+   \node[state] 					(w1)	[right of=0] 	{$q_{w_1}$}; 
+   \node[state]						(ab) 	[right of=w1] 	{$q_{ab}$};
+   \node[state,accepting]			(w2) 	[right of=ab] 	{$q_{w_2}$};
+   
+   \path[->]
+    (0) edge [bend left] node {$ w_1 $} (w1)  
+    (w1) edge [bend left] node {a} (ab)
+    (ab) edge [bend left] node {$ w_2 $} (w2)
+    (ab) edge [loop above] node {b} ()
+    ;
+\end{tikzpicture}
+\end{figure}
+
+A ešte dokážeme že je to netriviálny rozklad a super.
+
+\end{proof}
 
 
 

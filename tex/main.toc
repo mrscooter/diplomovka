@@ -13,4 +13,5 @@
 \contentsline {chapter}{\numberline {4}In\IeC {\'e} v\IeC {\'y}sledky}{23}
 \contentsline {section}{\numberline {4.1}Porovnanie deterministickej a nedeterministickej rozlo\IeC {\v z}ite\IeC {\v l}nosti regul\IeC {\'a}rnych jazykov}{23}
 \contentsline {section}{\numberline {4.2}Automaty tvoren\IeC {\'e} jedin\IeC {\'y}m cyklom}{25}
-\contentsline {chapter}{Z\IeC {\'a}ver}{29}
+\contentsline {section}{\numberline {4.3}Charakteriz\IeC {\'a}cia jazykov tvoren\IeC {\'y}ch jedn\IeC {\'y}m slovom}{29}
+\contentsline {chapter}{Z\IeC {\'a}ver}{31}

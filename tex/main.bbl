@@ -2,8 +2,8 @@
   \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
 \begin{thebibliography}{}
 
-\bibitem[Gaži and Rovan, 2006]{Gazi}
-Gaži, P. and Rovan, B. (2006).
+\bibitem[Gaži, 2006]{Gazi}
+Gaži, P. (2006).
 \newblock {\em Parallel decomposition of finite automata}.
 \newblock Diplomová práca pod vedením prof. Branislava Rovana.
 
@@ -19,8 +19,8 @@ Gruber, H. and Holzer, M. (2006).
 \newblock Technical report, Institut fur Informatik, Technische Universitat
   Munchen, Boltzmannstraße 3, D-85748 Garching bei Munchen, Germany.
 
-\bibitem[Labath and Rovan, 2010]{Labath}
-Labath, P. and Rovan, B. (2010).
+\bibitem[Labath, 2010]{Labath}
+Labath, P. (2010).
 \newblock {\em Zjednodušenie výpočtov prídavnou informáciou}.
 \newblock Diplomová práca pod vedením prof. Branislava Rovana.
 

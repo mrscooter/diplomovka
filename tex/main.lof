@@ -20,7 +20,8 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces deterministick\IeC {\'y} kone\IeC {\v c}n\IeC {\'y} automat $ A_{L} $ pre jazyk $ L = (\delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 \delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 )^* $}}{24}
 \contentsline {figure}{\numberline {4.2}{\ignorespaces rozklad automatu $ A_L $}}{24}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces automat $ A_u $}}{25}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces automat $ A_u $}}{26}
 \contentsline {figure}{\numberline {4.4}{\ignorespaces rozklad automatu $ A_u^k $ na automaty $ A_u $(hore) a $ A_k $(dole)}}{26}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces rozklad automatu $ A $ na automaty $ A_1 $ a $ A_2 $}}{27}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces rozklad automatu $ A $ na automaty $ A_1 $(hore) a $ A_2 $(dole)}}{28}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces rozklad automatu $ A $ na automaty $ A_1 $(hore) a $ A_2 $(dole)}}{29}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces automat $ A_w $}}{30}
