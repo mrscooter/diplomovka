@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.5)  11 APR 2017 17:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.5)  15 APR 2017 17:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -979,8 +979,59 @@ Overfull \hbox (85.84358pt too wide) has occurred while \output is active
 Kapitola 4.
 [23
 
-] [24] [25]
-Overfull \hbox (26.51398pt too wide) in paragraph at lines 159--160
+] [24]
+Overfull \hbox (1.97015pt too wide) in paragraph at lines 106--107
+[]\T1/cmr/m/n/12 Definujme po-stup-nos´ ja-zy-kov $\OML/cmm/m/it/12 P \OT1/cmr/
+m/n/12 = (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 )[]$ \T1/cmr/m/n/12 na-sle-dovne:
+ $\OML/cmm/m/it/12 L[] \OT1/cmr/m/n/12 = (\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 a[
+]\OMS/cmsy/m/n/12 gf\OML/cmm/m/it/12 b\OMS/cmsy/m/n/12 g[]f\OML/cmm/m/it/12 a; 
+b\OMS/cmsy/m/n/12 g\OT1/cmr/m/n/12 )[]$
+ []
+
+[25]
+Overfull \hbox (26.53296pt too wide) in paragraph at lines 142--143
+\T1/cmr/m/n/12 Takto do-sta-neme $\OML/cmm/m/it/12 A[] \OT1/cmr/m/n/12 = (\OMS/
+cmsy/m/n/12 f\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 j\OT1/cmr/m/n/
+12 ]\OML/cmm/m/it/12 ; q\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 j; \OT1/cmr/m/n/12 (\
+OML/cmm/m/it/12 j \OT1/cmr/m/n/12 + 1) \OML/cmm/m/it/12 mod i\OT1/cmr/m/n/12 ] 
+\OMS/cmsy/m/n/12 j \OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ^^T \OML/cmm/m/it/12 j < 
+i\OMS/cmsy/m/n/12 g [ f\OML/cmm/m/it/12 q[]\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ;
+ \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 a; b\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; ^^
+N[]; q\OT1/cmr/m/n/12 [0]\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 
+q\OT1/cmr/m/n/12 [0]\OML/cmm/m/it/12 ; q\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 i \OM
+S/cmsy/m/n/12 ^^@
+ []
+
+[26]
+Overfull \hbox (0.3664pt too wide) in paragraph at lines 176--177
+[]$\OML/cmm/m/it/12 A[] \OT1/cmr/m/n/12 = (\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 q
+[]; q[]\OMS/cmsy/m/n/12 g [ f\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 [\OML/cmm/m/it/1
+2 j\OT1/cmr/m/n/12 ] \OMS/cmsy/m/n/12 j \OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ^^T 
+\OML/cmm/m/it/12 j < i\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 f\O
+ML/cmm/m/it/12 a; b\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; ^^N[]; q\OT1/cmr/m/n/12
+ [0]\OML/cmm/m/it/12 ; F[]\OT1/cmr/m/n/12 )$\T1/cmr/m/n/12 , kde $\OML/cmm/m/it
+/12 F[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 [
+0]\OML/cmm/m/it/12 ; q[]\OMS/cmsy/m/n/12 g$
+ []
+
+
+Overfull \hbox (25.84024pt too wide) in paragraph at lines 176--177
+\T1/cmr/m/n/12 a pre-cho-dová fun-kcia $\OML/cmm/m/it/12 ^^N[]$ \T1/cmr/m/n/12 
+je de-fi-no-vaná na-sle-dovne: $\OML/cmm/m/it/12 ^^N[]\OT1/cmr/m/n/12 (\OML/cmm
+/m/it/12 q\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 i \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n
+/12 1]\OML/cmm/m/it/12 ; b\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 q[];  ^^N[]\OT1/
+cmr/m/n/12 (\OML/cmm/m/it/12 q[]; a\OT1/cmr/m/n/12 ) =
+ []
+
+
+Overfull \hbox (10.5455pt too wide) in paragraph at lines 178--179
+\T1/cmr/m/n/12 Pre ilus-trá-ciu a lep-²iu £i-ta-te©-nos´ uvá-dzame roz-klad au-
+to-matu $\OML/cmm/m/it/12 A[]$ \T1/cmr/m/n/12 na au-to-maty $\OML/cmm/m/it/12 A
+[]; A[]$
+ []
+
+[27] [28] [29]
+Overfull \hbox (26.51398pt too wide) in paragraph at lines 285--286
 []\T1/cmr/m/n/12 ‰ahko vidno, ºe $\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OML/cmm/m
 /it/12 A[]\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 L[]$\T1/cmr/m/n/12 . Uva-ºujme m
 no-ºinu dvo-jíc slov $\OML/cmm/m/it/12 F \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\O
@@ -989,8 +1040,8 @@ cmr/m/n/12 )\OML/cmm/m/it/12 ;  suff\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 j\OML/cmm
 /m/it/12 u\OMS/cmsy/m/n/12 j ^^@
  []
 
-[26]
-Overfull \hbox (15.18637pt too wide) in paragraph at lines 212--213
+[30]
+Overfull \hbox (15.18637pt too wide) in paragraph at lines 338--339
 []\T1/cmr/bx/n/12 Veta 4.2.2. []\T1/cmr/m/it/12 Nech $\OT1/cmr/m/n/12 ^^F$ \T1/
 cmr/m/it/12 je ©u-bo-volná abe-ceda, nech $\OML/cmm/m/it/12 k[]; k[] \OMS/cmsy/
 m/n/12 2 f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OMS/cmsy/m/n/12
@@ -999,7 +1050,7 @@ msy/m/n/12 2
  []
 
 
-Overfull \hbox (16.14513pt too wide) in paragraph at lines 264--265
+Overfull \hbox (16.14513pt too wide) in paragraph at lines 390--391
 []\T1/cmr/m/n/12 Moºno na-hliad-nu´, ºe $\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OM
 L/cmm/m/it/12 A[]\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 v[]b[][
 ][]v[]b[][]v[] \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 l \OMS/cmsy/m/n/12 2 \U/msb/
@@ -1008,9 +1059,9 @@ m/n/12 N\OMS/cmsy/m/n/12 g[]$ \T1/cmr/m/n/12 a $\OML/cmm/m/it/12 L\OT1/cmr/m/n/
 v[]b[][]v[]b[][][]v[] \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 l \OMS/cmsy/m/n/12 2
  []
 
-[27] [28] [29]) (./zaver.tex [30]) [31
+[31] [32] [33]) (./zaver.tex [34]) [35
 
-] (./main.bbl) [32
+] (./main.bbl) [36
 
 
 
@@ -1020,10 +1071,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14094 strings out of 493304
- 257538 string characters out of 6139872
- 342495 words of memory out of 5000000
- 17202 multiletter control sequences out of 15000+600000
+ 14165 strings out of 493304
+ 258762 string characters out of 6139872
+ 348238 words of memory out of 5000000
+ 17273 multiletter control sequences out of 15000+600000
  17955 words of font info for 48 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,11n,68p,1810b,1099s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1045,10 +1096,10 @@ public/cm-super/sfcc2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1200.pfb></usr/share
 /texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/p
 ublic/cm-super/sftt1200.pfb>
-Output written on main.pdf (40 pages, 535980 bytes).
+Output written on main.pdf (44 pages, 559791 bytes).
 PDF statistics:
- 254 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
+ 267 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

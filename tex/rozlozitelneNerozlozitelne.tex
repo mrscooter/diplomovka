@@ -42,7 +42,7 @@ Uvažujme $ n \in \mathbb{N}, n \geq 2 $. Aby sme dokázali, že jazyk je regul�
 \caption{automat $ A_n $ pre jazyk $ \lbrace a^{k}ba^{l} | (l+k) \equiv 0 (mod \; n) \rbrace $} \label{fig:An}
 \end{figure}
 
-Uvažujme množinu dvojíc slov $ F_n = \lbrace (a^{l},ba^{n-l}), (a^{l}b,a^{n-l}) \; | \; 0 \leq l \leq n-1 \rbrace $. Podla definície \ref{def:extended_fooling_set} je množina $ F_n $ rozšírenou oblbovacou množinou. $ |F_n|=2n $, teda podla Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq 2n$. Kedže $ L(A_n) = L_n $ a $ \#_S(A_n) = n+2 $, tak $nsc(L_n) = 2n $ a automat $ A_n $ je minimálny NKA pre jazyk $ L_n $.
+Uvažujme množinu dvojíc slov $ F_n = \lbrace (a^{l},ba^{n-l}), (a^{l}b,a^{n-l}) \; | \; 0 \leq l \leq n-1 \rbrace $. Podla definície \ref{def:extended_fooling_set} je množina $ F_n $ rozšírenou oblbovacou množinou pre jazyk $ L_n $. $ |F_n|=2n $, teda podla Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq 2n$. Kedže $ L(A_n) = L_n $ a $ \#_S(A_n) = n+2 $, tak $nsc(L_n) = 2n $ a automat $ A_n $ je minimálny NKA pre jazyk $ L_n $.
 \par
 Teraz zostrojme netriviálny rozklad automatu $ A_n $. Hladané NKA $ A_n^1 $ a $ A_n^2 $ uvádzame pomocou ich diagramov.
 
