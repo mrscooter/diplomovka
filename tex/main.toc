@@ -1,17 +1,20 @@
 \select@language {slovak}
 \contentsline {chapter}{\IeC {\'U}vod}{1}
-\contentsline {chapter}{\numberline {1}Defin\IeC {\'\i }cie, potrebn\IeC {\'e} v\IeC {\'y}sledky, motiv\IeC {\'a}cia v\IeC {\'y}skumu, }{2}
-\contentsline {section}{\numberline {1.1}Nedeterministick\IeC {\'y} kone\IeC {\v c}n\IeC {\'y} automat}{2}
-\contentsline {section}{\numberline {1.2}Motiv\IeC {\'a}cie a defin\IeC {\'\i }cia probl\IeC {\'e}mu}{3}
-\contentsline {section}{\numberline {1.3}Techniky ur\IeC {\v c}ovania dolnej hranice po\IeC {\v c}tu stavov NKA}{5}
+\contentsline {chapter}{\numberline {1}Defin\IeC {\'\i }cie, potrebn\IeC {\'e} v\IeC {\'y}sledky}{3}
+\contentsline {section}{\numberline {1.1}Nedeterministick\IeC {\'y} kone\IeC {\v c}n\IeC {\'y} automat}{3}
+\contentsline {section}{\numberline {1.2}\IeC {\v D}al\IeC {\v s}ie ozna\IeC {\v c}enia}{4}
+\contentsline {section}{\numberline {1.3}Defin\IeC {\'\i }cia probl\IeC {\'e}mu}{5}
+\contentsline {section}{\numberline {1.4}Techniky ur\IeC {\v c}ovania dolnej hranice po\IeC {\v c}tu stavov NKA}{6}
 \contentsline {chapter}{\numberline {2}Rozlo\IeC {\v z}iteln\IeC {\'e} a nerozlo\IeC {\v z}iteln\IeC {\'e} jazyky}{9}
 \contentsline {section}{\numberline {2.1}Rozlo\IeC {\v z}iteln\IeC {\'e} jazyky}{9}
-\contentsline {section}{\numberline {2.2}Nerozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} jazyky}{15}
-\contentsline {chapter}{\numberline {3}Vlastnosti tried rozlo\IeC {\v z}iteln\IeC {\'y}ch a nerozlo\IeC {\v z}iteln\IeC {\'y}ch jazykov}{19}
-\contentsline {section}{\numberline {3.1}Uz\IeC {\'a}verov\IeC {\'e} vlastnosti}{19}
-\contentsline {section}{\numberline {3.2}In\IeC {\'e} vlastnosti}{20}
-\contentsline {chapter}{\numberline {4}In\IeC {\'e} v\IeC {\'y}sledky}{23}
-\contentsline {section}{\numberline {4.1}Porovnanie deterministickej a nedeterministickej rozlo\IeC {\v z}ite\IeC {\v l}nosti regul\IeC {\'a}rnych jazykov}{23}
-\contentsline {section}{\numberline {4.2}Automaty tvoren\IeC {\'e} jedin\IeC {\'y}m cyklom}{29}
-\contentsline {section}{\numberline {4.3}Charakteriz\IeC {\'a}cia jazykov tvoren\IeC {\'y}ch jedn\IeC {\'y}m slovom}{33}
-\contentsline {chapter}{Z\IeC {\'a}ver}{35}
+\contentsline {section}{\numberline {2.2}Nerozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} jazyky}{16}
+\contentsline {chapter}{\numberline {3}Porovnanie determinizmu a nedeterminizmu}{19}
+\contentsline {section}{\numberline {3.1}Defin\IeC {\'\i }cia deterministick\IeC {\'e}ho kone\IeC {\v c}n\IeC {\'e}ho automatu}{19}
+\contentsline {section}{\numberline {3.2}Rozdielov\IeC {\'e} jazyky}{20}
+\contentsline {chapter}{\numberline {4}Rozlo\IeC {\v z}ite\IeC {\v l}nos\IeC {\v t} a nerozlo\IeC {\v z}ite\IeC {\v l}nos\IeC {\v t}}{26}
+\contentsline {section}{\numberline {4.1}Pr\IeC {\'\i }li\IeC {\v s} mal\IeC {\'e} nedeterministick\IeC {\'e} kone\IeC {\v c}n\IeC {\'e} automaty}{26}
+\contentsline {section}{\numberline {4.2}Nov\IeC {\'y} symbol v jazyku}{26}
+\contentsline {section}{\numberline {4.3}Charakteriz\IeC {\'a}cia jazykov tvoren\IeC {\'y}ch jedn\IeC {\'y}m slovom}{28}
+\contentsline {section}{\numberline {4.4}Automaty tvoren\IeC {\'e} jedin\IeC {\'y}m cyklom}{30}
+\contentsline {section}{\numberline {4.5}Uz\IeC {\'a}verov\IeC {\'e} vlastnosti}{33}
+\contentsline {chapter}{Z\IeC {\'a}ver}{36}

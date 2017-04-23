@@ -6,45 +6,46 @@ Database file #1: literatura.bib
 Warning--empty publisher in Gazi
 Warning--there's a number but no volume in GlaisterShalit1996
 Warning--empty publisher in Labath
-You've used 5 entries,
+Warning--there's a number but no volume in McCullochPitts
+You've used 6 entries,
             1935 wiz_defined-function locations,
-            502 strings with 4624 characters,
-and the built_in function-call counts, 1532 in all, are:
-= -- 145
-> -- 47
-< -- 6
-+ -- 16
-- -- 14
-* -- 115
-:= -- 286
-add.period$ -- 15
-call.type$ -- 5
-change.case$ -- 31
-chr.to.int$ -- 5
-cite$ -- 8
-duplicate$ -- 65
-empty$ -- 111
-format.name$ -- 23
-if$ -- 291
+            510 strings with 4795 characters,
+and the built_in function-call counts, 1932 in all, are:
+= -- 184
+> -- 60
+< -- 7
++ -- 22
+- -- 18
+* -- 152
+:= -- 353
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 38
+chr.to.int$ -- 6
+cite$ -- 10
+duplicate$ -- 79
+empty$ -- 141
+format.name$ -- 30
+if$ -- 370
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 5
-newline$ -- 29
-num.names$ -- 15
-pop$ -- 30
+missing$ -- 6
+newline$ -- 34
+num.names$ -- 18
+pop$ -- 35
 preamble$ -- 2
-purify$ -- 32
+purify$ -- 39
 quote$ -- 0
-skip$ -- 47
+skip$ -- 56
 stack$ -- 0
-substring$ -- 77
-swap$ -- 4
+substring$ -- 112
+swap$ -- 5
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 26
-warning$ -- 3
-while$ -- 11
+type$ -- 32
+warning$ -- 4
+while$ -- 14
 width$ -- 0
-write$ -- 66
-(There were 3 warnings)
+write$ -- 79
+(There were 4 warnings)

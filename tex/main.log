@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.5)  15 APR 2017 17:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.5)  23 APR 2017 20:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -725,28 +725,26 @@ Package babel Info: Making - an active character on input line 294.
 \c@notation=\count131
 \c@note=\count132
 \c@corollary=\count133
+\c@proposition=\count134
  (./main.aux
 
 LaTeX Warning: Label `fig:dec_An' multiply defined.
 
-
-LaTeX Warning: Label `kap:properties_of_classes' multiply defined.
-
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
-LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -784,16 +782,16 @@ LaTeX Font Info:    ... okay on input line 49.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count134
+\scratchcounter=\count135
 \scratchdimen=\dimen168
 \scratchbox=\box60
-\nofMPsegments=\count135
-\nofMParguments=\count136
+\nofMPsegments=\count136
+\nofMParguments=\count137
 \everyMPshowfont=\toks43
-\MPscratchCnt=\count137
+\MPscratchCnt=\count138
 \MPscratchDim=\dimen169
-\MPnumerator=\count138
-\makeMPintoPDFobject=\count139
+\MPnumerator=\count139
+\makeMPintoPDFobject=\count140
 \everyMPtoPDFconversion=\toks44
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -842,16 +840,16 @@ e
 ABD: EveryShipout initializing macros [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 99.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 100.
  (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 99.
+LaTeX Font Info:    Try loading font information for U+msa on input line 100.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 99.
+LaTeX Font Info:    Try loading font information for U+msb on input line 100.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -859,10 +857,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <images/zadanie.pdf, id=15, 597.23125pt x 845.1575pt>
 File: images/zadanie.pdf Graphic file (type pdf)
  <use images/zadanie.pdf>
-Package pdftex.def Info: images/zadanie.pdf used on input line 127.
+Package pdftex.def Info: images/zadanie.pdf used on input line 128.
 (pdftex.def)             Requested size: 485.1222pt x 686.52113pt.
 
-Overfull \hbox (4.82378pt too wide) in paragraph at lines 127--128
+Overfull \hbox (4.82378pt too wide) in paragraph at lines 128--129
 [] [] 
  []
 
@@ -881,40 +879,43 @@ Overfull \hbox (4.82378pt too wide) in paragraph at lines 127--128
  [7
 
 ]
-(./uvod.tex) (./definicie.tex [1
+(./uvod.tex) [1
 
 
-]
+] (./definicie.tex [2]
 Kapitola 1.
 
 Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
  []
 
-[2
+[3
 
-] [3] [4]
-Overfull \hbox (18.53354pt too wide) in paragraph at lines 98--99
-\T1/cmr/m/n/12 roz-klad au-to-matu $\OML/cmm/m/it/12 A$ \T1/cmr/m/n/12 na au-to
--maty $\OML/cmm/m/it/12 A[]$ \T1/cmr/m/n/12 a $\OML/cmm/m/it/12 A[]$\T1/cmr/m/n
-/12 , £o zna-mená, ºe $\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A\OT
-1/cmr/m/n/12 ) = \OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A[]\OT1/cm
-r/m/n/12 ) \OMS/cmsy/m/n/12 \ \OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/
-12 A[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 
-A[]\OT1/cmr/m/n/12 ) \OML/cmm/m/it/12 <
+] [4] [5]
+Overfull \hbox (1.70595pt too wide) in paragraph at lines 124--125
+[]\T1/cmr/m/n/12 Tvrdenie (a)[] vy-plýva priamo zo ²tan-dard-nej kon-²truk-cie 
+odep-si-lo-no-va-ného NKA
  []
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 107.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 131.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [5] [6] [7])
+) [6] [7])
 (./rozlozitelneNerozlozitelne.tex [8]
 Kapitola 2.
 [9
 
-] [10] [11] [12] [13]
-Overfull \hbox (10.71388pt too wide) in paragraph at lines 310--311
+] [10] [11] [12]
+Overfull \hbox (27.17389pt too wide) in paragraph at lines 310--311
+[]\T1/cmr/m/n/12 Najprv do-ká-ºeme (a)[]. Uva-ºujme $\OML/cmm/m/it/12 n; m \OMS
+/cmsy/m/n/12 ^^U \OT1/cmr/m/n/12 2$\T1/cmr/m/n/12 . Najprv uká-ºeme, ºe $\OML/c
+mm/m/it/12 nsc\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 [\OML/cmm/m/it
+/12 n; m; z[]; z[]\OT1/cmr/m/n/12 ]) =
+ []
+
+[13]
+Overfull \hbox (10.71388pt too wide) in paragraph at lines 314--315
 \T1/cmr/m/n/12 pre-cho-dová fun-kcia $\OML/cmm/m/it/12 ^^N\OT1/cmr/m/n/12 [\OML
 /cmm/m/it/12 n; z[]\OT1/cmr/m/n/12 ]$ \T1/cmr/m/n/12 je pre $\OT1/cmr/m/n/12 0 
 \OMS/cmsy/m/n/12 ^^T \OML/cmm/m/it/12 i < n$ \T1/cmr/m/n/12 de-fi-no-vaná na-sl
@@ -924,7 +925,7 @@ m/n/12 ](\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 i\OT1/cmr/m/n/12 ]
  []
 
 
-Overfull \hbox (1.93683pt too wide) in paragraph at lines 313--314
+Overfull \hbox (1.93683pt too wide) in paragraph at lines 317--318
 \T1/cmr/m/n/12 ko©ko na-vy²e $\OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 A\OT1/cmr/m/
 n/12 [\OML/cmm/m/it/12 n; z[]\OT1/cmr/m/n/12 ]) \OML/cmm/m/it/12 < \OT1/cmr/m/n
 /12 #[](\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n; m; z[]; z[]\OT1/
@@ -934,53 +935,83 @@ m/n/12 #[](\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n; m; z[]; z[]\O
 T1/cmr/m/n/12 ])$\T1/cmr/m/n/12 ,
  []
 
-[14]
-Overfull \hbox (2.56137pt too wide) in paragraph at lines 435--436
+
+Overfull \hbox (15.41898pt too wide) in paragraph at lines 319--320
+[]\T1/cmr/m/n/12 Dokáºeme (b)[]. Ak $\OML/cmm/m/it/12 z[] \OT1/cmr/m/n/12 = \OM
+L/cmm/m/it/12 z[] \OT1/cmr/m/n/12 = 0$\T1/cmr/m/n/12 , tak nie je £o do-ka-zo-v
+a´, na-ko©ko po-tom $\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n; m; 
+z[]; z[]\OT1/cmr/m/n/12 ] \OMS/cmsy/m/n/12 [
+ []
+
+
+Overfull \hbox (2.70845pt too wide) in paragraph at lines 323--324
+[]\T1/cmr/m/n/12 Na zá-klade au-to-matu $\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 [\OM
+L/cmm/m/it/12 n; z[]\OT1/cmr/m/n/12 ]$ \T1/cmr/m/n/12 z dô-kazu (a)[] de-fi-nu-
+jeme NKA $\OML/cmm/m/it/12 A[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n; z[]\OT1/cmr/
+m/n/12 ] = (\OML/cmm/m/it/12 K\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n; z[]\OT1/cmr/
+m/n/12 ] \OMS/cmsy/m/n/12 [
+ []
+
+
+Overfull \hbox (19.58345pt too wide) in paragraph at lines 324--325
+[]\T1/cmr/m/n/12 Na zá-klade au-to-matu $\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 [\OM
+L/cmm/m/it/12 m; z[]\OT1/cmr/m/n/12 ]$ \T1/cmr/m/n/12 z dô-kazu (a)[] de-fi-nu-
+jeme NKA $\OML/cmm/m/it/12 A[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 m; z[]\OT1/cmr/
+m/n/12 ] = (\OML/cmm/m/it/12 K\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 m; z[]\OT1/cmr/
+m/n/12 ] \OMS/cmsy/m/n/12 [
+ []
+
+
+Overfull \hbox (24.73698pt too wide) in paragraph at lines 324--325
+\T1/cmr/m/n/12 vaná na-sle-dovne: $\OML/cmm/m/it/12 ^^N[]\OT1/cmr/m/n/12 [\OML/
+cmm/m/it/12 m; z[]\OT1/cmr/m/n/12 ](\OML/cmm/m/it/12 q[]; "\OT1/cmr/m/n/12 ) = 
+\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 [0]\OMS/cmsy/m/n/12 g\OML/c
+mm/m/it/12 ; \OMS/cmsy/m/n/12 8\OML/cmm/m/it/12 q \OMS/cmsy/m/n/12 2 \OML/cmm/m
+/it/12 K\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 m; z[]\OT1/cmr/m/n/12 ]\OML/cmm/m/it/
+12 ; x \OMS/cmsy/m/n/12 2 f\OML/cmm/m/it/12 a; b\OMS/cmsy/m/n/12 g \OT1/cmr/m/n
+/12 : \OML/cmm/m/it/12 ^^N[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 m; z[]\OT1/cmr/m/
+n/12 ](\OML/cmm/m/it/12 q; x\OT1/cmr/m/n/12 ) =
+ []
+
+
+Overfull \hbox (40.94025pt too wide) in paragraph at lines 326--327
+\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 w \OMS/cmsy/m/n/12 2 f\OML/cmm/m/it/12 a; b\
+OMS/cmsy/m/n/12 g[]j\OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 w\OT1/cmr/m/n/12 ) \OM
+S/cmsy/m/n/12 ^^Q \OML/cmm/m/it/12 z[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 mod m\O
+T1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g [ f\OML/cmm/m/it/12 "\OMS/cmsy/m/n/12 g$\T1/c
+mr/m/n/12 , teda $\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A[]\OT1/c
+mr/m/n/12 [\OML/cmm/m/it/12 n; z[]\OT1/cmr/m/n/12 ]) \OMS/cmsy/m/n/12 \ \OML/cm
+m/m/it/12 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 A[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/
+12 m; z[]\OT1/cmr/m/n/12 ]) = \OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OML/cmm/m/it/
+12 A[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n; m; z[]; z[]\OT1/cmr/m/n/12 ])$\T1/cm
+r/m/n/12 .
+ []
+
+
+Overfull \hbox (34.31677pt too wide) in paragraph at lines 326--327
+\T1/cmr/m/n/12 Na-ko©ko na-vy²e $\OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 A[]\OT1/c
+mr/m/n/12 [\OML/cmm/m/it/12 n; z[]\OT1/cmr/m/n/12 ]) \OML/cmm/m/it/12 < \OT1/cm
+r/m/n/12 #[](\OML/cmm/m/it/12 A[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n; m; z[]; z
+[]\OT1/cmr/m/n/12 ])$ \T1/cmr/m/n/12 a $\OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 A[
+]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 m; z[]\OT1/cmr/m/n/12 ]) \OML/cmm/m/it/12 < 
+\OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 A[]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 n; m;
+ z[]; z[]\OT1/cmr/m/n/12 ])$\T1/cmr/m/n/12 ,
+ []
+
+[14] [15]
+Overfull \hbox (2.56137pt too wide) in paragraph at lines 448--449
 \T1/cmr/m/n/12 pred-chá-za-jú-ceho au-to-mat $\OML/cmm/m/it/12 A[]$ \T1/cmr/m/n
 /12 slovo $\OML/cmm/m/it/12 a[]$ \T1/cmr/m/n/12 ak-cep-tuje. Vý-po-£et vy-zerá 
 na-sle-dovne: $\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 p[]; a[]\OT1/cmr/m/n/12 ) \OMS
 /cmsy/m/n/12 `
  []
 
-[15] [16] [17]) (./vlastnostiTried.tex [18]
+[16] [17]) (./detVsNdet.tex [18]
 Kapitola 3.
-
-Overfull \hbox (17.07816pt too wide) in paragraph at lines 29--30
-[]\T1/cmr/m/n/12 Uvaºujme ja-zyky $\OML/cmm/m/it/12 L[] \OT1/cmr/m/n/12 = \OMS/
-cmsy/m/n/12 f\OML/cmm/m/it/12 w \OMS/cmsy/m/n/12 2 f\OML/cmm/m/it/12 a; b\OMS/c
-msy/m/n/12 g[]j\OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 w\OT1/cmr/m/n/12 ) \OMS/cms
-y/m/n/12 ^^Q \OT1/cmr/m/n/12 0(\OML/cmm/m/it/12 mod \OT1/cmr/m/n/12 2)\OML/cmm/
-m/it/12 ;  \OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 w\OT1/cmr/m/n/12 ) \OMS/cmsy/m/
-n/12 ^^Q \OT1/cmr/m/n/12 0(\OML/cmm/m/it/12 mod \OT1/cmr/m/n/12 3)\OMS/cmsy/m/n
-/12 g\OML/cmm/m/it/12 ; L[] \OT1/cmr/m/n/12 =
- []
-
 [19
 
-]
-Overfull \hbox (85.84358pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/12 KAPITOLA 3.  VLASTNOSTI TRIED ROZLOšITELNÝCH A NEROZLOšITELNÝCH
- JAZYKOV \T1/cmr/m/n/12 20
- []
-
-[20]
-Overfull \hbox (85.84358pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/12 KAPITOLA 3.  VLASTNOSTI TRIED ROZLOšITELNÝCH A NEROZLOšITELNÝCH
- JAZYKOV \T1/cmr/m/n/12 21
- []
-
-[21]) (./ine.tex
-Overfull \hbox (85.84358pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/12 KAPITOLA 3.  VLASTNOSTI TRIED ROZLOšITELNÝCH A NEROZLOšITELNÝCH
- JAZYKOV \T1/cmr/m/n/12 22
- []
-
-[22]
-Kapitola 4.
-[23
-
-] [24]
-Overfull \hbox (1.97015pt too wide) in paragraph at lines 106--107
+] [20]
+Overfull \hbox (1.97015pt too wide) in paragraph at lines 110--111
 []\T1/cmr/m/n/12 Definujme po-stup-nos´ ja-zy-kov $\OML/cmm/m/it/12 P \OT1/cmr/
 m/n/12 = (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 )[]$ \T1/cmr/m/n/12 na-sle-dovne:
  $\OML/cmm/m/it/12 L[] \OT1/cmr/m/n/12 = (\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 a[
@@ -988,8 +1019,8 @@ m/n/12 = (\OML/cmm/m/it/12 L[]\OT1/cmr/m/n/12 )[]$ \T1/cmr/m/n/12 na-sle-dovne:
 b\OMS/cmsy/m/n/12 g\OT1/cmr/m/n/12 )[]$
  []
 
-[25]
-Overfull \hbox (26.53296pt too wide) in paragraph at lines 142--143
+[21] [22]
+Overfull \hbox (26.53296pt too wide) in paragraph at lines 146--147
 \T1/cmr/m/n/12 Takto do-sta-neme $\OML/cmm/m/it/12 A[] \OT1/cmr/m/n/12 = (\OMS/
 cmsy/m/n/12 f\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 j\OT1/cmr/m/n/
 12 ]\OML/cmm/m/it/12 ; q\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 j; \OT1/cmr/m/n/12 (\
@@ -1002,8 +1033,8 @@ q\OT1/cmr/m/n/12 [0]\OML/cmm/m/it/12 ; q\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 i \OM
 S/cmsy/m/n/12 ^^@
  []
 
-[26]
-Overfull \hbox (0.3664pt too wide) in paragraph at lines 176--177
+
+Overfull \hbox (0.3664pt too wide) in paragraph at lines 180--181
 []$\OML/cmm/m/it/12 A[] \OT1/cmr/m/n/12 = (\OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 q
 []; q[]\OMS/cmsy/m/n/12 g [ f\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 [\OML/cmm/m/it/1
 2 j\OT1/cmr/m/n/12 ] \OMS/cmsy/m/n/12 j \OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ^^T 
@@ -1015,7 +1046,7 @@ ML/cmm/m/it/12 a; b\OMS/cmsy/m/n/12 g\OML/cmm/m/it/12 ; ^^N[]; q\OT1/cmr/m/n/12
  []
 
 
-Overfull \hbox (25.84024pt too wide) in paragraph at lines 176--177
+Overfull \hbox (25.84024pt too wide) in paragraph at lines 180--181
 \T1/cmr/m/n/12 a pre-cho-dová fun-kcia $\OML/cmm/m/it/12 ^^N[]$ \T1/cmr/m/n/12 
 je de-fi-no-vaná na-sle-dovne: $\OML/cmm/m/it/12 ^^N[]\OT1/cmr/m/n/12 (\OML/cmm
 /m/it/12 q\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 i \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n
@@ -1023,15 +1054,19 @@ je de-fi-no-vaná na-sle-dovne: $\OML/cmm/m/it/12 ^^N[]\OT1/cmr/m/n/12 (\OML/cmm
 cmr/m/n/12 (\OML/cmm/m/it/12 q[]; a\OT1/cmr/m/n/12 ) =
  []
 
-
-Overfull \hbox (10.5455pt too wide) in paragraph at lines 178--179
+[23]
+Overfull \hbox (10.5455pt too wide) in paragraph at lines 182--183
 \T1/cmr/m/n/12 Pre ilus-trá-ciu a lep-²iu £i-ta-te©-nos´ uvá-dzame roz-klad au-
 to-matu $\OML/cmm/m/it/12 A[]$ \T1/cmr/m/n/12 na au-to-maty $\OML/cmm/m/it/12 A
 []; A[]$
  []
 
-[27] [28] [29]
-Overfull \hbox (26.51398pt too wide) in paragraph at lines 285--286
+[24]) (./vlastnostiRNR.tex [25]
+Kapitola 4.
+[26
+
+] [27] [28] [29]
+Overfull \hbox (26.51398pt too wide) in paragraph at lines 149--150
 []\T1/cmr/m/n/12 ‰ahko vidno, ºe $\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OML/cmm/m
 /it/12 A[]\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 L[]$\T1/cmr/m/n/12 . Uva-ºujme m
 no-ºinu dvo-jíc slov $\OML/cmm/m/it/12 F \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\O
@@ -1041,16 +1076,16 @@ cmr/m/n/12 )\OML/cmm/m/it/12 ;  suff\OT1/cmr/m/n/12 (\OMS/cmsy/m/n/12 j\OML/cmm
  []
 
 [30]
-Overfull \hbox (15.18637pt too wide) in paragraph at lines 338--339
-[]\T1/cmr/bx/n/12 Veta 4.2.2. []\T1/cmr/m/it/12 Nech $\OT1/cmr/m/n/12 ^^F$ \T1/
+Overfull \hbox (15.18637pt too wide) in paragraph at lines 202--203
+[]\T1/cmr/bx/n/12 Veta 4.4.2. []\T1/cmr/m/it/12 Nech $\OT1/cmr/m/n/12 ^^F$ \T1/
 cmr/m/it/12 je ©u-bo-volná abe-ceda, nech $\OML/cmm/m/it/12 k[]; k[] \OMS/cmsy/
 m/n/12 2 f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OMS/cmsy/m/n/12
  g$\T1/cmr/m/it/12 , nech $\OML/cmm/m/it/12 w[]; w[]; w[]; w[]; w[]; w[] \OMS/c
 msy/m/n/12 2
  []
 
-
-Overfull \hbox (16.14513pt too wide) in paragraph at lines 390--391
+[31]
+Overfull \hbox (16.14513pt too wide) in paragraph at lines 254--255
 []\T1/cmr/m/n/12 Moºno na-hliad-nu´, ºe $\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OM
 L/cmm/m/it/12 A[]\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 v[]b[][
 ][]v[]b[][]v[] \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 l \OMS/cmsy/m/n/12 2 \U/msb/
@@ -1059,9 +1094,31 @@ m/n/12 N\OMS/cmsy/m/n/12 g[]$ \T1/cmr/m/n/12 a $\OML/cmm/m/it/12 L\OT1/cmr/m/n/
 v[]b[][]v[]b[][][]v[] \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 l \OMS/cmsy/m/n/12 2
  []
 
-[31] [32] [33]) (./zaver.tex [34]) [35
+[32] [33]
+Overfull \hbox (17.07816pt too wide) in paragraph at lines 340--341
+[]\T1/cmr/m/n/12 Uvaºujme ja-zyky $\OML/cmm/m/it/12 L[] \OT1/cmr/m/n/12 = \OMS/
+cmsy/m/n/12 f\OML/cmm/m/it/12 w \OMS/cmsy/m/n/12 2 f\OML/cmm/m/it/12 a; b\OMS/c
+msy/m/n/12 g[]j\OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 w\OT1/cmr/m/n/12 ) \OMS/cms
+y/m/n/12 ^^Q \OT1/cmr/m/n/12 0(\OML/cmm/m/it/12 mod \OT1/cmr/m/n/12 2)\OML/cmm/
+m/it/12 ;  \OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 w\OT1/cmr/m/n/12 ) \OMS/cmsy/m/
+n/12 ^^Q \OT1/cmr/m/n/12 0(\OML/cmm/m/it/12 mod \OT1/cmr/m/n/12 3)\OMS/cmsy/m/n
+/12 g\OML/cmm/m/it/12 ; L[] \OT1/cmr/m/n/12 =
+ []
 
-] (./main.bbl) [36
+
+Overfull \hbox (30.41129pt too wide) in paragraph at lines 380--381
+[]\T1/cmr/m/n/12 Uvaºujme ja-zyky $\OML/cmm/m/it/12 L[] \OT1/cmr/m/n/12 = \OMS/
+cmsy/m/n/12 f\OML/cmm/m/it/12 w \OMS/cmsy/m/n/12 2 f\OML/cmm/m/it/12 a; b\OMS/c
+msy/m/n/12 g[] j \OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 w\OT1/cmr/m/n/12 ) \OMS/c
+msy/m/n/12 ^^Q \OT1/cmr/m/n/12 0 (\OML/cmm/m/it/12 mod \OT1/cmr/m/n/12 3)\OML/c
+mm/m/it/12 ;  \OT1/cmr/m/n/12 #[](\OML/cmm/m/it/12 w\OT1/cmr/m/n/12 ) \OMS/cmsy
+/m/n/12 ^^Q \OT1/cmr/m/n/12 0 (\OML/cmm/m/it/12 mod \OT1/cmr/m/n/12 2)\OMS/cmsy
+/m/n/12 g\OML/cmm/m/it/12 ; L[] \OT1/cmr/m/n/12 =
+ []
+
+[34]) (./zaver.tex [35]) [36
+
+] (./main.bbl) [37
 
 
 
@@ -1071,13 +1128,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 14165 strings out of 493304
- 258762 string characters out of 6139872
- 348238 words of memory out of 5000000
- 17273 multiletter control sequences out of 15000+600000
+ 14175 strings out of 493304
+ 258918 string characters out of 6139872
+ 351398 words of memory out of 5000000
+ 17283 multiletter control sequences out of 15000+600000
  17955 words of font info for 48 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,11n,68p,1810b,1099s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,11n,68p,1820b,1101s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
@@ -1096,10 +1153,10 @@ public/cm-super/sfcc2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1200.pfb></usr/share
 /texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/p
 ublic/cm-super/sftt1200.pfb>
-Output written on main.pdf (44 pages, 559791 bytes).
+Output written on main.pdf (45 pages, 570503 bytes).
 PDF statistics:
- 267 PDF objects out of 1000 (max. 8388607)
- 187 compressed objects within 2 object streams
+ 270 PDF objects out of 1000 (max. 8388607)
+ 189 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

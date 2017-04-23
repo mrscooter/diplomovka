@@ -1,7 +1,7 @@
 \select@language {slovak}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces NKA akceptuj\IeC {\'u}ci jazyk $ L $}}{7}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces NKA akceptuj\IeC {\'u}ci jazyk $ L $}}{7}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces NKA akceptuj\IeC {\'u}ci jazyk $ L $}}{8}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces NKA akceptuj\IeC {\'u}ci jazyk $ L $}}{8}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces automat $ A_n $ pre jazyk $ \delimiter "4266308 a^{k}ba^{l} | (l+k) \equiv 0 (mod \tmspace +\thickmuskip {.2777em} n) \delimiter "5267309 $}}{9}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces rozklad automatu $ A_n $}}{10}
@@ -11,21 +11,21 @@
 \contentsline {figure}{\numberline {2.6}{\ignorespaces netrivi\IeC {\'a}lny rozklad automatu $ A_n $ z Obr. \ref {fig:a^nub^*} na automaty $ A_1^n $(hore) a $ A_2^n $(dole)}}{12}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces automat $ A_n $ pre jazyk $ \delimiter "4266308 b \delimiter "5267309 .\delimiter "4266308 w \in \delimiter "4266308 a,b \delimiter "5267309 ^{*} | \#_a(w)=n \delimiter "5267309 $}}{13}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces netrivi\IeC {\'a}lny rozklad automatu $ A_n $ pre jazyk $ \delimiter "4266308 b \delimiter "5267309 .\delimiter "4266308 w \in \delimiter "4266308 a,b \delimiter "5267309 ^{*} | \#_a(w)=n \delimiter "5267309 $ na automaty $ A_1^n $(hore) a $ A_2^n $(dole)}}{13}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces automat $ A_{l,k} $ pre jazyk $ \delimiter "4266308 a^lb^k \delimiter "5267309 $}}{14}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces automat $ A_{l,k} $ pre jazyk $ \delimiter "4266308 a^lb^k \delimiter "5267309 $}}{15}
 \contentsline {figure}{\numberline {2.10}{\ignorespaces rozklad automat $ A_{l,k} $ na automaty $ A_l $(hore) a $ A_k $(dole)}}{15}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces automat $ A_{\Sigma ^n} $}}{15}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces automat $ A_{p^n} $}}{16}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces automat $ A_{\Sigma ^n} $}}{16}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces automat $ A_{p^n} $}}{17}
 \contentsline {figure}{\numberline {2.13}{\ignorespaces automat $ A_{L} $ pre jazyk $ L = (\delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 \delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 )^* $}}{17}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces deterministick\IeC {\'y} kone\IeC {\v c}n\IeC {\'y} automat $ A_{L} $ pre jazyk $ L = (\delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 \delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 )^* $}}{20}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces rozklad automatu $ A_L $}}{21}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces automat $ A_4^N $}}{22}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces automat $ A_4^D $}}{23}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces rozklad automatu $ A_4^D $ na automaty $ A_1^{D,4}$(hore) a $ A_2^{D,4} $(dole)}}{24}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces deterministick\IeC {\'y} kone\IeC {\v c}n\IeC {\'y} automat $ A_{L} $ pre jazyk $ L = (\delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 \delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 )^* $}}{24}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces rozklad automatu $ A_L $}}{24}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces automat $ A_4^N $}}{25}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces automat $ A_4^D $}}{27}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces rozklad automatu $ A_4^D $ na automaty $ A_1^{D,4}$(hore) a $ A_2^{D,4} $(dole)}}{28}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces automat $ A_u $}}{30}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces rozklad automatu $ A_u^k $ na automaty $ A_u $(hore) a $ A_k $(dole)}}{30}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces rozklad automatu $ A $ na automaty $ A_1 $ a $ A_2 $}}{31}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces rozklad automatu $ A $ na automaty $ A_1 $(hore) a $ A_2 $(dole)}}{33}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces automat $ A_w $}}{34}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Rozklad automatu $ A_w $ na automaty $ A_w^a $ (hore) a $ A_w^b $ (dole)}}{34}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces automat $ A_w $}}{29}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Rozklad automatu $ A_w $ na automaty $ A_w^a $ (hore) a $ A_w^b $ (dole)}}{29}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces automat $ A_u $}}{30}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces rozklad automatu $ A_u^k $ na automaty $ A_u $(hore) a $ A_k $(dole)}}{31}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces rozklad automatu $ A $ na automaty $ A_1 $ a $ A_2 $}}{32}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces rozklad automatu $ A $ na automaty $ A_1 $(hore) a $ A_2 $(dole)}}{33}

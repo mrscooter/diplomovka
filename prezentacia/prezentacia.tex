@@ -20,7 +20,7 @@
 \usepackage{hhline}
 \usepackage{ctable}
 \usepackage{array}
-\usetikzlibrary{automata,arrows,topaths}
+\usetikzlibrary{automata,arrows,topaths,positioning}
 
 \newtheorem{theorem}{Veta}
 \newtheorem{definition}[theorem]{Definícia}
@@ -425,17 +425,17 @@ Pre $ n \geq 1 $ a $ p $ je prvočíslo definujeme $ L_{p^n} = \lbrace a^{kp^{n}
 \end{itemize}
 
 \begin{center}
-\begin{tabular}{ l ? c | c | c | c | c }
-     & $ \cap $ & $ \cup $ & . & $ h $ & $ h^{-1} $ \\
+\begin{tabular}{ l ? c | c | c | c | c | c }
+     & $ \cap $ & $ \cup $ & . & $ h $ & $ h^{-1} $ & $ * $ \\
   \specialrule{.2em}{.1em}{.1em}
-  R  & \xmark & \xmark & \xmark & \xmark & ? \\
+  R  & \xmark & \xmark & \xmark & \xmark & ? & \xmark \\
   \hline
-  NR & \xmark & \xmark & ? & \xmark & \xmark \\
+  NR & \xmark & \xmark & \xmark & \xmark & \xmark & \xmark \\
 \end{tabular}
 \end{center}
 
 \begin{itemize}
-\item zatial sme nepojali ani podozrenie, že by niektorá z tried mohla byť na niečo rozumné uzavretá
+\item nepojali ani podozrenie, že by niektorá z tried mohla byť na niečo rozumné uzavretá
 \end{itemize}
 
 \end{frame}
@@ -545,13 +545,129 @@ Existuje nedeterministicky nerozložiteľný deterministicky rozložiteľný reg
 \end{tikzpicture}
 
 \begin{itemize}
-\item Rozložiteľnosť je spôsobená nutnosťou trash-stavu v DKA
+\item chyba krásy - rozložiteľnosť je spôsobená nutnosťou trash-stavu v DKA
 \end{itemize}
 \end{figure}
 
 \end{proof}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Deterministická vs. nedeterministická rozložiteľnosť}
+
+\begin{theorem}
+\label{thm:ndet_vs_det_diff_big}
+Existuje postupnosť jazykov $  (L_i)_{i=2}^{\infty} $, taká, že platí:
+\begin{enumerate}[label=(\alph*)]
+\item Jazyk $ L_i $ je nedeterministicky nerozložiteľný a súčasne deterministicky rozložiteľný pre ľubovolné $ i \in \mathbb{N}, i \geq 2 $.
+\item Nech pre ľubovolné $ i \in \mathbb{N}, i \geq 3 $ je $ A_i $ minimálny DKA akceptujúci $ L_i $. Potom existuje taký rozklad $ A_i $ na $ A_1^i $ a $ A_2^i $, že platí $ \#_S(A_1^i)=\#_S(A_2^i)=\frac{\#_S(A_i)+3}{2} $.
+\end{enumerate}
+\end{theorem}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Deterministická vs. nedeterministická rozložiteľnosť}
+
+\begin{proof}
+\begin{itemize}
+\item postupnosť jazykov $ (L_i)_{i=2}^{\infty} $, kde $ L_i = (\lbrace a^{i-1} \rbrace \lbrace b \rbrace^* \lbrace a,b \rbrace)^* $
+\item hľadanú postupnosť dostaneme z tejto postupnosti vynechaním niektorých jej členov
+\item $ L_i $ je nerozložiteľný ak $ i $ je mocninou prvočísla.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.65,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2cm, semithick]
+	\node[state,initial,accepting] (0)					{$q_0$};
+   	\node[state] 					(1)	[right of=0]	{$q_1$};
+   	\node[state] 					(2)	[below of=1]	{$q_2$};
+   	\node[state] 					(3)	[left of=2]		{$q_3$};
+   	
+   	\path[->]
+     (0) edge [bend left] node {$ a $} (1)
+     (1) edge [bend left] node {$ a $} (2)
+     (2) edge [bend left] node {$ a $} (3)
+     (3) edge [bend left] node {$ a,b $} (0)
+     (3) edge [loop below] node {$ b $} ()
+     ;
+\end{tikzpicture}
+\end{figure}
+
+\end{proof}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Deterministická vs. nedeterministická rozložiteľnosť}
+
+\begin{proof}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.7,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,semithick]
+	\node[state,initial,accepting] (0)						{$0$};
+   	\node[state] 					(1)		[below of=0]	{$1$};
+   	\node[state] 					(2)		[right of=1]	{$2$};
+   	\node[state] 					(3)		[above of=2]	{$3$};
+	\node[state,accepting] 			(30)	[right =3cm of 3]	{$3,0$};
+   	\node[state,accepting]			(01)	[right of=30]	{$0,1$};
+   	\node[state] 					(12)	[below of=01]	{$1,2$};
+   	\node[state] 					(23)	[left of=12]	{$2,3$};
+   	
+   	\path[->]
+     (0) edge [bend right] node [swap] {$ a $} (1)
+     (1) edge [bend right] node [swap] {$ a $} (2)
+     (2) edge [bend right] node [swap] {$ a $} (3)
+     (3) edge [bend right] node [swap] {$ a $} (0)
+     (3) edge [bend left] node {$ b $} (30)
+     (30) edge [bend left] node {$ a $} (01)
+     (01) edge [bend left] node {$ a $} (12)
+     (12) edge [bend left] node {$ a $} (23)
+     (23) edge [bend left] node [swap] {$ a,b $} (30)
+     (30) edge [loop above] node {$ b $} ()
+     ;
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.65,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2cm,semithick]
+	\node[state,initial above ,accepting] (0)				{$[0]$};
+   	\node[state] 					(1)		[below left of=0]	{$[1]$};
+   	\node[state] 					(2)		[below right of=1]	{$[2]$};
+   	\node[state] 					(3)		[above right of=2]	{$[3]$};
+	\node[state,accepting] 			(C2)	[right of=3]		{$C2$};
+   	
+   	\path[->]
+     (0) edge [bend right] node [swap] {$ a $} (1)
+     (1) edge [bend right] node [swap] {$ a $} (2)
+     (2) edge [bend right] node [swap] {$ a $} (3)
+     (3) edge [bend right] node [swap] {$ a $} (0)
+     (3) edge [bend left] node {$ b $} (C2)
+     (C2) edge [loop above] node {$ a,b $} ()
+     ;
+\end{tikzpicture}
+\begin{tikzpicture}[scale=0.65,transform shape,->,>=stealth',shorten >=1pt,auto,node distance=2cm, semithick]
+	\node[state,initial,accepting] (C1)					{$C1$};
+	\node[state,accepting] 			(30)	[right of=C1]	{$3,0$};
+   	\node[state,accepting]			(01)	[above right of=30]	{$0,1$};
+   	\node[state] 					(12)	[below right of=01]	{$1,2$};
+   	\node[state] 					(23)	[below left of=12]	{$2,3$};
+   	
+   	\path[->]
+     (C1) edge [loop above] node {$ a $} ()
+     (C1) edge [bend left] node {$ b $} (30)
+     (30) edge [bend left] node {$ a $} (01)
+     (01) edge [bend left] node {$ a $} (12)
+     (12) edge [bend left] node {$ a $} (23)
+     (23) edge [bend left] node {$ a,b $} (30)
+     (30) edge [loop right] node {$ b $} ()
+     ;
+\end{tikzpicture}
+\end{figure}
+
+\end{proof}
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Charakterizácia singleton jazykov}

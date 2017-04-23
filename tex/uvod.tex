@@ -1,4 +1,18 @@
 \chapter*{Úvod}
 \addcontentsline{toc}{chapter}{Úvod}
 
-Tu bude úvod. Zatiaľ je toto betaverzia diplomovky pre potreby komisie na ŠVK. Práca nijak neprešla pravopisnou korektúrou a niektoré formulácie sú ešte dosť neohrabané, no jednoducho je to na nečisto.
+Konečný automat je jednoduchý výpočtový model, ktorý má široké praktické uplatnenie. Pojem konečného automatu prvý krát zaviedli McCulloch a Pitts v \cite{McCullochPitts}. Odvtedy bolo študovaných mnoho formalizácií tohto pojmu, ktoré môžeme rozdeliť do dvoch základných skupín: prekladače a akceptory. Ústredným pojmom našej práce je nedeterministický konečný automat, ktorý patrí medzi akceptory.
+\par
+Našou motiváciou je otázka užitočnosti prídavnej informácie pri akceptovaní jazyka. Voľne povedané, ak automatu našepkám, že vstup, ktorý ide rozpoznávať, patrí do nejakého poradného jazyka, viem tým zabezpečiť, že na rozpoznávanie pôvodného jazyka stačí automat menšej zložitosti? Uveďme jeden príklad. Uvažujme, že chceme rozpoznávať jazyk $ \lbrace w \in \lbrace a \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 6) \rbrace $ a chceme ho rozpoznávať nedeterministickým konečným automatom. Ľahko vidno, že minimálny nedeterministický konečný automat pre tento jazyk má 6 stavov. Čo ak však automatu našepkám, že dĺžka vstupu je deliteľná tromi? Vtedy nám stačí vziať automat s dvomi stavmi.
+\par
+Iný pohľad na formalizáciu tejto otázky je, či vieme rozložiť automat rozpoznávajúci jazyk na dva, ktoré sú nejakým spôsobom jednoduchšie ako pôvodný automat, pričom prienik jazykov, ktoré rozpoznávajú jednotlivé jednoduchšie automaty je pôvodný jazyk. Ľahko vidno, že jazyk rozpoznávaný jedným z týchto dvoch automatov plní funkciu poradného jazyka.
+\par
+Spomeňme ešte, že otázka užitočnosti prídavnej informácie sa dá takto definovať pre akýkoľvek výpočtový model, nie nutne iba pre konečné automaty. V našej práci však budeme tento problém skúmať výlučne pre nedeterministické konečné automaty. V minulosti bol tento problém už skúmaný na našej fakulte pre deterministické konečné automaty v práci \cite{Gazi} a pre deterministické zásobníkové automaty v práci \cite{Labath}.
+\par
+V Kapitole \ref{kap:defs} definujeme potrebné pojmy, ktoré potrebujeme v našej práci. Takisto uvádzame potrebné výsledky, ktoré nie sú naše.
+\par
+V Kapitole \ref{kap:languages} skúmame konkrétne jazyky vzhľadom na rozložiteľnosť a budujeme repertoár tvrdení potrebných v ďalšom texte.
+\par
+Zaujímavou otázkou je, či je pojem rozložiteľnosti rôzny ak uvažujeme deterministické respektíve nedeterministické konečné automaty. Túto otázku riešime v Kapitole \ref{kap:det_vs_ndet}.
+\par
+V Kapitole \ref{kap:properties} skúmame uzáverové vlastnosti tried rozložiteľných a nerozložiteľných jazykov. Taktiež uvádzame ďalšie naše výsledky súvisiace s vlastnosťami rozložiteľnosti a nerozložiteľnosti.

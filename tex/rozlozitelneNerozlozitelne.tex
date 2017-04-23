@@ -42,7 +42,7 @@ Uvažujme $ n \in \mathbb{N}, n \geq 2 $. Aby sme dokázali, že jazyk je regul�
 \caption{automat $ A_n $ pre jazyk $ \lbrace a^{k}ba^{l} | (l+k) \equiv 0 (mod \; n) \rbrace $} \label{fig:An}
 \end{figure}
 
-Uvažujme množinu dvojíc slov $ F_n = \lbrace (a^{l},ba^{n-l}), (a^{l}b,a^{n-l}) \; | \; 0 \leq l \leq n-1 \rbrace $. Podla definície \ref{def:extended_fooling_set} je množina $ F_n $ rozšírenou oblbovacou množinou pre jazyk $ L_n $. $ |F_n|=2n $, teda podla Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq 2n$. Kedže $ L(A_n) = L_n $ a $ \#_S(A_n) = n+2 $, tak $nsc(L_n) = 2n $ a automat $ A_n $ je minimálny NKA pre jazyk $ L_n $.
+Uvažujme množinu dvojíc slov $ F_n = \lbrace (a^{l},ba^{n-l}), (a^{l}b,a^{n-l}) \; | \; 0 \leq l \leq n-1 \rbrace $. Podla definície \ref{def:extended_fooling_set} je množina $ F_n $ rozšírenou mätúcou množinou pre jazyk $ L_n $. $ |F_n|=2n $, teda podľa Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq 2n$. Kedže $ L(A_n) = L_n $ a $ \#_S(A_n) = n+2 $, tak $nsc(L_n) = 2n $ a automat $ A_n $ je minimálny NKA pre jazyk $ L_n $.
 \par
 Teraz zostrojme netriviálny rozklad automatu $ A_n $. Hladané NKA $ A_n^1 $ a $ A_n^2 $ uvádzame pomocou ich diagramov.
 
@@ -109,7 +109,7 @@ Podla prepokladu vety uvažujme $ Z \in \mathbb{N}, Z > 0 $, $ Z $ nie je mocnin
 \caption{automat $ A_Z $} \label{fig:Az}
 \end{figure}
 
-Uvažujme množinu dvojíc slov $ F_Z = \lbrace (a^{i},a^{Z-i}) \; | \; 0 \leq i \leq Z-1 \rbrace $. Podla definície \ref{def:fooling_set} je množina $ F_Z $ oblbovacou množinou pre jazyk $ L_Z $. Nakolko $ |F_Z|=Z $, tak podľa Vety \ref{thm:fooling_set_technique} $ nsc(L_Z) \geq Z $. Nakoľko $ L(A_Z) = L_Z $ a $ \#_S(A_Z) = Z $, tak platí $ nsc(L_Z) = Z$. Intuitívne je jasné, že automat \glqq{}počíta zvyšok po delení $ Z $\grqq{}.
+Uvažujme množinu dvojíc slov $ F_Z = \lbrace (a^{i},a^{Z-i}) \; | \; 0 \leq i \leq Z-1 \rbrace $. Podla definície \ref{def:fooling_set} je množina $ F_Z $ mätúcou množinou pre jazyk $ L_Z $. Nakolko $ |F_Z|=Z $, tak podľa Vety \ref{thm:fooling_set_technique} $ nsc(L_Z) \geq Z $. Nakoľko $ L(A_Z) = L_Z $ a $ \#_S(A_Z) = Z $, tak platí $ nsc(L_Z) = Z$. Intuitívne je jasné, že automat \glqq{}počíta zvyšok po delení $ Z $\grqq{}.
 \par
 Teraz nájdeme netriviálny rozklad automatu $ A_Z $. Nech $ p_{1}^{m_1}p_{2}^{m_2}...p_{r}^{m_r} $ je prvočíselný rozklad čísla $ Z $. Podla predpokladov vety platí, že $ r \geq 2 $. Najprv načrtneme intuitívny pohlad vyplývajúci z vlastností zložených čísel a potom túto intuíciu sformalizujeme. Automaty v rozklade budú počítať zvyšok po delení $ p_{1}^{m_1} $ a zvyšok po delení $p_{2}^{m_2}...p_{r}^{m_r} $ a budú akceptovať, ak nimi počítaný zvyšok vyjde 0. Ak oba zvyšky vyjdú 0, tak dostaneme slovo, v ktorom počet písmen $ a $ je delitelný $ p_{1}^{m_1} $ a zároveň je delitelný $p_{2}^{m_2}...p_{r}^{m_r} $. Nakoľko $ p_1, p_2,...,p_r $ sú navzájom rôzne prvočísla, tak potom počet písmen $ a $ v zmienenom slove je delitelný $ Z=p_{1}^{m_1}p_{2}^{m_2}...p_{r}^{m_r} $. Teraz uveďme hladané automaty, ktoré tvoria rozklad automatu $ A_Z $. Automaty uvádzame pomocou diagramov. Pre prehladnosť diagramov zaveďme označenie $ l_1 = p_{1}^{m_1} $ a $ l_2 = p_{2}^{m_2}...p_{r}^{m_r} $
 
@@ -184,7 +184,7 @@ Podla prepokladu uvažujme $ n \geq 2 $. Najprv dokážeme, že $ nsc(L_n) = n+2
 \label{fig:a^nub^*}
 \end{figure}
 
-Uvažujme množinu dvojíc slov $ F_n = \lbrace (b,b) \rbrace \cup \lbrace (a^i, a^{n-1}) | 0 \leq i \leq n \rbrace $. Táto množina je podľa definície \ref{def:extended_fooling_set} rozšírenou oblbovacou množinou pre jazyk $ L_n $. Kedže $ |F_n| = n+2 $, tak podľa Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq n+2$. Nakoľko automat $ L(A_n) $ a $ \#_{S}(A_n) = n+2 $, tak $ nsc(L_n) = n+2$ a automat $ A_n $ je minimálny NKA pre jazyk $ L_n $.
+Uvažujme množinu dvojíc slov $ F_n = \lbrace (b,b) \rbrace \cup \lbrace (a^i, a^{n-1}) | 0 \leq i \leq n \rbrace $. Táto množina je podľa definície \ref{def:extended_fooling_set} rozšírenou mätúcou množinou pre jazyk $ L_n $. Kedže $ |F_n| = n+2 $, tak podľa Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq n+2$. Nakoľko automat $ L(A_n) $ a $ \#_{S}(A_n) = n+2 $, tak $ nsc(L_n) = n+2$ a automat $ A_n $ je minimálny NKA pre jazyk $ L_n $.
 \par
 Teraz zostrojíme netriviálny rozklad automatu $ A_n $, čím skompletizujeme dôkaz. Rozklad uvádzame pomocou diagramu.
 
@@ -258,7 +258,7 @@ Uvažujme $ n \in \mathbb{N}, n \geq 1 $. Ukážeme, že $ nsc(L_n) = n+2 $. Naj
 \label{fig:ba^n}
 \end{figure}
 
-Uvažujme množinu dvojíc slov $ F_n = \lbrace (\varepsilon , ba^n) \rbrace \cup \lbrace (ba^k, a^{n-k} | 0 \leq k \leq n) \rbrace $. Množina $ F_n $ je podla definície \ref{def:extended_fooling_set} rozšírenou oblbovacou množinou pre jazyk $ L_n $. Nakolko $ |F_n| = n+2 $, tak podľa Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq n+2 $. Nakolko $ L(A_n)=L_n $ a $ \#_S(A)=n+2 $, tak $ nsc(L_n)=n+2 $ a automat $ A_n $ je minimálnym NKA pre jazyk $ L_n $.
+Uvažujme množinu dvojíc slov $ F_n = \lbrace (\varepsilon , ba^n) \rbrace \cup \lbrace (ba^k, a^{n-k} | 0 \leq k \leq n) \rbrace $. Množina $ F_n $ je podla definície \ref{def:extended_fooling_set} rozšírenou mätúcou množinou pre jazyk $ L_n $. Nakolko $ |F_n| = n+2 $, tak podľa Vety \ref{thm:extended_fooling_set_technique} $ nsc(L_n) \geq n+2 $. Nakolko $ L(A_n)=L_n $ a $ \#_S(A)=n+2 $, tak $ nsc(L_n)=n+2 $ a automat $ A_n $ je minimálnym NKA pre jazyk $ L_n $.
 Teraz zostrojíme netriviálny rozklad automatu $ A_n $. Rozklad uvádzame pomocou diagramu.
 
 \begin{figure}[H]
@@ -299,11 +299,15 @@ $ L(A_1^n) = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_{a}(w) = n \rbrace $, $ 
 
 \begin{theorem}
 \label{thm:nmz_nz_m}
-Nech pre $ n,m \geq 2, 0 \leq z_n < n, 0 \leq z_m < m $ je $ L[n,m,z_n,z_m] = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_a(w) \equiv z_n (mod \; n), \; \#_b(w) \equiv z_m (mod \; m) \rbrace $. Potom je jazyk $ L[n,m,z_n,z_m] $ rozložiteľný.
+Nech pre $ n,m \geq 2, 0 \leq z_n < n, 0 \leq z_m < m $ je $ L[n,m,z_n,z_m] = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_a(w) \equiv z_n (mod \; n), \; \#_b(w) \equiv z_m (mod \; m) \rbrace $. Potom platia nasledovné tvrdenia:
+\begin{enumerate}[label=(\alph*)]
+\item \label{thm:nmz_nz_m_item_1} Jazyk $ L[n,m,z_n,z_m] $ je rozložiteľný.
+\item \label{thm:nmz_nz_m_item_2} Jazyk $ L[n,m,z_n,z_m] \cup \lbrace \varepsilon \rbrace $ je rozložiteľný.
+\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-Uvažujme $ n,m \geq 2 $. Najprv ukážeme, že $ nsc(L[n,m,z_n,z_m])=nm $. Definujme NKA $ A[n,m,z_n,z_m]=(K,\lbrace a,b \rbrace,\delta,q[0,0],\lbrace q[z_n,z_m] \rbrace) $, kde $ K = \lbrace q[i,j] \; | \; 0 \leq i < n, \; 0 \leq j < m \rbrace $ a prechodová funkcia $ \delta $ je pre $ 0 \leq i < n, \; 0 \leq j < m $ definovaná nasledovne: $ \delta(q[i,j],a) = \lbrace q[(i+1) \; mod \; n,j] \rbrace $, $ \delta(q[i,j],b) = \lbrace q[i, (j+1) \; mod \; m] \rbrace $. Dá sa lahko nahliadnuť, že $ L(A[n,m,z_n,z_m])=L[n,m,z_n,z_m] $. Teraz uvažujme množinu dvojíc slov $ S = \lbrace (a^lb^k, a^{z_n+n-l}b^{z_m+m-k}) \; | \; 0 \leq l < n, \; 0 \leq k < m \rbrace $. Množina $ S $ je podla definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L[n,m,z_n,z_m] $. Kedže $ |S|=nm $, tak podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L[n,m,z_n,z_m]) \geq nm $. Nakoľko $ L(A[n,m,z_n,z_m])=L[n,m,z_n,z_m] $ a $ \#_S(A[n,m,z_n,z_m])=nm $, tak $ nsc(L[n,m,z_n,z_m])=nm $ a automat $ A[n,m,z_n,z_m] $ je minimálnym NKA pre jazyk $ L[n,m,z_n,z_m] $.
+Najprv dokážeme \ref{thm:nmz_nz_m_item_1}. Uvažujme $ n,m \geq 2 $. Najprv ukážeme, že $ nsc(L[n,m,z_n,z_m])=nm $. Definujme NKA $ A[n,m,z_n,z_m]=(K_A,\lbrace a,b \rbrace,\delta_A,q[0,0],\lbrace q[z_n,z_m] \rbrace) $, kde $ K_A = \lbrace q[i,j] \; | \; 0 \leq i < n, \; 0 \leq j < m \rbrace $ a prechodová funkcia $ \delta_A $ je pre $ 0 \leq i < n, \; 0 \leq j < m $ definovaná nasledovne: $ \delta_A(q[i,j],a) = \lbrace q[(i+1) \; mod \; n,j] \rbrace $, $ \delta_A(q[i,j],b) = \lbrace q[i, (j+1) \; mod \; m] \rbrace $. Dá sa lahko nahliadnuť, že $ L(A[n,m,z_n,z_m])=L[n,m,z_n,z_m] $. Teraz uvažujme množinu dvojíc slov $ S = \lbrace (a^lb^k, a^{z_n+n-l}b^{z_m+m-k}) \; | \; 0 \leq l < n, \; 0 \leq k < m \rbrace $. Množina $ S $ je podla definície \ref{def:fooling_set} mätúcou množinou pre jazyk $ L[n,m,z_n,z_m] $. Kedže $ |S|=nm $, tak podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L[n,m,z_n,z_m]) \geq nm $. Nakoľko $ L(A[n,m,z_n,z_m])=L[n,m,z_n,z_m] $ a $ \#_S(A[n,m,z_n,z_m])=nm $, tak $ nsc(L[n,m,z_n,z_m])=nm $ a automat $ A[n,m,z_n,z_m] $ je minimálny NKA pre jazyk $ L[n,m,z_n,z_m] $.
 \par
 Teraz zostrojíme netriviálny rozklad automatu $ A[n,m,z_n,z_m] $, čím skompletizujeme dôkaz. Uvažujme NKA definované nasledovne:
 \begin{enumerate}  
@@ -311,6 +315,15 @@ Teraz zostrojíme netriviálny rozklad automatu $ A[n,m,z_n,z_m] $, čím skompl
 \item $ A[m,z_m] = (K[m,z_m],\lbrace a,b \rbrace,\delta[m,z_m],q[0],\lbrace q[z_m] \rbrace)$ kde $ K[m,z_m] = \lbrace q[i] | 0 \leq i < m \rbrace $ a prechodová funkcia $ \delta[m,z_m] $ je pre $ 0 \leq i < m $ definovaná nasledovne: $ \delta[m,z_m](q_i,b) = \lbrace q[(i+1) \; mod \; m] \rbrace $, $ \delta[m,z_m](q_i,a) = \lbrace q[i] \rbrace $.
 \end{enumerate}
 Ľahko vidno, že $ L(A[n,z_n]) = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_a(w) \equiv z_n (mod \; n) \rbrace$, $ L(A[m,z_m]) = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_b(w) \equiv z_m (mod \; m) \rbrace $, teda $ L(A[n,z_n]) \cap L(A[m,z_m]) = L(A[n,m,z_n,z_m]) $. Nakoľko navyše $ \#_S(A[n,z_n]) < \#_S(A[n,m,z_n,z_m]) $ a $ \#_S(A[m,z_m]) < \#_S(A[n,m,z_n,z_m]) $, tak automaty $ A[n,z_n] $ a $ A[m,z_m] $ tvoria netriviálny rozklad automatu $ A[n,m,z_n,z_m] $.
+\par
+Dokážeme \ref{thm:nmz_nz_m_item_2}. Ak $ z_n=z_m=0 $, tak nie je čo dokazovať, nakoľko potom $ L[n,m,z_n,z_m] \cup \lbrace \varepsilon \rbrace = L[n,m,z_n,z_m] $. Uvažujme teda $ z_n \neq 0 $ alebo $ z_m \neq 0 $. Uvažujme automat $ A[n,m,z_n,z_m] $ z dôkazu \ref{thm:nmz_nz_m_item_1} a na jeho základe definujme NKA $ A_{\varepsilon}[n,m,z_n,z_m] = (K_A \cup \lbrace q_{\varepsilon} \rbrace, \lbrace a,b \rbrace, \delta_{\varepsilon}, q_{\varepsilon}, \lbrace q_{\varepsilon}, q[z_n,z_m] \rbrace) $ kde prechodová funkcia $ \delta_{\varepsilon} $ je definovaná nasledovne: $ \delta_{\varepsilon}(q_{\varepsilon},\varepsilon) = \lbrace q[0,0] \rbrace $, $ \forall q \in K_A, x \in \lbrace a,b \rbrace: \delta_{\varepsilon}(q,x) = \delta_A(q,x) $. Dá sa ľahko nahliadnuť, že $ L(A_{\varepsilon}[n,m,z_n,z_m]) = L[n,m,z_n,z_m] \cup \lbrace \varepsilon \rbrace $. Uvažujme množinu dvojíc slov $ M_{\varepsilon} = \lbrace (a^{l_n}b^{l_m},a^{n+z_n-l_n}b^{m+z_m-l_m}) \rbrace \cup \lbrace (\varepsilon,\varepsilon) \rbrace $. Množina $ M_{\varepsilon} $ je podľa definície \ref{def:extended_fooling_set} rozšírenou mätúcou množinou pre jazyk $ L[n,m,z_n,z_m] \cup \lbrace \varepsilon \rbrace $. Kedže $ |M_{\varepsilon}| = nm+1 $, tak podľa Vety \ref{thm:extended_fooling_set_technique} platí $ nsc(L[n,m,z_n,z_m] \cup \lbrace \varepsilon \rbrace) \geq nm+1$. Nakoľko $ L(A_{\varepsilon}[n,m,z_n,z_m]) = L[n,m,z_n,z_m] \cup \lbrace \varepsilon \rbrace $ a $ \#_S(A_{\varepsilon}[n,m,z_n,z_m]) = nm+1 $, tak $ nsc(L[n,m,z_n,z_m] \cup \lbrace \varepsilon \rbrace) = nm+1 $ a automat $ A_{\varepsilon}[n,m,z_n,z_m] $ je minimálny NKA pre jazyk $ L[n,m,z_n,z_m] \cup \lbrace \varepsilon \rbrace $.
+\par
+Zostrojíme netriviálny rozklad automatu $ A_{\varepsilon}[n,m,z_n,z_m] $ čím skompletizujeme dôkaz. Uvažujme NKA definované nasledovne:
+\begin{enumerate}  
+\item Na základe automatu $ A[n,z_n] $ z dôkazu \ref{thm:nmz_nz_m_item_1} definujeme NKA $ A_{\varepsilon}[n,z_n] = (K[n,z_n] \cup \lbrace q_{\varepsilon} \rbrace, \lbrace a,b \rbrace, \delta_{\varepsilon}[n,z_n], q_{\varepsilon}, \lbrace q_{\varepsilon}, q[z_n] \rbrace) $ kde prechodová funkcia $ \delta_{\varepsilon}[n,z_n] $ je definovaná nasledovne: $ \delta_{\varepsilon}[n,z_n](q_{\varepsilon},\varepsilon) = \lbrace q[0] \rbrace, \forall q \in K[n,z_n], x \in \lbrace a,b \rbrace: \delta_{\varepsilon}[n,z_n](q,x) = \delta[n,z_n](q,x) $.
+\item Na základe automatu $ A[m,z_m] $ z dôkazu \ref{thm:nmz_nz_m_item_1} definujeme NKA $ A_{\varepsilon}[m,z_m] = (K[m,z_m] \cup \lbrace q_{\varepsilon} \rbrace, \lbrace a,b \rbrace, \delta_{\varepsilon}[m,z_m], q_{\varepsilon}, \lbrace q_{\varepsilon}, q[z_m] \rbrace) $ kde prechodová funkcia $ \delta_{\varepsilon}[m,z_m] $ je definovaná nasledovne: $ \delta_{\varepsilon}[m,z_m](q_{\varepsilon},\varepsilon) = \lbrace q[0] \rbrace, \forall q \in K[m,z_m], x \in \lbrace a,b \rbrace: \delta_{\varepsilon}[m,z_m](q,x) = \delta[m,z_m](q,x) $.
+\end{enumerate}
+Ľahko vidno, že $ L(A_{\varepsilon}[n,z_n]) = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_a(w) \equiv z_n (mod \; n) \rbrace \cup \lbrace \varepsilon \rbrace $, $ L(A_{\varepsilon}[m,z_m]) = \lbrace w \in \lbrace a,b \rbrace^{*} | \#_b(w) \equiv z_m (mod \; m) \rbrace \cup \lbrace \varepsilon \rbrace $, teda $ L(A_{\varepsilon}[n,z_n]) \cap L(A_{\varepsilon}[m,z_m]) = L(A_{\varepsilon}[n,m,z_n,z_m]) $. Nakoľko navyše $ \#_S(A_{\varepsilon}[n,z_n]) < \#_S(A_{\varepsilon}[n,m,z_n,z_m]) $ a $ \#_S(A_{\varepsilon}[m,z_m]) < \#_S(A_{\varepsilon}[n,m,z_n,z_m]) $, tak automaty $ A_{\varepsilon}[n,z_n] $ a $ A_{\varepsilon}[m,z_m] $ tvoria netriviálny rozklad automatu $ A_{\varepsilon}[n,m,z_n,z_m] $.
 \end{proof}
 
 \begin{theorem}
@@ -349,7 +362,7 @@ Uvažujme $ l,k \geq 1 $. Ukážeme, že $ nsc(L_{l,k}) = l+k+1 $. Najprv zostro
 \label{fig:a^lb^k}
 \end{figure}
 
-Teraz uvažujmne množinu dvojíc slov $ F = \lbrace (a^i,a^{l-i}b^k),(a^lb^j,b^{k-j}) | 0 \leq i \leq l, \; 1 \leq j \leq k \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L_{l,k} $. Kedže $ |F| = l+k+1 $, tak podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L_{l,k}) \geq l+k+1 $. Nakoľko $ L(A_{l,k})=L_{l,k} $ a $ \#_S(A_{l,k})=l+k+1 $, tak $ nsc(L_{l,k}) = l+k+1 $ a automat $ A_{l,k} $ je minimálnym NKA pre jazyk $ L_{l,k} $.
+Teraz uvažujmne množinu dvojíc slov $ F = \lbrace (a^i,a^{l-i}b^k),(a^lb^j,b^{k-j}) | 0 \leq i \leq l, \; 1 \leq j \leq k \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} mätúcou množinou pre jazyk $ L_{l,k} $. Kedže $ |F| = l+k+1 $, tak podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L_{l,k}) \geq l+k+1 $. Nakoľko $ L(A_{l,k})=L_{l,k} $ a $ \#_S(A_{l,k})=l+k+1 $, tak $ nsc(L_{l,k}) = l+k+1 $ a automat $ A_{l,k} $ je minimálnym NKA pre jazyk $ L_{l,k} $.
 \par
 Teraz zostrojíme netriviálny rozklad automatu $ A_{l,k} $. Hladané automaty $ A_l $ a $ A_k $ uvádzame pomocou diagramov.
 
@@ -428,7 +441,7 @@ Uvažujeme $ n \in \mathbb{N} $. Najprv ukážeme, že $ nsc(\Sigma^n) = n+1 $. 
 \caption{automat $ A_{\Sigma^n} $} \label{fig:ASigma^n}
 \end{figure}
 
-Vezmime ľubovolné $ a \in \Sigma $ a uvažujme množinu $ F = \lbrace (a^i,a^{n-i}) \; | \; 0 \leq i \leq n \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ \Sigma^n $, teda podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(\Sigma^n) \geq n+1 $. Nakoľko sme zostrojili NKA akceptujúci jazyk $ \Sigma^n $, ktorý má práve $ n+1 $ stavov, tak $ nsc(\Sigma^n) = n+1 $ a NKA $ A_{\Sigma^n} $ je minimálnym automatom pre jazyk $ \Sigma^n $.
+Vezmime ľubovolné $ a \in \Sigma $ a uvažujme množinu $ F = \lbrace (a^i,a^{n-i}) \; | \; 0 \leq i \leq n \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} mätúcou množinou pre jazyk $ \Sigma^n $, teda podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(\Sigma^n) \geq n+1 $. Nakoľko sme zostrojili NKA akceptujúci jazyk $ \Sigma^n $, ktorý má práve $ n+1 $ stavov, tak $ nsc(\Sigma^n) = n+1 $ a NKA $ A_{\Sigma^n} $ je minimálnym automatom pre jazyk $ \Sigma^n $.
 \par
 Pre $ n=0 $ a $ n=1 $ vyplýva platnosť tvrdenia z Vety \ref{thm:too_small_nsc}. Pre $ n \geq 2 $ postupujme sporom. Nech je jazyk $ \Sigma^n$ rozložitelný, teda existuje netriviálny rozklad automatu $ A_{\Sigma^n} $. To znamená, že existujú NKA $ A_1^{\Sigma^n} $ a $ A_2^{\Sigma^n} $ také, že $ L(A_1^{\Sigma^n}) \cap L(A_2^{\Sigma^n}) = \Sigma^n $ a $ \#_S(A_1^{\Sigma^n}) < n+1 $, $ \#_S(A_2^{\Sigma^n}) < n+1 $. Navyše vďaka Leme \ref{lm:nonepsilon_NFA} môžeme predpokladať, že automaty $ A_1^{\Sigma^n} $ a $ A_2^{\Sigma^n} $ neobsahujú prechody na $ \varepsilon $. 
 \par
@@ -466,7 +479,7 @@ Najprv ukážeme, že $ nsc(L_{p^n}) = p^n $. Zostrojme NKA $ A_{p^n} $ taký, �
 \caption{automat $ A_{p^n} $} \label{fig:Ap^n}
 \end{figure}
 
-Uvažujme množinu dvojíc slov $ F = \lbrace (a^{l},a^{p^n-l}) \; | \; 0 \leq l \leq p^n-1 \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L_{p^n} $. Nakoľko $ |F|=p^n $, tak podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L_{p^n}) \geq p^n $. Kedže sa nám podarilo zostrojiť automat akceptujúci $ L_{p^n} $, ktorý má práve $ p^n $ stavov, tak platí $ nsc(L_{p^n}) = p^n$. Intuitívne je jasné, že automat \glqq{}počíta zvyšok po delení $ p^n $\grqq{}.
+Uvažujme množinu dvojíc slov $ F = \lbrace (a^{l},a^{p^n-l}) \; | \; 0 \leq l \leq p^n-1 \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} mätúcou množinou pre jazyk $ L_{p^n} $. Nakoľko $ |F|=p^n $, tak podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L_{p^n}) \geq p^n $. Kedže sa nám podarilo zostrojiť automat akceptujúci $ L_{p^n} $, ktorý má práve $ p^n $ stavov, tak platí $ nsc(L_{p^n}) = p^n$. Intuitívne je jasné, že automat \glqq{}počíta zvyšok po delení $ p^n $\grqq{}.
 \par
 Ďalej postupujme sporom. Uvažujme, že jazyk $ L_{p^n} $ je rozložitelný, teda že existuje netriviálny rozklad automatu $ A_{p^n} $. To znamená, že existujú NKA $ A_1^{p^n}, A_2^{p^n} $, také, že platí $ \#_S(A_1^{p^n}) < p^n $, $ \#_S(A_2^{p^n}) < p^n $, $ L(A_1^{p^n}) \cap L(A_2^{p^n}) = L_{p^n} $. Navyše podľa Lemy \ref{lm:nonepsilon_NFA} môžeme predpokladať, že automaty $ A_1^{p^n}$ a $ A_2^{p^n} $ neobsahujú prechody na $ \varepsilon $. 
 \par
@@ -504,7 +517,7 @@ Najprv ukážeme, že $ nsc(L) = 4 $. Zostrojme NKA $ A_{L} $ taký, že $ L(A_{
 \caption{automat $ A_{L} $ pre jazyk $ L = (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace a \rbrace \lbrace a,b \rbrace)^* $} \label{fig:Aa(a|b)a(a|b)^4}
 \end{figure}
 
-Uvažujme množinu $ F = \lbrace (\varepsilon,aaaa),(a,aaa),(aa,aa),(aaa,a)\rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} oblbovacou množinou pre jazyk $ L $, teda podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L) \geq 4 $. Nakoľko sme zostrojili NKA akceptujúci jazyk $ L $, ktorý má práve $ 4 $ stavy, tak $ nsc(L) = 4 $ a NKA $ A_{L} $ je minimálnym automatom pre jazyk $ L $.
+Uvažujme množinu $ F = \lbrace (\varepsilon,aaaa),(a,aaa),(aa,aa),(aaa,a)\rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} mätúcou množinou pre jazyk $ L $, teda podľa Vety \ref{thm:fooling_set_technique} platí $ nsc(L) \geq 4 $. Nakoľko sme zostrojili NKA akceptujúci jazyk $ L $, ktorý má práve $ 4 $ stavy, tak $ nsc(L) = 4 $ a NKA $ A_{L} $ je minimálnym automatom pre jazyk $ L $.
 \par
 Nech je jazyk $ L$ rozložitelný, teda existuje netriviálny rozklad automatu $ A_{L} $. To znamená, že existujú NKA $ A_1^{L} $ a $ A_2^{L} $ také, že $ L(A_1^{L}) \cap L(A_2^{L}) = L $ a $ \#_S(A_1^{L}) < 4 $, $ \#_S(A_2^{L}) < 4 $. Navyše vďaka Leme \ref{lm:nonepsilon_NFA} môžeme predpokladať, že automaty $ A_1^{L} $ a $ A_2^{L} $ neobsahujú prechody na $ \varepsilon $. 
 \par

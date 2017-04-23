@@ -24,6 +24,11 @@ Labath, P. (2010).
 \newblock {\em Zjednodušenie výpočtov prídavnou informáciou}.
 \newblock Diplomová práca pod vedením prof. Branislava Rovana.
 
+\bibitem[McCulloch and Pitts, 1943]{McCullochPitts}
+McCulloch, W.~S. and Pitts, W. (1943).
+\newblock A logical calculus of the ideas immanent in nervous activity.
+\newblock {\em Bulletin of Mathematical Biophysics}, (5):115--133.
+
 \bibitem[Palioudakis, 2012]{Palioudakis2012}
 Palioudakis, A. (October 2012).
 \newblock Nondeterministic state complexity and quantifying non-determinism in

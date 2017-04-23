@@ -1,0 +1,252 @@
+\chapter[Porovnanie determinizmu a nedeterminizmu]{Porovnanie deterministickej a nedeterministickej rozložiteľnosti regulárnych jazykov}
+\label{kap:det_vs_ndet}
+
+Zaujímavou otázkou je, či existuje regulárny jazyk taký, že je deterministicky nerozložiteľný a súčasne nedeterminiticky rozložiteľný respektíve deterministicky rozložiteľný a súčasne nedeterminiticky nerozložiteľný.
+
+\section{Definícia deterministického konečného automatu}
+
+Pred tým, ako uvedieme dosiahnuté výsledky zavedieme definícu deterministického konečného automatu, ktorú budeme používať, nakoľko existuje viacero prístupov k definovaniu deterministických konečných automatov.
+
+\begin{definition}
+\textbf{Deterministický konečný automat} je pätica $ (K, \Sigma, \delta, q_0, F) $, kde:
+\begin{enumerate}  
+\item $ K $ je konečná množina stavov
+\item $ \Sigma $ je konečná vstupná abeceda
+\item $ q_0 \in K $ je počiatočný stav
+\item $ F \subseteq K $ je množina akceptačných stavov
+\item $ \delta : K \times \Sigma \rightarrow K $ je prechodová funkcia
+\end{enumerate}
+\end{definition}
+
+\begin{note}
+Deterministický konečný automat sa skrátene označuje DKA.
+\end{note}
+
+Poznajúc ako v našom texte definujeme deterministický konečný automat je pre čitateľa so základnými znalosťami v oblasti jasné, ako by boli definované ostatné potrebné pojmy, preto ich definície neuvádzame.
+
+\section{Rozdielové jazyky}
+
+Uvádzame rozdielové jazyky, ktoré ukazujú, že pojem rozložiteľnosti regulárneho jazyka je rôzny ak uvažujeme deterministické resp. nedeterministické automaty. Intuícia našepkáva, že ak to pôjde, tak by to mohlo ísť skôr tak, že nájdeme jazyk ktorý je deterministicky nerozložiteľný a zároveň nedeterministicky rozložiteľný (očakávali sme, že v rozklade ušetrí nedeterminizmus stavy). Avšak podarilo sa nám nájsť rozdielové jazyky, pri ktorých to je opačne. Prvým našim výsledkom v tomto smere je nasledujúce tvrdenie.
+
+\begin{theorem}
+Existuje nedeterministicky nerozložiteľný deterministicky rozložiteľný regulárny jazyk.
+\end{theorem}
+
+\begin{proof}
+Hľadaným jazykom je jazyk $ L = (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace a \rbrace \lbrace a,b \rbrace)^* $. Ukážeme, že jazyk $ L $ je deterministicky rozložiteľný. Najprv zostrojíme minimálny DKA $ A_{L} $ akceptujúci $ L $. Automat uvádzame pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 					{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 	{$q_1$}; 
+   \node[state]						(2)		[right of=1]	{$q_2$};
+   \node[state]						(3) 	[right of=2] 	{$q_3$};
+   \node[state]						(T) 	[below of=1] 	{$q_T$};
+   
+   \path[->]
+    (0) edge [bend right] node {a} 	(1)  
+    (1) edge [bend right] node {a,b} (2)
+    (2) edge [bend right] node {a} (3)
+    (3) edge [bend right] node [swap] {a,b} (0)
+    (0) edge node {b} (T)
+    (2) edge node {b} (T)
+    (T) edge [loop right] node {a,b} ()
+    ;
+\end{tikzpicture}
+\caption{deterministický konečný automat $ A_{L} $ pre jazyk $ L = (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace a \rbrace \lbrace a,b \rbrace)^* $} \label{fig:DFAa(a|b)a(a|b)^4}
+\end{figure}
+
+Ľahko vidno, že $ A_L $ akceptuje práve $ L $. Minimalita $ A_L $ sa dá dokázať pomocou všeobecne známej Myhill-Nerodeovej vety. Zostrojíme netriviálny rozklad automatu $ A_L $. Hľadané DKA $ A_1^L $ a $ A_2^L $ uvádzame pomocou ich diagramov.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 					{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 	{$q_1$}; 
+   \node[state]						(2)		[right of=1]	{$q_2$};
+   \node[state]						(3) 	[right of=2] 	{$q_3$};
+   
+   \path[->]
+    (0) edge [bend right] node {a,b} (1)  
+    (1) edge [bend right] node {a,b} (2)
+    (2) edge [bend right] node {a,b} (3)
+    (3) edge [bend right] node [swap] {a,b} (0)
+    ;
+\end{tikzpicture}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+   \node[state,initial,accepting] 	(0) 					{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 	{$q_1$}; 
+   \node[state]						(T) 	[below right of=0] 	{$q_T$};
+   
+   \path[->]
+    (0) edge [bend right] node {a} 	(1)  
+    (1) edge [bend right] node [swap] {a,b} (0)
+    (0) edge node [swap] {b} (T)
+    (T) edge [loop right] node {a,b} ()
+    ;
+\end{tikzpicture}
+\caption{rozklad automatu $ A_L $}
+\end{figure}
+
+Možno nahliadnuť, že jeden z automatov v rozklade počíta zvyšok po delení 4 a druhý kontroluje, či symboly na nepárnych pozíciách v slove sú $ a $. Teda vidno, že $ L(A_1^L) = \lbrace w \in \lbrace a,b \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 4) \rbrace $ a $ L(A_2^L) = (\lbrace a \rbrace \lbrace a,b \rbrace)^* $. Teda $ L(A_1^L) \cap L(A_2^L) = L $. Navyše $ \#_S(A_1^L) < \#_S(A_L) $ a $ \#_S(A_2^L) < \#_S(A_L) $, teda automaty $ A_1^L $ a $ A_2^L $ tvoria netriviálny rozklad automatu $ A_L $. Z predchádzajúceho vyplýva, že jazyk $ L = (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace a \rbrace \lbrace a,b \rbrace)^* $ je deterministicky rozložiteľný. Avšak tento jazyk je podľa Vety \ref{thm:a(a|b)a(a|b)^4} nedeterministicky nerozložiteľný.
+\end{proof}
+
+Uvedená Veta síce ukazuje rozdiel medzi deterministickou a nedeterministickou rozložiteľnosťou, avšak jej dôkaz veľmi závisí od faktu, že v definícii DKA požadujeme úplnú prechodovú funkciu, vďaka čomu DKA použitý v dôkaze musí mať odpadový stav. Bez tohto odpadového stavu by náš dôkaz neprešiel. Nasledujúca Veta ukazuje, že existujú prípady, kde rozdiel medzi deterministickou a nedeterministickou rozložiteľnosťou nie je spôsobený iba nutnosťou úplnej prechodovej funkcie DKA.
+
+\begin{theorem}
+\label{thm:ndet_vs_det_diff_big}
+Existuje postupnosť jazykov $ (L_i)_{i=2}^{\infty} $, taká, že platí:
+\begin{enumerate}[label=(\alph*)]
+\item \label{thm:ndet_vs_det_diff_big_item_1} Jazyk $ L_i $ je nedeterministicky nerozložiteľný a súčasne deterministicky rozložiteľný pre ľubovolné $ i \in \mathbb{N}, i \geq 2 $.
+\item \label{thm:ndet_vs_det_diff_big_item_2} Nech pre ľubovolné $ i \in \mathbb{N}, i \geq 3 $ je $ A_i $ minimálny DKA akceptujúci $ L_i $. Potom existuje taký rozklad $ A_i $ na $ A_1^i $ a $ A_2^i $, že platí $ \#_S(A_1^i)=\#_S(A_2^i)=\frac{\#_S(A_i)+3}{2} $.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Definujme postupnosť jazykov $ P=(L_i)_{i=2}^{\infty} $ nasledovne: $ L_i = (\lbrace a^{i-1} \rbrace \lbrace b \rbrace^* \lbrace a,b \rbrace)^* $ pre ľubovolné $ i \geq 2 $. Spomeňme, že táto postupnosť ešte nie je tá, ktorú hľadáme. Tú, ktorú hľadáme, však dostaneme z $ P $ vybratím niektorých (spočítateľne veľa) jej členov.
+\par
+Najskôr ukážeme, že pre spočítateľne veľa $ i \geq 2 $ je $ L_i $ nedeterministicky nerozložiteľný. V nasledujúcom uvažujme teda $ i \geq 2 $ také, že $ i $ je mocninou prvočísla. Zostrojíme NKA $ A_i^N $ taký, že $ L(A_i^N) = L_i $. $ A_i^N = (K_i^N, \lbrace a,b \rbrace, \delta_i^N,q_0,\lbrace q_0 \rbrace) $. Kde $ K_i^N = \lbrace q_j \; | \; 0 \leq j < i \rbrace $ a prechodová funkcia $ \delta_i^N $ je definovaná nasledovne - $ \forall 0 \leq j \leq i-2: \delta_i^N(q_j,a) = \lbrace q_{j+1} \rbrace $, $ \delta_i^N(q_{i-1},a)=\lbrace q_0 \rbrace  $, $ \delta_i^N(q_{i-1},b)=\lbrace q_0,q_{i-1} \rbrace  $
+
+Pre ilustráciu a lepšiu čitateľnosť uvádzame automat $ A_4^N $ aj pomocou diagramu.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+	\node[state,initial,accepting] (0)					{$q_0$};
+   	\node[state] 					(1)	[right of=0]	{$q_1$};
+   	\node[state] 					(2)	[below of=1]	{$q_2$};
+   	\node[state] 					(3)	[left of=2]		{$q_3$};
+   	
+   	\path[->]
+     (0) edge [bend left] node {$ a $} (1)
+     (1) edge [bend left] node {$ a $} (2)
+     (2) edge [bend left] node {$ a $} (3)
+     (3) edge [bend left] node {$ a,b $} (0)
+     (3) edge [loop below] node {$ b $} ()
+     ;
+\end{tikzpicture}
+\caption{automat $ A_4^N $}
+\end{figure}
+
+Dá sa nahliadnuť, že platí $ L(A_i^N) = L_i $. Navyše, je dobré uvedomiť si, že $ \lbrace a^{ki} \; | \; i \in \mathbb{N} \rbrace \subset L_i $. Uvažujme množinu dvojíc slov $ M_i = \lbrace (a^j,a^{i-j}) \; | \; 0 \leq j < i  \rbrace $. Podľa definície \ref{def:fooling_set} je množina $ M_i $ rozšírenou mätúcou množinou pre jazyk $ L_i $. $ |M_i|=i $, teda podľa Vety \ref{thm:fooling_set_technique} $ nsc(L_i) \geq i $. Kedže $ L(A_i^N) = L_i $ a $ \#_S(A_i^N) = i $, tak $nsc(L_i) = i $ a automat $ A_i^N $ je minimálny NKA pre jazyk $ L_i $.
+\par
+Ďalej postupujme sporom. Uvažujme, že jazyk $ L_{i} $ je rozložiteľný, teda že existuje netriviálny rozklad automatu $ A_i^N $. To znamená, že existujú NKA $ A_1^{N,i}, A_2^{N,i} $, také, že platí $ \#_S(A_1^{N,i}) < i $, $ \#_S(A_2^{N,i}) < i $, $ L(A_1^{N,i}) \cap L(A_2^{N,i}) = L_i $. Navyše podľa Lemy \ref{lm:nonepsilon_NFA} môžeme predpokladať, že automaty $ A_1^{N,i}$ a $ A_2^{N,i} $ neobsahujú prechody na $ \varepsilon $. 
+\par
+Nakoľko $ i $ je mocninou prvočísla, tak existuje nejaké prvočíslo $ p $ a nejaké $ n $ také, že $ i=p^n $. Z predchádzajúceho vyplýva, že $ a^{p^n} \in L(A_1^{N,i}), a^{p^n} \in L(A_2^{N,i})$. Teraz sa pozrime na výpočet automatu $ A_1^{N,i} $ na slove $ a^{p^n} $. Nech tento výpočet vyzerá nasledovne $ (q_0,a^{p^n}) \vdash (q_1,a^{p^n-1}) \vdash \dots \vdash (q_{p^n-1},a) \vdash (q_{p^n},\varepsilon) $, kde $ q_0 $ je počiatočný stav automatu $ A_1^{N,i} $, $ q_{p^n} $ je nejaký akceptačný stav automatu $ A_1^{N,i} $ a pre $ 1 \leq j < p^n \; q_j \in K_{A_1^{N,i}}$. Nakolko $ \#_S(A_1^{N,i}) < p^n(=i) $, tak nutne $ \exists j,k \in \mathbb{N}, 0 \leq j,k < p^n, j \neq k: q_j = q_k $ (počas výpočtu sa v časti \glqq{}od začatiatku po predposledný stav\grqq{} nejaký stav zopakuje). Z toho vyplýva, že v akceptovanom slove môžem pumpovať časť, ktorá je kratšia ako $ p^n $, t.j. $ \exists r_1 \in \mathbb{N}, 1 \leq r_1 < p^n \; \forall k \in \mathbb{N}: a^{p^n+kr_1} \in L(A_1^{p^n})$. 
+\par
+Analogicky, uvažujúc výpočet automatu $ A_2^{N,i} $ na slove $ a^{p^n} $, platí $ \exists r_2 \in \mathbb{N}, 1 \leq r_2 < p^n \; \forall k \in \mathbb{N}: a^{p^n+kr_2} \in L(A_2^{N,i})$.
+\par
+Čísla $ r_1 $ a $ r_2 $ zapíšme nasledovne. $ r_1 = p^{l_1}f_1, \; 0 \leq l_1 < n, \; p \nmid f_1 $. $ r_2 = p^{l_2}f_2, \; 0 \leq l_2 < n, \; p \nmid f_2 $. Z uvedeného v predošlom vyplýva, že $ a^{p^n + p^{max(l_1,l_2)}f_1f_2} \in L(A_1^{N,i}) \cap L(A_2^{N,i}) $. Nakolko však $ p^n \nmid p^{max(l_1,l_2)}f_1f_2$, tak $ a^{p^n + p^{max(l_1,l_2)}f_1f_2} \notin L_{i} $, čo je však v spore s predpokladom, že automaty $ A_1^{N,i} $ a $ A_2^{N,i} $ tvoria netriviálny rozklad automatu $ A_{i}^N $. Teda jazyk $ L_i $ je nedeterministicky nerozložiteľný.
+\par
+Ukážeme, že $ L_i $ je deterministicky rozložiteľný pre ľubovoľné $ i \geq 2 $. DKA $ A_i^D $ taký, že $ L(A_i^D)=L_i $, zostrojíme štandardnou podmnožinovou konštrukciou z NKA $ A_i^D $. Takto dostaneme $ A_i^D = (\lbrace q[j],q[j,(j+1) \; mod \; i] \; | \; 0 \leq j < i \rbrace \cup \lbrace q_T \rbrace,\lbrace a,b \rbrace, \delta_i^D, q[0], \lbrace q[0], q[i-1,0],q[0,1] \rbrace) $, kde prechodová funkcia $ \delta_i^D $ je definovaná nasledovne: $ \delta_i^D(q[i-1],b) = q[i-1,0], \; \delta_i^D(q[i-1,0],b) = q[i-1,0], \; \delta_i^D(q[i-2,i-1],b) = q[i-1,0] , \; \forall j \in \mathbb{N}, 0 \leq j < i : \delta_i^D(q[j],a) = q[(j+1) \; mod \; i], \delta_i^D(q[j,(j+1) \; mod \; i],a) = q[(j+1) \; mod \; i, (((j+1) \; mod \; i)+1)  \; mod \; i] $. Naša definícia DKA požaduje úplnosť prechodovej funkcie, teda zatiaľ nedefinované prechody dodefinujeme tak, že idú automaticky do odpadového stavu $ q_T $. Minimalita $ A_i^D $ sa dá dokázať pomocou všeobecne známej Myhill-Nerodeovej vety. Pre ilustráciu a lepšiu čitateľnosť uvádzame automat $ A_4^D $ aj pomocou diagramu. V diagrame pre prehľadnosť neuvádzame odpadový stav $ q_T $.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+	\node[state,initial,accepting] (0)						{$q[0]$};
+   	\node[state] 					(1)		[below of=0]	{$q[1]$};
+   	\node[state] 					(2)		[right of=1]	{$q[2]$};
+   	\node[state] 					(3)		[above of=2]	{$q[3]$};
+	\node[state,accepting] 			(30)	[right of=3]	{$q[3,0]$};
+   	\node[state,accepting]			(01)	[right of=30]	{$q[0,1]$};
+   	\node[state] 					(12)	[below of=01]	{$q[1,2]$};
+   	\node[state] 					(23)	[left of=12]	{$q[2,3]$};
+   	
+   	\path[->]
+     (0) edge [bend right] node [swap] {$ a $} (1)
+     (1) edge [bend right] node [swap] {$ a $} (2)
+     (2) edge [bend right] node [swap] {$ a $} (3)
+     (3) edge [bend right] node [swap] {$ a $} (0)
+     (3) edge [bend left] node {$ b $} (30)
+     (30) edge [bend left] node {$ a $} (01)
+     (01) edge [bend left] node {$ a $} (12)
+     (12) edge [bend left] node {$ a $} (23)
+     (23) edge [bend left] node {$ a,b $} (30)
+     (30) edge [loop above] node {$ b $} ()
+     ;
+\end{tikzpicture}
+\caption{automat $ A_4^D $}
+\end{figure}
+
+Zostrojíme netriviálny rozklad DKA $ A_i^D $. Myšlienkou rozkladu je, neformálne povedané, že v jednotlivých automatoch rozkladu budeme mať namiesto oboch úplných cyklov, ktoré sú v $ A_i^D $ jeden cyklus \glqq{}spľasnutý\grqq{} do jedného stavu a druhý cyklus úplný. Keď budeme uvažovať slová, ktoré budú akceptované oboma automatmi, tak vždy jeden automat správne zráta daný cyklus, čo nám bude stačiť. Uvedomme si ešte, že rozklad nám bude správne fungovať aj vďaka faktu, že dané dva cykly sú oddelené práve jedným prechodom na $ b $ z prvého cyklu do druhého, pričom v prvom cykle prechody na $ b $ nepoužívame. Formálne definujeme automaty $ A_1^{D,i}, A_2^{D,i} $. 
+\begin{enumerate}
+\item $ A_1^{D,i} = (\lbrace q_{C1}, q_T \rbrace \cup \lbrace q[j,(j+1) \; mod \; i] \; | \; 0 \leq j < i \rbrace, \lbrace a,b \rbrace, \delta_1^{D,i}, q_{C1}, F_1^{D,i}) $, kde $ F_1^{D,i} = \lbrace q_{C1}, q[i-1,0],q[0,1] \rbrace$ a prechodová funkcia $ \delta_1^{D,i} $ je definovaná nasledovne: $ \delta_1^{D,i}(q_{C1},a) = q_{C1}, \; \delta_1^{D,i}(q_{C1},b) = q[i-1,0], \; \delta_i^D(q[i-1,0],b) = q[i-1,0], \; \delta_i^D(q[i-2,i-1],b) = q[i-1,0], \; \forall j \in \mathbb{N}, 0 \leq j < i : \delta_i^D(q[j,(j+1) \; mod \; i],a) = q[(j+1) \; mod \; i, (((j+1) \; mod \; i)+1)  \; mod \; i] $. Prechody, ktoré sme zatiaľ nedefinovali, dodefinujeme tak, že automaticky vedú do odpadového stavu $ q_T $ 
+\item $ A_2^{D,i} = (\lbrace q_{C2}, q_T \rbrace \cup \lbrace q[j] \; | \; 0 \leq j < i \rbrace, \lbrace a,b \rbrace, \delta_2^{D,i}, q[0], F_2^{D,i}) $, kde $ F_2^{D,i} = \lbrace q[0], q_{C2} \rbrace $ a prechodová funkcia $ \delta_2^{D,i} $ je definovaná nasledovne: $ \delta_2^{D,i}(q[i-1],b) = q_{C2}, \; \delta_1^{D,i}(q_{C2},a) = q_{C2}, \; \delta_1^{D,i}(q_{C2},b) = q_{C2}, \forall j \in \mathbb{N}, 0 \leq j < i : \delta_i^D(q[j],a) = q[(j+1) \; mod \; i] $. Prechody, ktoré sme zatiaľ nedefinovali, dodefinujeme tak, že automaticky vedú do odpadového stavu $ q_T $
+\end{enumerate}
+Pre ilustráciu a lepšiu čitateľnosť uvádzame rozklad automatu $ A_4^D $ na automaty $ A_1^{D,4}, A_2^{D,4} $ aj pomocou diagramu. V diagrame pre prehľadnosť neuvádzame odpadový stav $ q_T $.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+	\node[state,initial,accepting] (C1)					{$q_{C1}$};
+	\node[state,accepting] 			(30)	[right of=C1]	{$q[3,0]$};
+   	\node[state,accepting]			(01)	[above right of=30]	{$q[0,1]$};
+   	\node[state] 					(12)	[below right of=01]	{$q[1,2]$};
+   	\node[state] 					(23)	[below left of=12]	{$q[2,3]$};
+   	
+   	\path[->]
+     (C1) edge [loop above] node {$ a $} ()
+     (C1) edge [bend left] node {$ b $} (30)
+     (30) edge [bend left] node {$ a $} (01)
+     (01) edge [bend left] node {$ a $} (12)
+     (12) edge [bend left] node {$ a $} (23)
+     (23) edge [bend left] node {$ a,b $} (30)
+     (30) edge [loop right] node {$ b $} ()
+     ;
+\end{tikzpicture}
+
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+                    semithick]
+	\node[state,initial,accepting] (0)							{$q[0]$};
+   	\node[state] 					(1)		[below left of=0]	{$q[1]$};
+   	\node[state] 					(2)		[below right of=1]	{$q[2]$};
+   	\node[state] 					(3)		[above right of=2]	{$q[3]$};
+	\node[state,accepting] 			(C2)	[right of=3]		{$q_{C2}$};
+   	
+   	\path[->]
+     (0) edge [bend right] node [swap] {$ a $} (1)
+     (1) edge [bend right] node [swap] {$ a $} (2)
+     (2) edge [bend right] node [swap] {$ a $} (3)
+     (3) edge [bend right] node [swap] {$ a $} (0)
+     (3) edge [bend left] node {$ b $} (C2)
+     (C2) edge [loop above] node {$ a,b $} ()
+     ;
+\end{tikzpicture}
+\caption{rozklad automatu $ A_4^D $ na automaty $ A_1^{D,4}$(hore) a $ A_2^{D,4} $(dole)}
+\end{figure}
+
+Ukážeme, že $ L(A_i^D) = L(A_1^{D,i}) \cap L(A_2^{D,i}) $. \\
+$ \subseteq: $ Ľahko vidno z konštrukcie automatov $ A_1^{D,i}$ a $ A_2^{D,i} $. \\
+$ \supseteq: $ Uvažujme $ w \in L(A_1^{D,i}) \cap L(A_2^{D,i}) $. Teda existujú stavy $ q_{F1} \in F_1^{D,i}, q_{F2} \in F_2^{D,i}$ také, že $ (q_{C1},w) \vdash_{A_1^{D,i}}^* (q_{F1}, \varepsilon), (q[0],w) \vdash_{A_2^{D,i}}^* (q_{F2}, \varepsilon)$. Rozoberieme postupne, aký môže byť stav $ q_{F1} $.
+\begin{enumerate}
+\item $ q_{F1} = q_{C1} $. Z konštrukcie $ A_1^{D,i} $ plynie, že výpočet $ (q_{C1},w) \vdash_{A_1^{D,i}}^* (q_{F1}, \varepsilon)$ prechádza iba cez stav $ q_{C1} $. Teda existuje nejaké $ n \in \mathbb{N} $ také, že $ w=a^n $. Z konštrukcie $ A_2^{D,i} $ teda $ q_{F2} = q[0] $ a výpočet $ (q[0],w) \vdash_{A_2^{D,i}}^* (q_{F2}, \varepsilon) $ je zároveň akceptačným výpočtom automatu $ A_i^D $ na slove $ w $. Neformálne, automat $ A_i^D $ používa iba prvý svoj cyklus, ktorý je ale celý obsiahnutý aj v $ A_2^{D,i} $.
+\item $ q_{F1} \in \lbrace q[i-1,0],q[0,1] \rbrace $. Potom z konštrukcie $ A_1^{D,i} $ vyplýva, že existujú nejaké $ n \in \mathbb{N}, u \in \lbrace a,b \rbrace^* $ také, že $ w = a^nbu $. Výpočet automatu $ A_1^{D,i} $ na slove $ w $ teda vyzerá nasledovne: $ (q_{C1},a^nbu) \vdash_{A_1^{D,i}}^* (q_{C1},bu) \vdash_{A_1^{D,i}} (q[i-1,0],u) \vdash_{A_1^{D,i}}^* (q_{F1, \varepsilon}) $. Nakoľko slovo $ w $ obsahuje symbol $ b $, tak z konštrukcie $ A_2^{D,i} $ vyplýva $ q_{F2} = q_{C2} $ a výpočet automatu $ A_1^{D,i} $ na slove $ w $ vyzerá nasledovne: $ (q[0],a^nbu) \vdash_{A_2^{D,i}}^* (q[i-1],bu) \vdash_{A_2^{D,i}} (q_{C2},u) \vdash_{A_2^{D,i}}^* (q_{C2},\varepsilon)$. Z konštrukcie $ A_1^{D,i} $ plynie, že výpočet $ (q[i-1,0],u) \vdash_{A_1^{D,i}}^* (q_{F1}, \varepsilon) $ v automate $ A_1^{D,i} $ je zároveň výpočtom $ (q[i-1,0],u) \vdash_{A_i^D}^* (q_{F1}, \varepsilon) $ v automate $  A_i^D $. Z konštrukcie $ A_2^{D,i} $ plynie, že výpočet $ (q[0],a^nbu) \vdash_{A_2^{D,i}}^* (q[i-1],bu) $ v automate $ A_2^{D,i} $ je zároveň výpočtom $ (q[0],a^nbu) \vdash_{A_i^D}^* (q[i-1],bu) $ v automate $  A_i^D $. Navyše platí $ \delta_i^D(q[i-1],b) = q[i-1,0] $. Z toho vyplýva $ (q[0],a^nbu) \vdash_{A_i^D}^* (q[i-1],bu) \vdash_{A_i^D} (q[i-1,0],u) \vdash_{A_i^D}^* (q_{F1, \varepsilon}) $. Nakoľko $ q_{F1} \in F_i^D $, tak tento výpočet je akceptačným výpočtom automatu $ A_i^D $ na slove $ w $. Neformálne povedané, oba z automatov v rozklade zrátajú jeden cyklus z pôvodného automatu a v tom druhom len stoja. V prieniku dostaneme teda zrátané oba cykly.
+\end{enumerate}
+
+Nakoľko iné možnosti neexistujú, tak platí $ L(A_i^D) = L(A_1^{D,i}) \cap L(A_2^{D,i}) $. Zjavne $ \#_S(A_1^{D,i}) < \#_S(A_i^D), \#_S(A_2^{D,i}) < \#_S(A_i^D) $ a teda automaty $ A_1^{D,i} $ a $ A_2^{D,i} $ tvoria netriviálny rozklad automatu $ A_i^D $. Teda $ L_i $ je deterministicky rozložiteľný pre ľubovoľné $ i \geq 2 $.
+\par
+Teraz zhrňme, čo sme dokázali. Pre postupnosť jazykov $ P=(L_i)_{i=2}^{\infty} $ platí, že obsahuje nekonečne veľa jazykov, ktoré sú súčasne nedeterministicky nerozložiteľné a deterministicky rozložiteľné. Sú to tie $ L_i $ pre ktoré je $ i $ mocninou prvočísla. Hľadanú postupnosť teda získame tak, že z postupnosti $ P $ vytvoríme novú postupnosť $ Q $ tak, že z $ P $ vyberieme tie $ L_i $, kde $ i $ je mocninou prvočísla. Zjavne postupnosť $ Q $ spĺňa \ref{thm:ndet_vs_det_diff_big_item_1} a pri lepšom pohľade na dôkaz deterministickej rozložiteľnosti jazykov $ L_i $ spĺňa aj \ref{thm:ndet_vs_det_diff_big_item_2}. Teda $ Q $ je hľadaná postupnosť.
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

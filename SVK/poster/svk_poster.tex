@@ -5,20 +5,35 @@
 \usepackage{multicol}
 \usepackage{color}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{verbatim}
+\usetikzlibrary{automata,arrows,topaths}
+\usepackage{cite}
 
 %% znaky s diakritikou
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-% \usepackage[slovak]{babel} % slovenske delenie slov
+\usepackage[slovak]{babel} % slovenske delenie slov
+\usepackage{mathrsfs} 
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{enumitem}
 
 %% definicia farieb
 \definecolor{mainCol}{rgb}{0.91,0.82,0.74} % farba pozadia posteru
+%\definecolor{mainCol}{rgb}{0.73,0.33,0.83} % liafova
 \definecolor{sectionCol}{rgb}{0,0,0} % farba nadpisu
 \definecolor{textCol}{rgb}{0.2,0,0} % farba hlavneho textu
 \definecolor{BoxCol}{rgb}{1,1,0.8} % farba boxu okolo nadpisov
+%\definecolor{BoxCol}{rgb}{1,1,1} % farba boxu okolo nadpisov
 
 \def\mysection#1{
 {\color{sectionCol}\section*{\sc\bfseries #1}}}
+
+\newtheorem*{notation}{Označenie}
+\newtheorem*{definition}{Definícia}
+\newtheorem*{theorem}{Veta}
 
 \begin{document}
 \setlength{\logowidth}{20cm}
@@ -29,149 +44,223 @@
 
 \color{textCol}
 
-\title{Preparing a Poster for ŠVK is\\
-       Really Easy}
-\author{Daniel Ševčovič$^1$, Tomáš Vinař$^2$\\
-        Supervisor: Tomáš Plachetka$^3$}
+\title{Prídavná informácia a zložitosť nedeterministických konečných automatov}
+\author{Šimon Sádovský$^1$\\
+        Školiteľ: Branislav Rovan$^1$}
 \institute{%
-$^1$ Katedra aplikovanej matematiky a štatistiky,
-FMFI UK, Mlynská Dolina, 842~48~Bratislava\\
-$^2$ Katedra aplikovanej informatiky,
-FMFI UK, Mlynská Dolina, 842~48~Bratislava\\
-$^3$ Katedra informatiky, 
+$^1$ Katedra informatiky, 
 FMFI UK, Mlynská Dolina, 842~48~Bratislava
 }
 \maketitle
 
 \begin{multicols*}{3}
 
-\mysection{Introduction}
-Here we show how easy it is to prepare a poster for ŠVK.
-There are some differences in preparing a poster compared to
-preparing a paper:
+\mysection{Motivácia problému}
+V práci skúmame vplyv prídavnej informácie na zložitosť riešenia problému. Ako
+výpočtový model sme zvolili nedeterministické konečné automaty a mierou zložitosti je
+počet stavov. Voľne povedané, ak automatu garantujeme, že vstup, ktorý ide rozpoznávať patrí do nejakého poradného jazyka, vieme tým dosiahnuť, že na rozpoznávanie pôvodného jazyka stačí automat menšej zložitosti? Uveďme jeden príklad. Uvažujme, že chceme rozpoznávať jazyk $ \lbrace w \in \lbrace a \rbrace^* \; | \; |w| \equiv 0 \; (mod \; 6) \rbrace $ a chceme ho rozpoznávať nedeterministickým konečným automatom. Ľahko vidno, že minimálny NKA pre tento jazyk má 6 stavov. Čo ak vopred vieme, že dĺžka vstupu je deliteľná tromi? Vtedy nám stačí vziať NKA s dvomi stavmi. Analogický problém bol skúmaný pre deterministické konečné automaty v \cite{Gazi} a pre deterministické zásobníkové automaty \cite{Labath}.
 
-\begin{itemize}
-\item use \emph{less text}, since people are not going to stand
-      in front of your poster forever and read all your text,
-\item use \emph{more figures}, because they quickly draw the
-      eye of the reader to the most important points on your poster,
-\item use \emph{simple structure} (no numbered theorems, subsections,
-      or numbered figures)
-\item cite onle \emph{the most important references}
-\end{itemize}
+\mysection{Formalizácia problému}
 
-\mysection{Sample text}
+Formalizáciou tohto problému je hľadanie rozkladov nedeterministických automatov.
+\\
 
-Let $S=[s_{ij}]$ ($1\leq i,j\leq n$) be a $(0,1,-1)$-matrix
-of order $n$. Then $S$ is a {\em sign-nonsingular matrix}
-(SNS-matrix) provided that each real matrix with the same
-sign pattern as $S$ is nonsingular. 
-In this paper we consider the evaluation of integrals of the 
-following forms:
-\begin{equation}
-\int_a^b \left( \sum_i E_i B_{i,k,x}(t) \right)
-         \left( \sum_j F_j B_{j,l,y}(t) \right) dt,\label{problem}
-\end{equation}
-\begin{equation}
-\int_a^b f(t) \left( \sum_i E_i B_{i,k,x}(t) \right) dt,\label{problem2}
-\end{equation}
-where $B_{i,k,x}$ is the $i$th B-spline of order $k$ defined over the
-knots $x_i, x_{i+1}, \ldots, x_{i+k}$.
+\begin{notation}
+Počet stavov ľubovolného konečného automatu $ A $ označujeme $ \#_S(A) $.\\
+\end{notation}
 
-\begin{enumerate}
-\item Use Gauss quadrature on each interval.
-\item Convert the integral to a linear combination of
-      integrals of products of B-splines and provide a recurrence for
-      integrating the product of a pair of B-splines.
-\item Convert the sums of B-splines to piecewise
-      B\'{e}zier format and integrate segment
-      by segment using the properties of the Bernstein polynomials.
-\item Express the product of a pair of B-splines as a linear combination
-      of B-splines.
-      Use this to reformulate the integrand as a linear combination
-      of B-splines, and integrate term by term.
-\item Integrate by parts.
+\begin{definition}
+Nech $ A $ je nedeterministický konečný automat. Potom dva nedeterministické konečné automaty $ A_1, A_2 $ také, že $ L(A)=L(A_1) \cap L(A_2) $ nazveme \textbf{rozklad automatu} $ A $. Ak navyše platí $ \#_S(A_1) < \#_S(A)$ a $ \#_S(A_2) < \#_S(A) $, nazývame tento rozklad \textbf{netriviálny}. Ak existuje netriviálny rozklad automatu $ A $, tak automat $ A $ nazývame \textbf{rozložiteľný}.\\
+\end{definition}
+
+Vlastnosť rozložiteľnosti sa dá prirodzene rozšíriť aj na vlastnosť regulárnych jazykov.\\
+
+\begin{definition}
+\label{def:nedeterministic_decomposability_of_language}
+Nech $ L \in \mathscr{R} $ a $ A $ je nejaký minimálny NKA pre jazyk L. \textbf{Jazyk} $ L $ nazývame \textbf{nedeterministicky rozložiteľný} práve vtedy, keď je automat $ A $ rozložiteľný.
+\end{definition}
+
+%\columnbreak 
+
+\mysection{Jazyky založené na module dĺžky slova}
+
+Prirodzenou schopnosťou konečných automatov je v cykle rátať zvyšok po delení dĺžky slova. Pokiaľ je toto jediná vec, ktorú NKA robí, jedná sa o jazyky typu $ \lbrace a^{kn} | k \in \mathbb{N} \rbrace $. Minimálne NKA akceptujúce takéto jazyky vyzerajú nasledovne.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=5cm,semithick,accepting/.style={double distance=2.5pt}]
+   \node[state,initial,accepting] 	(0) 						{$q_0$}; 
+   \node[state] 					(1)		[right of=0] 		{$q_1$}; 
+   \node							(dots1)	[right of=1]		{\ldots};
+   \node[state]	(n-1) 						[right of=dots1] 	{$q_{n-1}$};
+   
+   \path[->]
+    (0) edge node {a} (1)  
+    (1) edge node {a} (dots1)
+    (dots1) edge node {a} (n-1)
+    (n-1) edge [bend right] node [swap] {a} (0)
+    ;
+\end{tikzpicture}
+\end{figure}
+
+Charakterizujeme tieto jazyky vzhľadom na nedeterministickú rozložiteľnosť.
+
+\begin{theorem}
+\label{thm:primes_compounds}
+Nech pre $ n \in \mathbb{N}, n > 0 $ je $ L_n = \lbrace a^{kn} \; | \; k \in \mathbb{N} \rbrace $. Potom $ L_n $ je nedeterministicky rozložiteľný práve vtedy, keď $ n $ nie je mocninou prvočísla.
+\end{theorem}
+
+\mysection{Jednoslovné jazyky} 
+Charakterizujeme vzhľadom na nedeterministickú rozložiteľnosť jazyky, ktoré sú tvorené práve jedným slovom.
+
+\bigskip
+
+\begin{theorem}
+\label{thm:singleton_characterization}
+Nech $ L = \lbrace w \rbrace $. Potom je $ L $ nedeterministicky rozložiteľný práve vtedy, keď $ w $ obsahuje aspoň dva rôzne symboly.
+\end{theorem}
+
+\mysection{Príliš malé automaty}
+
+Ukazujeme, že príliš malé NKA sú nerozložiteľné.
+\bigskip
+
+\begin{notation}
+Počet stavov minimálneho NKA akceptujúceho jazyk $ L $ označujeme \em{}$ nsc(L) $\em{}.
+\end{notation}
+
+\bigskip
+
+\begin{theorem}
+\label{thm:too_small_nsc}
+Nech $ L \in \mathscr{R} $, pričom $ nsc(L) \leq 2 $. Potom $ L $ je nedeterministicky nerozložiteľný.
+\end{theorem}
+
+\mysection{Rozdiel medzi deterministickou a nedeterministickou rozložiteľnosťou}
+
+Podstatnú časť našej práce tvorí hľadanie takzvaných rozdielových jazykov, ktoré by dokazovali, že pojem rozložiteľnosti regulárneho jazyka je rôzny ak uvažujeme deterministické resp. nedeterministické automaty. Intuícia našepkáva, že ak to pôjde, tak by to mohlo ísť skôr tak, že nájdeme jazyk ktorý je deterministicky nerozložiteľný a zároveň nedeterministicky rozložiteľný (očakávali sme, že v rozklade ušetrí nedeterminizmus stavy). Avšak podarilo sa nám nájsť rozdielové jazyky, pri ktorých to je opačne. Prvým našim výsledkom v tomto smere je nasledujúce tvrdenie.
+
+\bigskip
+
+\begin{theorem}
+Jazyk $ (\lbrace a \rbrace \lbrace a,b \rbrace \lbrace a \rbrace \lbrace a,b \rbrace)^* $ je deterministicky rozložiteľný a súčasne nedeterministicky nerozložiteľný.
+\end{theorem}
+
+\bigskip
+
+Chybou krásy tohoto výsledku bolo, že rozklad funguje iba vďaka požiadavke na úplnosť prechodovej funkcie v definícii DKA, vďaka čomu musí mať DKA pre rozdielový jazyk odpadový stav. Podarilo sa nám však nájsť nekonečnú postupnosť jazykov takú, ktorá tento problém už nemá.
+
+\bigskip
+
+\begin{theorem}
+\label{thm:ndet_vs_det_diff_big}
+Existuje postupnosť jazykov $  (L_i)_{i=2}^{\infty} $, taká, že platí:
+\begin{enumerate}[label=(\alph*)]
+\item Jazyk $ L_i $ je nedeterministicky nerozložiteľný a súčasne deterministicky rozložiteľný pre ľubovolné $ i \in \mathbb{N}, i \geq 2 $.
+\item Nech pre ľubovolné $ i \in \mathbb{N}, i \geq 3 $ je $ A_i $ minimálny DKA akceptujúci $ L_i $. Potom existuje taký rozklad $ A_i $ na $ A_1^i $ a $ A_2^i $, že platí $ \#_S(A_1^i)=\#_S(A_2^i)=\frac{\#_S(A_i)+3}{2} $.
 \end{enumerate}
+\end{theorem}
 
-Of these five, only methods 1 and 5 are suitable for our purposes.
+\bigskip
 
-\includegraphics[width=\columnwidth]{allmonkeys}
+Definujme postupnosť jazykov $ (L_i)_{i=2}^{\infty} $ nasledovne: $ L_i = (\lbrace a^{i-1} \rbrace \lbrace b \rbrace^* \lbrace a,b \rbrace)^* $ pre ľubovolné $ i \geq 2 $. Táto postupnosť ešte nie je tá, ktorú hľadáme. Tú, ktorú hľadáme, však dostaneme z $ P $ vybratím niektorých (nekonečne veľa) jej členov. Na príklade jazyka $ L_4 $ možno vidieť ako vyzerá minimálny NKA pre jazyk $ L_i $.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=4cm,
+                    semithick,accepting/.style={double distance=2.5pt}]
+	\node[state,initial,accepting] (0)					{$q_0$};
+   	\node[state] 					(1)	[right of=0]	{$q_1$};
+   	\node[state] 					(2)	[below of=1]	{$q_2$};
+   	\node[state] 					(3)	[left of=2]		{$q_3$};
+   	
+   	\path[->]
+     (0) edge [bend left] node {$ a $} (1)
+     (1) edge [bend left] node {$ a $} (2)
+     (2) edge [bend left] node {$ a $} (3)
+     (3) edge [bend left] node {$ a,b $} (0)
+     (3) edge [loop below] node {$ b $} ()
+     ;
+\end{tikzpicture}
+\end{figure}
 
+Tento NKA je pre nekonečne veľa $ i \geq 2 $ nerozložiteľný, t.j. $ L_i $ je nedeterministicky nerozložiteľný pre nekonečne veľa $ i \geq 2 $. Minimálny DKA pre $ L_i $ dostaneme štandardným prevodom z NKA. Ilustujeme na príklade pre $ L_4 $.
 
-\mysection{Some displayed equations}
-     By introducing the product topology on  $R^{m \times m} \times
-R^{n \times n}$  with the induced inner product
-\begin{equation}
-\langle (A_{1},B_{1}), (A_{2},B_{2})\rangle := \langle A_{1},A_{2}\rangle 
-+ \langle B_{1},B_{2}\rangle,\label{eq2.10}
-\end{equation}
-we calculate the Fr\'{e}chet derivative of  $F$  as follows:
-\begin{eqnarray}
- F'(U,V)(H,K) &=& \langle R(U,V),H\Sigma V^{T} + U\Sigma K^{T}\nonumber\\
-             && - P(H\Sigma V^{T} + U\Sigma K^{T})\rangle \nonumber \\
-         &=& \langle R(U,V),H\Sigma V^{T} + U\Sigma K^{T}\rangle\nonumber \\
-&=& \langle R(U,V)V\Sigma^{T},H\rangle + \nonumber\\
-  &&    \langle \Sigma^{T}U^{T}R(U,V),K^{T}\rangle.    \label{eq2.11}
-\end{eqnarray}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=4cm,
+                    semithick,accepting/.style={double distance=2.5pt}]
+	\node[state,initial,accepting] (0)						{$0$};
+   	\node[state] 					(1)		[below of=0]	{$1$};
+   	\node[state] 					(2)		[right of=1]	{$2$};
+   	\node[state] 					(3)		[above of=2]	{$3$};
+	\node[state,accepting] 			(30)	[right of=3]	{$3,0$};
+   	\node[state,accepting]			(01)	[right of=30]	{$0,1$};
+   	\node[state] 					(12)	[below of=01]	{$1,2$};
+   	\node[state] 					(23)	[left of=12]	{$2,3$};
+   	
+   	\path[->]
+     (0) edge [bend right] node [swap] {$ a $} (1)
+     (1) edge [bend right] node [swap] {$ a $} (2)
+     (2) edge [bend right] node [swap] {$ a $} (3)
+     (3) edge [bend right] node [swap] {$ a $} (0)
+     (3) edge [bend left] node {$ b $} (30)
+     (30) edge [bend left] node {$ a $} (01)
+     (01) edge [bend left] node {$ a $} (12)
+     (12) edge [bend left] node {$ a $} (23)
+     (23) edge [bend left] node [swap] {$ a,b $} (30)
+     (30) edge [loop above] node {$ b $} ()
+     ;
+\end{tikzpicture}
+\end{figure}
 
-In the middle line of (\ref{eq2.11}) we have used the fact that the range of
-$R$ is always perpendicular to the range of $P$.  The gradient $\nabla F$  of
-$F$, therefore,  may be interpreted as the
-pair of matrices:
-\begin{eqnarray}
- \nabla F(U,V) &=& (R(U,V)V\Sigma^{T},R(U,V)^{T}U\Sigma )\nonumber\\
- && \in R^{m \times m} \times R^{n \times n}.   \label{eq2.12}
-\end{eqnarray}
+Myšlienkou rozkladu je, že každý z automatov v rozklade \glqq{}vyrieši\grqq{} len jeden z cyklov pôvodného DKA.
 
-Thus, the vector field
-\begin{equation}
-\frac{d(U,V)}{dt} = -g(U,V) 	\label{eq2.15}
-\end{equation}
-defines a steepest descent flow on the manifold  ${\cal O} (m) \times
-{\cal O} (n)$ for the objective function  $F(U,V)$.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm,
+                    semithick,accepting/.style={double distance=2.5pt}]
+	\node[state,initial,accepting] (C1)					{$C1$};
+	\node[state,accepting] 			(30)	[right of=C1]	{$3,0$};
+   	\node[state,accepting]			(01)	[above right of=30]	{$0,1$};
+   	\node[state] 					(12)	[below right of=01]	{$1,2$};
+   	\node[state] 					(23)	[below left of=12]	{$2,3$};
+   	
+   	\path[->]
+     (C1) edge [loop above] node {$ a $} ()
+     (C1) edge [bend left] node {$ b $} (30)
+     (30) edge [bend left] node {$ a $} (01)
+     (01) edge [bend left] node {$ a $} (12)
+     (12) edge [bend left] node {$ a $} (23)
+     (23) edge [bend left] node {$ a,b $} (30)
+     (30) edge [loop right] node {$ b $} ()
+     ;
+\end{tikzpicture}
 
-\columnbreak 
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm,
+                    semithick,accepting/.style={double distance=2.5pt}]
+	\node[state,initial above ,accepting] (0)				{$[0]$};
+   	\node[state] 					(1)		[below left of=0]	{$[1]$};
+   	\node[state] 					(2)		[below right of=1]	{$[2]$};
+   	\node[state] 					(3)		[above right of=2]	{$[3]$};
+	\node[state,accepting] 			(C2)	[right of=3]		{$C2$};
+   	
+   	\path[->]
+     (0) edge [bend right] node [swap] {$ a $} (1)
+     (1) edge [bend right] node [swap] {$ a $} (2)
+     (2) edge [bend right] node [swap] {$ a $} (3)
+     (3) edge [bend right] node [swap] {$ a $} (0)
+     (3) edge [bend left] node {$ b $} (C2)
+     (C2) edge [loop above] node {$ a,b $} ()
+     ;
+\end{tikzpicture}
+\end{figure}
 
-\mysection{Numerical experiments} 
-
-We conducted numerical experiments 
-in computing inexact Newton steps for discretizations of a  
-{\em modified Bratu problem}, given by  
-\begin{eqnarray} 
-{\displaystyle \Delta w + c e^w + d{ {\partial w}\over{\partial x} } } 
-&=&{\displaystyle f \quad {\rm in}\ D, }\nonumber\\[-1.5ex]
-\label{bratu} \\[-1.5ex]
-{\displaystyle w }&=&{\displaystyle 0 \quad {\rm on}\ \partial D , } \nonumber
-\end{eqnarray} 
-where $c$ and $d$ are constants. The actual Bratu problem has $d=0$ and  
-$f \equiv0$. It provides a simplified model of nonlinear diffusion  
-phenomena, e.g., in combustion and semiconductors, and has been 
-considered by Glowinski, Keller, and Rheinhardt \cite{GloKR85}, 
-as well as by a number of other investigators; see \cite{GloKR85} 
-and the references therein. See also problem 3 by Glowinski and  Keller  
-and problem 7 by Mittelmann in the collection of nonlinear model 
-problems assembled by Mor\'e \cite{More}. The modified problem  
-(\ref{bratu}) has been used as a test problem for inexact Newton 
-methods by Brown and Saad \cite{Brown-Saad1}.  
-
-\def\gmres{{GMRES}} 
-\def\gmresm{{\rm GMRES($m$)}} 
-
-In our experiments, we took $D = [0,1]\times[0,1]$, $f \equiv0$, 
-$c=d=10$, and discretized (\ref{bratu}) using the usual second-order 
-centered differences over a $100\times100$ mesh of equally 
-spaced points in $D$. In \gmres($m$), we took $m=10$ and used fast  
-Poisson right preconditioning as before.
-
-\bigskip 
-\includegraphics[width=\columnwidth]{fig}
-\caption{Graph of the function $\sin(x)/x$.} 
- 
+Jazyk $ L_i $ je deterministicky rozložiteľný pre ľubovolné $ i \geq 2 $. Teda sme našli nekonečnú postupnosť s hľadanými vlastnosťami.
 
 %% zoznam literatury
 \bibliographystyle{apalike}
-\bibliography{references}
+\bibliography{literatura}
 
 \end{multicols*}
 \end{document}
