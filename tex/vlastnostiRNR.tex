@@ -18,7 +18,7 @@ Pre $ nsc(L) = 1 $ je tvrdenie zrejmé. Uvažujme $ nsc(L)=2 $ a postupujme spor
 
 \section{Nový symbol v jazyku}
 
-Nasledujúca veta formalizuje fakt, že ak máme regulárny jazyk a z neho vytvoríme nový jazyk takým štýlom, že vezmeme nový symbol, ktorý slová z pôvodného jazyka neobsahujú a tento symbol \glqq{} vopcháme \grqq{} do slov pôvodného jazyka, tak na rozložiteľnosti pôvodného jazyka to nič nezmení.
+Nasledujúca veta formalizuje fakt, že ak máme regulárny jazyk a z neho vytvoríme nový jazyk tak, že vezmeme nový symbol, ktorý slová z pôvodného jazyka neobsahujú a tento symbol \glqq{} vopcháme \grqq{} do slov pôvodného jazyka, tak na rozložiteľnosti pôvodného jazyka to nič nezmení.
 
 \begin{theorem}
 \label{thm:new_symbol_in_language}
@@ -54,8 +54,8 @@ Nech $ L = \lbrace w \rbrace $. Potom je $ L $ rozložiteľný práve vtedy, ke�
 \end{theorem}
 
 \begin{proof}
-$ \Rightarrow $: Dokážeme obmenu tvrdenia. Ak $ w $ obsahuje nanajvýš jeden znak, tak existuje nejaké $ n \in \mathbb{N} $ také, že $ L = \lbrace a^n \rbrace $. Potom podľa Vety \ref{thm:Sigma^n} je jazyk $ L $ nerozložiteľný.
-$ \Leftarrow $: Nech $ w = w_1abw_2 $ pre nejaké slová $ w_1,w_2 $. Zostrojíme NKA $ A_w $ pre jazyk $ L = \lbrace w \rbrace $. Automat uvádzame pomocou diagramu.
+$ \Rightarrow $: Dokážeme obmenu tvrdenia. Ak $ w $ obsahuje nanajvýš jeden znak, tak existuje nejaké $ n \in \mathbb{N} $ také, že $ L = \lbrace a^n \rbrace $. Potom podľa Tvrdenia \ref{thm:Sigma^n} je jazyk $ L $ nerozložiteľný.
+$ \Leftarrow $: Nech $ w = w_1abw_2 $ pre nejaké slová $ w_1,w_2 $. Zostrojíme NKA $ A_w $ pre jazyk $ L = \lbrace w \rbrace $. Automat uvádzame pomocou zovšeobecneného diagramu.
 
 \begin{figure}[H]
 \centering
@@ -68,10 +68,10 @@ $ \Leftarrow $: Nech $ w = w_1abw_2 $ pre nejaké slová $ w_1,w_2 $. Zostrojím
    \node[state,accepting]			(w2) 	[right of=b] 	{$q_{w_2}$};
    
    \path[->]
-    (0) edge [bend left] node {$ w_1 $} (w1)  
+    (0) edge [bend left, dashed] node {$ w_1 $} (w1)  
     (w1) edge [bend left] node {a} (a)
     (a) edge [bend left] node {b} (b)
-    (b) edge [bend left] node {$ w_2 $} (w2)
+    (b) edge [bend left, dashed] node {$ w_2 $} (w2)
     ;
 \end{tikzpicture}
 \caption{automat $ A_w $}
@@ -79,7 +79,7 @@ $ \Leftarrow $: Nech $ w = w_1abw_2 $ pre nejaké slová $ w_1,w_2 $. Zostrojím
 
 Uvažujme množinu dvojíc slov $ F = \lbrace (pref(w,i),suff(w,|w|-i)) \; | \; 0 \leq i \leq |u| \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} mätúcou množinou pre jazyk $ L $. Nakoľko $ |F| = |w|+1 $, tak podľa Vety \ref{thm:fooling_set_technique} $ nsc(L) \geq |w|+1 $. Kedže $ L(A_w) = L $ a $ \#_S(A_w) = |w|+1 $, tak $ nsc(L) = |w|+1 $ a automat $ A_w $ je minimálny NKA pre jazyk $ L $.
 \par
-Zostrojíme netriviálny rozklad automatu $ A_w $. Hľadané automaty $ A^a_w $ a $ A^b_w $ uvádzame pomocou diagramov.
+Zostrojíme netriviálny rozklad automatu $ A_w $. Hľadané automaty $ A^a_w $ a $ A^b_w $ uvádzame pomocou zovšeobecnených diagramov.
 
 \begin{figure}[H]
 \centering
@@ -91,9 +91,9 @@ Zostrojíme netriviálny rozklad automatu $ A_w $. Hľadané automaty $ A^a_w $ 
    \node[state,accepting]			(w2) 	[right of=b] 	{$q_{w_2}$};
    
    \path[->]
-    (0) edge [bend left] node {$ w_1 $} (w1a)  
+    (0) edge [bend left, dashed] node {$ w_1 $} (w1a)  
     (w1a) edge [bend left] node {b} (b)
-    (b) edge [bend left] node {$ w_2 $} (w2)
+    (b) edge [bend left, dashed] node {$ w_2 $} (w2)
     (w1a) edge [loop above] node {a} ()
     ;
 \end{tikzpicture}
@@ -106,9 +106,9 @@ Zostrojíme netriviálny rozklad automatu $ A_w $. Hľadané automaty $ A^a_w $ 
    \node[state,accepting]			(w2) 	[right of=ab] 	{$q_{w_2}$};
    
    \path[->]
-    (0) edge [bend left] node {$ w_1 $} (w1)  
+    (0) edge [bend left, dashed] node {$ w_1 $} (w1)  
     (w1) edge [bend left] node {a} (ab)
-    (ab) edge [bend left] node {$ w_2 $} (w2)
+    (ab) edge [bend left, dashed] node {$ w_2 $} (w2)
     (ab) edge [loop above] node {b} ()
     ;
 \end{tikzpicture}
@@ -124,7 +124,7 @@ Navyše platí $ \#_S(A_w^a) < \#_S(A_w) $ a $ \#_S(A_w^b) < \#_S(A_w) $. Takže
 
 \section{Automaty tvorené jediným cyklom}
 
-Typickou schopnosťou konečných automatov je počítať v cykle zvyšok po delení dĺžky slova. Tieto automaty sa vyznačujú tým, že sú tvorené jediným cyklom, pričom nijak nezohľadňujú štruktúru slova. Podstatu otázok spojených s takýmito automatmi riešia Vety \ref{thm:prime^n} a \ref{thm:compound}. Nakoľko v konečných automatoch sú práve cykly veľmi dôležitou štruktúrou, v našej práci sme túto otázku rozšírili a študovali sme otázku rozložiteľnosti jazykov, ktorých minimálne nedeterministické konečné automaty sú tvorené jediným cyklom, pričom v ňom zohľadňujú aj štruktrúru akceptovaného slova. Podstatou týchto automatov je, neformálne povedané, pumpovanie nejakého slova.
+Typickou schopnosťou konečných automatov je počítať v cykle zvyšok po delení daným číslom z dĺžky slova. Tieto automaty sa vyznačujú tým, že sú tvorené jediným cyklom, pričom nijak nezohľadňujú štruktúru slova. Podstatu otázok spojených s takýmito automatmi riešia Vety \ref{thm:prime^n} a \ref{thm:compound}. Nakoľko v konečných automatoch sú práve cykly veľmi dôležitou štruktúrou, v našej práci sme túto otázku rozšírili a študovali sme otázku rozložiteľnosti jazykov, ktorých minimálne nedeterministické konečné automaty sú tvorené jediným cyklom, pričom v ňom zohľadňujú aj štruktrúru akceptovaného slova. Podstatou týchto automatov je, neformálne povedané, pumpovanie nejakého slova.
 
 \begin{lemma}
 \label{lm:one_word_cycle_nsc}
@@ -132,7 +132,7 @@ Nech $ \Sigma $ je ľubovolná abeceda, nech $ u \in \Sigma^* $, nech $ L_u = \l
 \end{lemma}
 
 \begin{proof}
-Zostrojíme NKA $ A_u $ pre jazyk $ L_u $. Automat uvádzame pomocou diagramu.
+Zostrojíme NKA $ A_u $ pre jazyk $ L_u $. Tento automat s počtom stavov $ |u| $ uvádzame pomocou zovšeobecneného diagramu.
 
 \begin{figure}[H]
 \centering
@@ -141,7 +141,7 @@ Zostrojíme NKA $ A_u $ pre jazyk $ L_u $. Automat uvádzame pomocou diagramu.
    \node[state,initial,accepting] 	(0) 					{$q_0$}; 
    
    \path[->]
-    (0) edge [loop right] node {u} ()  
+    (0) edge [loop right, dashed] node {u} ()  
     ;
 \end{tikzpicture}
 \caption{automat $ A_u $}
@@ -149,12 +149,12 @@ Zostrojíme NKA $ A_u $ pre jazyk $ L_u $. Automat uvádzame pomocou diagramu.
 Ľahko vidno, že $ L(A_u) = L_u $. Uvažujme množinu dvojíc slov $ F = \lbrace (pref(u,i), \; suff(|u|-i)) \; | \; 0 \leq i < |u| \rbrace $. Množina $ F $ je podľa definície \ref{def:fooling_set} mätúcou množinou pre jazyk $ L_u $. Nakoľko $ |F|=|u| $, tak podľa Vety \ref{thm:fooling_set_technique} $ nsc(L_u) \geq |u| $. Kedže $ L(A_u) = L_u $ a $ \#_S(A_u) = |u| $, tak $ nsc(L_u) = |u| $ a automat $ A_u $ je minimálny NKA pre jazyk $ L_u $.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Nech $ \Sigma $ je ľubovolná abeceda taká, že $ |\Sigma| \geq 2 $. Nech pre $ u \in \Sigma^* $, $ k \geq 2 $ je $ L_u^k = \lbrace u^k \rbrace^* $. Ak $ u $ obsahuje aspoň dva rôzne symboly, potom je $ L_u^k $ rozložiteľný.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Nech $ n \geq 1, \Sigma = \lbrace a, b_1, \ldots , b_n \rbrace, u \in \Sigma^*,$ $ u $ obsahuje symbol $ a $ a minimálne ešte jeden symbol zo $ \Sigma $. Podľa Lemy \ref{lm:one_word_cycle_nsc} platí $ nsc(L_u^k) = k|u| $. Teda existuje NKA $ A_u^k $ taký, že $ L(A_u^k) = L_u^k $ a $ \#_S(A_u^k) = k|u| $. Automat $ A_u^k $ je teda minimálny NKA pre $ L_u^k $. Zostrojíme netriviálny rozklad automatu $ A_u^k $. Označme $ l = k.\#_a(u) $. Rozklad uvádzame pomocou diagramu.
+Nech $ n \geq 1, \Sigma = \lbrace a, b_1, \ldots , b_n \rbrace, u \in \Sigma^*,$ $ u $ obsahuje symbol $ a $ a minimálne ešte jeden symbol zo $ \Sigma $. Podľa Lemy \ref{lm:one_word_cycle_nsc} platí $ nsc(L_u^k) = k|u| $. Teda existuje NKA $ A_u^k $ taký, že $ L(A_u^k) = L_u^k $ a $ \#_S(A_u^k) = k|u| $. Automat $ A_u^k $ je teda minimálny NKA pre $ L_u^k $. Zostrojíme netriviálny rozklad automatu $ A_u^k $. Označme $ l = k.\#_a(u) $. Rozklad uvádzame pomocou zovšeobecneného diagramu.
 
 \begin{figure}[H]
 \centering
@@ -163,7 +163,7 @@ Nech $ n \geq 1, \Sigma = \lbrace a, b_1, \ldots , b_n \rbrace, u \in \Sigma^*,$
    \node[state,initial,accepting] 	(0) 					{$q_0$}; 
    
    \path[->]
-    (0) edge [loop above] node [swap] {u} ()  
+    (0) edge [loop above, dashed] node [swap] {u} ()  
     ;
 \end{tikzpicture}
 
@@ -198,15 +198,15 @@ Myšlienkou tohto rozkladu je, že jeden z automatov kontroluje štruktúru slov
 
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Nech $ \Sigma $ je ľubovolná abeceda, nech $ k_1,k_2 \in \lbrace 0,1 \rbrace $, nech $ w_1,w_2,w_3,w_4,w_5,w_6 \in \Sigma^* $. Definujeme $ L = \lbrace w_1a^{k_1}w_2bw_3aw_4bw_5a^{k_2}w_6 \rbrace^* $. Ak $ k_1 = 1 $ alebo $ k_2 = 1 $, potom je $ L $ rozložiteľný.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
 Zaveďme označenia $ u = w_1a^{k_1}w_2bw_3aw_4bw_5a^{k_2}w_6$ a $ \Sigma_{ab} = \Sigma \cup \lbrace a,b \rbrace $. Podľa Lemy \ref{lm:one_word_cycle_nsc} platí $ nsc(L) = |u| $. Teda existuje NKA $ A $ taký, že $ L(A) = L $ s $ \#_S(A) = |u| $. Automat $ A $ je teda minimálny NKA pre $ L $. Zostrojíme netriviálny rozklad automatu $ A $. Rozoberieme nasledujúce dva prípady, podľa toho akého tvaru je slovo $ u $. Podľa predpokladov je $ u $ práve jedého z nasledujúcich tvarov:
 
 \begin{enumerate}
-\item Existujú dve rôzne podslová v slove $ u $ také, že symbol $ b $ je nasledovaný symbolom rôznym od $ b $. Formálne existujú $ v_1,v_2,v_3 \in \Sigma_{ab}^* $ a $ \overline{b}_1,\overline{b}_2 \in \Sigma_{ab} - \lbrace b \rbrace $ také, že $ u = v_1b\overline{b}_1v_2\overline{b}_2v_3 $. Na základe tohto poznatku zostrojíme netriviálny rozklad automatu $ A $. Rozklad uvádzame pomocou diagramu.
+\item Existujú dve rôzne podslová v slove $ u $ také, že symbol $ b $ je nasledovaný symbolom rôznym od $ b $. Formálne existujú $ v_1,v_2,v_3 \in \Sigma_{ab}^* $ a $ \overline{b}_1,\overline{b}_2 \in \Sigma_{ab} - \lbrace b \rbrace $ také, že $ u = v_1b\overline{b}_1v_2\overline{b}_2v_3 $. Na základe tohto poznatku zostrojíme netriviálny rozklad automatu $ A $. Rozklad uvádzame pomocou zovšeobecneného diagramu.
 
 \begin{figure}[H]
 \centering
@@ -219,13 +219,13 @@ Zaveďme označenia $ u = w_1a^{k_1}w_2bw_3aw_4bw_5a^{k_2}w_6$ a $ \Sigma_{ab} =
    	\node[state] 					(notb2)	[right of=b]		{$q_{\overline{b}_2}$};
    
    	\path[->]
-     (0) edge [bend left] node {$ v_1 $} (v1) 
+     (0) edge [bend left, dashed] node {$ v_1 $} (v1) 
      (v1) edge [bend left] node {$ \overline{b}_1 $} (notb1)
      (v1) edge [loop above] node {$ b $} ()
-     (notb1) edge [bend left] node {$ v_2 $} (v2)
+     (notb1) edge [bend left, dashed] node {$ v_2 $} (v2)
      (v2) edge [bend left] node {$ b $} (b)
      (b) edge [bend left] node {$ \overline{b}_2 $} (notb2)
-     (notb2) edge [bend left] node {$ v_3 $} (0)
+     (notb2) edge [bend left, dashed] node {$ v_3 $} (0)
      ;
 \end{tikzpicture}
 
@@ -239,13 +239,13 @@ Zaveďme označenia $ u = w_1a^{k_1}w_2bw_3aw_4bw_5a^{k_2}w_6$ a $ \Sigma_{ab} =
    	\node[state] 					(notb2)	[right of=v2]		{$q_{\overline{b}_2}$};
    
    	\path[->]
-     (0) edge [bend left] node {$ v_1 $} (v1) 
+     (0) edge [bend left, dashed] node {$ v_1 $} (v1) 
      (v1) edge [bend left] node {$ b $} (b)
      (b) edge [bend left] node {$ \overline{b}_1 $} (notb1)
-     (notb1) edge [bend left] node {$ v_2 $} (v2)
+     (notb1) edge [bend left, dashed] node {$ v_2 $} (v2)
      (v2) edge [loop above] node {$ b $} ()
      (v2) edge [bend left] node {$ \overline{b}_2 $} (notb2)
-     (notb2) edge [bend left] node {$ v_3 $} (0)
+     (notb2) edge [bend left, dashed] node {$ v_3 $} (0)
      ;
 \end{tikzpicture}
 \caption{rozklad automatu $ A $ na automaty $ A_1 $ a $ A_2 $}
@@ -265,7 +265,7 @@ Z predošlého vyplýva, že $ w \in L $, čo kompletizuje dôkaz tejto inklúzi
 \par
 Teda $ L(A_1) \cap L(A_2) = L = L(A) $. Navyše $ \#_S(A_1) < \#_S(A) $ a $ \#_S(A_2) < \#_S(A) $, teda automaty $ A_1 $ a $ A_2 $ tvoria netriviálny rozklad automatu $ A $.
 
-\item Existujú $ \overline{b}_1,\overline{b}_2 \in \Sigma_{ab} - \lbrace b \rbrace $, $ v_1,v_2 \in \Sigma_{ab} - \lbrace b \rbrace $, $ c_1,c_2 \geq 1 $ také, že $ u = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{c_2} $. Na základe tohto poznatku zostrojíme netriviálny rozklad automatu $ A $. Rozklad uvádzame pomocou diagramu.
+\item Existujú $ \overline{b}_1,\overline{b}_2 \in \Sigma_{ab} - \lbrace b \rbrace $, $ v_1,v_2 \in \Sigma_{ab} - \lbrace b \rbrace $, $ c_1,c_2 \geq 1 $ také, že $ u = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{c_2} $. Na základe tohto poznatku zostrojíme netriviálny rozklad automatu $ A $. Rozklad uvádzame pomocou zovšeobecneného diagramu.
 
 \begin{figure}[H]
 \centering
@@ -279,10 +279,10 @@ Teda $ L(A_1) \cap L(A_2) = L = L(A) $. Navyše $ \#_S(A_1) < \#_S(A) $ a $ \#_S
    
    	\path[->]
      (0) edge [bend left] node {$ \overline{b}_1 $} (notb1)
-     (notb1) edge [bend left] node {$ v_1 $} (v1)
+     (notb1) edge [bend left, dashed] node {$ v_1 $} (v1)
      (v1) edge [loop above] node {$ b $} ()
      (v1) edge [bend left] node {$ \overline{b}_2 $} (notb2)
-     (notb2) edge [bend left] node {$ v_2 $} (v2)
+     (notb2) edge [bend left, dashed] node {$ v_2 $} (v2)
      (v2) edge [bend left] node {$ b $} (0)
      ;
 \end{tikzpicture}
@@ -296,10 +296,10 @@ Teda $ L(A_1) \cap L(A_2) = L = L(A) $. Navyše $ \#_S(A_1) < \#_S(A) $ a $ \#_S
    
    	\path[->]
      (0) edge [bend left] node {$ \overline{b}_1 $} (notb1)
-     (notb1) edge [bend left] node {$ v_1 $} (v1)
+     (notb1) edge [bend left, dashed] node {$ v_1 $} (v1)
      (v1) edge [bend left] node {$ b $} (b)
      (b) edge [bend left] node {$ \overline{b}_2 $} (notb2)
-     (notb2) edge [bend left] node {$ v_2 $} (0)
+     (notb2) edge [bend left, dashed] node {$ v_2 $} (0)
      (0) edge [loop above] node {$ b $} ()
      ;
 \end{tikzpicture}
@@ -314,96 +314,97 @@ Záverom ešte spomeňme, že hlavnou myšlienkou rozkladu bola akási synchroni
 
 \section{Uzáverové vlastnosti}
 
-Skúmame uzáverové vlastnosti tried rozložiteľných a nerozložiteľných jazykov. Ukazujeme, že uzáverové vlastnosti oboch tried nie sú vôbec pekné.
+Skúmame uzáverové vlastnosti tried rozložiteľných a nerozložiteľných jazykov. Ukazujeme, že obe triedy nie sú uzavreté na žiadnu zo štandardných operácií.
 
-\begin{theorem}
+\begin{proposition}
 Trieda rozložiteľných jazykov nie je uzavretá na prienik.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyky $ L_1 = \lbrace a^{92} \rbrace \cup \lbrace b \rbrace^*, L_2 = \lbrace a^{92} \rbrace \cup \lbrace c \rbrace^* $. $ L_1 $ a $ L_2 $ sú podla Vety \ref{thm:a^nub^*} rozložiteľné. Avšak jazyk $ L_1 \cap L_2 = \lbrace a^{92} \rbrace $ je podľa Vety \ref{thm:Sigma^n} nerozložiteľný.
+Uvažujme jazyky $ L_1 = \lbrace a^{92} \rbrace \cup \lbrace b \rbrace^*, L_2 = \lbrace a^{92} \rbrace \cup \lbrace c \rbrace^* $. $ L_1 $ a $ L_2 $ sú podla Tvrdenia \ref{thm:a^nub^*} rozložiteľné. Avšak jazyk $ L_1 \cap L_2 = \lbrace a^{92} \rbrace $ je podľa Tvrdenia \ref{thm:Sigma^n} nerozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda nerozložiteľných jazykov nie je uzavretá na prienik.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyky $ L_1 = \lbrace a^{2017k} | k \in \mathbb{N} \rbrace, L_2 = \lbrace a^{29k} | k \in \mathbb{N} \rbrace $. $ L_1 $ a $ L_2 $ sú podla Vety \ref{thm:prime^n} nerozložiteľné. Avšak jazyk $ L_1 \cap L_2 = \lbrace a^{58493k} | k \in \mathbb{N} \rbrace $ je podľa Vety \ref{thm:compound} rozložiteľný.
+Uvažujme jazyky $ L_1 = \lbrace a^{2017k} \; | \; k \in \mathbb{N} \rbrace, L_2 = \lbrace a^{29k} \; | \; k \in \mathbb{N} \rbrace $. $ L_1 $ a $ L_2 $ sú podla Vety \ref{thm:prime^n} nerozložiteľné. Avšak jazyk $ L_1 \cap L_2 = \lbrace a^{58493k} \; | \; k \in \mathbb{N} \rbrace $ je podľa Vety \ref{thm:compound} rozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda rozložiteľných jazykov nie je uzavretá na zjednotenie.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyky $ L_1 = \lbrace w \in \lbrace a,b \rbrace^* | \#_a(w) \equiv 0 (mod \; 2), \; \#_b(w) \equiv 0 (mod \; 3) \rbrace, L_2 = \lbrace w \in \lbrace a,b \rbrace^* | \#_a(w) \equiv 1 (mod \; 2), \; \#_b(w) \equiv 0 (mod \; 3) \rbrace $. $ L_1 $ a $ L_2 $ sú podľa Vety \ref{thm:nmz_nz_m} rozložiteľné. Avšak jazyk $ L_1 \cup L_2 = \lbrace a^{3k} | k \in \mathbb{N} \rbrace $ je podľa Vety \ref{thm:prime^n} nerozložiteľný.
+Uvažujme jazyky $ L_1 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) \equiv 0 \; (mod \; 2), \; \#_b(w) \equiv 0 \; (mod \; 3) \rbrace, L_2 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) \equiv 1 \; (mod \; 2), \; \#_b(w) \equiv 0 \; (mod \; 3) \rbrace $. $ L_1 $ a $ L_2 $ sú podľa Tvrdenia \ref{thm:nmz_nz_m} rozložiteľné. Avšak jazyk $ L_1 \cup L_2 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_b(w) \equiv 0 \; (mod \; 3) \rbrace $ je podľa Vety \ref{thm:prime^n} a Vety \ref{thm:new_symbol_in_language} nerozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda nerozložiteľných jazykov nie je uzavretá na zjednotenie.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyky $ L_1 = \lbrace a^{2829} \rbrace, L_2 = \lbrace b \rbrace^* $. $ L_1 $ je podľa Vety \ref{thm:Sigma^n} nerozložiteľný a $ L_2 $ je podla Vety \ref{thm:too_small_nsc} nerozložiteľný. Avšak jazyk $ L_1 \cup L_2 $ je podľa Vety \ref{thm:a^nub^*} rozložiteľný.
+Uvažujme jazyky $ L_1 = \lbrace a^{2829} \rbrace, L_2 = \lbrace b \rbrace^* $. Podľa Tvrdenia \ref{thm:Sigma^n} je $ L_1 $ je nerozložiteľný a $ L_2 $ je podla Vety \ref{thm:too_small_nsc} nerozložiteľný. Avšak jazyk $ L_1 \cup L_2 $ je podľa Tvrdenia \ref{thm:a^nub^*} rozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda rozložiteľných jazykov nie je uzavretá na homomorfizmus.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyk $ L = \lbrace a^{89} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace a,b \rbrace \rightarrow \lbrace \heartsuit \rbrace $ definovaný nasledovne - $ h(a) = \heartsuit, h(b) = \heartsuit $. Jazyk $ L $ je podľa Vety \ref{thm:a^nub^*} rozloziteľný. Avšak jazyk $ h(L) = \lbrace \heartsuit \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
+Uvažujme jazyk $ L = \lbrace a^{89} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace a,b \rbrace \rightarrow \lbrace a \rbrace $ definovaný nasledovne - $ h(a) = a, h(b) = a $. Jazyk $ L $ je podľa Tvrdenia \ref{thm:a^nub^*} rozložiteľný. Avšak jazyk $ h(L) = \lbrace a \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda nerozložiteľných jazykov nie je uzavretá na homomorfizmus.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyk $ L = \lbrace a^{2k} | k \in \mathbb{N} \rbrace $ a homomorfizmus $ h : \lbrace a \rbrace \rightarrow \lbrace \gimel \rbrace $ definovaný nasledovne - $ h(a) = \gimel\gimel\gimel $. Jazyk $ L $ je podľa Vety \ref{thm:prime^n} nerozloziteľný. Avšak jazyk $ h(L) = \lbrace \gimel^{6k} | k \in \mathbb{N} \rbrace$ je podľa Vety \ref{thm:compound} rozložiteľný.
+Uvažujme jazyk $ L = \lbrace a^{2k} | k \in \mathbb{N} \rbrace $ a homomorfizmus $ h : \lbrace a \rbrace \rightarrow \lbrace a \rbrace $ definovaný nasledovne - $ h(a) = aaa $. Jazyk $ L $ je podľa Vety \ref{thm:prime^n} nerozložiteľný. Avšak jazyk $ h(L) = \lbrace a^{6k} | k \in \mathbb{N} \rbrace $ je podľa Vety \ref{thm:compound} rozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda rozložiteľných jazykov nie je uzavretá na inverzný homomorfizmus.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyk $ L = \lbrace a^{39} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace b \rbrace \rightarrow \lbrace b \rbrace $ definovaný nasledovne - $ h(b) = b $. Jazyk $ L $ je podľa Vety \ref{thm:a^nub^*} rozloziteľný. Avšak jazyk $ h^{-1}(L) = \lbrace b \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
+Uvažujme jazyk $ L = \lbrace a^{39} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace b \rbrace \rightarrow \lbrace b \rbrace $ definovaný nasledovne - $ h(b) = b $. Jazyk $ L $ je podľa Tvrdenia \ref{thm:a^nub^*} rozložiteľný. Avšak jazyk $ h^{-1}(L) = \lbrace b \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda rozložiteľných jazykov nie je uzavretá na zreťazenie.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyky $ L_1 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) \equiv 0 \;  (mod \; 3), \; \#_b(w) \equiv 0 \; (mod \; 2) \rbrace, L_2 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) \equiv 0 \; (mod \; 3), \; \#_b(w) \equiv 1 \; (mod \; 2) \rbrace \cup \lbrace \varepsilon \rbrace $. Jazyky $ L_1 $ a $ L_2 $ sú podľa Vety \ref{thm:nmz_nz_m} rozložiteľné. Platí $ L_1.L_2 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) \equiv 0 \; (mod \; 3) \rbrace $. Teda jazyk $ L_1.L_2 $ je podľa Vety \ref{thm:prime^n} a Vety \ref{thm:new_symbol_in_language} nerozložiteľný.
+Uvažujme jazyky $ L_1 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) \equiv 0 \;  (mod \; 3), \; \#_b(w) \equiv 0 \; (mod \; 2) \rbrace, L_2 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) \equiv 0 \; (mod \; 3), \; \#_b(w) \equiv 1 \; (mod \; 2) \rbrace \cup \lbrace \varepsilon \rbrace $. Jazyky $ L_1 $ a $ L_2 $ sú podľa Tvrdenia \ref{thm:nmz_nz_m} rozložiteľné. Platí $ L_1.L_2 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) \equiv 0 \; (mod \; 3) \rbrace $. Teda jazyk $ L_1.L_2 $ je podľa Vety \ref{thm:prime^n} a Vety \ref{thm:new_symbol_in_language} nerozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda nerozložiteľných jazykov nie je uzavretá na zreťazenie.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyky $ L_1 = \lbrace b \rbrace, L_2 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) = 81 \rbrace $. $ L_1 $ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný a $ L_2 $ je v podľa Vety \ref{thm:Sigma^n} a Vety \ref{thm:new_symbol_in_language} nerozložiteľný. Avšak jazyk $ L_1.L_2 $ je podľa Vety \ref{thm:prefix} rozložiteľný.
+Uvažujme jazyky $ L_1 = \lbrace b \rbrace, L_2 = \lbrace w \in \lbrace a,b \rbrace^* \; | \; \#_a(w) = 81 \rbrace $. $ L_1 $ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný a $ L_2 $ je v podľa Tvrdenia \ref{thm:Sigma^n} a Vety \ref{thm:new_symbol_in_language} nerozložiteľný. Avšak jazyk $ L_1.L_2 $ je podľa Tvrdenia \ref{thm:prefix} rozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda rozložiteľných jazykov nie je uzavretá na iteráciu.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
 Uvažujme jazyk $ L = \lbrace ab \rbrace $. Jazyk $ L $ je podľa \ref{thm:singleton_characterization} rozložiteľný. Podľa lemy \ref{lm:one_word_cycle_nsc} platí $ nsc(L^*)=2 $ a teda podľa Vety \ref{thm:too_small_nsc} je jazyk $ L^* $ nerozložiteľný.
 \end{proof}
 
-\begin{theorem}
+\begin{proposition}
 Trieda nerozložiteľných jazykov nie je uzavretá na iteráciu.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
-Uvažujme jazyk $ L = \lbrace a^15 \rbrace $. Jazyk $ L $ je podľa \ref{thm:singleton_characterization} nerozložiteľný. $ L^* = \lbrace a^{15k} \; | \; k \in \mathbb{N} \rbrace $, teda $ L^* $ je podľa Vety \ref{thm:compound} rozložiteľný.
+Uvažujme jazyk $ L = \lbrace a^{15} \rbrace $. Jazyk $ L $ je podľa \ref{thm:singleton_characterization} nerozložiteľný. $ L^* = \lbrace a^{15k} \; | \; k \in \mathbb{N} \rbrace $, teda $ L^* $ je podľa Vety \ref{thm:compound} rozložiteľný.
 \end{proof}
 
+Zostáva otvorené, či je trieda nerozložiteľných jazykov uzavretá na inverzný homomorfizmus.
 
 
 

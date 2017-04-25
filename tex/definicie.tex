@@ -63,7 +63,7 @@ Nech $ u $ je ľubovolné slovo, $ k \in \mathbb{N} $. Potom \em{}$ pref(u,k) $\
 \end{notation}
 
 \begin{notation}
-Nech $ u = u_1u_2 \ldots u_n$ je ľubovolné slovo. Ak v diagrame NKA $ A $ použijeme nasledujúce označenie:
+Nech $ u = u_1u_2 \ldots u_n$ je ľubovolné slovo. Ak v diagrame NKA $ A $ použijeme označenie prechodu slovom:
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
@@ -72,12 +72,12 @@ Nech $ u = u_1u_2 \ldots u_n$ je ľubovolné slovo. Ak v diagrame NKA $ A $ pou�
    \node[state]		(2)		[right of=1]	{$p$};
    
    \path[->]
-    (1) edge node {u} (2)  
+    (1) edge [dashed] node {u} (2)  
     ;
 \end{tikzpicture}
 \end{figure}
 
-Myslíme tým, že v automate $ A $ sa dá zo stavu $ q $ dostať do stavu $ p $ na slovo $ u $ pričom zo stavov, v ktorých sa automat $ A $ nachádza počas čítania slova $ u $ sa nedá už nikam inam dostať. Formálne existujú $ q_0, q_1, \ldots, q_n \in K_A $ také, že $ q_0 = q, q_n = p, \delta_A(q, u_1) \ni q_1 $ a pre $ 0 < i < n $ platí $ \delta_A(q_i,u_{i+1}) = \lbrace q_{i+1} \rbrace, q_i \notin F_A $. Treba si uvedomiť, že pokiaľ $ u = \varepsilon $, tak platí $ q=p $, ak navyše v tom prípade aspoň jeden zo stavov je označený v diagrame ako akceptačný, tak sa tým myslí, že stav je akceptačný.
+myslíme tým, že v automate $ A $ sa dá zo stavu $ q $ dostať do stavu $ p $ na slovo $ u $ pričom zo stavov, v ktorých sa automat $ A $ nachádza počas čítania slova $ u $ sa nedá už nikam inam dostať. Formálne, existujú $ q_0, q_1, \ldots, q_n \in K_A $ také, že $ q_0 = q, q_n = p, \delta_A(q, u_1) \ni q_1 $ a pre $ 0 < i < n $ platí $ \delta_A(q_i,u_{i+1}) = \lbrace q_{i+1} \rbrace, q_i \notin F_A $.
 \end{notation}
 
 \section{Definícia problému}
