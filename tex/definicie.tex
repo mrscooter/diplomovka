@@ -56,6 +56,15 @@ Nech $ L \in \mathscr{R} $. \textbf{Minimálnym nedeterministickým konečným a
 \textbf{Dĺžku slova} $ w $ označujeme $ |w| $.
 \end{notation}
 
+\begin{notation}
+Ak $ a,b \in \mathbb{N} $, tak označenie $ a|b $ znamená, že číslo $ a $ delí číslo $ b $. Označenie $ a \nmid b $ znamená, že číslo $ a $ nedelí číslo $ b $.
+\end{notation}
+
+\begin{notation}
+Ak $ a,b \in \mathbb{N} $, tak $ gcd(a,b) $ označuje najväčší spoločný deliteľ čísel $ a,b $ a $ lcm(a,b) $ označuje najmenší spoločný násobok čísel $ a,b $.
+\end{notation}
+
+
 V práci často uvádzame NKA pomocou štandardného stavového diagramu. Pre lepšiu čitateľnosť dôkazov zavádzame nasledovné označenia.
 
 \begin{notation}
@@ -63,7 +72,7 @@ Nech $ u $ je ľubovolné slovo, $ k \in \mathbb{N} $. Potom \em{}$ pref(u,k) $\
 \end{notation}
 
 \begin{notation}
-Nech $ u = u_1u_2 \ldots u_n$ je ľubovolné slovo. Ak v diagrame NKA $ A $ použijeme označenie prechodu slovom:
+Nech $ u = u_1u_2 \ldots u_n$ je ľubovolné slovo kde $ u_i $ je symbol pre $ 0 \leq i \leq n $. Ak v diagrame NKA $ A $ použijeme označenie prechodu slovom:
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
@@ -77,7 +86,7 @@ Nech $ u = u_1u_2 \ldots u_n$ je ľubovolné slovo. Ak v diagrame NKA $ A $ pou�
 \end{tikzpicture}
 \end{figure}
 
-myslíme tým, že v automate $ A $ sa dá zo stavu $ q $ dostať do stavu $ p $ na slovo $ u $ pričom zo stavov, v ktorých sa automat $ A $ nachádza počas čítania slova $ u $ sa nedá už nikam inam dostať. Formálne, existujú $ q_0, q_1, \ldots, q_n \in K_A $ také, že $ q_0 = q, q_n = p, \delta_A(q, u_1) \ni q_1 $ a pre $ 0 < i < n $ platí $ \delta_A(q_i,u_{i+1}) = \lbrace q_{i+1} \rbrace, q_i \notin F_A $.
+myslíme tým, že v automate $ A $ sa dá zo stavu $ q $ dostať do stavu $ p $ na slovo $ u $ pričom zo stavov, v ktorých sa automat $ A $ nachádza počas čítania slova $ u $ sa nedá už nikam inam dostať. Formálne, existujú $ q_0, q_1, \ldots, q_n \in K_A $ také, že $ q_0 = q, q_n = p, \delta_A(q, u_1) \ni q_1 $ a pre $ 0 < i < n $ platí $ \delta_A(q_i,u_{i+1}) = \lbrace q_{i+1} \rbrace, q_i \notin F_A $, $ a \in K_A - \lbrace u_{i+1} \rbrace \Rightarrow \delta_A(q_i,a) = \emptyset  $.
 \end{notation}
 
 \section{Definícia problému}

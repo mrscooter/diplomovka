@@ -3,49 +3,49 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: apalike.bst
 Database file #1: literatura.bib
-Warning--empty publisher in Gazi
+Warning--can't use both author and editor fields in Gazi
 Warning--there's a number but no volume in GlaisterShalit1996
-Warning--empty publisher in Labath
+Warning--can't use both author and editor fields in Labath
 Warning--there's a number but no volume in McCullochPitts
 You've used 6 entries,
             1935 wiz_defined-function locations,
-            510 strings with 4795 characters,
-and the built_in function-call counts, 1932 in all, are:
-= -- 184
-> -- 60
-< -- 7
-+ -- 22
-- -- 18
-* -- 152
-:= -- 353
+            518 strings with 5394 characters,
+and the built_in function-call counts, 2378 in all, are:
+= -- 236
+> -- 72
+< -- 9
++ -- 26
+- -- 22
+* -- 186
+:= -- 399
 add.period$ -- 18
 call.type$ -- 6
-change.case$ -- 38
+change.case$ -- 40
 chr.to.int$ -- 6
 cite$ -- 10
-duplicate$ -- 79
-empty$ -- 141
-format.name$ -- 30
-if$ -- 370
+duplicate$ -- 99
+empty$ -- 173
+format.name$ -- 38
+if$ -- 488
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 6
 newline$ -- 34
 num.names$ -- 18
-pop$ -- 35
+pop$ -- 37
 preamble$ -- 2
-purify$ -- 39
+purify$ -- 41
 quote$ -- 0
-skip$ -- 56
+skip$ -- 78
 stack$ -- 0
-substring$ -- 112
-swap$ -- 5
-text.length$ -- 1
+substring$ -- 168
+swap$ -- 25
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 32
 warning$ -- 4
-while$ -- 14
+while$ -- 18
 width$ -- 0
-write$ -- 79
+write$ -- 83
 (There were 4 warnings)

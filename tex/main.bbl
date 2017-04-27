@@ -2,10 +2,11 @@
   \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
 \begin{thebibliography}{}
 
-\bibitem[Gaži, 2006]{Gazi}
-Gaži, P. (2006).
-\newblock {\em Parallel decomposition of finite automata}.
-\newblock Diplomová práca pod vedením prof. Branislava Rovana.
+\bibitem[Ga{\v{z}}i and Rovan, 2008]{Gazi}
+Ga{\v{z}}i, P. and Rovan, B. (2008).
+\newblock {\em Assisted Problem Solving and Decompositions of Finite Automata},
+  pages 292--303.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg.
 
 \bibitem[Glaister and Shallit, 1996]{GlaisterShalit1996}
 Glaister, I. and Shallit, J. (1996).
@@ -19,10 +20,11 @@ Gruber, H. and Holzer, M. (2006).
 \newblock Technical report, Institut fur Informatik, Technische Universitat
   Munchen, Boltzmannstraße 3, D-85748 Garching bei Munchen, Germany.
 
-\bibitem[Labath, 2010]{Labath}
-Labath, P. (2010).
-\newblock {\em Zjednodušenie výpočtov prídavnou informáciou}.
-\newblock Diplomová práca pod vedením prof. Branislava Rovana.
+\bibitem[Labath and Rovan, 2011]{Labath}
+Labath, P. and Rovan, B. (2011).
+\newblock {\em Simplifying DPDA Using Supplementary Information}, pages
+  342--353.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg.
 
 \bibitem[McCulloch and Pitts, 1943]{McCullochPitts}
 McCulloch, W.~S. and Pitts, W. (1943).

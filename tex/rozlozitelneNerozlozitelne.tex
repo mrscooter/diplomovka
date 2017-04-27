@@ -445,7 +445,7 @@ Vezmime ľubovolné $ a \in \Sigma $ a uvažujme množinu $ F = \lbrace (a^i,a^{
 \par
 Pre $ n=0 $ a $ n=1 $ vyplýva platnosť tvrdenia z Vety \ref{thm:too_small_nsc}. Pre $ n \geq 2 $ postupujme sporom. Nech je jazyk $ \Sigma^n$ rozložiteľný, teda existuje netriviálny rozklad automatu $ A_{\Sigma^n} $. To znamená, že existujú NKA $ A_1^{\Sigma^n} $ a $ A_2^{\Sigma^n} $ také, že $ L(A_1^{\Sigma^n}) \cap L(A_2^{\Sigma^n}) = \Sigma^n $ a $ \#_S(A_1^{\Sigma^n}) < n+1 $, $ \#_S(A_2^{\Sigma^n}) < n+1 $. Navyše vďaka Leme \ref{lm:nonepsilon_NFA} môžeme predpokladať, že automaty $ A_1^{\Sigma^n} $ a $ A_2^{\Sigma^n} $ neobsahujú prechody na $ \varepsilon $. 
 \par
-Vezmime ľubovoľné $ a \in \Sigma $ a uvažujme výpočet automatu $ A_1^{\Sigma^n} $ na slove $ a^n $. Podľa predchádzajúceho automat $ A_1^{\Sigma^n} $ slovo $ a^n $ akceptuje. Výpočet vyzerá nasledovne: $ (p_0,a^n) \vdash (p_1, a^{n-1}) \vdash \ldots \vdash (p_{n-1}, a) \vdash (p_n, \varepsilon) $ kde $ p_0 = q_0$, $ A_1^{\Sigma^n} $, $ p_n \in F_{A_1^{\Sigma^n}} $ a pre $ 1 \leq i < n \; p_i \in K_{A_1^{\Sigma^n}}$. Nakoľko $ \#_S(A_1^{\Sigma^n}) < n+1 $, tak $ \exists i,j \in \mathbb{N}: 0 \leq i \leq, n i \neq j, p_i=p_j $ (vo výpočte sa nejaký stav zopakuje). Z toho vyplýva, že v akceptovanom slove môžem nejakú jeho časť pumpovať, t.j. $ \exists r_1 \in \mathbb{N}, 1 \leq r_1 \leq n \; \forall k \in \mathbb{N}: a^{n + kr_1} \in L(A_1^{\Sigma^n}) $.
+Vezmime ľubovoľné $ a \in \Sigma $ a uvažujme výpočet automatu $ A_1^{\Sigma^n} $ na slove $ a^n $. Podľa predchádzajúceho automat $ A_1^{\Sigma^n} $ slovo $ a^n $ akceptuje. Výpočet vyzerá nasledovne: $ (p_0,a^n) \vdash (p_1, a^{n-1}) \vdash \ldots \vdash (p_{n-1}, a) \vdash (p_n, \varepsilon) $ kde $ p_0 = q_{0A_1^{\Sigma^n}}$, $ p_n \in F_{A_1^{\Sigma^n}} $ a pre $ 1 \leq i < n $ platí $ p_i \in K_{A_1^{\Sigma^n}}$. Nakoľko $ \#_S(A_1^{\Sigma^n}) < n+1 $, tak $ \exists i,j \in \mathbb{N}: 0 \leq i \leq n, i \neq j, p_i=p_j $ (vo výpočte sa nejaký stav zopakuje). Z toho vyplýva, že v akceptovanom slove môžem nejakú jeho časť pumpovať, t.j. $ \exists r_1 \in \mathbb{N}, 1 \leq r_1 \leq n \; \forall k \in \mathbb{N}: a^{n + kr_1} \in L(A_1^{\Sigma^n}) $.
 \par
 Analogicky, uvažujúc výpočet automatu $ A_2^{\Sigma^n} $ na slove $ a^n $, platí $ \exists r_2 \in \mathbb{N}, 1 \leq r_2 \leq n \; \forall k \in \mathbb{N}: a^{n + kr_2} \in L(A_2^{\Sigma^n}) $.
 \par
@@ -523,14 +523,9 @@ Nech je jazyk $ L$ rozložitelný, teda existuje netriviálny rozklad automatu $
 \par
 Uvažujme výpočet automatu $ A_1^{L} $ na slove $ aaaa $. Podľa predcházajúceho automat $ A_1^{L} $ slovo $ aaaa $ akceptuje. Výpočet vyzerá nasledovne: $ (p_0,aaaa) \vdash (p_1, aaa) \vdash (p_{2}, aa) \vdash (p_3, a) \vdash (p_4, \varepsilon) $ kde $ p_0 $ je počiatočný stav $ A_1^{L} $, $ p_4 \in F_{A_1^{L}} $ a pre $ 1 \leq i < 4 \; p_i \in K_{A_1^{L}}$. Nakoľko $ \#_S(A_1^{L}) < 4 $, tak $ \exists i,j \in \lbrace 0,1,2,3 \rbrace, i \neq j, p_i=p_j $ (vo výpočte sa nejaký stav zopakuje ešte pred tým ako bude slovo akceptované) . Z toho vyplýva, že v akceptovanom slove môžem nejakú jeho časť pumpovať, t.j. $ \exists r_1 \in \lbrace 1,2,3 \rbrace \; \forall k \in \mathbb{N}: a^{4 + kr_1} \in L(A_1^{L}) $.
 \par
-Analogicky, uvažujúc výpočet automatu $ A_2^{L} $ na slove $ aaaa $, platí $ \exists r_2 \in \lbrace 1,2,3 \rbrace \; \forall k \in \mathbb{N}: a^{n + kr_2} \in L(A_2^{L}) $.
+Analogicky, uvažujúc výpočet automatu $ A_2^{L} $ na slove $ aaaa $, platí $ \exists r_2 \in \lbrace 1,2,3 \rbrace \; \forall k \in \mathbb{N}: a^{4 + kr_2} \in L(A_2^{L}) $.
 \par
-Môžu nastať nasledovné prípady:
-\begin{enumerate}
-\item $ r_1 = 1, r_2 = 3 $ respektíve $ r_1 = 3, r_2 = 1 $. V tom prípade podľa predchádzajúceho platí $ a^{4+3} \in L(A_1^{L}) \cap L(A_2^{L}) $. Avšak $ a^{4+3} \notin L $ čo je v spore s tým, že automaty $ A_1^{L} $ a $ A_2^{L} $ tvoria netriviálny rozklad automatu $ A_{L} $.
-\item $ r_1 = 2, r_2 = 2 $. V tom prípade podľa predchádzajúceho platí $ a^{4+2} \in L(A_1^{L}) \cap L(A_2^{L}) $. Avšak $ a^{4+2} \notin L $ čo je v spore s tým, že automaty $ A_1^{L} $ a $ A_2^{L} $ tvoria netriviálny rozklad automatu $ A_{L} $.
-\end{enumerate}
-Nakoľko iné prípady nastať nemôžu, našli sme hľadaný spor čo kompletizuje dôkaz.
+Teda platí $ a^{4 + lcm(r_1,r_2)} \in L(A_1^{L}) \cap L(A_2^{L}) $. Platí $ lcm(r_1,r_2) \in \lbrace 1,2,3,6 \rbrace $. Teda $ a^{4 + lcm(r_1,r_2)} \notin L $ čo je v spore s tým, že automaty $ A_1^{L} $ a $ A_2^{L} $ tvoria netriviálny rozklad automatu $ A_{L} $.
 \end{proof}
 
 
