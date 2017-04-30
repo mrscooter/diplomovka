@@ -1,0 +1,41 @@
+\newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
+  \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
+\begin{thebibliography}{}
+
+\bibitem[Ga{\v{z}}i and Rovan, 2008]{Gazi}
+Ga{\v{z}}i, P. and Rovan, B. (2008).
+\newblock {\em Assisted Problem Solving and Decompositions of Finite Automata},
+  pages 292--303.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg.
+
+\bibitem[Glaister and Shallit, 1996]{GlaisterShalit1996}
+Glaister, I. and Shallit, J. (1996).
+\newblock A lower bound technique for the size of nondeterministic finite
+  automata.
+\newblock {\em Information Processing Letters}, 59:75--77.
+
+\bibitem[Gruber and Holzer, 2006]{GruberHolzer2006}
+Gruber, H. and Holzer, M. (2006).
+\newblock {\em Finding Lower Bounds for Nondeterministic State Complexity Is
+  Hard}, pages 363--374.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg.
+
+\bibitem[Labath and Rovan, 2011]{Labath}
+Labath, P. and Rovan, B. (2011).
+\newblock {\em Simplifying DPDA Using Supplementary Information}, pages
+  342--353.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg.
+
+\bibitem[McCulloch and Pitts, 1943]{McCullochPitts}
+McCulloch, W.~S. and Pitts, W. (1943).
+\newblock A logical calculus of the ideas immanent in nervous activity.
+\newblock {\em Bulletin of Mathematical Biophysics}, 5(4):115--133.
+
+\bibitem[Palioudakis, 2012]{Palioudakis2012}
+Palioudakis, A. (2012).
+\newblock Nondeterministic state complexity and quantifying non-determinism in
+  finite automata.
+\newblock Technical Report 2012-596, School of Computing, Queen’s University,
+  Kingston, ON, Canada.
+
+\end{thebibliography}

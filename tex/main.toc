@@ -5,8 +5,8 @@
 \contentsline {section}{\numberline {1.2}\IeC {\v D}al\IeC {\v s}ie ozna\IeC {\v c}enia}{4}
 \contentsline {section}{\numberline {1.3}Defin\IeC {\'\i }cia probl\IeC {\'e}mu}{5}
 \contentsline {section}{\numberline {1.4}Techniky ur\IeC {\v c}ovania dolnej hranice po\IeC {\v c}tu stavov NKA}{6}
-\contentsline {chapter}{\numberline {2}Rozlo\IeC {\v z}iteln\IeC {\'e} a nerozlo\IeC {\v z}iteln\IeC {\'e} jazyky}{9}
-\contentsline {section}{\numberline {2.1}Rozlo\IeC {\v z}iteln\IeC {\'e} jazyky}{9}
+\contentsline {chapter}{\numberline {2}Rozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} a nerozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} jazyky}{9}
+\contentsline {section}{\numberline {2.1}Rozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} jazyky}{9}
 \contentsline {section}{\numberline {2.2}Nerozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} jazyky}{16}
 \contentsline {chapter}{\numberline {3}Porovnanie determinizmu a nedeterminizmu}{19}
 \contentsline {section}{\numberline {3.1}Defin\IeC {\'\i }cia deterministick\IeC {\'e}ho kone\IeC {\v c}n\IeC {\'e}ho automatu}{19}
