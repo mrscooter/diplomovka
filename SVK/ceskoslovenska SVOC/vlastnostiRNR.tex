@@ -1,11 +1,11 @@
 \chapter[Rozložiteľnosť a nerozložiteľnosť]{Vlastnosti rozložiteľnosti a nerozložiteľnosti}
 \label{kap:properties}
 
-Skúmame uzáverové vlastnosti tried rozložiteľných a nerozložiteľných jazykov. Charakterizujeme triedu jednoslovných jazykov vzhľadom na rozložiteľnosť. Skúmame jazyky, ktorých minimálne NKA sú tvorené práve jedných cyklom. Ukazujeme, že ak je minimálny NKA pre jazyk príliš malý, tak je automat automaticky nerozložiteľný. Uvádzame výsledok, ktorý hovorí o jazykoch, ktoré sa navzájom líšia iba v tom, či obsahujú alebo neobsahujú nejaký symbol.
+Skúmame uzáverové vlastnosti tried rozložiteľných a nerozložiteľných jazykov. Charakterizujeme triedu jednoslovných jazykov vzhľadom na rozložiteľnosť. Skúmame jazyky, ktorých minimálne NKA sú tvorené práve jedných cyklom. Ukazujeme, že ak je minimálny NKA pre jazyk príliš malý, tak je automat nerozložiteľný. Uvádzame výsledok, ktorý hovorí o jazykoch, ktoré sa navzájom líšia iba v tom, či obsahujú alebo neobsahujú nejaký symbol.
 
 \section{Príliš malé nedeterministické konečné automaty}
 
-Dokazujeme, že ak je minimálny NKA pre jazyk príliš malý, tak je jazyk automaticky nerozložiteľný.
+Dokazujeme, že ak je minimálny NKA pre jazyk príliš malý, tak je jazyk nerozložiteľný.
 
 \begin{theorem}
 \label{thm:too_small_nsc}
@@ -38,8 +38,8 @@ $ \supseteq: $ Nech $ w \in L $. Z toho ľahko vidno, že $ w \in h_{b}^{-1}(L) 
 Z predošlého vyplýva $ \#_S(A_{\downarrow}^{L})=\#_S(A_{\downarrow}^{b}) < \#_S(A_{min}^{b}) = \#_S(A_{min}^{L}) $, čo je v spore s predpokladom, že automat $ A_{min}^{L} $ je minimálny NKA pre jazyk $ L $. Teda automat $ A_{\downarrow}^{b} $ s uvedenými vlastnosťami nemôže existovať, a teda $ A_{min}^{b} $ je minimálny NKA pre $ h_{b}^{-1}(L) $. Z konštrukcie automatu $ A_{min}^{b} $ plynie, že $ \#_S(A_{min}^{b}) = \#_S(A_{min}^{L}) $, čo kompletizuje dôkaz \ref{thm:new_symbol_in_language_item_1}.
 \par
 Dokážeme tvrdenie \ref{thm:new_symbol_in_language_item_2}. \\
-$ \Rightarrow $: Nech je $ L $ rozložiteľný. Teda ak $ A_{min}^L $ je minimálny NKA pre $ L $, tak existuje jeho netriviálny rozklad na NKA $ A_1^{L}=(K_1, \Sigma_1, \delta_1, q_1, F_1) $ a $ A_2^{L}=(K_2, \Sigma_2, \delta_2, q_2, F_2) $. BUNV môžeme predpokladať, že $ b \notin \Sigma_1,b \notin \Sigma_2 $.  Definujeme NKA $ A_1^{b} = (K_1, \Sigma_1 \cup \lbrace b \rbrace, \delta_1^b, q_1, F_1) $ kde prechodová funkcia $ \delta_1^b $ je definovaná nasledovne - $ \forall q \in K_1 \; \forall a \in \Sigma_1: \delta_1^b(q,a)=\delta_1(q,a) $, $ \forall q \in K_1 : \delta_1^b(q,b) =  \lbrace q \rbrace$. Ako si možno všimnúť, automat $ A_1^{b} $ sme zostrojili z automatu $ A_1^L $ tak, že sme v každom stave pridali slučku na $ b $, a teda ľahko vidno, že $ L(A_1^{b}) = h_{b}^{-1}(L(A_1^L)) $. Analogicky vieme definovať na základe $ A_2^L $ NKA $ A_2^{b} $, o ktorom analogicky platí $ L(A_2^{b}) = h_{b}^{-1}(L(A_2^L)) $. Označme minimálny NKA pre jazyk $ h_b^{-1}(L) $ $ A_{min}^b $. Podľa \ref{thm:new_symbol_in_language_item_1} platí $ \#_S(A_{min}^b) = \#_S(A_{min}^L) $. Nakoľko $ \#_S(A_1^L) = \#_S(A_1^b) $ a $ \#_S(A_2^L) = \#_S(A_2^b) $, tak na to, aby sme dokázali, že $ A_1^b $ a $ A_2^b $ tvoria netriviálny rozklad automatu $ A_{min}^b $, stačí dokázať $ L(A_1^b) \cap L(A_2^b) = h_b^{-1}(L) $. To dokážeme nasledujúcou argumentáciou, ktorá vyplýva z vlastností inverzných homomorfizmov a konštrukcie automatov, ktoré v dôkaze používame - $ w \in L(A_1^b) \cap L(A_2^b) \Leftrightarrow w \in h_b^{-1}(L(A_1^L)) \cap h_b^{-1}(L(A_2^L)) \Leftrightarrow w \in h_b^{-1}(L(A_1^L) \cap L(A_2^L)) \Leftrightarrow w \in h_b^{-1}(L) $. Teda $ h_b^{-1}(L) $ je rozložiteľný. \\
-$ \Leftarrow: $ Nech $ h_b^{-1}(L) $ je rozložiteľný. Nech $ A^b_{min} $ je minimálny NKA pre $ h_b^{-1}(L) $. Teda existuje netriviálny rozklad automatu $ A^b_{min} $. Nech NKA tvoriace tento rozklad sú $ A_1^b = (K_1^b,\Sigma_1^b,\delta_1^b,q_1^b,F_1^b) $ a $ A_2^b = (K_2^b,\Sigma_2^b,\delta_2^b,q_2^b,F_2^b) $. Nech $ A^L_{min} $ je minimálny NKA pre jazyk $ L $. Chceme skonštruovať netriviálny rozklad automatu $ A^L_{min} $. Na základe $ A_1^b $ definujeme NKA $ A_1^L = (K_1^b,\Sigma_1^b - \lbrace b \rbrace,\delta_1^L,q_1^b,F_1^b) $, kde prechodová funkcia $ \delta_1^L $ je definovaná nasledovne - $ \forall q \in K_1^b \forall a \in \Sigma_1^b - \lbrace b \rbrace : \delta_1^L(q,a) = \delta_1^b(q,a) $. Hlavnou myšlienkou je, že z automatu $ A_1^b $ sme vynechali prechody na $ b $, pretože ich v rozklade, ktorý chceme vytvoriť, aj tak nepotrebujeme. Analogicky, na základe $ A_2^b $, definujeme NKA $ A_2^L $. Dokážeme, že $ L = L(A_1^L) \cap L(A_2^L) $. \\
+$ \Rightarrow $: Nech je $ L $ rozložiteľný. Teda ak $ A_{min}^L $ je minimálny NKA pre $ L $, tak existuje jeho netriviálny rozklad na NKA $ A_1^{L}=(K_1, \Sigma_1, \delta_1, q_1, F_1) $ a $ A_2^{L}=(K_2, \Sigma_2, \delta_2, q_2, F_2) $. Bez ujmy na všeobecnosti môžeme predpokladať, že $ b \notin \Sigma_1,b \notin \Sigma_2 $.  Definujeme NKA $ A_1^{b} = (K_1, \Sigma_1 \cup \lbrace b \rbrace, \delta_1^b, q_1, F_1) $ kde prechodová funkcia $ \delta_1^b $ je definovaná nasledovne - $ \forall q \in K_1 \; \forall a \in \Sigma_1: \delta_1^b(q,a)=\delta_1(q,a) $, $ \forall q \in K_1 : \delta_1^b(q,b) =  \lbrace q \rbrace$. Ako si možno všimnúť, automat $ A_1^{b} $ sme zostrojili z automatu $ A_1^L $ tak, že sme v každom stave pridali slučku na $ b $, a teda ľahko vidno, že $ L(A_1^{b}) = h_{b}^{-1}(L(A_1^L)) $. Analogicky vieme definovať na základe $ A_2^L $ NKA $ A_2^{b} $, o ktorom analogicky platí $ L(A_2^{b}) = h_{b}^{-1}(L(A_2^L)) $. Označme minimálny NKA pre jazyk $ h_b^{-1}(L) $ $ A_{min}^b $. Podľa \ref{thm:new_symbol_in_language_item_1} platí $ \#_S(A_{min}^b) = \#_S(A_{min}^L) $. Nakoľko $ \#_S(A_1^L) = \#_S(A_1^b) $ a $ \#_S(A_2^L) = \#_S(A_2^b) $, tak na to, aby sme dokázali, že $ A_1^b $ a $ A_2^b $ tvoria netriviálny rozklad automatu $ A_{min}^b $, stačí dokázať $ L(A_1^b) \cap L(A_2^b) = h_b^{-1}(L) $. To dokážeme nasledujúcou argumentáciou, ktorá vyplýva z vlastností inverzných homomorfizmov a konštrukcie automatov, ktoré v dôkaze používame - $ w \in L(A_1^b) \cap L(A_2^b) \Leftrightarrow w \in h_b^{-1}(L(A_1^L)) \cap h_b^{-1}(L(A_2^L)) \Leftrightarrow w \in h_b^{-1}(L(A_1^L) \cap L(A_2^L)) \Leftrightarrow w \in h_b^{-1}(L) $. Teda $ h_b^{-1}(L) $ je rozložiteľný. \\
+$ \Leftarrow: $ Nech $ h_b^{-1}(L) $ je rozložiteľný. Nech $ A^b_{min} $ je minimálny NKA pre $ h_b^{-1}(L) $. Teda existuje netriviálny rozklad automatu $ A^b_{min} $. Nech NKA tvoriace tento rozklad sú $ A_1^b = (K_1^b,\Sigma_1^b,\delta_1^b,q_1^b,F_1^b) $ a $ A_2^b = (K_2^b,\Sigma_2^b,\delta_2^b,q_2^b,F_2^b) $. Nech $ A^L_{min} $ je minimálny NKA pre jazyk $ L $. Chceme skonštruovať netriviálny rozklad automatu $ A^L_{min} $. Na základe $ A_1^b $ definujeme NKA $ A_1^L = (K_1^b,\Sigma_1^b - \lbrace b \rbrace,\delta_1^L,q_1^b,F_1^b) $, kde prechodová funkcia $ \delta_1^L $ je definovaná nasledovne - $ \forall q \in K_1^b \; \forall a \in \Sigma_1^b - \lbrace b \rbrace : \delta_1^L(q,a) = \delta_1^b(q,a) $. Hlavnou myšlienkou je, že z automatu $ A_1^b $ sme vynechali prechody na $ b $, pretože ich v rozklade, ktorý chceme vytvoriť, aj tak nepotrebujeme. Analogicky, na základe $ A_2^b $, definujeme NKA $ A_2^L $. Dokážeme, že $ L = L(A_1^L) \cap L(A_2^L) $. \\
 $ \subseteq: $ Nech $ w \in L $. Potom aj $ w \in h_b^{-1}(L) $. Teda $ w \in L(A_1^b) \cap L(A_2^b) $. Nakoľko však $ w $ neobsahuje symbol $ b $, tak z konštrukcie $ A_1^L $ plynie $ w \in L(A_1^L) $, pretože $ A_1^L $ obsahuje všetky prechody z $ A_1^b $ okrem prechodov na $ b $, ktoré ale pri výpočte na  $ w $ nepotrebujeme. Analogicky $ w \in L(A_2^L) $. Teda $ w \in L(A_1^L) \cap L(A_2^L) $. \\
 $ \supseteq: $ Nech $ w \in L(A_1^L) \cap L(A_2^L) $. Nakoľko automat $ A_1^b $, respektíve $ A_2^b $, obsahuje všetky prechody, ktoré obsahuje automat $ A_1^L $, respektíve $ A_2^L $, tak $ w \in L(A_1^b) \cap L(A_2^b) $. Teda $ w \in h_b^{-1}(L) $, teda $ h_b(w) \in L $. Nakoľko $ w $ neobsahuje symbol $ b $, tak $ h_b(w) = w $, z čoho plynie $ w \in L $. Takže  $ L = L(A_1^L) \cap L(A_2^L) $. \\
 Keďže $ L = L(A^L_{min}) $, tak platí $ L(A^L_{min}) = L(A_1^L) \cap L(A_2^L) $. Z \ref{thm:new_symbol_in_language_item_1} vyplýva $ \#_S(A^L_{min}) = \#_S(A^b_{min}) $. Z konštrukcie $ A_1^L $, respektíve $ A_2^L $, vyplýva $ \#_S(A_1^L)=\#_S(A_1^b) $, respektíve $ \#_S(A_2^L)=\#_S(A_2^b) $. Nakoľko $ A_1^b $ a $ A_2^b $ tvoria netriviálny rozklad automatu $ A^b_{min} $, tak platí $ \#_S(A_1^b) < \#_S(A^b_{min}) $ a $ \#_S(A_2^b) < \#_S(A^b_{min}) $. Z toho vyplýva $ \#_S(A_1^L) < \#_S(A^L_{min}) $ a $ \#_S(A_2^L) < \#_S(A^L_{min}) $. Teda automaty $  A_1^L $ a $ A_2^L $ tvoria netriviálny rozklad automatu $ A^L_{min} $. Teda jazyk $ L $ je rozložiteľný.
@@ -203,10 +203,19 @@ Nech $ \Sigma $ je ľubovolná abeceda, nech $ k_1,k_2 \in \lbrace 0,1 \rbrace $
 \end{proposition}
 
 \begin{proof}
-Zaveďme označenia $ u = w_1a^{k_1}w_2bw_3aw_4bw_5a^{k_2}w_6$ a $ \Sigma_{ab} = \Sigma \cup \lbrace a,b \rbrace $. Podľa Lemy \ref{lm:one_word_cycle_nsc} platí $ nsc(L) = |u| $. Teda existuje NKA $ A $ taký, že $ L(A) = L $ s $ \#_S(A) = |u| $. Automat $ A $ je teda minimálny NKA pre $ L $. Zostrojíme netriviálny rozklad automatu $ A $. Rozoberieme nasledujúce dva prípady, podľa toho, akého tvaru je slovo $ u $. Podľa predpokladov je $ u $ práve jedého z nasledujúcich tvarov:
+Zaveďme označenia $ u = w_1a^{k_1}w_2bw_3aw_4bw_5a^{k_2}w_6$ a $ \Sigma_{ab} = \Sigma \cup \lbrace a,b \rbrace $.  Pripomeňme, že $ \Sigma $ môže, ale nemusí nutne, obsahovať symboly $ a,b $, preto sme zaviedli označenie $ \Sigma_{ab} $. Podľa Lemy \ref{lm:one_word_cycle_nsc} platí $ nsc(L) = |u| $. Teda existuje NKA $ A $ taký, že $ L(A) = L $ s $ \#_S(A) = |u| $. Automat $ A $ je teda minimálny NKA pre $ L $. Z predpokladov vyplýva, že slovo $ u $ je práve jedného z dvoch nasledujúcich tvarov:
+\begin{enumerate}
+	\item Existujú dve rôzne podslová v slove $ u $ také, že symbol $ b $ je nasledovaný symbolom rôznym od $ b $.
+	\item Existuje práve jedno podslovo v slove $ u $ také, že symbol $ b $ je nasledovaný symbolom rôznym od $ b $, slovo $ u $ končí symbolom $ b $ a začína symbolom rôznym od $ b $.
+\end{enumerate}
+
+V slove $ u $ si všímame symboly rôzne od $ b $, nasledujúce bezprostredne za $ b $. Ak $ k_2 = 1 $, tak nutne nastáva prípad 1. Ak $ k_2 = 0 $, teda podľa predpokladu $ k_1 = 1 $, tak nastáva prípad 1 alebo prípad 2 podľa toho, aké symboly obsahujú slová $ w_1,w_2,w_3,w_4,w_5,w_6 $. \\
+Pre oba prípady zostrojíme netriviálny rozklad automatu $ A $.
 
 \begin{enumerate}
-\item Existujú dve rôzne podslová v slove $ u $ také, že symbol $ b $ je nasledovaný symbolom rôznym od $ b $. Formálne existujú $ v_1,v_2,v_3 \in \Sigma_{ab}^* $ a $ \overline{b}_1,\overline{b}_2 \in \Sigma_{ab} - \lbrace b \rbrace $ také, že $ u = v_1b\overline{b}_1v_2\overline{b}_2v_3 $. Na základe tohto poznatku zostrojíme netriviálny rozklad automatu $ A $. Rozklad uvádzame pomocou zovšeobecneného diagramu.
+\item[prípad 1:] Existujú dve rôzne podslová v slove $ u $ také, že symbol $ b $ je nasledovaný symbolom rôznym od $ b $. 
+\\
+Formálne, existujú $ v_1,v_2,v_3 \in \Sigma_{ab}^* $ a $ \overline{b}_1,\overline{b}_2 \in \Sigma_{ab} - \lbrace b \rbrace $ také, že $ u = v_1b\overline{b}_1v_2b\overline{b}_2v_3 $. Na základe tohto poznatku zostrojíme netriviálny rozklad automatu $ A $. Rozklad uvádzame pomocou zovšeobecneného diagramu.
 
 \begin{figure}[H]
 \centering
@@ -253,19 +262,21 @@ Zaveďme označenia $ u = w_1a^{k_1}w_2bw_3aw_4bw_5a^{k_2}w_6$ a $ \Sigma_{ab} =
 
 Možno nahliadnuť, že $ L(A_1) = \lbrace v_1b^{l}\overline{b}_1v_2b\overline{b}_2v_3 \; | \; l \in \mathbb{N} \rbrace^* $ a $ L(A_2) = \lbrace v_1b\overline{b}_1v_2b^{l}\overline{b}_2v_3 \; | \; l \in \mathbb{N} \rbrace^* $.
 \par 
-Dokážeme, že $ L(A_1) \cap L(A_2) = L$. \\
+Dokážeme $ L(A_1) \cap L(A_2) = L$. \\
 $ \supseteq: $ Táto inklúzia je triviálna, nebudeme ju formálne dokazovať. \\
-$ \subseteq: $ Uvažujme $ w \in L(A_1) \cap L(A_2) $. Potom existuje $ n,m,l_1,\ldots,l_n,o_1,\ldots,o_m \in \mathbb{N} $ také, že $ w = v_1b^{l_1}\overline{b}_1v_2b\overline{b}_2v_3 \ldots v_1b^{l_n}\overline{b}_1v_2b\overline{b}_2v_3 = v_1b\overline{b}_1v_2b^{o_1}\overline{b}_2v_3 \ldots v_1b\overline{b}_1v_2b^{o_m}\overline{b}_2v_3 $. Indukciou na $ n $ dokážeme, že $ m=n $, pre $ 0 \leq i \leq n: l_i=1 $ a pre $ 0 \leq i \leq m: o_i=1 $.
+$ \subseteq: $ Uvažujme $ w \in L(A_1) \cap L(A_2) $. Potom existuje $ n,m,l_1,\ldots,l_n,o_1,\ldots,o_m \in \mathbb{N} $ také, že $ w = v_1b^{l_1}\overline{b}_1v_2b\overline{b}_2v_3 \ldots v_1b^{l_n}\overline{b}_1v_2b\overline{b}_2v_3 = v_1b\overline{b}_1v_2b^{o_1}\overline{b}_2v_3 \ldots v_1b\overline{b}_1v_2b^{o_m}\overline{b}_2v_3 $. Indukciou na $ n $ dokážeme, že $ m=n $, pre $ 1 \leq i \leq n: l_i=1 $ a pre $ 1 \leq i \leq m: o_i=1 $.
 
 \begin{itemize}
     \item [$ 1^0: $] Ak $ n=0 $, tak $ w = \varepsilon $ a tvrdenie triviálne platí.
-    \item [$ 2^0: $] Platí $ v_1b^{l_1}\overline{b}_1v_2b\overline{b}_2v_3 \ldots v_1b^{l_n}\overline{b}_1v_2b\overline{b}_2v_3 = v_1b\overline{b}_1v_2b^{o_1}\overline{b}_2v_3 \ldots v_1b\overline{b}_1v_2b^{o_m}\overline{b}_2v_3 $. Pozrime sa pozornejšie na prvé úseky v tomto slove, t.j. na časti $ v_1b^{l_1}\overline{b}_1v_2b\overline{b}_2v_3 $ a $ v_1b\overline{b}_1v_2b^{o_1}\overline{b}_2v_3 $. Oba úseky sú prefixom toho istého slova a na prvých $ |v_1| $ symboloch sa evidentne zhodujú. Musí platiť $ l_1 \geq 1 $, aby sa zhodovali aj na symoble $ b $, ktorý nasleduje za $ v_1 $. Avšak nakoľko v tomto prefixe po zmienenom $ b $ nasleduje znak $ \overline{b}_1 $, tak nutne $ l_1=1 $. Teda platí $ v_1b^{l_1}\overline{b}_1v_2 = v_1b\overline{b}_1v_2 $. Z toho plynie $ o_1 \geq 1 $, nakoľko po $ v_2 $ musí nasledovať symbol $ b $. Ďalším sybmobolom je však $ \overline{b}_2 $, teda nutne $ o_1 = 1 $. Teda platí $ v_1b^{l_1}\overline{b}_1v_2b\overline{b}_2v_3 = v_1b\overline{b}_1v_2b^{o_1}\overline{b}_2v_3 = v_1b\overline{b}_1v_2b\overline{b}_2v_3$. Navyše, oba automaty, $ A_1 $ aj $ A_2 $ sa po dočítaní tohto prefixu dostanú práve do ich počiatočného (a zároveň jediného akceptačného) stavu $ q_0 $. V prípade, že $ n=1 $, tak niet čo ďalej dokazovať. Ak $ n \geq 2 $ tak z predchádzajúceho vyplýva, že $ v_1b^{l_2}\overline{b}_1v_2b\overline{b}_2v_3 \ldots v_1b^{l_n}\overline{b}_1v_2b\overline{b}_2v_3 = v_1b\overline{b}_1v_2b^{o_2}\overline{b}_2v_3 \ldots v_1b\overline{b}_1v_2b^{o_m}\overline{b}_2v_3 $ a navyše toto slovo akceptujú oba automaty, $ A_1 $ aj $ A_2 $. Teda podľa indukčného predpokladu môžeme tvrdiť, že $ n=m $, pre $ 2 \leq i \leq n $ platí $ l_i = o_i = 1 $, čo dokazuje tvrdenie.
+    \item [$ 2^0: $] Platí $ v_1b^{l_1}\overline{b}_1v_2b\overline{b}_2v_3 \ldots v_1b^{l_n}\overline{b}_1v_2b\overline{b}_2v_3 = v_1b\overline{b}_1v_2b^{o_1}\overline{b}_2v_3 \ldots v_1b\overline{b}_1v_2b^{o_m}\overline{b}_2v_3 $. Pozrime sa pozornejšie na prvé úseky v tomto slove, t.j. na časti $ v_1b^{l_1}\overline{b}_1v_2b\overline{b}_2v_3 $ a $ v_1b\overline{b}_1v_2b^{o_1}\overline{b}_2v_3 $. Oba úseky sú prefixom toho istého slova a na prvých $ |v_1| $ symboloch sa zhodujú. Musí platiť $ l_1 \geq 1 $, aby sa zhodovali aj na symoble $ b $, ktorý nasleduje za $ v_1 $. Nakoľko v tomto prefixe po zmienenom $ b $ nasleduje znak $ \overline{b}_1 $, tak nutne $ l_1=1 $. Teda platí $ v_1b^{l_1}\overline{b}_1v_2 = v_1b\overline{b}_1v_2 $. Z toho plynie $ o_1 \geq 1 $, nakoľko po $ v_2 $ musí nasledovať symbol $ b $. Ďalším sybmobolom je však $ \overline{b}_2 $, teda nutne $ o_1 = 1 $. Teda platí $ v_1b^{l_1}\overline{b}_1v_2b\overline{b}_2v_3 = v_1b\overline{b}_1v_2b^{o_1}\overline{b}_2v_3 = v_1b\overline{b}_1v_2b\overline{b}_2v_3$. V prípade, že $ n=1 $, tak niet čo ďalej dokazovať. Ak $ n \geq 2 $ tak z predchádzajúceho vyplýva, že $ v_1b^{l_2}\overline{b}_1v_2b\overline{b}_2v_3 \ldots v_1b^{l_n}\overline{b}_1v_2b\overline{b}_2v_3 = v_1b\overline{b}_1v_2b^{o_2}\overline{b}_2v_3 \\ \ldots v_1b\overline{b}_1v_2b^{o_m}\overline{b}_2v_3 $ a navyše toto slovo akceptujú oba automaty, $ A_1 $ aj $ A_2 $. Teda podľa indukčného predpokladu môžeme tvrdiť, že $ n=m $, pre $ 2 \leq i \leq n $ platí $ l_i = o_i = 1 $, čo dokazuje tvrdenie.
 \end{itemize}
-Z predošlého vyplýva, že $ w \in L $, čo kompletizuje dôkaz tejto inklúzie. 
+Z predošlého vyplýva $ w \in L $, čo kompletizuje dôkaz tejto inklúzie. 
 \par
 Teda $ L(A_1) \cap L(A_2) = L = L(A) $. Navyše $ \#_S(A_1) < \#_S(A) $ a $ \#_S(A_2) < \#_S(A) $, teda automaty $ A_1 $ a $ A_2 $ tvoria netriviálny rozklad automatu $ A $.
 
-\item Existujú $ \overline{b}_1,\overline{b}_2 \in \Sigma_{ab} - \lbrace b \rbrace $, $ v_1,v_2 \in \Sigma_{ab} - \lbrace b \rbrace $, $ c_1,c_2 \geq 1 $ také, že $ u = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{c_2} $. Na základe tohto poznatku zostrojíme netriviálny rozklad automatu $ A $. Rozklad uvádzame pomocou zovšeobecneného diagramu.
+\item[prípad 2:] Existuje práve jedno podslovo v slove $ u $ také, že symbol $ b $ je nasledovaný symbolom rôznym od $ b $, slovo $ u $ končí symbolom $ b $ a začína symbolom rôznym od $ b $.
+\\
+Formálne, existujú $ \overline{b}_1,\overline{b}_2 \in \Sigma_{ab} - \lbrace b \rbrace $, $ v_1,v_2 \in (\Sigma_{ab} - \lbrace b \rbrace)^* $, $ c_1,c_2 \in \mathbb{N}, \; c_1,c_2 \geq 1 $ také, že $ u = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{c_2} $. Na základe tohto poznatku zostrojíme netriviálny rozklad automatu $ A $. Rozklad uvádzame pomocou zovšeobecneného diagramu.
 
 \begin{figure}[H]
 \centering
@@ -283,12 +294,12 @@ Teda $ L(A_1) \cap L(A_2) = L = L(A) $. Navyše $ \#_S(A_1) < \#_S(A) $ a $ \#_S
      (v1) edge [loop above] node {$ b $} ()
      (v1) edge [bend left] node {$ \overline{b}_2 $} (notb2)
      (notb2) edge [bend left, dashed] node {$ v_2 $} (v2)
-     (v2) edge [bend left] node {$ b $} (0)
+     (v2) edge [bend left, dashed] node {$ b^{c_2} $} (0)
      ;
 \end{tikzpicture}
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
                     semithick]
-	\node[state,initial,accepting] (0)							{$q_0^b$};
+	\node[state,initial,accepting] (0)							{$q_0$};
    	\node[state] 					(notb1)		[right of=0]	{$q_{\overline{b}_1}$};
    	\node[state] 					(v1)		[right of=notb1]	{$q_{v_1}$};
    	\node[state] 					(b)			[right of=v1]	{$q_{b}$};
@@ -297,7 +308,7 @@ Teda $ L(A_1) \cap L(A_2) = L = L(A) $. Navyše $ \#_S(A_1) < \#_S(A) $ a $ \#_S
    	\path[->]
      (0) edge [bend left] node {$ \overline{b}_1 $} (notb1)
      (notb1) edge [bend left, dashed] node {$ v_1 $} (v1)
-     (v1) edge [bend left] node {$ b $} (b)
+     (v1) edge [bend left, dashed] node {$ b^{c_1} $} (b)
      (b) edge [bend left] node {$ \overline{b}_2 $} (notb2)
      (notb2) edge [bend left, dashed] node {$ v_2 $} (0)
      (0) edge [loop above] node {$ b $} ()
@@ -306,10 +317,21 @@ Teda $ L(A_1) \cap L(A_2) = L = L(A) $. Navyše $ \#_S(A_1) < \#_S(A) $ a $ \#_S
 \caption{rozklad automatu $ A $ na automaty $ A_1 $(hore) a $ A_2 $(dole)}
 \end{figure}
 
-Možno nahliadnuť, že $ L(A_1) = \lbrace \overline{b}_1v_1b^l\overline{b}_2v_2b \; | \; l \in \mathbb{N} \rbrace^* $ a $ L(A_2) = \lbrace b^l\overline{b}_1v_1b\overline{b}_2v_2 \; | \; l \in \mathbb{N} \rbrace^*\lbrace b \rbrace^* $. Platí $ L(A_1) \cap L(A_2) = L $, čo sa dá dokázať veľmi podobne a rovnako veľmi technicky ako v predošlom prípade, preto dôkaz neuvádzame. Navyše $ \#_S(A_1) < \#_S(A) $ a $ \#_S(A_2) < \#_S(A) $, teda automaty $ A_1 $ a $ A_2 $ tvoria netriviálny rozklad automatu $ A $.
+Možno nahliadnuť, že $ L(A_1) = \lbrace \overline{b}_1v_1b^l\overline{b}_2v_2b^{c_2} \; | \; l \in \mathbb{N} \rbrace^* $ a $ L(A_2) = \lbrace b^l\overline{b}_1v_1b^{c_1}\overline{b}_2v_2 \; | \; l \in \mathbb{N} \rbrace^*\lbrace b \rbrace^* $. \\
+Dokážeme $ L(A_1) \cap L(A_2) = L $.  \\
+$ \supseteq: $ Táto inklúzia je triviálna, nebudeme ju formálne dokazovať. \\
+$ \subseteq: $ Uvažujme $ w \in L(A_1) \cap L(A_2) $. Z konštrukcie automatov $ A_1 $ a $ A_2 $ vidno, že existujú $ n,m,l_1,\ldots,l_n,o_0,o_1,\ldots,o_m \in \mathbb{N} $ také, že $ w = \overline{b}_1v_1b^{l_1}\overline{b}_2v_2b^{c_2} \ldots \overline{b}_1v_1b^{l_n}\overline{b}_2v_2b^{c_2} = b^{o_0}\overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_1} \ldots \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_m} $. Indukciou na $ n $ dokážeme, že $ m=n $, $ o_0 = 0 $, pre $ 1 \leq i \leq n: l_i=c_1 $ a pre $ 1 \leq i \leq m: o_i=c_2 $.
+
+\begin{itemize}
+    \item [$ 1^0: $] Ak $ n=0 $, tak $ w = \varepsilon $ a tvrdenie triviálne platí.
+    \item [$ 2^0: $] Keďže slovo $ w $ začína symbolom $ \overline{b}_1 $, tak $ o_0 = 0 $. Teda platí $ w = \overline{b}_1v_1b^{l_1}\overline{b}_2v_2b^{c_2} \ldots \\ \overline{b}_1v_1b^{l_n}\overline{b}_2v_2b^{c_2} = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_1} \ldots \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_m} $. Pozrime sa pozornejšie na prvé úseky v tomto slove, t.j. na časti $ \overline{b}_1v_1b^{l_1}\overline{b}_2v_2b^{c_2} $ a $ \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_1} $. Oba úseky sú prefixom toho istého slova a na prvých $ |\overline{b}_1v_1| $ symboloch sa zhodujú. Musí platiť $ l_1 \geq c_1 $, aby sa zhodovali aj na podslove $ b^{c_1} $, ktoré nasleduje za $ v_1 $. Nakoľko v tomto prefixe po zmienenom $ b^{c_1} $ nasleduje znak $ \overline{b}_2 $, tak nutne $ l_1 = c_1 $. Teda platí $ \overline{b}_1v_1b^{l_1}\overline{b}_2v_2 = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2 $. Z toho plynie $ o_1 \geq c_2 $, nakoľko po $ v_2 $ musí nasledovať podslovo $ b^{c_2} $. Ak $ n = 1 $, tak musí nutne platiť $ o_1 = c_2 $, lebo v tom prípade $ w = \overline{b}_1v_1b^{l_1}\overline{b}_2v_2b^{c_2} = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_1} $ a pre $ n=1 $ niet ďalej čo dokazovať. Uvažujme $ n \geq 2 $. V tom prípade je prefixom $ w $ slovo $ \overline{b}_1v_1b^{l_1}\overline{b}_2v_2b^{c_2}\overline{b}_1 = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_1}\overline{b}_1 $. Z toho plynie $ o_1 = c_2 $. Z predchádzajúceho vyplýva $ \overline{b}_1v_1b^{l_1}\overline{b}_2v_2b^{c_2} = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_1} $. Z uvedeného vyplýva $ \overline{b}_1v_1b^{l_2}\overline{b}_2v_2b^{c_2} \ldots \overline{b}_1v_1b^{l_n}\overline{b}_2v_2b^{c_2} = \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_2} \ldots \overline{b}_1v_1b^{c_1}\overline{b}_2v_2b^{o_m} $ a navyše toto slovo akceptujú oba automaty, $ A_1 $ aj $ A_2 $. Teda podľa indukčného predpokladu môžeme tvrdiť, že $ n = m $ a pre $ 2 \leq i \leq n $ platí $ l_i = c_1 $, $ o_i = c_2 $, čo dokazuje tvrdenie.
+\end{itemize}
+
+Z predošlého vyplýva $ w \in L $, čo kompletizuje dôkaz tejto inklúzie. \\
+Teda $ L(A_1) \cap L(A_2) = L = L(A) $. Navyše $ \#_S(A_1) < \#_S(A) $ a $ \#_S(A_2) < \#_S(A) $, teda automaty $ A_1 $ a $ A_2 $ tvoria netriviálny rozklad automatu $ A $.
 \end{enumerate}
 
-Na záver ešte spomeňme, že hlavnou myšlienkou rozkladu bola akási synchronizácia výpočtov automatov v rozklade na symboloch rôznych od $ b $, ktoré nasledovali hneď za $ b $.
+Na záver ešte spomeňme, že hlavnou myšlienkou rozkladu bola \glqq{}synchronizácia\grqq{} výpočtov automatov v rozklade na symboloch rôznych od $ b $, ktoré nasledovali hneď za $ b $.
 \end{proof}
 
 \section{Uzáverové vlastnosti}
@@ -353,7 +375,7 @@ Trieda rozložiteľných jazykov nie je uzavretá na homomorfizmus.
 \end{proposition}
 
 \begin{proof}
-Uvažujme jazyk $ L = \lbrace a^{89} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace a,b \rbrace \rightarrow \lbrace a \rbrace $ definovaný nasledovne - $ h(a) = a, h(b) = a $. Jazyk $ L $ je podľa Tvrdenia \ref{thm:a^nub^*} rozložiteľný. Avšak jazyk $ h(L) = \lbrace a \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
+Uvažujme jazyk $ L = \lbrace a^{89} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace a,b \rbrace^* \rightarrow \lbrace a \rbrace^* $ definovaný nasledovne - $ h(a) = a, h(b) = a $. Jazyk $ L $ je podľa Tvrdenia \ref{thm:a^nub^*} rozložiteľný. Avšak jazyk $ h(L) = \lbrace a \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
 \end{proof}
 
 \begin{proposition}
@@ -361,7 +383,7 @@ Trieda nerozložiteľných jazykov nie je uzavretá na homomorfizmus.
 \end{proposition}
 
 \begin{proof}
-Uvažujme jazyk $ L = \lbrace a^{2k} | k \in \mathbb{N} \rbrace $ a homomorfizmus $ h : \lbrace a \rbrace \rightarrow \lbrace a \rbrace $ definovaný nasledovne - $ h(a) = aaa $. Jazyk $ L $ je podľa Vety \ref{thm:prime^n} nerozložiteľný. Avšak jazyk $ h(L) = \lbrace a^{6k} | k \in \mathbb{N} \rbrace $ je podľa Vety \ref{thm:compound} rozložiteľný.
+Uvažujme jazyk $ L = \lbrace a^{2k} | k \in \mathbb{N} \rbrace $ a homomorfizmus $ h : \lbrace a \rbrace^* \rightarrow \lbrace a \rbrace^* $ definovaný nasledovne - $ h(a) = aaa $. Jazyk $ L $ je podľa Vety \ref{thm:prime^n} nerozložiteľný. Avšak jazyk $ h(L) = \lbrace a^{6k} | k \in \mathbb{N} \rbrace $ je podľa Vety \ref{thm:compound} rozložiteľný.
 \end{proof}
 
 \begin{proposition}
@@ -369,7 +391,7 @@ Trieda rozložiteľných jazykov nie je uzavretá na inverzný homomorfizmus.
 \end{proposition}
 
 \begin{proof}
-Uvažujme jazyk $ L = \lbrace a^{39} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace b \rbrace \rightarrow \lbrace b \rbrace $ definovaný nasledovne - $ h(b) = b $. Jazyk $ L $ je podľa Tvrdenia \ref{thm:a^nub^*} rozložiteľný. Avšak jazyk $ h^{-1}(L) = \lbrace b \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
+Uvažujme jazyk $ L = \lbrace a^{39} \rbrace \cup \lbrace b \rbrace^* $ a homomorfizmus $ h : \lbrace b \rbrace^* \rightarrow \lbrace b \rbrace^* $ definovaný nasledovne - $ h(b) = b $. Jazyk $ L $ je podľa Tvrdenia \ref{thm:a^nub^*} rozložiteľný. Avšak jazyk $ h^{-1}(L) = \lbrace b \rbrace^*$ je podľa Vety \ref{thm:too_small_nsc} nerozložiteľný.
 \end{proof}
 
 \begin{proposition}

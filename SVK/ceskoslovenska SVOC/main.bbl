@@ -4,9 +4,11 @@
 
 \bibitem[Ga{\v{z}}i and Rovan, 2008]{Gazi}
 Ga{\v{z}}i, P. and Rovan, B. (2008).
-\newblock {\em Assisted Problem Solving and Decompositions of Finite Automata},
-  pages 292--303.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg.
+\newblock Assisted problem solving and decompositions of finite automata.
+\newblock In Geffert, V., Karhum{\"a}ki, J., Bertoni, A., Preneel, B.,
+  N{\'a}vrat, P., and Bielikov{\'a}, M., editors, {\em SOFSEM 2008: Theory and
+  Practice of Computer Science. SOFSEM 2008}, volume 4910 of {\em Lecture Notes
+  in Computer Science}, pages 292--303. Springer Berlin Heidelberg.
 
 \bibitem[Glaister and Shallit, 1996]{GlaisterShalit1996}
 Glaister, I. and Shallit, J. (1996).
@@ -16,15 +18,18 @@ Glaister, I. and Shallit, J. (1996).
 
 \bibitem[Gruber and Holzer, 2006]{GruberHolzer2006}
 Gruber, H. and Holzer, M. (2006).
-\newblock {\em Finding Lower Bounds for Nondeterministic State Complexity Is
-  Hard}, pages 363--374.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg.
+\newblock Finding lower bounds for nondeterministic state complexity is hard.
+\newblock In Ibarra, O.~H. and Dang, Z., editors, {\em Developments in Language
+  Theory. DLT 2006}, volume 4036 of {\em Lecture Notes in Computer Science},
+  pages 363--374. Springer Berlin Heidelberg.
 
 \bibitem[Labath and Rovan, 2011]{Labath}
 Labath, P. and Rovan, B. (2011).
-\newblock {\em Simplifying DPDA Using Supplementary Information}, pages
-  342--353.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg.
+\newblock Simplifying dpda using supplementary information.
+\newblock In Dediu, A.-H., Inenaga, S., and Mart{\'i}n-Vide, C., editors, {\em
+  Language and Automata Theory and Applications. LATA 2011}, volume 6638 of
+  {\em Lecture Notes in Computer Science}, pages 342--353. Springer Berlin
+  Heidelberg.
 
 \bibitem[McCulloch and Pitts, 1943]{McCullochPitts}
 McCulloch, W.~S. and Pitts, W. (1943).

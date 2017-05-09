@@ -48,24 +48,24 @@ Teraz zostrojme netriviálny rozklad automatu $ A_n $. Hľadané NKA $ A_n^1 $ a
 
 \begin{figure}[H]
 \centering
-\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
                     semithick]
    \node[state,initial] 	(0) 						{$q_0$}; 
-   \node[state] 			(1)		[below of=0] 		{$q_1$}; 
-   \node					(dots1)	[below of=1]		{\vdots};
-   \node[state, accepting]	(n1) 	[below of=dots1] 	{$q_{n-1}$}; 
+   \node[state] 			(1)		[right of=0] 		{$q_1$}; 
+   \node					(dots1)	[right of=1]		{\ldots};
+   \node[state, accepting]	(n1) 	[right of=dots1] 	{$q_{n-1}$}; 
    
    \path[->] 
     (0) edge node {a} (1)
-    	edge [loop right] node {b} () 
+    	edge [loop above] node {b} () 
     (1) edge node {a} (dots1)
-    	edge [loop right] node {b} ()
+    	edge [loop above] node {b} ()
     (dots1) edge node {a} (n1) 
-    (n1) edge [bend left] node {a} (0)
-    	 edge [loop right] node {b} ()
+    (n1) edge [bend left=20] node {a} (0)
+    	 edge [loop above] node {b} ()
     ;
 \end{tikzpicture}
-\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
                     semithick]
    \node[state,initial] 	(0) 						{$q_0$}; 
    \node[state, accepting]	(a0)	[right of=0] 		{$p_0$}; 
@@ -143,7 +143,7 @@ Teraz nájdeme netriviálny rozklad automatu $ A_Z $. Nech $ p_{1}^{m_1}p_{2}^{m
     (f) edge [bend right] node [swap] {a} (0)
     ;
 \end{tikzpicture}
-\caption{rozklad automatu $ A_Z $ na automaty $ A_1^Z $(hore) a $ A_2^Z $(dole)} \label{fig:dec_An}
+\caption{rozklad automatu $ A_Z $ na automaty $ A_1^Z $(hore) a $ A_2^Z $(dole)}
 \end{figure}
 
 Automaty v rozklade označme $ A_1^Z $ a $ A_2^Z $. Formálne dokážme, že $ L(A_1^Z) \cap L(A_2^Z) = L(A_Z) $. \\
@@ -166,18 +166,18 @@ Podľa prepokladu uvažujme $ n \geq 2 $. Najprv dokážeme, že $ nsc(L_n) = n+
 \centering
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm,
                     semithick]
-   \node[state,initial] 	(0) 						{$q_0$}; 
+   \node[state,initial above] 	(0) 						{$q_0$}; 
    \node[state] 			(1)		[right of=0] 		{$q_1$}; 
    \node					(dots)	[right of=1]		{\ldots};
    \node[state,accepting] 	(n) 	[right of=dots] 	{$q_n$}; 
-   \node[state,accepting]	(b)		[above right of=0] 	{$q_b$}; 
+   \node[state,accepting]	(b)		[left of=0] 	{$q_b$}; 
    
    \path[->] 
     (0) edge node {a} (1)  
     (1) edge node {a} (dots)
     (dots) edge node {a} (n) 
     (0) edge node {$\varepsilon$} (b)  
-    (b) edge [loop above] node {b} ()
+    (b) edge [loop left] node {b} ()
     ;
 \end{tikzpicture}
 \caption{automat $ A_n $ pre jazyk $ \lbrace a^{n} \rbrace \cup \lbrace b \rbrace^{*} $}
@@ -445,7 +445,7 @@ Vezmime ľubovolné $ a \in \Sigma $ a uvažujme množinu $ M = \lbrace (a^i,a^{
 \par
 Pre $ n=0 $ a $ n=1 $ vyplýva platnosť tvrdenia z Vety \ref{thm:too_small_nsc}. Pre $ n \geq 2 $ postupujme sporom. Nech je jazyk $ \Sigma^n$ rozložiteľný, teda existuje netriviálny rozklad automatu $ A_{\Sigma^n} $. To znamená, že existujú NKA $ A_1^{\Sigma^n} $ a $ A_2^{\Sigma^n} $ také, že $ L(A_1^{\Sigma^n}) \cap L(A_2^{\Sigma^n}) = \Sigma^n $ a $ \#_S(A_1^{\Sigma^n}) < n+1 $, $ \#_S(A_2^{\Sigma^n}) < n+1 $. Navyše vďaka Leme \ref{lm:nonepsilon_NFA} môžeme predpokladať, že automaty $ A_1^{\Sigma^n} $ a $ A_2^{\Sigma^n} $ neobsahujú prechody na $ \varepsilon $. 
 \par
-Vezmime ľubovoľné $ a \in \Sigma $ a uvažujme výpočet automatu $ A_1^{\Sigma^n} $ na slove $ a^n $. Podľa predchádzajúceho automat $ A_1^{\Sigma^n} $ slovo $ a^n $ akceptuje. Výpočet vyzerá nasledovne: $ (p_0,a^n) \vdash (p_1, a^{n-1}) \vdash \ldots \vdash (p_{n-1}, a) \vdash (p_n, \varepsilon) $, kde $ p_0 = q_{0A_1^{\Sigma^n}}$, $ p_n \in F_{A_1^{\Sigma^n}} $ a pre $ 1 \leq i < n $ platí $ p_i \in K_{A_1^{\Sigma^n}}$. Nakoľko $ \#_S(A_1^{\Sigma^n}) < n+1 $, tak $ \exists i,j \in \mathbb{N}: 0 \leq i \leq n, i \neq j, p_i=p_j $ (vo výpočte sa nejaký stav zopakuje). Z toho vyplýva, že v akceptovanom slove môžem nejakú jeho časť pumpovať, t.j. $ \exists r_1 \in \mathbb{N}, 1 \leq r_1 \leq n \; \forall k \in \mathbb{N}: a^{n + kr_1} \in L(A_1^{\Sigma^n}) $.
+Vezmime ľubovoľné $ a \in \Sigma $ a uvažujme výpočet automatu $ A_1^{\Sigma^n} $ na slove $ a^n $. Podľa predchádzajúceho automat $ A_1^{\Sigma^n} $ slovo $ a^n $ akceptuje. Výpočet vyzerá nasledovne: $ (p_0,a^n) \vdash (p_1, a^{n-1}) \vdash \ldots \vdash (p_{n-1}, a) \vdash (p_n, \varepsilon) $, kde $ p_0 = q_{0A_1^{\Sigma^n}}$, $ p_n \in F_{A_1^{\Sigma^n}} $ a pre $ 1 \leq i < n $ platí $ p_i \in K_{A_1^{\Sigma^n}}$. Nakoľko $ \#_S(A_1^{\Sigma^n}) < n+1 $, tak $ \exists i,j \in \mathbb{N} : 0 \leq i < j \leq n, \; p_i=p_j $ (vo výpočte sa nejaký stav zopakuje). Z toho vyplýva, že v akceptovanom slove môžem nejakú jeho časť pumpovať, t.j. $ \exists r_1 \in \mathbb{N}, 1 \leq r_1 \leq n \; \forall k \in \mathbb{N}: a^{n + kr_1} \in L(A_1^{\Sigma^n}) $.
 \par
 Analogicky, uvažujúc výpočet automatu $ A_2^{\Sigma^n} $ na slove $ a^n $, platí $ \exists r_2 \in \mathbb{N}, 1 \leq r_2 \leq n \; \forall k \in \mathbb{N}: a^{n + kr_2} \in L(A_2^{\Sigma^n}) $.
 \par
@@ -454,7 +454,7 @@ Teraz uvažujme slovo $ a^{n+r_1r_2} $. Podľa predchádzajúceho platí $ a^{n+
 
 \begin{theorem}
 \label{thm:prime^n}
-Pre $ n \geq 1 $ a $ p $ je prvočíslo definujeme $ L_{p^n} = \lbrace a^{kp^{n}} | k \in \mathbb{N} \rbrace $. Jazyk $ L_{p^n} $ nerozložiteľný.
+Pre $ n \geq 1 $ a prvočíslo $ p $ definujeme $ L_{p^n} = \lbrace a^{kp^{n}} | k \in \mathbb{N} \rbrace $. Jazyk $ L_{p^n} $ je nerozložiteľný.
 \end{theorem}
 
 \begin{proof}
@@ -487,7 +487,7 @@ Z predchádzajúceho vyplýva, že $ a^{p^n} \in L(A_1^{p^n}), a^{p^n} \in L(A_2
 \par
 Analogicky, uvažujúc výpočet automatu $ A_2^{p^n} $ na slove $ a^{p^n} $, platí $ \exists r_2 \in \mathbb{N}, 1 \leq r_2 < p^n \; \forall k \in \mathbb{N}: a^{p^n+kr_2} \in L(A_2^{p^n})$.
 \par
-Čísla $ r_1 $ a $ r_2 $ zapíšme nasledovne: $ r_1 = p^{l_1}s_1, 0 \leq l_1 < n, p \nmid s_1 $. $ r_2 = p^{l_2}s_2, 0 \leq l_2 < n, p \nmid s_2 $. Z uvedeného v predošlom vyplýva, že $ a^{p^n + p^{max(l_1,l_2)}s_1s_2} \in L(A_1^{p^n}) \cap L(A_2^{p^n}) $. Nakoľko však $ p^n \nmid p^{max(l_1,l_2)}s_1s_2$, tak $ a^{p^n + p^{max(l_1,l_2)}s_1s_2} \notin L_{p^n} $, čo je však v spore s predpokladom, že automaty $ A_1^{p^n} $ a $ A_2^{p^n} $ tvoria netriviálny rozklad automatu $ A_{p^n} $.
+Čísla $ r_1 $ a $ r_2 $ zapíšme nasledovne: $ r_1 = p^{l_1}s_1, 0 \leq l_1 < n, p \nmid s_1 $, $ r_2 = p^{l_2}s_2, 0 \leq l_2 < n, p \nmid s_2 $. Z uvedeného v predošlom vyplýva, že $ a^{p^n + p^{max(l_1,l_2)}s_1s_2} \in L(A_1^{p^n}) \cap L(A_2^{p^n}) $. Nakoľko však $ p^n \nmid p^{max(l_1,l_2)}s_1s_2$, tak $ a^{p^n + p^{max(l_1,l_2)}s_1s_2} \notin L_{p^n} $, čo je však v spore s predpokladom, že automaty $ A_1^{p^n} $ a $ A_2^{p^n} $ tvoria netriviálny rozklad automatu $ A_{p^n} $.
 \end{proof}
 
 \begin{proposition}

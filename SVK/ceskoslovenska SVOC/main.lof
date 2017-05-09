@@ -7,14 +7,14 @@
 \contentsline {figure}{\numberline {2.2}{\ignorespaces rozklad automatu $ A_n $}}{11}
 \contentsline {figure}{\numberline {2.3}{\ignorespaces automat $ A_Z $}}{11}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces rozklad automatu $ A_Z $ na automaty $ A_1^Z $(hore) a $ A_2^Z $(dole)}}{12}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces automat $ A_n $ pre jazyk $ \delimiter "4266308 a^{n} \delimiter "5267309 \cup \delimiter "4266308 b \delimiter "5267309 ^{*} $}}{13}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces automat $ A_n $ pre jazyk $ \delimiter "4266308 a^{n} \delimiter "5267309 \cup \delimiter "4266308 b \delimiter "5267309 ^{*} $}}{12}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces netrivi\IeC {\'a}lny rozklad automatu $ A_n $ z Obr. \ref {fig:a^nub^*} na automaty $ A_1^n $(hore) a $ A_2^n $(dole)}}{13}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces automat $ A_n $ pre jazyk $ \delimiter "4266308 b \delimiter "5267309 .\delimiter "4266308 w \in \delimiter "4266308 a,b \delimiter "5267309 ^{*} | \#_a(w)=n \delimiter "5267309 $}}{14}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces automat $ A_n $ pre jazyk $ \delimiter "4266308 b \delimiter "5267309 .\delimiter "4266308 w \in \delimiter "4266308 a,b \delimiter "5267309 ^{*} | \#_a(w)=n \delimiter "5267309 $}}{13}
 \contentsline {figure}{\numberline {2.8}{\ignorespaces netrivi\IeC {\'a}lny rozklad automatu $ A_n $ pre jazyk $ \delimiter "4266308 b \delimiter "5267309 .\delimiter "4266308 w \in \delimiter "4266308 a,b \delimiter "5267309 ^{*} | \#_a(w)=n \delimiter "5267309 $ na automaty $ A_1^n $(hore) a $ A_2^n $(dole)}}{14}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces automat $ A_{l,k} $ pre jazyk $ \delimiter "4266308 a^lb^k \delimiter "5267309 $}}{16}
 \contentsline {figure}{\numberline {2.10}{\ignorespaces rozklad automat $ A_{l,k} $ na automaty $ A_l $(hore) a $ A_k $(dole)}}{16}
-\contentsline {figure}{\numberline {2.11}{\ignorespaces automat $ A_{\Sigma ^n} $}}{17}
-\contentsline {figure}{\numberline {2.12}{\ignorespaces automat $ A_{p^n} $}}{18}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces automat $ A_{\Sigma ^n} $}}{16}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces automat $ A_{p^n} $}}{17}
 \contentsline {figure}{\numberline {2.13}{\ignorespaces automat $ A_{L} $ pre jazyk $ L = (\delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 \delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 )^* $}}{18}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces DKA $ A_{L} $ pre jazyk $ L = (\delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 \delimiter "4266308 a \delimiter "5267309 \delimiter "4266308 a,b \delimiter "5267309 )^* $}}{21}

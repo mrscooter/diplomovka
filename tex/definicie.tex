@@ -76,7 +76,7 @@ Nech $ u $ je ľubovolné slovo, $ k \in \mathbb{N} $. Potom \em{}$ pref(u,k) $\
 \end{notation}
 
 \begin{notation}
-Nech $ u = u_1u_2 \ldots u_n$ je ľubovolné slovo, kde $ u_i $ je symbol pre $ 0 \leq i \leq n $. Ak v diagrame NKA $ A $ použijeme označenie prechodu slovom:
+Nech $ u = u_1u_2 \ldots u_n$ je ľubovolné slovo, kde $ u_i $ je symbol pre $ 1 \leq i \leq n $. Ak v diagrame NKA $ A $ použijeme označenie prechodu slovom:
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
@@ -90,7 +90,7 @@ Nech $ u = u_1u_2 \ldots u_n$ je ľubovolné slovo, kde $ u_i $ je symbol pre $ 
 \end{tikzpicture}
 \end{figure}
 
-myslíme tým, že v automate $ A $ sa dá zo stavu $ q $ dostať do stavu $ p $ na slovo $ u $, pričom zo stavov, v ktorých sa automat $ A $ nachádza počas čítania slova $ u $ sa nedá už nikam inam dostať. Formálne, existujú $ q_0, q_1, \ldots, q_n \in K_A $ také, že $ q_0 = q, q_n = p, \delta_A(q, u_1) \ni q_1 $ a pre $ 0 < i < n $ platí $ \delta_A(q_i,u_{i+1}) = \lbrace q_{i+1} \rbrace, q_i \notin F_A $, $ a \in \Sigma_A - \lbrace u_{i+1} \rbrace \Rightarrow \delta_A(q_i,a) = \emptyset  $.
+myslíme tým, že v automate $ A $ sa dá zo stavu $ q $ dostať do stavu $ p $ na slovo $ u $, pričom zo stavov, v ktorých sa automat $ A $ nachádza počas čítania slova $ u $ sa nedá už nikam inam dostať. Formálne, existujú $ s_1, \ldots, s_n \in K_A $ také, že $ s_n = p, \delta_A(q, u_1) \ni s_1 $ a pre $ 1 \leq i < n $ platí $ \delta_A(s_i,u_{i+1}) = \lbrace q_{i+1} \rbrace, s_i \notin F_A $, $ a \in \Sigma_A - \lbrace u_{i+1} \rbrace \Rightarrow \delta_A(s_i,a) = \emptyset  $.
 \end{notation}
 
 \section{Definícia problému}
@@ -121,7 +121,7 @@ V našej práci budeme takmer vždy hovoriť o nedeterministickej rozložiteľno
 
 Ľahko vidno, že rozklad NKA $ A $ existuje vždy a tvorí ho samotný automat $ A $ a NKA pre jazyk $ \Sigma_A^{*} $. Samozrejme, tento rozklad nie je netriviálny a rovnako nie je ani ničím zaujímavý. Preto nás bude v prípade automatov zaujímať, za akých podmienok existuje ich netriviálny rozklad. Pri jazykoch nás bude zaujímať, či sú rozložiteľné.
 \par
-Zmysel nasledujúcej lemy je v zjednodušení dôkazov niektorých tvrdení v našej práci, kde potrebujeme predpokladať existenciu rozkladu netriviálneho rozkladu nejakého automatu, a následne dokázať niečo o výpočtoch NKA, ktoré tvoria tento rozklad. Vďaka tejto Leme môžeme predpokladať, že dané výpočty v každom kroku spracujú nejaký znak zo vstupu, čo robí dôkazy prehľadnejšími.
+Zmysel nasledujúcej lemy je v zjednodušení dôkazov niektorých tvrdení v našej práci, kde potrebujeme predpokladať existenciu netriviálneho rozkladu nejakého automatu, a následne dokázať niečo o výpočtoch NKA, ktoré tvoria tento rozklad. Vďaka tejto Leme môžeme predpokladať, že dané výpočty v každom kroku spracujú nejaký znak zo vstupu, čo robí dôkazy prehľadnejšími.
 
 \begin{lemma}[o bezepsilonových NKA]
 \label{lm:nonepsilon_NFA}

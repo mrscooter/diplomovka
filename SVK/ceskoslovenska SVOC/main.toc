@@ -7,7 +7,7 @@
 \contentsline {section}{\numberline {1.4}Techniky ur\IeC {\v c}ovania dolnej hranice po\IeC {\v c}tu stavov NKA}{6}
 \contentsline {chapter}{\numberline {2}Rozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} a nerozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} jazyky}{10}
 \contentsline {section}{\numberline {2.1}Rozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} jazyky}{10}
-\contentsline {section}{\numberline {2.2}Nerozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} jazyky}{17}
+\contentsline {section}{\numberline {2.2}Nerozlo\IeC {\v z}ite\IeC {\v l}n\IeC {\'e} jazyky}{16}
 \contentsline {chapter}{\numberline {3}Porovnanie determinizmu a nedeterminizmu}{20}
 \contentsline {section}{\numberline {3.1}Defin\IeC {\'\i }cia deterministick\IeC {\'e}ho kone\IeC {\v c}n\IeC {\'e}ho automatu}{20}
 \contentsline {section}{\numberline {3.2}Rozdielov\IeC {\'e} jazyky}{21}
@@ -16,5 +16,5 @@
 \contentsline {section}{\numberline {4.2}Nov\IeC {\'y} symbol v jazyku}{27}
 \contentsline {section}{\numberline {4.3}Charakteriz\IeC {\'a}cia jazykov tvoren\IeC {\'y}ch jedn\IeC {\'y}m slovom}{29}
 \contentsline {section}{\numberline {4.4}Automaty tvoren\IeC {\'e} jedin\IeC {\'y}m cyklom}{31}
-\contentsline {section}{\numberline {4.5}Uz\IeC {\'a}verov\IeC {\'e} vlastnosti}{34}
-\contentsline {chapter}{Z\IeC {\'a}ver}{37}
+\contentsline {section}{\numberline {4.5}Uz\IeC {\'a}verov\IeC {\'e} vlastnosti}{35}
+\contentsline {chapter}{Z\IeC {\'a}ver}{38}
